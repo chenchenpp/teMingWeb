@@ -29,6 +29,8 @@ body{
   text-align: center;
   color: #2c3e50;
   min-width: 1024px;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 
 .icon {
@@ -37,13 +39,5 @@ body{
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
-}
-
-</style>
-<style lang="scss" scoped>
-.el-main{
-  width:100%;
-  height:100%;
-  padding: 0;
 }
 </style>

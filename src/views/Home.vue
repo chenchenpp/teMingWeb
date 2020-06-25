@@ -28,7 +28,9 @@ export default {
     height: 1000px;
   }
 }
-
+.el-carousel--horizontal{
+  overflow: hidden;
+}
 .el-carousel__item {
    height: 1000px;
   img {
