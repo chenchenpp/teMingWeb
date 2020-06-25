@@ -1,5 +1,13 @@
 <template>
   <div class="home">
+    <div class="clearfix">
+      <div class="left">
+        <img src="../assets/images/home/first2.jpg" alt="">
+      </div>
+      <div class="right">
+        <img src="../assets/images/home/first3.jpg" alt="">
+      </div>
+    </div>
     <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     <el-button @click="goAbout">el-button</el-button>
@@ -40,8 +48,36 @@ export default {
 </script>
 <style lang="scss" scoped>
 .home{
+  .clearfix{
+    &::before{
+      content: '';
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden;
+    }
+  }
   .shouye{
     background: $color-theme
+  }
+  .left{
+    width: 30%;
+    height: 550px;
+    float: left;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .right{
+    float: right;
+    width: 70%;
+    height: 550px;
+    img{
+      width: 100%;
+      // max-height: 550px;
+      height: 100%;
+    }
   }
 }
 </style>
