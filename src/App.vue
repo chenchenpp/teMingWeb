@@ -22,6 +22,9 @@ export default {
   font-family: "zhanghaishan";
   src: url("./assets/font/zhanghaishan.ttf");
 }
+body{
+  font-size: 16px;
+}
 #app {
   font-family: "zhanghaishan", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -45,5 +48,8 @@ export default {
   width:100%;
   height:100%;
   padding: 0;
+}
+.footer{
+  font-size: 16px
 }
 </style>
