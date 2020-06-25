@@ -21,10 +21,11 @@
         mode="horizontal"
         text-color="#DDDDDD"
         active-text-color="#DDDDDD"
+        @select="handleSelect"
       >
         <el-menu-item index="1"><router-link to="/" tag="span"> {{$t('message.home')}}</router-link></el-menu-item>
         <el-menu-item index="2"><router-link to="/product" tag="span">产品中心</router-link></el-menu-item>
-        <el-menu-item index="3">品牌故事</el-menu-item>
+        <el-menu-item index="3"><router-link to="/brandStory" tag="span">品牌故事</router-link></el-menu-item>
         <el-menu-item index="4">探索展厅</el-menu-item>
         <el-menu-item index="5">特铭动态</el-menu-item>
         <el-menu-item index="6">加入我们</el-menu-item>
@@ -67,7 +68,11 @@ export default {
         console.log(command);
         this.langType = command;
        this.$i18n.locale = command;
-    }
+    },
+     handleSelect(key, keyPath) {
+        console.log(key, keyPath);
+        this.activeIndex = key;
+      }
   }
 };
 </script>
@@ -125,13 +130,16 @@ export default {
     line-height: 100px;
   }
   .el-menu-item{
-      font-size: 16PX;
+    font-size: 16PX;
     position: relative;
     &:hover {
       background-color: transparent!important;
     }
     &:focus {
       background-color: transparent!important;
+    }
+    span{
+      height: 100%;
     }
   }
   .el-menu-item.is-active {
