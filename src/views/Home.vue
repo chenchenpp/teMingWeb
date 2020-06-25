@@ -1,81 +1,40 @@
 <template>
-  <div class="home">
-    <div class="clearfix">
-      <div class="left">
-        <img src="../assets/images/home/forth4.jpg" alt="">
-      </div>
-      <div class="right">
-        <img src="../assets/images/home/forth5.jpg" alt="">
-      </div>
-    </div>
-    <img alt="Vue logo" src="../assets/logo.png">
-    <ul>
-      <li class="shouye">首页</li>
-      <li>关于</li>
-    </ul>
+  <div class="home-container">
+    <navBar />
+    <el-carousel arrow="never">
+      <el-carousel-item v-for="item in 4" :key="item">
+        <img src="../assets/images/home/banner.jpg" alt />
+      </el-carousel-item>
+    </el-carousel>
   </div>
 </template>
 
 <script>
-import { getUserComTravelersByUserId } from '@/util/request/api.js';
-// @ is an alias to /src
-// import HelloWorld from '@/components/HelloWorld.vue';
+import { getUserComTravelersByUserId } from "@/util/request/api.js";
+import NavBar from "components/global/NavBar";
 export default {
-  name: 'home',
+  name: "home",
   components: {
-    // HelloWorld
+    NavBar
   },
-  methods: {
-    goAbout() {
-      this.$router.push({ path: '/about' });
-    },
-    clickHttp() {
-      this.$get(getUserComTravelersByUserId, {
-        page: 1,
-        rows: 10
-      }).then((res) => {
-        console.log(res);
-      });
-    }
-  }
+  methods: {}
 };
 </script>
 <style lang="scss" scoped>
-.home{
-  .clearfix{
-    &::before{
-      content: '';
-      display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-    }
+.home-container {
+  height: 100%;
+}
+.el-carousel {
+  height: 1000px;
+  .el-carousel__container {
+    height: 1000px;
   }
-  .shouye{
-    background: $color-theme
-  }
-  .log{
-    width: 2.1rem;
-    height: 0.51rem;
-  }
-  .left{
-    width: 30%;
-    height: 550px;
-    float: left;
-    img{
-      width: 100%;
-      height: 100%;
-    }
-  }
-  .right{
-    float: right;
-    width: 70%;
-    height: 550px;
-    img{
-      width: 100%;
-      // max-height: 550px;
-      height: 100%;
-    }
+}
+
+.el-carousel__item {
+   height: 1000px;
+  img {
+    height: 100%;
   }
 }
 </style>
