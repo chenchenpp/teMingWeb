@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header height="90px" class="header">
+      <div class="header">
         <div class="head-left">
           <img src="./assets/images/home/logo.png" alt="" class="logo">
           <el-dropdown>
@@ -77,11 +77,12 @@
                 </ul>
             </div>
         </div>
-      </el-header>
+      </div>
       <el-main>
         <router-view></router-view>
       </el-main>
       <el-footer>
+        <i class="iconfont iconcart-full"></i>
         我是脚步
       </el-footer>
     </el-container>
@@ -97,8 +98,12 @@ export default {
 };
 </script>
 <style>
+ @font-face {
+  font-family: "zhanghaishan";
+  src: url("./assets/font/zhanghaishan.ttf");
+}
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'zhanghaishan', 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -106,6 +111,7 @@ export default {
   /* margin-top: 60px; */
   min-width: 1024px;
 }
+
 .icon {
   width: 1em;
   height: 1em;
@@ -120,14 +126,17 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // .head-left{
-  //   display: flex
-  // }
-  // .logo{
-  //   width: 100%;
-  // }
-  // .el-dropdown{
-  //   height: 90px;
-  // }
+  height: 1rem;
+  .head-left{
+    display: flex
+  }
+  .logo{
+    width: 2.1rem;
+    height: 0.51rem;
+  }
+  .el-dropdown{
+   height: 1rem;
+   line-height: 1rem;
+  }
 }
 </style>
