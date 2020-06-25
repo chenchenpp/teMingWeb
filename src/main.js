@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import 'lib-flexible';
 import App from './App.vue';
 import router from './router/router';
 import store from './store/store';
@@ -9,6 +10,7 @@ import './components/global';
 import 'lib-flexible/flexible.js'
 
 require('./assets/sass/reset.scss');
+
 Vue.prototype.$get = get;
 Vue.prototype.$post = post;
 Vue.config.productionTip = false;

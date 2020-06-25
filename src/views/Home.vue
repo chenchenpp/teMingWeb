@@ -2,10 +2,10 @@
   <div class="home">
     <div class="clearfix">
       <div class="left">
-        <img src="../assets/images/home/first2.jpg" alt="">
+        <img src="../assets/images/home/forth4.jpg" alt="">
       </div>
       <div class="right">
-        <img src="../assets/images/home/first3.jpg" alt="">
+        <img src="../assets/images/home/forth5.jpg" alt="">
       </div>
     </div>
     <img alt="Vue logo" src="../assets/logo.png">
@@ -46,9 +46,9 @@ export default {
     &::before{
       content: '';
       display: block;
-      height: 0;
-      clear: both;
-      visibility: hidden;
+    height: 0;
+    clear: both;
+    visibility: hidden;
     }
   }
   .shouye{
