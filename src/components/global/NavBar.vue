@@ -23,9 +23,9 @@
         active-text-color="#DDDDDD"
         @select="handleSelect"
       >
-        <el-menu-item index="1"><router-link to="/" tag="span"> {{$t('message.home')}}</router-link></el-menu-item>
-        <el-menu-item index="2"><router-link to="/product" tag="span">产品中心</router-link></el-menu-item>
-        <el-menu-item index="3"><router-link to="/brandStory" tag="span">品牌故事</router-link></el-menu-item>
+        <el-menu-item index="1"><router-link to="/" tag="div"> {{$t('message.home')}}</router-link></el-menu-item>
+        <el-menu-item index="2"><router-link to="/product" tag="div">产品中心</router-link></el-menu-item>
+        <el-menu-item index="3"><router-link to="/brandStory" tag="div">品牌故事</router-link></el-menu-item>
         <el-menu-item index="4">探索展厅</el-menu-item>
         <el-menu-item index="5">特铭动态</el-menu-item>
         <el-menu-item index="6">加入我们</el-menu-item>
@@ -59,20 +59,20 @@
 export default {
   data() {
     return {
-      activeIndex: "1",
+      activeIndex: '1',
       langType:'CN'
     };
   },
   methods: {
-    handleCommand(command){
-        console.log(command);
-        this.langType = command;
-       this.$i18n.locale = command;
+    handleCommand(command) {
+      console.log(command);
+      this.langType = command;
+      this.$i18n.locale = command;
     },
-     handleSelect(key, keyPath) {
-        console.log(key, keyPath);
-        this.activeIndex = key;
-      }
+    handleSelect(key, keyPath) {
+      console.log(key, keyPath);
+      this.activeIndex = key;
+    }
   }
 };
 </script>
@@ -138,7 +138,8 @@ export default {
     &:focus {
       background-color: transparent!important;
     }
-    span{
+    div{
+      display: inline-block;
       height: 100%;
     }
   }
