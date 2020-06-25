@@ -1,17 +1,14 @@
 <template>
   <div id="app">
-    <!-- <navBar/>   -->
-    <el-main>
+
       <router-view></router-view>
-    </el-main>
+  
   </div>
 </template>
 <script>
-// import NavBar from './components/global/NavBar';
 export default {
   name: "app",
   components:{
-    // NavBar,
   },
   created() {
   }
@@ -48,8 +45,5 @@ body{
   width:100%;
   height:100%;
   padding: 0;
-}
-.footer{
-  font-size: 16px
 }
 </style>

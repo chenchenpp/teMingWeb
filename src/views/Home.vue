@@ -1,22 +1,20 @@
 <template>
   <div class="home-container">
-    <navBar />
+    <nav-bar />
     <el-carousel arrow="never">
       <el-carousel-item v-for="item in 4" :key="item">
         <img src="../assets/images/home/banner.jpg" alt />
       </el-carousel-item>
     </el-carousel>
+    <tm-footer></tm-footer>
   </div>
 </template>
 
 <script>
 import { getUserComTravelersByUserId } from "@/util/request/api.js";
-import NavBar from "components/global/NavBar";
 export default {
   name: "home",
-  components: {
-    NavBar
-  },
+
   methods: {}
 };
 </script>

@@ -2,14 +2,14 @@
   <el-container class="header">
     <div class="head-left">
       <img src="../../assets/images/home/logo.png" alt class="logo" />
-      <el-dropdown trigger="click">
+      <el-dropdown trigger="click" @command="handleCommand">
         <span class="el-dropdown-link">
-          <span>CN</span>
+          <span>{{langType}}</span>
           <i class="iconfont icondown"></i>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>CN</el-dropdown-item>
-          <el-dropdown-item>EN</el-dropdown-item>
+          <el-dropdown-item command="CN">CN</el-dropdown-item>
+          <el-dropdown-item command="EN">EN</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -19,17 +19,16 @@
         :default-active="activeIndex"
         class="el-menu-demo"
         mode="horizontal"
-        @select="handleSelect"
         text-color="#DDDDDD"
         active-text-color="#DDDDDD"
       >
-        <el-menu-item index="1">首页</el-menu-item>
-        <el-menu-item index="2">产品中心</el-menu-item>
+        <el-menu-item index="1"><router-link to="/" tag="span"> {{$t('message.home')}}</router-link></el-menu-item>
+        <el-menu-item index="2"><router-link to="/product" tag="span">产品中心</router-link></el-menu-item>
         <el-menu-item index="3">品牌故事</el-menu-item>
         <el-menu-item index="4">探索展厅</el-menu-item>
         <el-menu-item index="5">特铭动态</el-menu-item>
         <el-menu-item index="6">加入我们</el-menu-item>
-        <el-menu-item index="7"></el-menu-item>
+        <el-menu-item index="7"><span class="line"></span></el-menu-item>
         <el-menu-item index="8">
             <i class="iconfont iconcart-full"></i>
             进入商城
@@ -60,12 +59,14 @@ export default {
   data() {
     return {
       activeIndex: "1",
-      activeIndex2: "1"
+      langType:'CN'
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
+    handleCommand(command){
+        console.log(command);
+        this.langType = command;
+       this.$i18n.locale = command;
     }
   }
 };
@@ -97,7 +98,7 @@ export default {
     color: #dddddd;
     text-align: center;
     cursor: pointer;
-    font-size: 16px;
+    // font-size: 16PX;
     span{
         display: inline-block;
         width: 100%;
@@ -124,7 +125,7 @@ export default {
     line-height: 100px;
   }
   .el-menu-item{
-      font-size: 16px;
+      font-size: 16PX;
     position: relative;
     &:hover {
       background-color: transparent!important;
@@ -157,6 +158,12 @@ export default {
     &:focus {
       background-color: transparent;
     }
+  }
+  .line{
+      width: 1px;
+      height: 16px;
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
   }
 }
 </style>

@@ -1,3 +1,3 @@
 export const message = {
-    hello: 'Hello, World'
+    home: 'home'
 }
