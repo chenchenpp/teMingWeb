@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-container>
-      <div class="header">
+      <el-header class="header">
         <div class="head-left">
           <img src="./assets/images/home/logo.png" alt="" class="logo">
           <el-dropdown>
@@ -77,14 +77,13 @@
                 </ul>
             </div>
         </div>
-      </div>
-      <el-main>
-        <router-view></router-view>
-      </el-main>
-      <el-footer>
+      </el-header>
+              <router-view></router-view>
+
+      <!-- <el-footer class="footer">
         <i class="iconfont iconcart-full"></i>
         我是脚步
-      </el-footer>
+      </el-footer> -->
     </el-container>
 
   </div>
@@ -101,6 +100,9 @@ export default {
  @font-face {
   font-family: "zhanghaishan";
   src: url("./assets/font/zhanghaishan.ttf");
+}
+body{
+  font-size: 16px;
 }
 #app {
   font-family: 'zhanghaishan', 'Avenir', Helvetica, Arial, sans-serif;
@@ -127,6 +129,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   height: 1rem;
+  font-size: 16px;
   .head-left{
     display: flex
   }
@@ -138,5 +141,8 @@ export default {
    height: 1rem;
    line-height: 1rem;
   }
+}
+.footer{
+  font-size: 16px
 }
 </style>

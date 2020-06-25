@@ -7,6 +7,7 @@ const server = {
   secure: false
 };
 module.exports = {
+  lintOnSave: false,
   css: {
     loaderOptions: {
       sass: {
