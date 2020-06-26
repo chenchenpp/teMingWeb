@@ -1,6 +1,5 @@
 <template>
   <div class="home-container">
-    <nav-bar />
     <el-carousel arrow="never">
       <el-carousel-item v-for="item in 4" :key="item">
         <img src="../assets/images/home/banner.jpg" alt />

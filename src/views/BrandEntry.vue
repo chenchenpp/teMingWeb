@@ -1,6 +1,5 @@
 <template>
   <div class="brand-entry-container">
-    <nav-bar />
     <div class="content">
       <div class="banner">
         <div class="banner-text-area">
