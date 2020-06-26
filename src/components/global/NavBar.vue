@@ -16,40 +16,29 @@
 
     <div class="head-right">
       <el-menu
-        :default-active="activeIndex"
+        :default-active="$route.path"
         class="el-menu-demo"
         mode="horizontal"
         text-color="#DDDDDD"
         active-text-color="#DDDDDD"
         @select="handleSelect"
       >
-        <el-menu-item index="1"><router-link to="/" tag="div"> {{$t('message.home')}}</router-link></el-menu-item>
-        <el-menu-item index="2"><router-link to="/product" tag="div">产品中心</router-link></el-menu-item>
-        <el-menu-item index="3"><router-link to="/brandStory" tag="div">品牌故事</router-link></el-menu-item>
-        <el-menu-item index="4">探索展厅</el-menu-item>
+        <el-menu-item index="/"><router-link to="/" tag="div"> {{$t('message.home')}}</router-link></el-menu-item>
+        <el-menu-item index="/product"><router-link to="/product" tag="div">产品中心</router-link></el-menu-item>
+        <el-menu-item index="/brandStory"><router-link to="/brandStory" tag="div">品牌故事</router-link></el-menu-item>
+        <el-menu-item index="/explorationHall"><router-link to="/explorationHall" tag="div">探索展厅</router-link></el-menu-item>
         <el-menu-item index="5">特铭动态</el-menu-item>
-        <el-menu-item index="6">加入我们</el-menu-item>
+        <el-submenu index="/joinUs || /BrandEntry">
+          <template slot="title">加入我们</template>
+          <el-menu-item index="/BrandEntry"><router-link to="/BrandEntry" tag="div">招贤纳士</router-link></el-menu-item>
+          <el-menu-item index="/joinUs"><router-link to="/joinUs" tag="div">品牌入驻</router-link></el-menu-item>
+          
+        </el-submenu>
         <el-menu-item index="7"><span class="line"></span></el-menu-item>
         <el-menu-item index="8">
             <i class="iconfont iconcart-full"></i>
             进入商城
         </el-menu-item>
-        <!-- <el-submenu index="2">
-          <template slot="title">我的工作台</template>
-          <el-menu-item index="2-1">选项1</el-menu-item>
-          <el-menu-item index="2-2">选项2</el-menu-item>
-          <el-menu-item index="2-3">选项3</el-menu-item>
-          <el-submenu index="2-4">
-            <template slot="title">选项4</template>
-            <el-menu-item index="2-4-1">选项1</el-menu-item>
-            <el-menu-item index="2-4-2">选项2</el-menu-item>
-            <el-menu-item index="2-4-3">选项3</el-menu-item>
-          </el-submenu>
-        </el-submenu> -->
-        <!-- <el-menu-item index="3" disabled>消息中心</el-menu-item>
-        <el-menu-item index="4">
-          <a href="https://www.ele.me" target="_blank">订单管理</a>
-        </el-menu-item> -->
       </el-menu>
     </div>
   </el-container>
@@ -65,7 +54,6 @@ export default {
   },
   methods: {
     handleCommand(command) {
-      console.log(command);
       this.langType = command;
       this.$i18n.locale = command;
     },
@@ -143,6 +131,9 @@ export default {
       height: 100%;
     }
   }
+  .el-menu-item i{
+    color:#DDDDDD;
+  }
   .el-menu-item.is-active {
     border-bottom: none;
     &::after {
@@ -160,6 +151,7 @@ export default {
     line-height: 100px;
   }
   .el-submenu__title {
+    font-size: 16PX;
     position: relative;
     &:hover {
       background-color: transparent !important;
