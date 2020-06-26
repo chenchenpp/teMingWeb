@@ -1,6 +1,5 @@
 <template>
   <div class="exploration-hall">
-    <nav-bar />
     <div class="content">
       <img :src="bannerImg" alt class="content-banner" />
       <ul class="hall-container" v-move>
@@ -54,7 +53,7 @@ export default {
       //  el.addEventListener('mouseleave', function(e) {
       //   for (const li of allLi) {
       //     li.style.transform = `translateX(0)`;
-          
+
       //   }
       // });
     }

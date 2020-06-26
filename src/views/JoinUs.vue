@@ -1,6 +1,5 @@
 <template>
   <div class="brand-entry-container">
-      <nav-bar />
       <div class="content">
           123
       </div>

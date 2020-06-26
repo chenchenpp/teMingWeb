@@ -1,6 +1,5 @@
 <template>
   <div class="brand-story-container">
-    <nav-bar />
     <el-carousel arrow="never" class="banner">
       <el-carousel-item v-for="item in 4" :key="item">
         <img src="../assets/images/home/banner.jpg" alt />
@@ -8,9 +7,9 @@
     </el-carousel>
     <div class="content">
       <section class="first-content">
-        <p class="main-title">¸ß¶Ë¼Ò¾ÓÉî¶È¶¨ÖÆ×¨¼Ò</p>
-        <p class="sub-title">ÎÒÃÇ²»×ö´óÕû×°£¬Ò²²»×ö¿çÒµÌ¬£¬ÎÒÃÇ¾ÍÔÚ¼Ò¾ÓµÄÁìÓò×öÉî¶È¡£</p>
-        <p class="sub-title">ÔÚÈ«ÎÝ¡¢¸ß¶ËºÍÆ·ÖÊµÄÕ½ÂÔ¸ù»ùÉÏ£¬°Ñ¶¨ÖÆ×öÉî×öÍ¸×öµ½¼«ÖÂ£¬³ÉÎª¼Ò¾ßÐÐÒµÓëÖÚ²»Í¬µÄÎ¨Ò»¡£</p>
+        <p class="main-title">ï¿½ß¶Ë¼Ò¾ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½×¨ï¿½ï¿½</p>
+        <p class="sub-title">ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÌ¬ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ú¼Ò¾Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½</p>
+        <p class="sub-title">ï¿½ï¿½È«ï¿½Ý¡ï¿½ï¿½ß¶Ëºï¿½Æ·ï¿½Êµï¿½Õ½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½Ñ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½Îªï¿½Ò¾ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ú²ï¿½Í¬ï¿½ï¿½Î¨Ò»ï¿½ï¿½</p>
         <div class="img-intruduce">
           <img src="../assets/images/brandStory/first-content-img1.png" alt />
           <img src="../assets/images/brandStory/first-content-img1.png" alt />
@@ -20,9 +19,9 @@
       </section>
 
       <section class="second-content">
-        <p class="main-title">ÌØÃú·¢Õ¹Àú³Ì</p>
-        <p class="sub-title">ÌØÃú³ï½¨ÁËÍêÕûµÄ¿¾ÆáÉú²úÏß£¬ÍÆ³ö8µÀÓÍÆá¹¤ÒÕµÄÊÖ¹¤¿¾ÆáÃÅ°å¡£</p>
-        <p class="sub-title">¾«ÖÂÏ¸×öµÄÖÆ×÷¹¤ÒÕ±£Ö¤ÁËÃÅ°å²»µ«ÓÐÍêÃÀµÄÍâ¹Û£¬ÇÒ¾­¾ÃÄÍÓÃ£¬ÔÚµ±Ê±ÎªÖÐ¹ú³÷¹ñÐÐÒµ¿ª±ÙÁËÏÈºÓ¡£</p>
+        <p class="main-title">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ¹ï¿½ï¿½ï¿½ï¿½</p>
+        <p class="sub-title">ï¿½ï¿½ï¿½ï¿½ï¿½ï½¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß£ï¿½ï¿½Æ³ï¿½8ï¿½ï¿½ï¿½ï¿½ï¿½á¹¤ï¿½Õµï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å°å¡£</p>
+        <p class="sub-title">ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Õ±ï¿½Ö¤ï¿½ï¿½ï¿½Å°å²»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Û£ï¿½ï¿½Ò¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã£ï¿½ï¿½Úµï¿½Ê±Îªï¿½Ð¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÈºÓ¡ï¿½</p>
         <div class="img-intruduce">
           <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
         </div>
@@ -34,9 +33,9 @@
       </section>
 
       <section class="third-content">
-        <p class="main-title">¸ß¶Ë¼Ò¾ÓÉî¶È¶¨ÖÆ×¨¼Ò</p>
-        <p class="sub-title">ÎÒÃÇ²»×ö´óÕû×°£¬Ò²²»×ö¿çÒµÌ¬£¬ÎÒÃÇ¾ÍÔÚ¼Ò¾ÓµÄÁìÓò×öÉî¶È¡£</p>
-        <p class="sub-title">ÔÚÈ«ÎÝ¡¢¸ß¶ËºÍÆ·ÖÊµÄÕ½ÂÔ¸ù»ùÉÏ£¬°Ñ¶¨ÖÆ×öÉî×öÍ¸×öµ½¼«ÖÂ£¬³ÉÎª¼Ò¾ßÐÐÒµÓëÖÚ²»Í¬µÄÎ¨Ò»¡£</p>
+        <p class="main-title">ï¿½ß¶Ë¼Ò¾ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½×¨ï¿½ï¿½</p>
+        <p class="sub-title">ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÌ¬ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ú¼Ò¾Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½</p>
+        <p class="sub-title">ï¿½ï¿½È«ï¿½Ý¡ï¿½ï¿½ß¶Ëºï¿½Æ·ï¿½Êµï¿½Õ½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½Ñ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½Îªï¿½Ò¾ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ú²ï¿½Í¬ï¿½ï¿½Î¨Ò»ï¿½ï¿½</p>
         <div class="img-intruduce">
           <div class="left-img">
             <img src="../assets/images/brandStory/third-content-img1.png" alt />
@@ -49,9 +48,9 @@
       </section>
 
       <section class="forth-content">
-        <p class="main-title">¸ß¶Ë¼Ò¾ÓÉî¶È¶¨ÖÆ×¨¼Ò</p>
-        <p class="sub-title">ÎÒÃÇ²»×ö´óÕû×°£¬Ò²²»×ö¿çÒµÌ¬£¬ÎÒÃÇ¾ÍÔÚ¼Ò¾ÓµÄÁìÓò×öÉî¶È¡£</p>
-        <p class="sub-title">ÔÚÈ«ÎÝ¡¢¸ß¶ËºÍÆ·ÖÊµÄÕ½ÂÔ¸ù»ùÉÏ£¬°Ñ¶¨ÖÆ×öÉî×öÍ¸×öµ½¼«ÖÂ£¬³ÉÎª¼Ò¾ßÐÐÒµÓëÖÚ²»Í¬µÄÎ¨Ò»¡£</p>
+        <p class="main-title">ï¿½ß¶Ë¼Ò¾ï¿½ï¿½ï¿½È¶ï¿½ï¿½ï¿½×¨ï¿½ï¿½</p>
+        <p class="sub-title">ï¿½ï¿½ï¿½Ç²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÌ¬ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½Ú¼Ò¾Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½</p>
+        <p class="sub-title">ï¿½ï¿½È«ï¿½Ý¡ï¿½ï¿½ß¶Ëºï¿½Æ·ï¿½Êµï¿½Õ½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½Ï£ï¿½ï¿½Ñ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½ï¿½ï¿½Îªï¿½Ò¾ï¿½ï¿½ï¿½Òµï¿½ï¿½ï¿½Ú²ï¿½Í¬ï¿½ï¿½Î¨Ò»ï¿½ï¿½</p>
         <div class="img-intruduce">
           <div class="left-img">
             <el-carousel arrow="never">
@@ -64,36 +63,36 @@
             <li>
               <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p class="main-title">Éî¶È¶¨ÖÆ</p>
-                <p class="sub-title">Ã¿Ò»¿îÌØÃú¼Ò¾Ó¶¼ÊÇ¶ÀÒ»ÎÞ¶þ£¬Á¿Éí¶¨ÖÆµÄ</p>
+                <p class="main-title">ï¿½ï¿½È¶ï¿½ï¿½ï¿½</p>
+                <p class="sub-title">Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¾Ó¶ï¿½ï¿½Ç¶ï¿½Ò»ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½</p>
               </div>
             </li>
             <li>
               <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p class="main-title">Éî¶È¶¨ÖÆ</p>
-                <p class="sub-title">Ã¿Ò»¿îÌØÃú¼Ò¾Ó¶¼ÊÇ¶ÀÒ»ÎÞ¶þ£¬Á¿Éí¶¨ÖÆµÄ</p>
+                <p class="main-title">ï¿½ï¿½È¶ï¿½ï¿½ï¿½</p>
+                <p class="sub-title">Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¾Ó¶ï¿½ï¿½Ç¶ï¿½Ò»ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½</p>
               </div>
             </li>
             <li>
               <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p class="main-title">Éî¶È¶¨ÖÆ</p>
-                <p class="sub-title">Ã¿Ò»¿îÌØÃú¼Ò¾Ó¶¼ÊÇ¶ÀÒ»ÎÞ¶þ£¬Á¿Éí¶¨ÖÆµÄ</p>
+                <p class="main-title">ï¿½ï¿½È¶ï¿½ï¿½ï¿½</p>
+                <p class="sub-title">Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¾Ó¶ï¿½ï¿½Ç¶ï¿½Ò»ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½</p>
               </div>
             </li>
             <li>
               <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p class="main-title">Éî¶È¶¨ÖÆ</p>
-                <p class="sub-title">Ã¿Ò»¿îÌØÃú¼Ò¾Ó¶¼ÊÇ¶ÀÒ»ÎÞ¶þ£¬Á¿Éí¶¨ÖÆµÄ</p>
+                <p class="main-title">ï¿½ï¿½È¶ï¿½ï¿½ï¿½</p>
+                <p class="sub-title">Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¾Ó¶ï¿½ï¿½Ç¶ï¿½Ò»ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½</p>
               </div>
             </li>
             <li>
               <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p class="main-title">Éî¶È¶¨ÖÆ</p>
-                <p class="sub-title">Ã¿Ò»¿îÌØÃú¼Ò¾Ó¶¼ÊÇ¶ÀÒ»ÎÞ¶þ£¬Á¿Éí¶¨ÖÆµÄ</p>
+                <p class="main-title">ï¿½ï¿½È¶ï¿½ï¿½ï¿½</p>
+                <p class="sub-title">Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò¾Ó¶ï¿½ï¿½Ç¶ï¿½Ò»ï¿½Þ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½</p>
               </div>
             </li>
           </ul>
@@ -101,9 +100,9 @@
       </section>
 
       <div class="fifth-content">
-        <p class="main-title">Éî¶È¶¨ÖÆ ¡¤ ÎåÐÄ·þÎñ</p>
-        <p class="sub-title">Î§ÈÆ¿Í»§¡°´òÔìÀíÏëÖÐµÄ¼Ò¡±µÄÖÕ¼«Ä¿±ê£¬Ìá¹©¹á´©¿Í»§´ÓÊ¼ÖÁÖÕµÄÉî¶ÈÎ¬»¤</p>
-        <p class="sub-title">Ò»Õ¾Ê½Âú×ã¿Í»§ÐèÇó£¬ÈÃÃ¿Î»¿Í»§¶¼Éî¸Ð×ðÖØ£¬³¬³öÔ¤ÆÚ</p>
+        <p class="main-title">ï¿½ï¿½È¶ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ä·ï¿½ï¿½ï¿½</p>
+        <p class="sub-title">Î§ï¿½Æ¿Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ¼Ò¡ï¿½ï¿½ï¿½ï¿½Õ¼ï¿½Ä¿ï¿½ê£¬ï¿½á¹©ï¿½á´©ï¿½Í»ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Õµï¿½ï¿½ï¿½ï¿½Î¬ï¿½ï¿½</p>
+        <p class="sub-title">Ò»Õ¾Ê½ï¿½ï¿½ï¿½ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Î»ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½</p>
         <div class="img-intruduce or-container">
           <div
             class="box"
@@ -130,27 +129,27 @@ export default {
       eleindex: 0,
       piclist: [
         {
-          text: "²¥·Å/Â¼ÖÆÒ³Ãæ",
+          text: "ï¿½ï¿½ï¿½ï¿½/Â¼ï¿½ï¿½Ò³ï¿½ï¿½",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img1.png")
         },
         {
-          text: "²¥·Å/Â¼ÖÆÒ³Ãæ",
+          text: "ï¿½ï¿½ï¿½ï¿½/Â¼ï¿½ï¿½Ò³ï¿½ï¿½",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img2.png")
         },
         {
-          text: "²¥·Å/Â¼ÖÆÒ³Ãæ",
+          text: "ï¿½ï¿½ï¿½ï¿½/Â¼ï¿½ï¿½Ò³ï¿½ï¿½",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img1.png")
         },
         {
-          text: "²¥·Å/Â¼ÖÆÒ³Ãæ",
+          text: "ï¿½ï¿½ï¿½ï¿½/Â¼ï¿½ï¿½Ò³ï¿½ï¿½",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img1.png")
         },
         {
-          text: "²¥·Å/Â¼ÖÆÒ³Ãæ",
+          text: "ï¿½ï¿½ï¿½ï¿½/Â¼ï¿½ï¿½Ò³ï¿½ï¿½",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img1.png")
         }
@@ -196,7 +195,7 @@ export default {
     background: rgba(255, 255, 255, 1);
   }
 }
-// ¹«¹²µÄÖ÷±êÌâ¸±±êÌâ
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â¸±ï¿½ï¿½ï¿½ï¿½
 .main-title {
   font-size: 30px;
   margin-bottom: 40px;
@@ -300,7 +299,7 @@ export default {
   }
 }
 
-// ÊÖ·çÇÙÑùÊ½
+// ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½Ê½
 .or-container {
   width: 100%;
   box-sizing: border-box;

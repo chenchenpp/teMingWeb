@@ -87,8 +87,9 @@ export default {
   height: 100px;
   padding: 0 80px;
   width: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
+  left: 0;
   z-index: 99;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   .head-left {

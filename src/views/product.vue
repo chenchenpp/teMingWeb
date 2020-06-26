@@ -1,6 +1,5 @@
 <template>
   <div class="product">
-    <navBar />
     <div class="product-carousel">
       <el-carousel>
         <el-carousel-item v-for="item in 4" :key="item">
