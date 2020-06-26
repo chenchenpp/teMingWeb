@@ -8,9 +8,9 @@
     </el-carousel>
     <div class="content">
       <section class="first-content">
-        <p class="main-title">高端家居深度定制专家</p>
-        <p class="sub-title">我们不做大整装，也不做跨业态，我们就在家居的领域做深度。</p>
-        <p class="sub-title">在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。</p>
+        <p class="main-title">�߶˼Ҿ���ȶ���ר��</p>
+        <p class="sub-title">���ǲ�������װ��Ҳ������ҵ̬�����Ǿ��ڼҾӵ���������ȡ�</p>
+        <p class="sub-title">��ȫ�ݡ��߶˺�Ʒ�ʵ�ս�Ը����ϣ��Ѷ���������͸�������£���Ϊ�Ҿ���ҵ���ڲ�ͬ��Ψһ��</p>
         <div class="img-intruduce">
           <img src="../assets/images/brandStory/first-content-img1.png" alt />
           <img src="../assets/images/brandStory/first-content-img1.png" alt />
@@ -20,9 +20,9 @@
       </section>
 
       <section class="second-content">
-        <p class="main-title">特铭发展历程</p>
-        <p class="sub-title">特铭筹建了完整的烤漆生产线，推出8道油漆工艺的手工烤漆门板。</p>
-        <p class="sub-title">精致细做的制作工艺保证了门板不但有完美的外观，且经久耐用，在当时为中国橱柜行业开辟了先河。</p>
+        <p class="main-title">������չ����</p>
+        <p class="sub-title">�����ｨ�������Ŀ��������ߣ��Ƴ�8�����Ṥ�յ��ֹ������Ű塣</p>
+        <p class="sub-title">����ϸ�����������ձ�֤���Ű岻������������ۣ��Ҿ������ã��ڵ�ʱΪ�й�������ҵ�������Ⱥӡ�</p>
         <div class="img-intruduce">
           <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
         </div>
@@ -34,9 +34,9 @@
       </section>
 
       <section class="third-content">
-        <p class="main-title">高端家居深度定制专家</p>
-        <p class="sub-title">我们不做大整装，也不做跨业态，我们就在家居的领域做深度。</p>
-        <p class="sub-title">在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。</p>
+        <p class="main-title">�߶˼Ҿ���ȶ���ר��</p>
+        <p class="sub-title">���ǲ�������װ��Ҳ������ҵ̬�����Ǿ��ڼҾӵ���������ȡ�</p>
+        <p class="sub-title">��ȫ�ݡ��߶˺�Ʒ�ʵ�ս�Ը����ϣ��Ѷ���������͸�������£���Ϊ�Ҿ���ҵ���ڲ�ͬ��Ψһ��</p>
         <div class="img-intruduce">
           <div class="left-img">
             <img src="../assets/images/brandStory/third-content-img1.png" alt />
@@ -49,9 +49,9 @@
       </section>
 
       <section class="forth-content">
-        <p class="main-title">高端家居深度定制专家</p>
-        <p class="sub-title">我们不做大整装，也不做跨业态，我们就在家居的领域做深度。</p>
-        <p class="sub-title">在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。</p>
+        <p class="main-title">�߶˼Ҿ���ȶ���ר��</p>
+        <p class="sub-title">���ǲ�������װ��Ҳ������ҵ̬�����Ǿ��ڼҾӵ���������ȡ�</p>
+        <p class="sub-title">��ȫ�ݡ��߶˺�Ʒ�ʵ�ս�Ը����ϣ��Ѷ���������͸�������£���Ϊ�Ҿ���ҵ���ڲ�ͬ��Ψһ��</p>
         <div class="img-intruduce">
           <div class="left-img">
             <el-carousel arrow="never">
@@ -64,36 +64,36 @@
             <li>
               <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p class="main-title">深度定制</p>
-                <p class="sub-title">每一款特铭家居都是独一无二，量身定制的</p>
+                <p class="main-title">��ȶ���</p>
+                <p class="sub-title">ÿһ�������ҾӶ��Ƕ�һ�޶����������Ƶ�</p>
               </div>
             </li>
             <li>
               <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p class="main-title">深度定制</p>
-                <p class="sub-title">每一款特铭家居都是独一无二，量身定制的</p>
+                <p class="main-title">��ȶ���</p>
+                <p class="sub-title">ÿһ�������ҾӶ��Ƕ�һ�޶����������Ƶ�</p>
               </div>
             </li>
             <li>
               <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p class="main-title">深度定制</p>
-                <p class="sub-title">每一款特铭家居都是独一无二，量身定制的</p>
+                <p class="main-title">��ȶ���</p>
+                <p class="sub-title">ÿһ�������ҾӶ��Ƕ�һ�޶����������Ƶ�</p>
               </div>
             </li>
             <li>
               <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p class="main-title">深度定制</p>
-                <p class="sub-title">每一款特铭家居都是独一无二，量身定制的</p>
+                <p class="main-title">��ȶ���</p>
+                <p class="sub-title">ÿһ�������ҾӶ��Ƕ�һ�޶����������Ƶ�</p>
               </div>
             </li>
             <li>
               <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p class="main-title">深度定制</p>
-                <p class="sub-title">每一款特铭家居都是独一无二，量身定制的</p>
+                <p class="main-title">��ȶ���</p>
+                <p class="sub-title">ÿһ�������ҾӶ��Ƕ�һ�޶����������Ƶ�</p>
               </div>
             </li>
           </ul>
@@ -101,9 +101,9 @@
       </section>
 
       <div class="fifth-content">
-        <p class="main-title">深度定制 · 五心服务</p>
-        <p class="sub-title">围绕客户“打造理想中的家”的终极目标，提供贯穿客户从始至终的深度维护</p>
-        <p class="sub-title">一站式满足客户需求，让每位客户都深感尊重，超出预期</p>
+        <p class="main-title">��ȶ��� �� ���ķ���</p>
+        <p class="sub-title">Χ�ƿͻ������������еļҡ����ռ�Ŀ�꣬�ṩ�ᴩ�ͻ���ʼ���յ����ά��</p>
+        <p class="sub-title">һվʽ����ͻ�������ÿλ�ͻ���������أ�����Ԥ��</p>
         <div class="img-intruduce or-container">
           <div
             class="box"
@@ -130,27 +130,27 @@ export default {
       eleindex: 0,
       piclist: [
         {
-          text: "播放/录制页面",
+          text: "����/¼��ҳ��",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img1.png")
         },
         {
-          text: "播放/录制页面",
+          text: "����/¼��ҳ��",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img2.png")
         },
         {
-          text: "播放/录制页面",
+          text: "����/¼��ҳ��",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img1.png")
         },
         {
-          text: "播放/录制页面",
+          text: "����/¼��ҳ��",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img1.png")
         },
         {
-          text: "播放/录制页面",
+          text: "����/¼��ҳ��",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img1.png")
         }
@@ -196,7 +196,7 @@ export default {
     background: rgba(255, 255, 255, 1);
   }
 }
-// 公共的主标题副标题
+// �����������⸱����
 .main-title {
   font-size: 30px;
   margin-bottom: 40px;
@@ -300,7 +300,7 @@ export default {
   }
 }
 
-// 手风琴样式
+// �ַ�����ʽ
 .or-container {
   width: 100%;
   box-sizing: border-box;

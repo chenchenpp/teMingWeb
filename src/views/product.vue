@@ -12,6 +12,10 @@
       <p class="title">莫兰迪系列</p>
       <p class="des">智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。</p>
       <div class="detail-box">
+        <div class="scrollbarTrack" ref="scrollbarTrack">
+          <div class="scrollbarThumb" ref="scrollbarThumb"></div>
+          <div class="backgroundContainer"></div>
+        </div>
         <ul class="moduel" v-for="(item, index) in detailList" :key="index"  :class="[index%2==0 ? 'detail-left':'detail-right']">
           <li class="moduel-mes">
             <p class="title">{{item.title}}</p>
@@ -119,10 +123,40 @@ export default {
           imgClass: 'height600',
           src: 'four5.jpg'
         }]
-      }]
+      }],
+      scrollbarTrackTop: 0
     }
   },
+  mounted(){
+    this.scrollbarTrackTop=this.$refs.scrollbarTrack.getBoundingClientRect().top;
+    console.log(this.scrollbarTrackTop)
+    // 先给页面注册滚动事件
+    document.addEventListener('scroll',this.Scroll, false);
+    this.$once('hook:beforeDestroy', ()=>{
+      console.log('销毁')
+      document.removeEventListener('scroll', this.Scroll, false)
+    })
+  },
   methods: {
+    getScrollTop() {
+      var scroll_top = 0;
+      if (document.documentElement && document.documentElement.scrollTop) {
+          scroll_top = document.documentElement.scrollTop;
+      }
+      else if (document.body) {
+          scroll_top = document.body.scrollTop;
+      }
+      return scroll_top;
+    },
+    Scroll(){
+      let scrollbarTrackTop=this.$refs.scrollbarTrack.getBoundingClientRect().top;
+      let bodyScrollTop=this.getScrollTop();
+      if(scrollbarTrackTop<=0){
+        this.$refs.scrollbarThumb.style.transform= `translate3d(0, ${bodyScrollTop-this.scrollbarTrackTop}px, 0)`
+      }
+      console.log(this.$refs.scrollbarTrack.getBoundingClientRect().top,this.getScrollTop())
+      console.log(this.$refs)
+    },
     goHome() {
       this.$router.push({ path: '/' });
     }
@@ -170,9 +204,33 @@ export default {
       font-size:16px;
       line-height:24px;
     }
+
     .detail-box{
+      position: relative;
       border-top: 1px solid rgba(255,255,255,.3);
-      border-left: 1px solid rgba(255,255,255,.3);
+      // border-left: 1px solid rgba(255,255,255,.3);
+    }
+    .scrollbarTrack{
+      height: 100%;
+      z-index: 4;
+      overflow: hidden;
+      position: absolute;
+      height: 100%;
+      top: 0;
+      width: 3px;
+      left: 0;
+      .backgroundContainer{
+        width: 1px;
+        height: 100%;
+        background: rgba(255,255,255,.3);
+      }
+      .scrollbarThumb{
+        position: absolute;
+        width: 3px;
+        height: 72px;
+        background: #ffffff;
+        transform: translate3d(0, 0, 0)
+      }
     }
     .moduel {
       padding-bottom: 60px;

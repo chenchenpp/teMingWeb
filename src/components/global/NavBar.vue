@@ -23,16 +23,25 @@
         active-text-color="#DDDDDD"
         @select="handleSelect"
       >
-        <el-menu-item index="/"><router-link to="/" tag="div"> {{$t('message.home')}}</router-link></el-menu-item>
-        <el-menu-item index="/product"><router-link to="/product" tag="div">产品中心</router-link></el-menu-item>
-        <el-menu-item index="/brandStory"><router-link to="/brandStory" tag="div">品牌故事</router-link></el-menu-item>
+        <el-menu-item index="/"> {{$t('message.home')}}</el-menu-item>
+        <!-- <el-menu-item index="2">
+
+          <router-link to="/product" tag="div">产品中心</router-link>
+        </el-menu-item> -->
+        <el-submenu index="/product">
+          <template slot="title">产品中心</template>
+          <el-menu-item index="/product">贾德系列</el-menu-item>
+          <el-menu-item index="/product">莫兰蒂系列</el-menu-item>
+          <el-menu-item index="/product">密斯系列</el-menu-item>
+          <el-menu-item index="/product">迪克森系列</el-menu-item>
+        </el-submenu>
+        <el-menu-item index="/brandStory">品牌故事</el-menu-item>
         <el-menu-item index="/explorationHall"><router-link to="/explorationHall" tag="div">探索展厅</router-link></el-menu-item>
-        <el-menu-item index="5">特铭动态</el-menu-item>
+        <el-menu-item index="/dynamic/main">特铭动态</el-menu-item>
         <el-submenu index="/joinUs || /BrandEntry">
           <template slot="title">加入我们</template>
           <el-menu-item index="/BrandEntry"><router-link to="/BrandEntry" tag="div">招贤纳士</router-link></el-menu-item>
           <el-menu-item index="/joinUs"><router-link to="/joinUs" tag="div">品牌入驻</router-link></el-menu-item>
-          
         </el-submenu>
         <el-menu-item index="7"><span class="line"></span></el-menu-item>
         <el-menu-item index="8">
@@ -48,9 +57,12 @@
 export default {
   data() {
     return {
-      activeIndex: '1',
+      activeIndex: '/',
       langType:'CN'
     };
+  },
+  created(){
+    this.activeIndex=this.$route.path
   },
   methods: {
     handleCommand(command) {
@@ -60,6 +72,7 @@ export default {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
       this.activeIndex = key;
+      this.$router.push(key)
     }
   }
 };
@@ -117,6 +130,19 @@ export default {
     height: 100px;
     line-height: 100px;
   }
+  .el-submenu__title{
+    font-size: 16PX;
+    .el-submenu__icon-arrow{
+      font-size: 16PX;
+      color: #ffffff;
+    }
+  }
+  .el-menu--popup{
+    .el-menu-item{
+      height: 40PX!important;
+    }
+  }
+
   .el-menu-item{
     font-size: 16PX;
     position: relative;
