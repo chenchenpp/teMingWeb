@@ -1,7 +1,5 @@
 <template>
-<<<<<<< HEAD
   <div class="join-us-container">
-    <nav-bar />
     <div class="content">
       <div class="banner">
         <div class="banner-text-area">
@@ -10,11 +8,6 @@
           <p class="sub-title">八大开业扶持政策保障加盟商利益，让品牌传播更有利</p>
           <p class="bottom-line"></p>
         </div>
-=======
-  <div class="brand-entry-container">
-      <div class="content">
-          123
->>>>>>> 7d02e0c1050fad9b48dd6fc9c9f8b0c3e7430cb1
       </div>
       <main>
         <ul class="recruitment-position">
