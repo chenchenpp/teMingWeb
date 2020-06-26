@@ -54,30 +54,123 @@
         <p class="sub-title">在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。</p>
         <div class="img-intruduce">
           <div class="left-img">
-            <img src="../assets/images/brandStory/forth-content-img1.png" alt />
+            <el-carousel arrow="never">
+              <el-carousel-item v-for="item in 4" :key="item">
+                <img src="../assets/images/brandStory/forth-content-img1.png" alt />
+              </el-carousel-item>
+            </el-carousel>
           </div>
           <ul class="right-text">
             <li>
-              <img src="../assets/images/brandStory/target.png" class="icon"/>
+              <img src="../assets/images/brandStory/target.png" class="icon" />
               <div class="intruduce">
-                <p>深度定制</p>
-                <p>每一款特铭家居都是独一无二，量身定制的</p>
+                <p class="main-title">深度定制</p>
+                <p class="sub-title">每一款特铭家居都是独一无二，量身定制的</p>
               </div>
             </li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li>
+              <img src="../assets/images/brandStory/target.png" class="icon" />
+              <div class="intruduce">
+                <p class="main-title">深度定制</p>
+                <p class="sub-title">每一款特铭家居都是独一无二，量身定制的</p>
+              </div>
+            </li>
+            <li>
+              <img src="../assets/images/brandStory/target.png" class="icon" />
+              <div class="intruduce">
+                <p class="main-title">深度定制</p>
+                <p class="sub-title">每一款特铭家居都是独一无二，量身定制的</p>
+              </div>
+            </li>
+            <li>
+              <img src="../assets/images/brandStory/target.png" class="icon" />
+              <div class="intruduce">
+                <p class="main-title">深度定制</p>
+                <p class="sub-title">每一款特铭家居都是独一无二，量身定制的</p>
+              </div>
+            </li>
+            <li>
+              <img src="../assets/images/brandStory/target.png" class="icon" />
+              <div class="intruduce">
+                <p class="main-title">深度定制</p>
+                <p class="sub-title">每一款特铭家居都是独一无二，量身定制的</p>
+              </div>
+            </li>
           </ul>
         </div>
       </section>
+
+      <div class="fifth-content">
+        <p class="main-title">深度定制 · 五心服务</p>
+        <p class="sub-title">围绕客户“打造理想中的家”的终极目标，提供贯穿客户从始至终的深度维护</p>
+        <p class="sub-title">一站式满足客户需求，让每位客户都深感尊重，超出预期</p>
+        <div class="img-intruduce or-container">
+          <div
+            class="box"
+            :class="eleindex == i ?'eleactive':''"
+            v-for="(ele,i) in piclist"
+            :key="i"
+            @mouseenter="enter(i)"
+            @mouseleave="out(i)"
+          >
+            <!-- <img :src="ele.bg" v-if="eleindex == i"/> -->
+            <img :src="ele.bg" alt="">
+          </div>
+        </div>
+      </div>
     </div>
     <tm-footer></tm-footer>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      eleindex: 0,
+      piclist: [
+        {
+          text: "播放/录制页面",
+          bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
+          img: require("../assets/images/brandStory/fifth-content-small-img1.png")
+        },
+        {
+          text: "播放/录制页面",
+          bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
+          img: require("../assets/images/brandStory/fifth-content-small-img2.png")
+        },
+        {
+          text: "播放/录制页面",
+          bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
+          img: require("../assets/images/brandStory/fifth-content-small-img1.png")
+        },
+        {
+          text: "播放/录制页面",
+          bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
+          img: require("../assets/images/brandStory/fifth-content-small-img1.png")
+        },
+        {
+          text: "播放/录制页面",
+          bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
+          img: require("../assets/images/brandStory/fifth-content-small-img1.png")
+        }
+      ]
+    };
+  },
+  methods:{
+    enter: function (i) {
+        this.eleindex = i
+        // if (this.eleindex === i) {
+        //   this.eleindex = -1
+        // } else {
+        //   this.eleindex = i
+        // }
+      },
+      out: function (i) {
+        this.imgindex = -1
+      }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -103,7 +196,7 @@ export default {};
     background: rgba(255, 255, 255, 1);
   }
 }
-//
+// 公共的主标题副标题
 .main-title {
   font-size: 30px;
   margin-bottom: 40px;
@@ -113,7 +206,8 @@ export default {};
 }
 //
 .first-content,
-.third-content {
+.third-content,
+.fifth-content {
   text-align: left;
   margin-top: 80px;
   padding-left: 100px;
@@ -160,13 +254,91 @@ export default {};
     }
   }
 }
+
 .forth-content {
   text-align: center;
   margin-top: 80px;
   padding-left: 100px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   padding-bottom: 80px;
+
+  .img-intruduce {
+    margin-top: 60px;
+    display: flex;
+    .left-img {
+      width: 911px;
+    }
+
+    .el-carousel__item {
+      // height: 550px;
+      img {
+        width: 911px;
+        height: 550px;
+      }
+    }
+  }
+  .el-carousel__container {
+    height: 550px;
+  }
+  .right-text {
+    margin-left: 65px;
+    li {
+      display: flex;
+      text-align: left;
+      align-items: center;
+      margin-bottom: 58px;
+      .icon {
+        width: 48px;
+        height: 48px;
+        margin-right: 37px;
+      }
+      .main-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+      }
+    }
+  }
 }
+
+// 手风琴样式
+.or-container {
+  width: 100%;
+  box-sizing: border-box;
+  height: 600px;
+}
+.or-container:before {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.box {
+  overflow: hidden;
+  transition: 0.5s;
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
+  width: 150px;
+  transition: all .5s ease-in;
+}
+
+.or-container div.box > img {
+  width: 917px;
+  height: 600px;
+
+}
+
+.box > span {
+  display: block;
+  text-align: center;
+}
+
+.eleactive {
+  width: 917px;
+  height: 600px;
+}
+
+div.box.eleactive img {
+  width: 100%;
+  height: 100%;
+}
+
 .banner.el-carousel {
   height: 1000px;
   .el-carousel__container {
@@ -178,6 +350,13 @@ export default {};
   height: 1000px;
   img {
     height: 100%;
+  }
+}
+</style>
+<style lang="scss">
+.forth-content {
+  .el-carousel__container {
+    height: 550px;
   }
 }
 </style>
