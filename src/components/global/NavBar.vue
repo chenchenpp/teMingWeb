@@ -40,8 +40,8 @@
         <el-menu-item index="/dynamic/main">特铭动态</el-menu-item>
         <el-submenu index="/joinUs || /BrandEntry">
           <template slot="title">加入我们</template>
-          <el-menu-item index="/BrandEntry"><router-link to="/BrandEntry" tag="div">招贤纳士</router-link></el-menu-item>
-          <el-menu-item index="/joinUs"><router-link to="/joinUs" tag="div">品牌入驻</router-link></el-menu-item>
+          <el-menu-item index="/BrandEntry"><router-link to="/BrandEntry" tag="div">品牌入驻</router-link></el-menu-item>
+          <el-menu-item index="/joinUs"><router-link to="/joinUs" tag="div">招贤纳士</router-link></el-menu-item>
         </el-submenu>
         <el-menu-item index="7"><span class="line"></span></el-menu-item>
         <el-menu-item index="8">
