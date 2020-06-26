@@ -36,15 +36,6 @@
 import { mapGetters } from "vuex";
 export default {
   name: "tmFooter",
-  props: {
-    msg: String
-  },
-  computed: {
-    ...mapGetters(["moduleA/get_moudleA"])
-  },
-  created() {
-    console.log(this.$store.getters["moduleA/get_moudleA"]);
-  }
 };
 </script>
 

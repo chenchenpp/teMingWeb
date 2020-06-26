@@ -27,7 +27,7 @@
         <el-menu-item index="2"><router-link to="/product" tag="div">产品中心</router-link></el-menu-item>
         <el-menu-item index="3"><router-link to="/brandStory" tag="div">品牌故事</router-link></el-menu-item>
         <el-menu-item index="4">探索展厅</el-menu-item>
-        <el-menu-item index="5">特铭动态</el-menu-item>
+        <el-menu-item index="5"><router-link to="/dynamic/main" tag="span">特铭动态</router-link></el-menu-item>
         <el-menu-item index="6">加入我们</el-menu-item>
         <el-menu-item index="7"><span class="line"></span></el-menu-item>
         <el-menu-item index="8">
