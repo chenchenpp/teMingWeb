@@ -131,7 +131,11 @@ export default {
     this.scrollbarTrackTop=this.$refs.scrollbarTrack.getBoundingClientRect().top;
     console.log(this.scrollbarTrackTop)
     // 先给页面注册滚动事件
-    document.addEventListener('scroll',this.Scroll, true)
+    document.addEventListener('scroll',this.Scroll, false);
+    this.$once('hook:beforeDestroy', ()=>{
+      console.log('销毁')
+      document.removeEventListener('scroll', this.Scroll, false)
+    })
   },
   methods: {
     getScrollTop() {
