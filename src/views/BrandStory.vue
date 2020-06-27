@@ -6,6 +6,7 @@
       </el-carousel-item>
     </el-carousel>
     <div class="content">
+      <scrollbarTrack></scrollbarTrack>
       <section class="first-content">
         <p class="main-title">�߶˼Ҿ���ȶ���ר��</p>
         <p class="sub-title">���ǲ�������װ��Ҳ������ҵ̬�����Ǿ��ڼҾӵ���������ȡ�</p>
@@ -21,13 +22,23 @@
       <section class="second-content">
         <p class="main-title">������չ����</p>
         <p class="sub-title">�����ｨ�������Ŀ��������ߣ��Ƴ�8�����Ṥ�յ��ֹ������Ű塣</p>
-        <p class="sub-title">����ϸ�����������ձ�֤���Ű岻������������ۣ��Ҿ������ã��ڵ�ʱΪ�й�������ҵ�������Ⱥӡ�</p>
+        <p
+          class="sub-title"
+        >����ϸ�����������ձ�֤���Ű岻������������ۣ��Ҿ������ã��ڵ�ʱΪ�й�������ҵ�������Ⱥӡ�</p>
         <div class="img-intruduce">
           <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
         </div>
-        <el-carousel indicator-position="none" height="40px" arrow="always">
+        <el-carousel indicator-position="none" height="40px" arrow="always" :autoplay="false">
           <el-carousel-item v-for="item in 4" :key="item">
-            <h3>{{ item }}</h3>
+            <span class="year active">
+              <span>1996</span>
+              <i class="iconfont icontriangle"></i>
+            </span>
+            <span class="year">1999</span>
+            <span class="year">2005</span>
+            <span class="year">2006</span>
+            <span class="year">2010</span>
+            <span class="year">2012</span>
           </el-carousel-item>
         </el-carousel>
       </section>
@@ -48,51 +59,22 @@
       </section>
 
       <section class="forth-content">
-        <p class="main-title">�߶˼Ҿ���ȶ���ר��</p>
-        <p class="sub-title">���ǲ�������װ��Ҳ������ҵ̬�����Ǿ��ڼҾӵ���������ȡ�</p>
-        <p class="sub-title">��ȫ�ݡ��߶˺�Ʒ�ʵ�ս�Ը����ϣ��Ѷ���������͸�������£���Ϊ�Ҿ���ҵ���ڲ�ͬ��Ψһ��</p>
+        <p class="main-title first-main-title">{{forthContentData.mainTitle}}</p>
+        <p class="sub-title first-sub-title">{{forthContentData.subTitle}}</p>
         <div class="img-intruduce">
           <div class="left-img">
-            <el-carousel arrow="never">
-              <el-carousel-item v-for="item in 4" :key="item">
+            <el-carousel arrow="never" indicator-position="none" ref="carousel">
+              <el-carousel-item v-for="item in forthContentData.data" :key="item">
                 <img src="../assets/images/brandStory/forth-content-img1.png" alt />
               </el-carousel-item>
             </el-carousel>
           </div>
           <ul class="right-text">
-            <li>
+            <li @mouseenter="handleEnter(key)" v-for="(item, key) in forthContentData.data" :key="item">
               <img src="../assets/images/brandStory/target.png" class="icon" />
-              <div class="intruduce">
-                <p class="main-title">��ȶ���</p>
-                <p class="sub-title">ÿһ�������ҾӶ��Ƕ�һ�޶��������Ƶ�</p>
-              </div>
-            </li>
-            <li>
-              <img src="../assets/images/brandStory/target.png" class="icon" />
-              <div class="intruduce">
-                <p class="main-title">��ȶ���</p>
-                <p class="sub-title">ÿһ�������ҾӶ��Ƕ�һ�޶��������Ƶ�</p>
-              </div>
-            </li>
-            <li>
-              <img src="../assets/images/brandStory/target.png" class="icon" />
-              <div class="intruduce">
-                <p class="main-title">��ȶ���</p>
-                <p class="sub-title">ÿһ�������ҾӶ��Ƕ�һ�޶��������Ƶ�</p>
-              </div>
-            </li>
-            <li>
-              <img src="../assets/images/brandStory/target.png" class="icon" />
-              <div class="intruduce">
-                <p class="main-title">��ȶ���</p>
-                <p class="sub-title">ÿһ�������ҾӶ��Ƕ�һ�޶��������Ƶ�</p>
-              </div>
-            </li>
-            <li>
-              <img src="../assets/images/brandStory/target.png" class="icon" />
-              <div class="intruduce">
-                <p class="main-title">��ȶ���</p>
-                <p class="sub-title">ÿһ�������ҾӶ��Ƕ�һ�޶��������Ƶ�</p>
+              <div class="intruduce" :class="{intruduceActive:item.active}">
+                <p class="main-title">{{item.mainTitle}}</p>
+                <p class="sub-title">{{item.subTitle}}</p>
               </div>
             </li>
           </ul>
@@ -106,14 +88,14 @@
         <div class="img-intruduce or-container">
           <div
             class="box"
-            :class="eleindex == i ?'eleactive':''"
+            :class="[ele.left, {bg: !ele.active}]"
             v-for="(ele,i) in piclist"
             :key="i"
             @mouseenter="enter(i)"
             @mouseleave="out(i)"
           >
-            <!-- <img :src="ele.bg" v-if="eleindex == i"/> -->
-            <img :src="ele.bg" alt="">
+            <img :src="ele.bg" alt />
+            <div class="tips" v-show="!ele.active">{{ele.heart}}</div>
           </div>
         </div>
       </div>
@@ -131,43 +113,109 @@ export default {
         {
           text: "����/¼��ҳ��",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-          img: require("../assets/images/brandStory/fifth-content-small-img1.png")
+          img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
+          active:true,
+          heart:'安心'
         },
         {
           text: "����/¼��ҳ��",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-          img: require("../assets/images/brandStory/fifth-content-small-img2.png")
+          img: require("../assets/images/brandStory/fifth-content-small-img2.png"),
+          left: "l920",
+          active:false, 
+          heart:'匠心'
         },
         {
           text: "����/¼��ҳ��",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-          img: require("../assets/images/brandStory/fifth-content-small-img1.png")
+          img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
+          left: "l1070",
+          active:false,
+           heart:'舒心'
         },
         {
           text: "����/¼��ҳ��",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-          img: require("../assets/images/brandStory/fifth-content-small-img1.png")
+          img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
+          left: "l1220",
+          active:false,
+           heart:'放心'
         },
         {
           text: "����/¼��ҳ��",
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-          img: require("../assets/images/brandStory/fifth-content-small-img1.png")
+          img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
+          left: "l1370",
+          active:false,
+          heart:'省心'
         }
-      ]
+      ],
+      forthContentData:{
+        mainTitle:'特铭产品的特色',
+        subTitle: '特铭并先后从德国、意大利、日本、奥地利等国家引进先进的生产设备，采用各种原装进口自德国、意大利、奥地利等国家的顶级五金配件以确保每一件产品、每一个细节都达到美感和品质的高度统一',
+        data:[
+          {
+            img:'../assets/images/brandStory/forth-content-img1.png',
+            mainTitle:'深度定制',
+            subTitle:'每一款特铭家居都是独一无二，量身定制的',
+            active:true
+          },
+          {
+            img:'../assets/images/brandStory/forth-content-img1.png',
+            mainTitle:'深度定制',
+            subTitle:'每一款特铭家居都是独一无二，量身定制的',
+            active:false
+          },
+          {
+            img:'../assets/images/brandStory/forth-content-img1.png',
+            mainTitle:'深度定制',
+            subTitle:'每一款特铭家居都是独一无二，量身定制的',
+            active:false
+          },
+          {
+            img:'../assets/images/brandStory/forth-content-img1.png',
+            mainTitle:'深度定制',
+            subTitle:'每一款特铭家居都是独一无二，量身定制的',
+            active:false
+          },
+          {
+            img:'../assets/images/brandStory/forth-content-img1.png',
+            mainTitle:'深度定制',
+            subTitle:'每一款特铭家居都是独一无二，量身定制的',
+            active:false
+          }
+        ]
+      }
     };
   },
-  methods:{
-    enter: function (i) {
-        this.eleindex = i
-        // if (this.eleindex === i) {
-        //   this.eleindex = -1
-        // } else {
-        //   this.eleindex = i
-        // }
-      },
-      out: function (i) {
-        this.imgindex = -1
-      }
+  methods: {
+    enter: function(i) {
+      this.eleindex = i;
+      this.piclist.forEach((val, key) => {
+        val.active = false;
+        if (key <= i) {
+            val.left = `l${key*150}`
+        }
+        if(key == i){
+           val.active = true;
+        } 
+        if(key > i ) {
+          val.left = `l${920 + (key-1)*150}`
+        }
+      })
+    },
+    out: function(i) {
+      this.imgindex = -1;
+    },
+    handleEnter(i) {
+      this.forthContentData.data.forEach((val, key) => {
+        this.$refs.carousel.setActiveItem(i);
+          val.active = false;
+          if(key === i) {
+            val.active = true;
+          }
+      })
+    }
   }
 };
 </script>
@@ -184,18 +232,17 @@ export default {
   overflow: hidden;
   font-size: initial;
   color: #dddddd;
-  &::after {
-    content: "";
-    width: 5px;
-    height: 100px;
-    position: fixed;
-    top: 458px;
-    left: 97.5px;
-    // z-index: 1;
-    background: rgba(255, 255, 255, 1);
-  }
+  // &::after {
+  //   content: "";
+  //   width: 5px;
+  //   height: 100px;
+  //   position: fixed;
+  //   top: 458px;
+  //   left: 97.5px;
+  //   // z-index: 1;
+  //   background: rgba(255, 255, 255, 1);
+  // }
 }
-// �����������⸱����
 .main-title {
   font-size: 30px;
   margin-bottom: 40px;
@@ -235,7 +282,7 @@ export default {
   margin-top: 80px;
   padding-left: 100px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  padding-bottom: 80px;
+  padding-bottom: 50px;
   .img-intruduce {
     margin-top: 60px;
     img {
@@ -260,7 +307,12 @@ export default {
   padding-left: 100px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   padding-bottom: 80px;
-
+   .first-sub-title{
+     width: 854px;
+     font-size: 14PX;
+     line-height: 28PX;
+     margin: 0 auto;
+   }
   .img-intruduce {
     margin-top: 60px;
     display: flex;
@@ -297,13 +349,21 @@ export default {
       }
     }
   }
+  
+  .intruduce{
+    color: #999999;
+    cursor: pointer;
+  }
+  .intruduceActive{
+    color: #DDDDDD;
+  }
 }
 
-// �ַ�����ʽ
 .or-container {
   width: 100%;
   box-sizing: border-box;
   height: 600px;
+  position: relative;
 }
 .or-container:before {
   background-color: rgba(0, 0, 0, 0.4);
@@ -313,14 +373,69 @@ export default {
   overflow: hidden;
   transition: 0.5s;
   box-shadow: 0 20px 30px rgba(0, 0, 0, 0.1);
-  width: 150px;
-  transition: all .5s ease-in;
+  width: 920px;
+  transition: left 0.5s;
+  position: absolute;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  .tips{
+    position: absolute;
+    left: 57px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20PX;
+    color: #DDDDDD;
+  }
+  
+}
+.bg{
+    // opacity: 0.8;
+  }
+/**
+i 1
+
+1     2      3          4        5
+    
+0  选中150  970+150   970 + 300   970 + 450
+         
+0  150     选中 300     970 + 300   970 + 450 
+0  150       300         选中450    970 + 450
+
+*/
+.l150 {
+  left: 150px;
+}
+.l300 {
+  left: 300px;
+}
+.l450 {
+  left: 450px;
+}
+.l600 {
+  left: 600px;
+}
+// 920
+.l920 {
+  left: 920px;
+}
+// 920+150
+.l1070 {
+  left: 1070px;
+}
+// 920 + 300
+.l1220 {
+  left: 1220px;
+}
+//  920 + 450
+.l1370 {
+  left: 1370px;
 }
 
 .or-container div.box > img {
-  width: 917px;
+  width: 920px;
   height: 600px;
-
 }
 
 .box > span {
@@ -329,7 +444,7 @@ export default {
 }
 
 .eleactive {
-  width: 917px;
+  width: 920px;
   height: 600px;
 }
 
@@ -356,6 +471,38 @@ div.box.eleactive img {
 .forth-content {
   .el-carousel__container {
     height: 550px;
+  }
+}
+.second-content {
+  .el-carousel {
+    margin-top: 50px;
+  }
+  .el-carousel__item {
+    text-align: left;
+    display: flex;
+    align-items: center;
+    .year {
+      display: inline-block;
+      text-align: center;
+      width: 242px;
+      border-left: 1px solid rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      position: relative;
+      color: rgba(255, 255, 255, 0.5);
+      &:first-child {
+        border-left: none;
+      }
+      i {
+        position: absolute;
+        font-size: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 20px;
+      }
+      &.active {
+        color: #dddddd;
+      }
+    }
   }
 }
 </style>
