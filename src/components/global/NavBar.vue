@@ -1,7 +1,7 @@
 <template>
   <el-container class="header">
     <div class="head-left">
-      <img src="../../assets/images/home/logo.png" alt class="logo" />
+      <img :src="require('assets/images/home/logo.png')" alt class="logo" />
       <el-dropdown trigger="click" @command="handleCommand">
         <span class="el-dropdown-link">
           <span>{{langType}}</span>
