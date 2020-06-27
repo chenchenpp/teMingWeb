@@ -24,16 +24,15 @@
         @select="handleSelect"
       >
         <el-menu-item index="/"> {{$t('message.home')}}</el-menu-item>
-        <!-- <el-menu-item index="2">
-
-          <router-link to="/product" tag="div">产品中心</router-link>
-        </el-menu-item> -->
         <el-submenu index="/product">
           <template slot="title">产品中心</template>
-          <el-menu-item index="/product">贾德系列</el-menu-item>
-          <el-menu-item index="/product">莫兰蒂系列</el-menu-item>
-          <el-menu-item index="/product">密斯系列</el-menu-item>
-          <el-menu-item index="/product">迪克森系列</el-menu-item>
+          <el-menu-item index="/product/dejia">贾德系列</el-menu-item>
+          <el-menu-item index="/product/molandi">莫兰迪系列</el-menu-item>
+          <el-menu-item index="/product/miss">密斯系列</el-menu-item>
+          <el-menu-item index="/product/dikesen">迪克森系列</el-menu-item>
+          <el-menu-item index="/product/bier">比尔系列</el-menu-item>
+          <el-menu-item index="/product/kelinte">克林特系列</el-menu-item>
+          <el-menu-item index="/product/botiqieli">波提切利系列</el-menu-item>
         </el-submenu>
         <el-menu-item index="/brandStory">品牌故事</el-menu-item>
         <el-menu-item index="/explorationHall"><router-link to="/explorationHall" tag="div">探索展厅</router-link></el-menu-item>
