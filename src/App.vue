@@ -9,6 +9,7 @@
   </div>
 </template>
 <script>
+import {getScrollTop, getClientHeight} from '@/util/publicMethod'
 export default {
   name: "app",
   data(){
@@ -25,27 +26,9 @@ export default {
     })
   },
   methods:{
-    getScrollTop() {
-      var scroll_top = 0;
-      if (document.documentElement && document.documentElement.scrollTop) {
-        scroll_top = document.documentElement.scrollTop;
-      }else if (document.body) {
-        scroll_top = document.body.scrollTop;
-      }
-      return scroll_top;
-    },
-    getClientHeight(){
-      var clientHeight=0;
-      if(document.body.clientHeight&&document.documentElement.clientHeight){
-        var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-      }else {
-        var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-      }
-      return clientHeight;
-    },
     scrollTop() {
-      let bodyScrollTop=this.getScrollTop();//滚动条滚动高度
-      let windowHeight=this.getClientHeight();
+      let bodyScrollTop=getScrollTop();//滚动条滚动高度
+      let windowHeight=getClientHeight();
       if(bodyScrollTop>windowHeight+500){
         this.isTopShow=true;
       } else {

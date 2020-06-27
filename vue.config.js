@@ -36,10 +36,10 @@ module.exports = {
         extensions: ["css", ".js", ".vue", ".less"],
         alias: {
           '@': resolve('./src'),
-          assets: resolve("./src/assets"),
-          pages: resolve("./src/pages"),
+          assets: resolve('./src/assets'),
+          pages: resolve('./src/pages'),
           // models: resolve("./src/models"),
-          components: resolve("./src/components"),
+          components: resolve('./src/components'),
           // $vuex: resolve("./src/vuex"),
           // config: resolve("./src/config"),
           // pdfFile: resolve("./static/termsfile"),
