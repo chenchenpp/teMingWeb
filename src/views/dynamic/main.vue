@@ -6,8 +6,8 @@
         <div class="image-box" @mouseover="enter(item)" @mouseleave="leave(item)">
           <!-- <img :src="require(`${item.imgSrc}`)" alt=""> -->
           <div class="modal"  :class="{'img-modal': item.isModal}" @click="checkDetailHandle(item)">
-            <i class="iconfont icondownload"></i>
-            <span>查看详情</span>
+            <i class="iconfont iconmagnifying-glass"></i>
+            <span style="margin-left: 10px;display: inline-block">查看详情</span>
           </div>
         </div>
         <div class="des-box">
@@ -16,7 +16,7 @@
         </div>
         <div class="date-box">
           <span>{{item.date}}</span>
-          <span>></span>
+          <span>&gt;</span>
         </div>
       </li>
     </ul>
@@ -121,8 +121,8 @@ export default {
   .article-items {
     width: 1520px;
     // margin-left: 90px;
-    font-size: 16px;
-    color: rgba(221, 221, 221, 1);
+    font-size: 16PX;
+    color: rgba(221, 221, 221, .8);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import {getScrollTop, getClientHeight} from '@/util/publicMethod'
 import { mapGetters } from 'vuex';
 export default {
   name: 'scrollbarTrack',
@@ -23,28 +24,10 @@ export default {
     })
   },
   methods:{
-    getClientHeight(){
-      var clientHeight=0;
-      if(document.body.clientHeight&&document.documentElement.clientHeight){
-        var clientHeight = (document.body.clientHeight<document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-      }else {
-        var clientHeight = (document.body.clientHeight>document.documentElement.clientHeight)?document.body.clientHeight:document.documentElement.clientHeight;
-      }
-      return clientHeight;
-    },
-    getScrollTop() {
-      var scroll_top = 0;
-      if (document.documentElement && document.documentElement.scrollTop) {
-        scroll_top = document.documentElement.scrollTop;
-      }else if (document.body) {
-        scroll_top = document.body.scrollTop;
-      }
-      return scroll_top;
-    },
     Scroll(){
-      let windowHeight=this.getClientHeight();//当前窗口高度
+      let windowHeight=getClientHeight();//当前窗口高度
       let scrollHeight=document.body.scrollHeight;//页面实际高度
-      let bodyScrollTop=this.getScrollTop();//滚动条滚动高度
+      let bodyScrollTop=getScrollTop();//滚动条滚动高度
       let scrollbarAllHeight=this.$refs.scrollbarTrack.clientHeight;//进度条总长
       let thumbHeight=this.$refs.scrollbarThumb.clientHeight;//滑块的高度
       let scrollbarThumbHeight=windowHeight/scrollHeight*scrollbarAllHeight;//滑块实际高度

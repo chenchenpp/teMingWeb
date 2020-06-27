@@ -2,17 +2,17 @@
   <div class="product">
     <div class="product-carousel">
       <el-carousel>
-        <el-carousel-item v-for="item in 4" :key="item">
-          <img :src="require('assets/images/product/one/banner.png')" alt="">
+        <el-carousel-item v-for="(item, index) in pageList.bannerCarouselList" :key="index">
+          <img :src="require(`assets/images/product/one/${item}`)" alt="">
         </el-carousel-item>
       </el-carousel>
     </div>
     <div class="product-container">
-      <p class="title">莫兰迪系列</p>
-      <p class="des">智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。</p>
+      <p class="title">{{pageList.title}}</p>
+      <p class="des">{{pageList.des}}</p>
       <div class="detail-box">
         <scrollbarTrack></scrollbarTrack>
-        <ul class="moduel" v-for="(item, index) in detailList" :key="index"  :class="[index%2==0 ? 'detail-left':'detail-right']">
+        <ul class="moduel" v-for="(item, index) in pageList.detailList" :key="index"  :class="[index%2==0 ? 'detail-left':'detail-right']">
           <li class="moduel-mes">
             <p class="title">{{item.title}}</p>
             <p class="des">{{item.info}}</p>
@@ -34,8 +34,8 @@
         </div>
       </div>
       <div class="card-carousel">
-        <el-carousel :interval="4000" type="card" height="750px">
-          <el-carousel-item v-for="item in 6" :key="item">
+        <el-carousel :interval="4000" type="card" height="750px" indicator-position="none" arrow="never">
+          <el-carousel-item v-for="(item, index) in pageList.lastCarouselList" :key="index">
             <img :src="require('assets/images/product/one/banner.png')" alt="" style="height: 750px">
           </el-carousel-item>
         </el-carousel>
@@ -49,92 +49,172 @@ export default {
   name: 'product',
   data(){
     return {
-      detailList: [{
-        title: '现代、科技、以人为本',
-        info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
-        imgArr: [{
-          imgClass: 'height600',
-          src: 'first1.jpg'
+      dejiaList: {
+        title: '德贾系列',
+        des: '智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。',
+        bannerCarouselList:['banner.png','banner.png','banner.png','banner.png'],
+        detailList: [{
+          title: '现代、科技、以人为本',
+          info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
+          imgArr: [{
+            imgClass: 'height600',
+            src: 'first1.jpg'
+          },{
+            imgClass: 'height800',
+            src: 'first2.jpg'
+          },{
+            imgClass: 'height960',
+            src: 'first3.jpg'
+          },{
+            imgClass: 'height450',
+            src: ['first4.jpg','first5.png']
+          }]
         },{
-          imgClass: 'height800',
-          src: 'first2.jpg'
+          title: '现代、科技、以人为本',
+          info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
+          imgArr: [{
+            imgClass: 'height600',
+            src: 'second1.jpg'
+          },{
+            imgClass: 'height800',
+            src: 'second2.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'second3.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'second4.jpg'
+          }]
         },{
-          imgClass: 'height960',
-          src: 'first3.jpg'
+          title: '现代、科技、以人为本',
+          info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
+          imgArr: [{
+            imgClass: 'height600',
+            src: 'third1.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'third2.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'third3.jpg'
+          },{
+            imgClass: 'height800',
+            src: 'third4.jpg'
+          },{
+            imgClass: 'height300',
+            src: 'third5.jpg'
+          }]
         },{
-          imgClass: 'height450',
-          src: ['first4.jpg','first5.png']
-        }]
-      },{
-        title: '现代、科技、以人为本',
-        info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
-        imgArr: [{
-          imgClass: 'height600',
-          src: 'second1.jpg'
+          title: '现代、科技、以人为本',
+          info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
+          imgArr: [{
+            imgClass: 'height600',
+            src: 'four1.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'four2.jpg'
+          },{
+            imgClass: 'height700',
+            src: 'four3.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'four4.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'four5.jpg'
+          }]
+        }],
+        lastCarouselList:['banner.png','banner.png','banner.png','banner.png'],
+      },
+      moLanDiList: {
+        title: '莫兰迪系列',
+        des: '智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。',
+        bannerCarouselList:['banner.png','banner.png','banner.png','banner.png'],
+        detailList: [{
+          title: '现代、科技、以人为本',
+          info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
+          imgArr: [{
+            imgClass: 'height600',
+            src: 'first1.jpg'
+          },{
+            imgClass: 'height800',
+            src: 'first2.jpg'
+          },{
+            imgClass: 'height960',
+            src: 'first3.jpg'
+          },{
+            imgClass: 'height450',
+            src: ['first4.jpg','first5.png']
+          }]
         },{
-          imgClass: 'height800',
-          src: 'second2.jpg'
+          title: '现代、科技、以人为本',
+          info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
+          imgArr: [{
+            imgClass: 'height600',
+            src: 'second1.jpg'
+          },{
+            imgClass: 'height800',
+            src: 'second2.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'second3.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'second4.jpg'
+          }]
         },{
-          imgClass: 'height600',
-          src: 'second3.jpg'
+          title: '现代、科技、以人为本',
+          info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
+          imgArr: [{
+            imgClass: 'height600',
+            src: 'third1.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'third2.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'third3.jpg'
+          },{
+            imgClass: 'height800',
+            src: 'third4.jpg'
+          },{
+            imgClass: 'height300',
+            src: 'third5.jpg'
+          }]
         },{
-          imgClass: 'height600',
-          src: 'second4.jpg'
-        }]
-      },{
-        title: '现代、科技、以人为本',
-        info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
-        imgArr: [{
-          imgClass: 'height600',
-          src: 'third1.jpg'
-        },{
-          imgClass: 'height600',
-          src: 'third2.jpg'
-        },{
-          imgClass: 'height600',
-          src: 'third3.jpg'
-        },{
-          imgClass: 'height800',
-          src: 'third4.jpg'
-        },{
-          imgClass: 'height300',
-          src: 'third5.jpg'
-        }]
-      },{
-        title: '现代、科技、以人为本',
-        info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
-        imgArr: [{
-          imgClass: 'height600',
-          src: 'four1.jpg'
-        },{
-          imgClass: 'height600',
-          src: 'four2.jpg'
-        },{
-          imgClass: 'height700',
-          src: 'four3.jpg'
-        },{
-          imgClass: 'height600',
-          src: 'four4.jpg'
-        },{
-          imgClass: 'height600',
-          src: 'four5.jpg'
-        }]
-      }]
+          title: '现代、科技、以人为本',
+          info: '新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。',
+          imgArr: [{
+            imgClass: 'height600',
+            src: 'four1.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'four2.jpg'
+          },{
+            imgClass: 'height700',
+            src: 'four3.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'four4.jpg'
+          },{
+            imgClass: 'height600',
+            src: 'four5.jpg'
+          }]
+        }],
+        lastCarouselList:['banner.png','banner.png','banner.png','banner.png'],
+      },
+      pageList: {
+
+      }
+
     }
   },
-  mounted(){
-    // 先给页面注册滚动事件
-    document.addEventListener('scroll',this.Scroll, false);
-    this.$once('hook:beforeDestroy', ()=>{
-      console.log('销毁')
-      document.removeEventListener('scroll', this.Scroll, false)
-    })
+  created(){
+    this.pageList=this.dejiaList; //临时使用 // this.pageList=this[`${this.$route.params.type}List`];//最后请替换这个
+
   },
   methods: {
 
-    goHome() {
-      this.$router.push({ path: '/' });
-    }
   }
 };
 </script>
@@ -194,6 +274,7 @@ export default {
       li{
         margin-left: 50px;
         margin-top: 60px;
+        overflow: hidden;
       }
       .spe-img{
         display: flex;
@@ -257,5 +338,4 @@ export default {
     height: 1000px;
   }
 }
-
 </style>

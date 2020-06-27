@@ -1,6 +1,6 @@
 
 export default {
-  path: '/product',
+  path: '/product/:type',
   name: 'product',
   component: () => import(/* webpackChunkName: 'product' */ '../views/product.vue')
 };
