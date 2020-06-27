@@ -13,26 +13,23 @@ import {
     i18n
 } from './assets/lang/i18n'
 require('./assets/sass/reset.scss');
-import VideoPlayer from 'vue-video-player'
-require('video.js/dist/video-js.css')
-require('vue-video-player/src/custom-theme.css')
-Vue.use(VideoPlayer)
-import {
-    Menu,
-    Submenu,
-    MenuItem,
-    MenuItemGroup,
-    Carousel,
-    CarouselItem,
-    Dialog
-} from 'element-ui';
-Vue.use(Menu);
-Vue.use(Submenu);
-Vue.use(MenuItem);
-Vue.use(MenuItemGroup);
-Vue.use(Carousel);
-Vue.use(CarouselItem);
-Vue.use(Dialog);
+
+// import {
+//     Menu,
+//     Submenu,
+//     MenuItem,
+//     MenuItemGroup,
+//     Carousel,
+//     CarouselItem,
+//     Dialog
+// } from 'element-ui';
+// Vue.use(Menu);
+// Vue.use(Submenu);
+// Vue.use(MenuItem);
+// Vue.use(MenuItemGroup);
+// Vue.use(Carousel);
+// Vue.use(CarouselItem);
+// Vue.use(Dialog);
 (function(doc, win) {
     var docEl = doc.documentElement;
     var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';

@@ -88,4 +88,16 @@ body{
 .scroll-top-active{
   opacity: 1;
 }
+.el-menu--horizontal{
+  // background: #292729!important;
+}
+.el-menu--popup{
+  background: #292729!important;
+  .el-menu-item{
+    background: #292729!important;
+    &:hover{
+      background: #292729;
+    }
+  }
+}
 </style>

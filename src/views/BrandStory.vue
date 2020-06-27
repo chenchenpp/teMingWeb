@@ -8,23 +8,16 @@
     <div class="content">
       <scrollbarTrack></scrollbarTrack>
       <section class="first-content">
-        <p class="main-title">�߶˼Ҿ���ȶ���ר��</p>
-        <p class="sub-title">���ǲ�������װ��Ҳ������ҵ̬�����Ǿ��ڼҾӵ���������ȡ�</p>
-        <p class="sub-title">��ȫ�ݡ��߶˺�Ʒ�ʵ�ս�Ը����ϣ��Ѷ���������͸�������£���Ϊ�Ҿ���ҵ���ڲ�ͬ��Ψһ��</p>
+        <p class="main-title">高端家居深度定制专家</p>
+        <p class="sub-title">我们不做大整装，也不做跨业态，我们就在家居的领域做深度。<br/>在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。</p>
         <div class="img-intruduce">
-          <img src="../assets/images/brandStory/first-content-img1.png" alt />
-          <img src="../assets/images/brandStory/first-content-img1.png" alt />
-          <img src="../assets/images/brandStory/first-content-img1.png" alt />
-          <img src="../assets/images/brandStory/first-content-img1.png" alt />
+          <el-image v-for="url in urls" :key="url" :src="url" lazy></el-image>
         </div>
       </section>
 
       <section class="second-content">
-        <p class="main-title">������չ����</p>
-        <p class="sub-title">�����ｨ�������Ŀ��������ߣ��Ƴ�8�����Ṥ�յ��ֹ������Ű塣</p>
-        <p
-          class="sub-title"
-        >����ϸ�����������ձ�֤���Ű岻������������ۣ��Ҿ������ã��ڵ�ʱΪ�й�������ҵ�������Ⱥӡ�</p>
+        <p class="main-title">高端家居深度定制专家</p>
+        <p class="sub-title">我们不做大整装，也不做跨业态，我们就在家居的领域做深度。<br/>在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。</p>
         <div class="img-intruduce">
           <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
         </div>
@@ -46,7 +39,6 @@
       <section class="third-content">
         <p class="main-title">�߶˼Ҿ���ȶ���ר��</p>
         <p class="sub-title">���ǲ�������װ��Ҳ������ҵ̬�����Ǿ��ڼҾӵ���������ȡ�</p>
-        <p class="sub-title">��ȫ�ݡ��߶˺�Ʒ�ʵ�ս�Ը����ϣ��Ѷ���������͸�������£���Ϊ�Ҿ���ҵ���ڲ�ͬ��Ψһ��</p>
         <div class="img-intruduce">
           <div class="left-img">
             <img src="../assets/images/brandStory/third-content-img1.png" alt />
@@ -59,8 +51,8 @@
       </section>
 
       <section class="forth-content">
-        <p class="main-title first-main-title">{{forthContentData.mainTitle}}</p>
-        <p class="sub-title first-sub-title">{{forthContentData.subTitle}}</p>
+        <p class="main-title">{{forthContentData.mainTitle}}</p>
+        <p class="sub-title" v-html="forthContentData.subTitle"></p>
         <div class="img-intruduce">
           <div class="left-img">
             <el-carousel arrow="never" indicator-position="none" ref="carousel">
@@ -88,18 +80,18 @@
       <div class="fifth-content">
         <p class="main-title">��ȶ��� �� ���ķ���</p>
         <p class="sub-title">Χ�ƿͻ������������еļҡ����ռ�Ŀ�꣬�ṩ�ᴩ�ͻ���ʼ���յ����ά��</p>
-        <p class="sub-title">һվʽ����ͻ�������ÿλ�ͻ���������أ�����Ԥ��</p>
         <div class="img-intruduce or-container">
           <div
             class="box"
             :class="[ele.left, {bg: !ele.active}]"
-            v-for="(ele,i) in piclist"
+            v-for="(ele,i) in fifthContentData.imgInfo"
             :key="i"
             @mouseenter="enter(i)"
             @mouseleave="out(i)"
           >
             <img :src="ele.bg" alt />
             <div class="tips" v-show="!ele.active">{{ele.heart}}</div>
+            <div class="title-area"></div>
           </div>
         </div>
       </div>
@@ -123,86 +115,99 @@ export default {
     return {
       isShowVideoPlayer: false,
       eleindex: 0,
-      piclist: [
-        {
-          text: "����/¼��ҳ��",
-          bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-          img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
-          active: true,
-          heart: "安心"
-        },
-        {
-          text: "����/¼��ҳ��",
-          bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-          img: require("../assets/images/brandStory/fifth-content-small-img2.png"),
-          left: "l920",
-          active:false,
-          heart:'匠心'
-        },
-        {
-          text: "����/¼��ҳ��",
-          bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-          img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
-          left: "l1070",
-          active: false,
-          heart: "舒心"
-        },
-        {
-          text: "����/¼��ҳ��",
-          bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-          img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
-          left: "l1220",
-          active: false,
-          heart: "放心"
-        },
-        {
-          text: "����/¼��ҳ��",
-          bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-          img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
-          left: "l1370",
-          active: false,
-          heart: "省心"
-        }
-      ],
+      firstContentData:{
+
+      },
+      secondContentData:{
+
+      },
+      thirdContentData:{
+
+      },
       forthContentData: {
         mainTitle: "特铭产品的特色",
         subTitle:
-          "特铭并先后从德国、意大利、日本、奥地利等国家引进先进的生产设备，采用各种原装进口自德国、意大利、奥地利等国家的顶级五金配件以确保每一件产品、每一个细节都达到美感和品质的高度统一",
+          "特铭并先后从德国、意大利、日本、奥地利等国家引进先进的生产设备，采用各种原装进口自德国、意大利、奥地利等国家的顶级五金配件<br/>以确保每一件产品、每一个细节都达到美感和品质的高度统一",
         data: [
           {
             img: "../assets/images/brandStory/forth-content-img1.png",
             mainTitle: "深度定制",
             subTitle: "每一款特铭家居都是独一无二，量身定制的",
             active: true,
-            id:1
+            id: 1
           },
           {
             img: "../assets/images/brandStory/forth-content-img1.png",
             mainTitle: "深度定制",
             subTitle: "每一款特铭家居都是独一无二，量身定制的",
             active: false,
-            id:2
+            id: 2
           },
           {
             img: "../assets/images/brandStory/forth-content-img1.png",
             mainTitle: "深度定制",
             subTitle: "每一款特铭家居都是独一无二，量身定制的",
             active: false,
-            id:3
+            id: 3
           },
           {
             img: "../assets/images/brandStory/forth-content-img1.png",
             mainTitle: "深度定制",
             subTitle: "每一款特铭家居都是独一无二，量身定制的",
             active: false,
-            id:4
+            id: 4
           },
           {
             img: "../assets/images/brandStory/forth-content-img1.png",
             mainTitle: "深度定制",
             subTitle: "每一款特铭家居都是独一无二，量身定制的",
             active: false,
-            id:5
+            id: 5
+          }
+        ]
+      },
+      fifthContentData: {
+        mainTitle:'',
+        subTitle:'',
+        imgInfo: [
+          {
+            text: "����/¼��ҳ��",
+            bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
+            img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
+            active: true,
+            heart: "安心"
+          },
+          {
+            text: "����/¼��ҳ��",
+            bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
+            img: require("../assets/images/brandStory/fifth-content-small-img2.png"),
+            left: "l920",
+            active: false,
+            heart: "匠心"
+          },
+          {
+            text: "����/¼��ҳ��",
+            bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
+            img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
+            left: "l1070",
+            active: false,
+            heart: "舒心"
+          },
+          {
+            text: "����/¼��ҳ��",
+            bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
+            img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
+            left: "l1220",
+            active: false,
+            heart: "放心"
+          },
+          {
+            text: "����/¼��ҳ��",
+            bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
+            img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
+            left: "l1370",
+            active: false,
+            heart: "省心"
           }
         ]
       },
@@ -221,10 +226,16 @@ export default {
             // webm
             // src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
           }
-        ],
+        ]
         // poster:
         //   "https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg"
-      }
+      },
+      urls: [
+        "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
+        "https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg",
+        "https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg",
+        "https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg"
+      ]
     };
   },
 
@@ -236,16 +247,16 @@ export default {
   methods: {
     enter: function(i) {
       this.eleindex = i;
-      this.piclist.forEach((val, key) => {
+      this.fifthContentData.imgInfo.forEach((val, key) => {
         val.active = false;
         if (key <= i) {
           val.left = `l${key * 150}`;
         }
-        if(key == i){
-           val.active = true;
+        if (key == i) {
+          val.active = true;
         }
-        if(key > i ) {
-          val.left = `l${920 + (key-1)*150}`
+        if (key > i) {
+          val.left = `l${920 + (key - 1) * 150}`;
         }
         if (key > i) {
           val.left = `l${920 + (key - 1) * 150}`;
@@ -295,12 +306,22 @@ export default {
   //   background: rgba(255, 255, 255, 1);
   // }
 }
+.tl{
+  text-align: left;
+}
+.tc{
+  text-align: center;
+}
+.tr{
+  text-align: right;
+}
 .main-title {
   font-size: 30px;
   margin-bottom: 40px;
 }
 .sub-title {
   margin-bottom: 8px;
+  line-height: 22PX;
 }
 //
 .first-content,
@@ -361,8 +382,8 @@ export default {
   padding-bottom: 80px;
   .first-sub-title {
     width: 854px;
-    font-size: 14px;
-    line-height: 28px;
+    // font-size: 14px;
+    // line-height: 28px;
     margin: 0 auto;
   }
   .img-intruduce {
@@ -389,7 +410,7 @@ export default {
       display: flex;
       text-align: left;
       align-items: center;
-      margin-bottom: 58px;
+      margin-bottom: 50px;
       .icon {
         width: 48px;
         height: 48px;
@@ -402,7 +423,7 @@ export default {
     }
   }
 
-  .intruduce{
+  .intruduce {
     color: #999999;
     cursor: pointer;
   }
@@ -560,7 +581,23 @@ div.box.eleactive img {
     }
   }
 }
-.el-dialog__body, .el-dialog__header{
+.el-dialog__body,
+.el-dialog__header {
   padding: 0;
+}
+.img-intruduce {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+  img {
+    width: 345px;
+  }
+  .left-img {
+    img {
+      &:first-child {
+        margin-bottom: 60px;
+      }
+    }
+  }
 }
 </style>
