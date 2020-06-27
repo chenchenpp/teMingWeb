@@ -13,23 +13,6 @@ import {
     i18n
 } from './assets/lang/i18n'
 require('./assets/sass/reset.scss');
-
-// import {
-//     Menu,
-//     Submenu,
-//     MenuItem,
-//     MenuItemGroup,
-//     Carousel,
-//     CarouselItem,
-//     Dialog
-// } from 'element-ui';
-// Vue.use(Menu);
-// Vue.use(Submenu);
-// Vue.use(MenuItem);
-// Vue.use(MenuItemGroup);
-// Vue.use(Carousel);
-// Vue.use(CarouselItem);
-// Vue.use(Dialog);
 (function(doc, win) {
     var docEl = doc.documentElement;
     var resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize';
