@@ -136,8 +136,8 @@ export default {
           bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
           img: require("../assets/images/brandStory/fifth-content-small-img2.png"),
           left: "l920",
-          active: false,
-          heart: "匠心"
+          active:false,
+          heart:'匠心'
         },
         {
           text: "����/¼��ҳ��",
@@ -241,8 +241,11 @@ export default {
         if (key <= i) {
           val.left = `l${key * 150}`;
         }
-        if (key == i) {
-          val.active = true;
+        if(key == i){
+           val.active = true;
+        }
+        if(key > i ) {
+          val.left = `l${920 + (key-1)*150}`
         }
         if (key > i) {
           val.left = `l${920 + (key - 1) * 150}`;
@@ -399,7 +402,7 @@ export default {
     }
   }
 
-  .intruduce {
+  .intruduce{
     color: #999999;
     cursor: pointer;
   }
@@ -445,10 +448,10 @@ export default {
 i 1
 
 1     2      3          4        5
-    
+
 0  选中150  970+150   970 + 300   970 + 450
-         
-0  150     选中 300     970 + 300   970 + 450 
+
+0  150     选中 300     970 + 300   970 + 450
 0  150       300         选中450    970 + 450
 
 */

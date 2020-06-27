@@ -1,7 +1,7 @@
 <template>
   <el-container class="header">
     <div class="head-left">
-      <img src="../../assets/images/home/logo.png" alt class="logo" />
+      <img :src="require('assets/images/home/logo.png')" alt class="logo" />
       <el-dropdown trigger="click" @command="handleCommand">
         <span class="el-dropdown-link">
           <span>{{langType}}</span>
@@ -23,29 +23,29 @@
         active-text-color="#DDDDDD"
         @select="handleSelect"
       >
-        <el-menu-item index="/"> {{$t('message.home')}}</el-menu-item>
+        <el-menu-item index="/"> {{$t('headerTransInfo.home')}}</el-menu-item>
         <el-submenu index="/product">
-          <template slot="title">产品中心</template>
-          <el-menu-item index="/product/dejia">贾德系列</el-menu-item>
-          <el-menu-item index="/product/molandi">莫兰迪系列</el-menu-item>
-          <el-menu-item index="/product/miss">密斯系列</el-menu-item>
-          <el-menu-item index="/product/dikesen">迪克森系列</el-menu-item>
-          <el-menu-item index="/product/bier">比尔系列</el-menu-item>
-          <el-menu-item index="/product/kelinte">克林特系列</el-menu-item>
-          <el-menu-item index="/product/botiqieli">波提切利系列</el-menu-item>
+          <template slot="title"> {{$t('headerTransInfo.product.title')}}</template>
+          <el-menu-item index="/product/dejia">{{$t('headerTransInfo.product.jiaDe')}}</el-menu-item>
+          <el-menu-item index="/product/molandi">{{$t('headerTransInfo.product.molandi')}}</el-menu-item>
+          <el-menu-item index="/product/miss">{{$t('headerTransInfo.product.miss')}}</el-menu-item>
+          <el-menu-item index="/product/dikesen">{{$t('headerTransInfo.product.dikesen')}}</el-menu-item>
+          <el-menu-item index="/product/bier">{{$t('headerTransInfo.product.bier')}}</el-menu-item>
+          <el-menu-item index="/product/kelinte">{{$t('headerTransInfo.product.kelinte')}}</el-menu-item>
+          <el-menu-item index="/product/botiqieli">{{$t('headerTransInfo.product.botiqieli')}}</el-menu-item>
         </el-submenu>
-        <el-menu-item index="/brandStory">品牌故事</el-menu-item>
-        <el-menu-item index="/explorationHall"><router-link to="/explorationHall" tag="div">探索展厅</router-link></el-menu-item>
-        <el-menu-item index="/dynamic/main">特铭动态</el-menu-item>
+        <el-menu-item index="/brandStory">{{$t('headerTransInfo.brandStory')}}</el-menu-item>
+        <el-menu-item index="/explorationHall">{{$t('headerTransInfo.explorHall')}}</el-menu-item>
+        <el-menu-item index="/dynamic/main">{{$t('headerTransInfo.temingDynamic')}}</el-menu-item>
         <el-submenu index="/joinUs || /BrandEntry">
-          <template slot="title">加入我们</template>
-          <el-menu-item index="/BrandEntry"><router-link to="/BrandEntry" tag="div">品牌入驻</router-link></el-menu-item>
-          <el-menu-item index="/joinUs"><router-link to="/joinUs" tag="div">招贤纳士</router-link></el-menu-item>
+          <template slot="title">{{$t('headerTransInfo.joinUs.title')}}</template>
+          <el-menu-item index="/BrandEntry"><router-link to="/BrandEntry" tag="div">{{$t('headerTransInfo.joinUs.BrandPresence')}}</router-link></el-menu-item>
+          <el-menu-item index="/joinUs"><router-link to="/joinUs" tag="div">{{$t('headerTransInfo.joinUs.recruit')}}</router-link></el-menu-item>
         </el-submenu>
         <el-menu-item index="7"><span class="line"></span></el-menu-item>
         <el-menu-item index="8">
             <i class="iconfont iconcart-full"></i>
-            进入商城
+            {{$t('headerTransInfo.enterMall')}}
         </el-menu-item>
       </el-menu>
     </div>

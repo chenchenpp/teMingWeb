@@ -1,10 +1,10 @@
 <template>
   <el-footer class="footer">
     <div class="top">
-      <a href="">友情链接1</a>
-      <a href="">友情链接2</a>
-      <a href="">友情链接3</a>
-      <a href="">友情链接4</a>
+      <a href="">{{$t('footerTransInfo.linkFirst')}}</a>
+      <a href="">{{$t('footerTransInfo.linkSecond')}}</a>
+      <a href="">{{$t('footerTransInfo.linkThird')}}</a>
+      <a href="">{{$t('footerTransInfo.linkForth')}}</a>
     </div>
     <div class="bottom">
       <div class="three-part">
@@ -25,8 +25,8 @@
         </a>
       </div>
       <div class="address">
-        <p>Copyright @2010 - 2020上海特铭家具有限公司</p>
-        <p>沪ICP备06025014号</p>
+        <p>{{$t('footerTransInfo.companyName')}}</p>
+        <p>{{$t('footerTransInfo.companyNumber')}}</p>
       </div>
     </div>
   </el-footer>
