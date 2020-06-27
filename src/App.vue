@@ -2,7 +2,7 @@
   <div id="app">
     <nav-bar />
     <div class="scroll-top" :class="{'scroll-top-active': isTopShow}" @click="scrollTopHandle">
-      <div style="width: 30px;height:2px;background: rgba(255, 255, 255, .8);margin: 2px auto"></div>
+      <span style="display:inline-block;width: 30px;height:2px;background: rgba(255, 255, 255, .8);margin: 2px auto"></span>
       <i class="iconfont iconscrollTop"></i>
     </div>
     <router-view></router-view>
@@ -96,6 +96,8 @@ body{
   opacity: 0;
   transition: opacity 1s ease-in-out;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
   .iconfont{
     font-size: 60PX;
   }
