@@ -81,7 +81,9 @@ body {
     line-height: 1;
     box-sizing: border-box;
 }
-
+body::-webkit-scrollbar {
+	display:none
+}
 :focus {
     outline: 1;
 }

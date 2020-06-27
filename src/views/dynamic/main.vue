@@ -1,5 +1,6 @@
 <template>
   <div class="article-content">
+    <scrollbarTrack></scrollbarTrack>
     <ul class="article-items">
       <li v-for="(item, index) in articleList" :key="index">
         <div class="image-box" @mouseover="enter(item)" @mouseleave="leave(item)">
@@ -112,16 +113,20 @@ export default {
 </script>
 <style lang="scss" scoped>
 .article-content {
-  width: 1520px;
-  margin: 0 auto;
+  width: 1620px;
+  margin-left: 100px;
+  position: relative;
+  border-bottom: 1PX solid rgba(255,255,255,.3);
+  margin-bottom: 60px;
   .article-items {
-    width: 100%;
+    width: 1520px;
     // margin-left: 90px;
     font-size: 16px;
     color: rgba(221, 221, 221, 1);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    margin-left: 99px;
     li {
       width: 466px;
       height: 450px;
@@ -172,7 +177,7 @@ export default {
   }
   .pagination-box {
     height: 36px;
-    margin: 60px 0;
+    padding: 60px 0;
     display: flex;
     justify-content: center;
   }

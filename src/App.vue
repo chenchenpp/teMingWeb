@@ -30,8 +30,11 @@ body{
   min-width: 1024px;
   max-width: 1920px;
   margin: 0 auto;
-}
 
+}
+.el-carousel--horizontal{
+  overflow: hidden;
+}
 .icon {
   width: 1em;
   height: 1em;
