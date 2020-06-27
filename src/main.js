@@ -13,6 +13,10 @@ import {
     i18n
 } from './assets/lang/i18n'
 require('./assets/sass/reset.scss');
+import VideoPlayer from 'vue-video-player'
+require('video.js/dist/video-js.css')
+require('vue-video-player/src/custom-theme.css')
+Vue.use(VideoPlayer)
 import {
     Menu,
     Submenu,
