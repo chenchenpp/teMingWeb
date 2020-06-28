@@ -52,7 +52,6 @@ export default {
   },
   mounted() {
     this.initSwiper();
-    this.$nextTick(() => {});
   },
   methods: {
     initSwiper() {

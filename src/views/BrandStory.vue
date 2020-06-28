@@ -9,31 +9,90 @@
       <scrollbarTrack></scrollbarTrack>
       <section class="first-content">
         <p class="main-title">高端家居深度定制专家</p>
-        <p class="sub-title">我们不做大整装，也不做跨业态，我们就在家居的领域做深度。<br/>在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。</p>
+        <p class="sub-title">
+          我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
+          <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
+        </p>
         <div class="img-intruduce">
           <el-image v-for="url in urls" :key="url" :src="url" lazy></el-image>
         </div>
       </section>
 
       <section class="second-content">
-        <p class="main-title">高端家居深度定制专家</p>
-        <p class="sub-title">我们不做大整装，也不做跨业态，我们就在家居的领域做深度。<br/>在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。</p>
+        <!-- <p class="main-title">高端家居深度定制专家</p>
+        <p class="sub-title">
+          我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
+          <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
+        </p>
         <div class="img-intruduce">
           <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
+        </div>-->
+
+        <div class="container">
+          <div class="timeline">
+            <div class="swiper-container">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide" data-year="2011">
+                  <div class="swiper-slide-content">
+                    <span class="timeline-year">2011</span>
+                    <h4 class="timeline-title">Our nice super title</h4>
+                    <p
+                      class="timeline-text"
+                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                </div>
+                <div class="swiper-slide" data-year="2012">
+                  <div class="swiper-slide-content">
+                    <span class="timeline-year">2012</span>
+                    <h4 class="timeline-title">Our nice super title</h4>
+                    <p
+                      class="timeline-text"
+                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                </div>
+                <div class="swiper-slide" data-year="2013">
+                  <div class="swiper-slide-content">
+                    <span class="timeline-year">2013</span>
+                    <h4 class="timeline-title">Our nice super title</h4>
+                    <p
+                      class="timeline-text"
+                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                </div>
+                <div class="swiper-slide" data-year="2014">
+                  <div class="swiper-slide-content">
+                    <span class="timeline-year">2014</span>
+                    <h4 class="timeline-title">Our nice super title</h4>
+                    <p
+                      class="timeline-text"
+                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                </div>
+                <div class="swiper-slide" data-year="2015">
+                  <div class="swiper-slide-content">
+                    <span class="timeline-year">2015</span>
+                    <h4 class="timeline-title">Our nice super title</h4>
+                    <p
+                      class="timeline-text"
+                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                </div>
+                <div class="swiper-slide" data-year="2016">
+                  <div class="swiper-slide-content">
+                    <span class="timeline-year">2016</span>
+                    <h4 class="timeline-title">Our nice super title</h4>
+                    <p
+                      class="timeline-text"
+                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                </div>
+              </div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-button-next"></div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
         </div>
-        <el-carousel indicator-position="none" height="40px" arrow="always" :autoplay="false">
-          <el-carousel-item v-for="item in 4" :key="item">
-            <span class="year active">
-              <span>1996</span>
-              <i class="iconfont icontriangle"></i>
-            </span>
-            <span class="year">1999</span>
-            <span class="year">2005</span>
-            <span class="year">2006</span>
-            <span class="year">2010</span>
-            <span class="year">2012</span>
-          </el-carousel-item>
-        </el-carousel>
       </section>
 
       <section class="third-content">
@@ -110,20 +169,15 @@
 </template>
 
 <script>
+import Swiper from "swiper";
 export default {
   data() {
     return {
       isShowVideoPlayer: false,
       eleindex: 0,
-      firstContentData:{
-
-      },
-      secondContentData:{
-
-      },
-      thirdContentData:{
-
-      },
+      firstContentData: {},
+      secondContentData: {},
+      thirdContentData: {},
       forthContentData: {
         mainTitle: "特铭产品的特色",
         subTitle:
@@ -167,8 +221,8 @@ export default {
         ]
       },
       fifthContentData: {
-        mainTitle:'',
-        subTitle:'',
+        mainTitle: "",
+        subTitle: "",
         imgInfo: [
           {
             text: "����/¼��ҳ��",
@@ -235,6 +289,44 @@ export default {
         "https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg",
         "https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg",
         "https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg"
+      ],
+      superurl: [
+        {
+          url: "",
+          img: "2019-01"
+        },
+        {
+          url: "",
+          img: "2019-02"
+        },
+        {
+          url: "",
+          img: "2019-03"
+        },
+        {
+          url: "",
+          img: "2019-04"
+        },
+        {
+          url: "",
+          img: "2019-05"
+        },
+        {
+          url: "",
+          img: "2019-06"
+        },
+        {
+          url: "",
+          img: "2019-06"
+        },
+        {
+          url: "",
+          img: "2019-06"
+        },
+        {
+          url: "",
+          img: "2019-06"
+        }
       ]
     };
   },
@@ -278,7 +370,38 @@ export default {
     handleClose() {
       this.$refs.videoPlayer.player.pause();
       this.isShowVideoPlayer = false;
+    },
+    initSwiper() {
+      new Swiper(".timeline .swiper-container", {
+        direction: "vertical",
+        // loop: false,
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+          //自定义分页类型
+          // type: "custom",
+          //自定义分页
+          renderBullet: function(index, className) {
+            // alert(1);
+            var year = document
+              .querySelectorAll(".swiper-slide")
+              [index].getAttribute("data-year");
+            return '<span class="' + className + '">' + year + "</span>";
+          }
+        },
+
+        nextButton: ".swiper-button-next",
+        prevButton: ".swiper-button-prev",
+        breakpoints: {
+          768: {
+            direction: "horizontal"
+          }
+        }
+      });
     }
+  },
+  mounted() {
+    this.initSwiper();
   }
 };
 </script>
@@ -306,13 +429,13 @@ export default {
   //   background: rgba(255, 255, 255, 1);
   // }
 }
-.tl{
+.tl {
   text-align: left;
 }
-.tc{
+.tc {
   text-align: center;
 }
-.tr{
+.tr {
   text-align: right;
 }
 .main-title {
@@ -320,8 +443,9 @@ export default {
   margin-bottom: 40px;
 }
 .sub-title {
+  font-size: 14px;
   margin-bottom: 8px;
-  line-height: 22PX;
+  line-height: 28px;
 }
 //
 .first-content,
@@ -462,9 +586,7 @@ export default {
     color: #dddddd;
   }
 }
-.bg {
-  // opacity: 0.8;
-}
+
 /**
 i 1
 
@@ -526,21 +648,267 @@ div.box.eleactive img {
 }
 
 .banner.el-carousel {
-  height: 1000px;
+  height: 100vh;
   .el-carousel__container {
-    height: 1000px;
+    height: 100vh;
   }
 }
 
 .banner .el-carousel__item {
-  height: 1000px;
+  height: 100vh;
   img {
+    width: 100vw;
     height: 100%;
   }
 }
-// .video-player{
-//   position: fixed;
-//   top: 200px;
+
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 38px;
+  color: #616161;
+  font-style: italic;
+  font-weight: 800;
+}
+
+.timeline {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 5px 25px 5px rgba(0, 0, 0, 0.2);
+}
+.timeline .swiper-container {
+  height: 600px;
+  width: 100%;
+  position: relative;
+}
+.timeline .swiper-wrapper {
+  transition: 2s cubic-bezier(0.68, -0.4, 0.27, 1.34) 0.2s;
+}
+.timeline .swiper-slide {
+  width: 1520px;
+  height: 600px;
+  position: relative;
+  color: #fff;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background: url(../assets/images/brandStory/second-content-img1.jpg);
+  background-size: 1520px 600px;
+}
+.timeline .swiper-slide::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  right: -115%;
+  bottom: -10%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: -230px 0 150px 60vw rgba(0, 0, 0, 0.7);
+  border-radius: 100%;
+}
+.timeline .swiper-slide-content {
+  position: absolute;
+  text-align: center;
+  width: 80%;
+  max-width: 310px;
+  right: 50%;
+  top: 13%;
+  -webkit-transform: translate(50%, 0);
+  transform: translate(50%, 0);
+  font-size: 12px;
+  z-index: 2;
+}
+.timeline .swiper-slide .timeline-year {
+  display: block;
+  font-style: italic;
+  font-size: 42px;
+  margin-bottom: 50px;
+  -webkit-transform: translate3d(20px, 0, 0);
+  transform: translate3d(20px, 0, 0);
+  color: #d4a024;
+  font-weight: 300;
+  opacity: 0;
+  transition: 0.2s ease 0.4s;
+}
+.timeline .swiper-slide .timeline-title {
+  font-weight: 800;
+  font-size: 34px;
+  margin: 0 0 30px;
+  opacity: 0;
+  -webkit-transform: translate3d(20px, 0, 0);
+  transform: translate3d(20px, 0, 0);
+  transition: 0.2s ease 0.5s;
+}
+.timeline .swiper-slide .timeline-text {
+  line-height: 1.5;
+  opacity: 0;
+  -webkit-transform: translate3d(20px, 0, 0);
+  transform: translate3d(20px, 0, 0);
+  transition: 0.2s ease 0.6s;
+}
+.timeline .swiper-slide-active .timeline-year {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transition: 0.4s ease 1.6s;
+}
+.timeline .swiper-slide-active .timeline-title {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transition: 0.4s ease 1.7s;
+}
+.timeline .swiper-slide-active .timeline-text {
+  opacity: 1;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  transition: 0.4s ease 1.8s;
+}
+.timeline .swiper-pagination {
+  right: 15% !important;
+  width: 100%;
+  font-weight: 300;
+  font-size: 18px;
+  z-index: 1;
+  align-content: center;
+  justify-content: space-between;
+}
+.timeline .swiper-pagination::before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.timeline .swiper-pagination-bullet {
+  width: auto;
+  height: auto;
+  text-align: center;
+  opacity: 1;
+  background: transparent;
+  color: #d4a024;
+  margin: 15px 0 !important;
+  position: relative;
+}
+.timeline .swiper-pagination-bullet::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: -32.5px;
+  width: 6px;
+  height: 6px;
+  border-radius: 100%;
+  background-color: #d4a024;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  transition: 0.2s;
+}
+.timeline .swiper-pagination-bullet-active {
+  color: #d4a024;
+}
+.timeline .swiper-pagination-bullet-active::before {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+.timeline .swiper-button-next,
+.timeline .swiper-button-prev {
+  background-size: 20px 20px;
+  top: 15%;
+  width: 20px;
+  height: 20px;
+  margin-top: 0;
+  z-index: 2;
+  transition: 0.2s;
+}
+.timeline .swiper-button-prev {
+  left: 8%;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23d4a024'%2F%3E%3C%2Fsvg%3E");
+}
+.timeline .swiper-button-prev:hover {
+  -webkit-transform: translateX(-3px);
+  transform: translateX(-3px);
+}
+.timeline .swiper-button-next {
+  right: 8%;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23d4a024'%2F%3E%3C%2Fsvg%3E");
+}
+.timeline .swiper-button-next:hover {
+  -webkit-transform: translateX(3px);
+  transform: translateX(3px);
+}
+// @media screen and (min-width: 768px) {
+//   .timeline .swiper-slide::after {
+//     right: -30%;
+//     bottom: -8%;
+//     width: 240px;
+//     height: 50%;
+//     box-shadow: -230px 0 150px 50vw rgba(0, 0, 0, 0.7);
+//   }
+//   .timeline .swiper-slide-content {
+//     right: 30%;
+//     top: 50%;
+//     -webkit-transform: translateY(-50%);
+//     transform: translateY(-50%);
+//     width: 310px;
+//     font-size: 11px;
+//     text-align: right;
+//   }
+//   .timeline .swiper-slide .timeline-year {
+//     margin-bottom: 0;
+//     font-size: 32px;
+//   }
+//   .timeline .swiper-slide .timeline-title {
+//     font-size: 46px;
+//     margin: 0;
+//   }
+//   .timeline .swiper-pagination {
+//     display: flex;
+//   }
+//   .timeline .swiper-button-prev {
+//     top: 15%;
+//     left: auto;
+//     right: 15%;
+//     -webkit-transform: rotate(90deg) translate(0, 10px);
+//     transform: rotate(90deg) translate(0, 10px);
+//   }
+//   .timeline .swiper-button-prev:hover {
+//     -webkit-transform: rotate(90deg) translate(-3px, 10px);
+//     transform: rotate(90deg) translate(-3px, 10px);
+//   }
+//   .timeline .swiper-button-next {
+//     top: auto;
+//     bottom: 15%;
+//     right: 15%;
+//     -webkit-transform: rotate(90deg) translate(0, 10px);
+//     transform: rotate(90deg) translate(0, 10px);
+//   }
+//   .timeline .swiper-button-next:hover {
+//     -webkit-transform: rotate(90deg) translate(3px, 10px);
+//     transform: rotate(90deg) translate(3px, 10px);
+//   }
+// }
+// @media screen and (min-width: 1024px) {
+//   .timeline .swiper-slide::after {
+//     right: -20%;
+//     bottom: -12%;
+//     width: 240px;
+//     height: 50%;
+//     box-shadow: -230px 0 150px 39vw rgba(0, 0, 0, 0.7);
+//   }
+//   .timeline .swiper-slide-content {
+//     right: 25%;
+//   }
 // }
 </style>
 <style lang="scss">
@@ -600,4 +968,12 @@ div.box.eleactive img {
     }
   }
 }
+.el-carousel__button {
+  width: 50px;
+  height: 4px;
+  margin-left: 28px !important;
+}
+// div.swiper-slide {
+//   width: 242px !important;
+// }
 </style>
