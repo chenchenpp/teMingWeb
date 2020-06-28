@@ -1,6 +1,6 @@
 <template>
   <div class="home-container">
-    <div class="home-loading" :class="{'home-loading-active': turnLoadingFlag}" v-if="isLoading">
+    <div class="home-loading" :class="{ 'home-loading-active': turnLoadingFlag }" v-if="isLoading">
       <img :src="require('assets/images/home/logo.png')" alt class="logo" />
     </div>
 
@@ -13,8 +13,8 @@
     </el-carousel>-->
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div v-for="el in 4" class="swiper-slide" :key="el">
-          <img src="../assets/images/home/banner.jpg" alt />
+        <div v-for="el in imgList" class="swiper-slide" :key="el">
+          <img :src="el" alt />
         </div>
       </div>
       <!-- 如果需要分页器 -->
@@ -33,7 +33,12 @@ export default {
   data() {
     return {
       isLoading: true,
-      turnLoadingFlag: false
+      turnLoadingFlag: false,
+      imgList: [
+        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3401764231,948938699&fm=26&gp=0.jpg",
+        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593356891264&di=843351dd98ba9b5e7d359da9d15008a7&imgtype=0&src=http%3A%2F%2Fimg.51miz.com%2FElement%2F00%2F71%2F46%2F82%2Ffffc6885_E714682_92040862.jpg%2521%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue%2Fformat%2Fjpg",
+        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1211338343,1056512950&fm=26&gp=0.jpg"
+      ]
     };
   },
   created() {
@@ -47,42 +52,18 @@ export default {
   },
   mounted() {
     this.initSwiper();
-    this.$nextTick(() => {
-      
-    });
+    this.$nextTick(() => {});
   },
   methods: {
     initSwiper() {
       new Swiper(".swiper-container", {
-        pagination: '.swiper-pagination',
-        paginationClickable: true,
-        direction: 'vertical',
-        spaceBetween: 30,
-        hashnav: true,
-        hashnavWatchState: true,
+        autoplay: true,
         loop: true,
-        autoplay: 5000,
-        /*触碰后还能够继续轮播*/
-        autoplayDisableOnInteraction: false,
-        nextButton:'.swiper-button-next1',
-        effect : 'fade',
-        fade: {
-          crossFade: false,
-        },
-        on: {
-          slideChangeTransitionStart: function() {
-            
-            let prevSlide = this.slides.eq(this.previousIndex);
-            let nextSlide = this.slides.eq(this.activeIndex);
-            console.log(123, prevSlide);
-            prevSlide.removeClass('fadeIn');
-            nextSlide.addClass('fadeIn');
-          }
-        },
-        // onSlideChangeEnd: function(swiper) {
-        //   prevSlide = swiper.slides[swiper.previousIndex];
-        //   prevSlide.className = "swiper-slide";
-        // }
+        speed: 3000, // 切换速度，slider自动滑动开始到结束的时间单位ms，也是触摸滑动时释放至贴合的时间。
+        effect: "fade",
+        pagination: {
+          el: ".swiper-pagination"
+        }
       });
     }
   }
@@ -119,45 +100,36 @@ export default {
     }
   }
 }
-.el-carousel {
-  height: 1000px;
-  .el-carousel__container {
-    height: 1000px;
-  }
-}
-.el-carousel__item {
-  height: 1000px;
-  img {
-    height: 100%;
-  }
-}
+
 .swiper-container {
   width: 100vw;
   height: 100vh;
+
 }
-.fadeIn{
-  animation: fadeIn 1s;
+
+.swiper-slide img {
+  width: 100vw;
+  height: 100vh;
+  transition: 5s linear 5s; /* 必须的必 */
+  transform: scale(1.1); /* 必须的必 */
 }
-@keyframes fadeIn {
-  0% {
-    opacity: 0; /*初始状态 透明度为0*/
-  }
-  50% {
-    opacity: 0.5; /*中间状态 透明度为0*/
-  }
-  100% {
-    opacity: 1; /*结尾状态 透明度为1*/
-  }
+.swiper-slide-active img,
+.swiper-slide-duplicate-active img {
+  transition: 6s linear; /* 必须的必 */
+  transform: scale(1); /* 必须的必 */
 }
-@keyframes out {
-  0% {
-    opacity: 1; /*初始状态 透明度为0*/
+</style>
+<style lang="scss">
+  .swiper-pagination-bullet {
+    width: 50px;
+    height: 4px;
+    margin: 0!important;
+    margin-left: 28px!important;
+    background: rgba(255, 255, 255, 1);
+    opacity: 0.5;
+    border-radius: 0;
   }
-  50% {
-    opacity: 0.5; /*中间状态 透明度为0*/
+  .swiper-pagination-bullet-active{
+    opacity: 1;
   }
-  100% {
-    opacity: 0; /*结尾状态 透明度为1*/
-  }
-}
 </style>
