@@ -27,9 +27,6 @@ export default {
     return {
     };
   },
-  created(){
-    console.log('详情页面')
-  },
   methods: {
     goArticleHandle(id){
       this.$router.push({
