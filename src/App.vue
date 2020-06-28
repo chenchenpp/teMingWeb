@@ -96,6 +96,7 @@ body{
   opacity: 0;
   display: none;
   transition: opacity 1s ease-in-out;
+  z-index: 1000;
   cursor: pointer;
   img{
     width: 100%;
