@@ -17,13 +17,12 @@ export default {
       timerScroll: null
     }
   },
-  mounted(){
+  mounted() {
     // 先给页面注册滚动事件
-    document.addEventListener('scroll',this.scrollTop, false);
-    this.$once('hook:beforeDestroy', ()=>{
-      console.log('销毁')
+    document.addEventListener('scroll', this.scrollTop, false);
+    this.$once('hook:beforeDestroy', () => {
       document.removeEventListener('scroll', this.scrollTop, false)
-    })
+    });
   },
   methods:{
     scrollTopHandle(className) {
@@ -97,6 +96,7 @@ body{
   opacity: 0;
   display: none;
   transition: opacity 1s ease-in-out;
+  z-index: 1000;
   cursor: pointer;
   img{
     width: 100%;

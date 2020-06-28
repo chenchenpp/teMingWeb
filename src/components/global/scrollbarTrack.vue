@@ -10,33 +10,32 @@ import {getScrollTop, getClientHeight} from '@/util/publicMethod'
 import { mapGetters } from 'vuex';
 export default {
   name: 'scrollbarTrack',
-  data(){
+  data() {
     return {
 
     }
   },
-  mounted(){
+  mounted() {
     // 先给页面注册滚动事件
     document.addEventListener('scroll',this.Scroll, false);
     this.$once('hook:beforeDestroy', ()=>{
-      console.log('销毁')
       document.removeEventListener('scroll', this.Scroll, false)
     })
   },
   methods:{
-    Scroll(){
+    Scroll() {
       let windowHeight=getClientHeight();//当前窗口高度
       let scrollHeight=document.body.scrollHeight;//页面实际高度
       let bodyScrollTop=getScrollTop();//滚动条滚动高度
       let scrollbarAllHeight=this.$refs.scrollbarTrack.clientHeight;//进度条总长
       let thumbHeight=this.$refs.scrollbarThumb.clientHeight;//滑块的高度
-      let scrollbarThumbHeight=windowHeight/scrollHeight*scrollbarAllHeight;//滑块实际高度
+      let scrollbarThumbHeight = windowHeight / scrollHeight * scrollbarAllHeight;//滑块实际高度
       // console.log('滑块高度', scrollbarThumbHeight)
-      let thumbOffsetTop=((windowHeight+bodyScrollTop)/scrollHeight)*thumbHeight-scrollbarThumbHeight;//滑块相对父容器距离
+      let thumbOffsetTop = ((windowHeight + bodyScrollTop) / scrollHeight) * thumbHeight - scrollbarThumbHeight;//滑块相对父容器距离
       // console.log('滑块相对父容器距离', thumbOffsetTop)
       let thumbScrollTop=bodyScrollTop+thumbOffsetTop-thumbHeight;
       let scrollBarTop=this.$refs.scrollbarThumb.style.transform= `translate3d(0, ${thumbScrollTop}px, 0)`
-    },
+    }
   }
 };
 </script>

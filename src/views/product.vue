@@ -7,7 +7,8 @@
           :key="index"
         >
           <div class="caro-banner-container">
-            <img class="banner-img"
+            <img
+              class="banner-img"
               :src="require(`assets/images/product/one/${item.src}`)"
               alt=""
             />
@@ -91,38 +92,28 @@
         </div>
       </div>
     </div>
-    <div class="card-carousel">
+    <div class="card-carousel" @mouseenter="stopFooterCarousel" @mouseleave="startFooterCarousel">
       <div class="swiper-container">
         <div class="swiper-wrapper">
-          <div class="swiper-slide" v-for="(item, index) in pageList.lastCarouselList" :key="index">
-            <span class="title">莫兰迪系列</span>
-            <img :src="require('assets/images/product/one/banner.png')" alt=""/>
+          <div
+            class="swiper-slide"
+            v-for="(item, index) in pageList.lastCarouselList"
+            :key="index"
+          >
+            <span class="title">{{item.title}}</span>
+            <img
+              :src="require(`assets/images/product/one/${item.imgSrc}`)"
+              alt=""
+            />
           </div>
         </div>
       </div>
-      <!-- <el-carousel
-        :interval="4000"
-        type="card"
-        indicator-position="none"
-        arrow="never"
-      >
-        <el-carousel-item
-          v-for="(item, index) in pageList.lastCarouselList"
-          :key="index"
-        >
-          <span class="title">莫兰迪系列</span>
-          <img
-            :src="require('assets/images/product/one/banner.png')"
-            alt=""
-          />
-        </el-carousel-item>
-      </el-carousel> -->
     </div>
     <tm-footer></tm-footer>
   </div>
 </template>
 <script>
-import Swiper from 'swiper'
+import Swiper from "swiper";
 export default {
   name: "product",
   data() {
@@ -332,13 +323,22 @@ export default {
           }
         ],
         lastCarouselList: [
-          "banner.png",
-          "banner.png",
-          "banner.png",
-          "banner.png",
-          "banner.png",
-          "banner.png",
-          "banner.png"
+          {
+            imgSrc: "banner.png",
+            title: "莫兰迪系列"
+          },
+          {
+            imgSrc: "banner.png",
+            title: "莫兰迪系列"
+          },
+          {
+            imgSrc: "banner.png",
+            title: "莫兰迪系列"
+          },
+          {
+            imgSrc: "banner.png",
+            title: "莫兰迪系列"
+          }
         ]
       },
       moLanDiList: {
@@ -453,44 +453,65 @@ export default {
           }
         ],
         lastCarouselList: [
-          "banner.png",
-          "banner.png",
-          "banner.png",
-          "banner.png"
+          {
+            imgSrc: "banner.png",
+            title: "莫兰迪系列"
+          },
+          {
+            imgSrc: "banner.png",
+            title: "莫兰迪系列"
+          },
+          {
+            imgSrc: "banner.png",
+            title: "莫兰迪系列"
+          },
+          {
+            imgSrc: "banner.png",
+            title: "莫兰迪系列"
+          }
         ]
       },
-      pageList: {}
+      pageList: {},
+      footerCarSwiper: null
     };
   },
   created() {
     this.pageList = this.dejiaList; //临时使用 // this.pageList=this[`${this.$route.params.type}List`];//最后请替换这个
     console.log(this.pageList);
   },
-  mounted(){
+  mounted() {
     this.initSwiper();
   },
   methods: {
-    initSwiper () {
-      console.log(Swiper)
-      new Swiper('.swiper-container', {
+    initSwiper() {
+      this.footerCarSwiper = new Swiper(".swiper-container", {
         autoplay: {
-          delay: 10000,
+          delay: 3000,
           disableOnInteraction: false
         },
-        loop: true,
-        effect: 'coverflow',
-        slidesPerView: '2',
+        loop: true, //循环轮播
+        simulateTouch: false, //禁止滑动轮播
+        effect: "coverflow", //slide的切换效果 3d效果
+        slidesPerView: "2", 
         loopedSlides: 2,
-        centeredSlides: true,
-        spaceBetween: '-50%',
+        centeredSlides: true, //设定为true时，active slide会居中，而不是默认状态下的居左。
+        spaceBetween: "-50%", //在slide之间设置距离（单位px）
         coverflowEffect: {
-          rotate: 0,
-          stretch: 0,
-          depth:100,
-          modifier: 4,
+          rotate: 0, //slide做3d旋转时Y轴的旋转角度
+          stretch: 0, //每个slide之间的拉伸值，越大slide靠得越紧。5.3.6 后可使用%百分比
+          depth: 0, //slide的位置深度。值越大z轴距离越远，看起来越小。
+          modifier: 4, //depth和rotate和stretch的倍率，相当于depth*modifier、rotate*modifier、stretch*modifier，值越大这三个参数的效果越明显。
           slideShadows: false
         }
-      })
+      });
+    },
+    //关闭轮播图
+    stopFooterCarousel() {
+      this.footerCarSwiper.autoplay.stop();
+    },
+    //开启轮播图
+    startFooterCarousel() {
+      this.footerCarSwiper.autoplay.start();
     },
     closeGoodsHandle(data) {
       data.isShow = false;
@@ -529,19 +550,19 @@ export default {
 }
 .product {
   height: 100%;
-  
+
   ::v-deep .el-carousel__container {
     height: 100vh;
   }
   .caro-banner-container {
-    .banner-img{
+    .banner-img {
       width: 100%;
       height: 100vh;
     }
     .dot {
       // opacity: 0;
       background: rgba(27, 31, 34, 0.25);
-      border: 1PX solid rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.7);
       box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.28);
       z-index: 2;
       position: absolute;
@@ -562,10 +583,10 @@ export default {
         top: 50%;
         border-radius: 50%;
         transform: translate3d(-50%, -50%, 0);
-        border: solid 1PX #ffffff;
+        border: solid 1px #ffffff;
         animation: pulse 3s linear infinite;
       }
-      &:hover{
+      &:hover {
         transform: translate(-50%, -50%) scale(1.25);
       }
     }
@@ -586,13 +607,13 @@ export default {
         width: 30px;
         height: 30px;
         opacity: 1;
-        border: solid 1PX #ffffff;
+        border: solid 1px #ffffff;
       }
       100% {
         width: 50px;
         height: 50px;
         opacity: 0;
-        border: solid 2PX #ffffff;
+        border: solid 2px #ffffff;
       }
     }
 
@@ -676,8 +697,8 @@ export default {
       .moduel-mes::before {
         content: "";
         display: inline-block;
-        width: 50PX;
-        height: 1PX;
+        width: 50px;
+        height: 1px;
         background: rgba(255, 255, 255, 0.5);
         position: absolute;
         top: 70px;
@@ -690,8 +711,8 @@ export default {
       .moduel-mes::before {
         content: "";
         display: inline-block;
-        width: 50PX;
-        height: 1PX;
+        width: 50px;
+        height: 1px;
         background: rgba(255, 255, 255, 0.5);
         position: absolute;
         top: 70px;
@@ -710,7 +731,7 @@ export default {
       .des {
         font-size: 16px;
         color: rgba(221, 221, 221, 1);
-        line-height:28px;
+        line-height: 28px;
         text-align: left;
       }
     }
@@ -733,29 +754,40 @@ export default {
 }
 .card-carousel {
   width: 100%;
+  height: 750px;
+  overflow: hidden;
   margin-top: 60px;
   .title {
     font-size: 20px;
     color: rgba(221, 221, 221, 0.7);
     position: absolute;
     top: 50%;
-    left: 50%;
     transform: translate(-50%, 50%);
   }
   img {
     width: 1320px;
     height: 750px;
   }
-  .swiper-slide-prev,.swiper-slide-next{
+  .swiper-slide-active .title {
+    left: 50%;
+  }
+  .swiper-slide-prev .title {
+    left: 26%;
+  }
+  .swiper-slide-next .title {
+    right: 20%;
+  }
+  .swiper-slide-prev,
+  .swiper-slide-next {
     position: relative;
-    &::before{
-      content: '';
+    &::before {
+      content: "";
       display: block;
       position: absolute;
       top: 0;
       bottom: 0;
       width: 100%;
-      background:rgba(255,255,255,.5);
+      background: rgba(255, 255, 255, 0.5);
     }
   }
 }
