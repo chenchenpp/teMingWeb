@@ -2,8 +2,7 @@
   <div id="app">
     <nav-bar />
     <div class="scroll-top" :class="{'scroll-top-active': isTopShow}" @click="scrollTopHandle">
-      <span style="display:inline-block;width: 30px;height:2px;background: rgba(255, 255, 255, .8);margin: 2px auto"></span>
-      <i class="iconfont iconscrollTop"></i>
+      <img src="./assets/images/common/top.png" alt="">
     </div>
     <router-view></router-view>
   </div>
@@ -14,7 +13,8 @@ export default {
   name: "app",
   data(){
     return {
-      isTopShow: false
+      isTopShow: false,
+      timerScroll: null
     }
   },
   mounted(){
@@ -26,18 +26,31 @@ export default {
     })
   },
   methods:{
-    scrollTop() {
-      let bodyScrollTop=getScrollTop();//滚动条滚动高度
-      let windowHeight=getClientHeight();
-      if(bodyScrollTop>windowHeight+500){
-        this.isTopShow=true;
-      } else {
-        this.isTopShow=false;
+    scrollTopHandle(className) {
+      let that = this;
+      let aniFun = function() {
+        let bodyScrollTop = getScrollTop();//滚动条滚动高度
+        if (bodyScrollTop > 0) {
+          window.scrollTo(0, bodyScrollTop - 100);
+          that.timerScroll = requestAnimationFrame(aniFun);
+        } else {
+          cancelAnimationFrame(that.timerScroll);
+        }
+      };
+      if (this.timerScroll) {
+        cancelAnimationFrame(this.timerScroll);
       }
+      this.timerScroll = requestAnimationFrame(aniFun);
+      
     },
-    scrollTopHandle(){
-      window.scrollTo(0, 0)
-
+    scrollTop() {
+      let bodyScrollTop = getScrollTop();//滚动条滚动高度
+      let windowHeight = getClientHeight();
+      if (bodyScrollTop > windowHeight + 500) {
+        this.isTopShow = true;
+      } else {
+        this.isTopShow = false;
+      }
     }
   }
 };
@@ -49,6 +62,11 @@ export default {
 }
 body{
   font-size: 16px;
+  width: 100%;
+  height: 100%;
+  overflow-y:auto ;
+  background: url('./assets/images/product/back-color.jpg') center repeat !important;
+  background-size: 100%;
 }
 #app {
   font-family: "zhanghaishan", "Avenir", Helvetica, Arial, sans-serif;
@@ -59,7 +77,6 @@ body{
   min-width: 1024px;
   max-width: 1920px;
   margin: 0 auto;
-
 }
 .el-carousel--horizontal{
   overflow: hidden;
@@ -72,24 +89,26 @@ body{
   overflow: hidden;
 }
 .scroll-top{
+  width: 48px;
+  height: 152px;
   position: fixed;
   bottom: 100px;
   right: 100px;
-  color: rgba(255, 255, 255, .8);
   opacity: 0;
+  display: none;
   transition: opacity 1s ease-in-out;
   cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  .iconfont{
-    font-size: 60PX;
+  img{
+    width: 100%;
+    height: 100%;
   }
 }
 .scroll-top-active{
-  opacity: 1;
-}
-.el-menu--horizontal{
-  // background: #292729!important;
+  display: block;
+  opacity: .5;
+  &:hover{
+    opacity: 1;
+  }
 }
 .el-menu--popup{
   background: #292729!important;

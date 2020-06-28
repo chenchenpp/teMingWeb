@@ -9,9 +9,7 @@ import {
     post
 } from './util/request/http';
 import './components/global';
-import {
-    i18n
-} from './assets/lang/i18n'
+import { i18n } from './assets/lang/i18n';
 require('./assets/sass/reset.scss');
 (function(doc, win) {
     var docEl = doc.documentElement;
