@@ -90,30 +90,39 @@
           PDF 下载
         </div>
       </div>
-      <div class="card-carousel">
-        <el-carousel
-          :interval="4000"
-          type="card"
-          indicator-position="none"
-          arrow="never"
-        >
-          <el-carousel-item
-            v-for="(item, index) in pageList.lastCarouselList"
-            :key="index"
-          >
+    </div>
+    <div class="card-carousel">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide" v-for="(item, index) in pageList.lastCarouselList" :key="index">
             <span class="title">莫兰迪系列</span>
-            <img
-              :src="require('assets/images/product/one/banner.png')"
-              alt=""
-            />
-          </el-carousel-item>
-        </el-carousel>
+            <img :src="require('assets/images/product/one/banner.png')" alt=""/>
+          </div>
+        </div>
       </div>
+      <!-- <el-carousel
+        :interval="4000"
+        type="card"
+        indicator-position="none"
+        arrow="never"
+      >
+        <el-carousel-item
+          v-for="(item, index) in pageList.lastCarouselList"
+          :key="index"
+        >
+          <span class="title">莫兰迪系列</span>
+          <img
+            :src="require('assets/images/product/one/banner.png')"
+            alt=""
+          />
+        </el-carousel-item>
+      </el-carousel> -->
     </div>
     <tm-footer></tm-footer>
   </div>
 </template>
 <script>
+import Swiper from 'swiper'
 export default {
   name: "product",
   data() {
@@ -457,7 +466,32 @@ export default {
     this.pageList = this.dejiaList; //临时使用 // this.pageList=this[`${this.$route.params.type}List`];//最后请替换这个
     console.log(this.pageList);
   },
+  mounted(){
+    this.initSwiper();
+  },
   methods: {
+    initSwiper () {
+      console.log(Swiper)
+      new Swiper('.swiper-container', {
+        autoplay: {
+          delay: 10000,
+          disableOnInteraction: false
+        },
+        loop: true,
+        effect: 'coverflow',
+        slidesPerView: '2',
+        loopedSlides: 2,
+        centeredSlides: true,
+        spaceBetween: '-50%',
+        coverflowEffect: {
+          rotate: 0,
+          stretch: 0,
+          depth:100,
+          modifier: 4,
+          slideShadows: false
+        }
+      })
+    },
     closeGoodsHandle(data) {
       data.isShow = false;
     },
@@ -698,6 +732,8 @@ export default {
   }
 }
 .card-carousel {
+  width: 100%;
+  margin-top: 60px;
   .title {
     font-size: 20px;
     color: rgba(221, 221, 221, 0.7);
@@ -709,6 +745,18 @@ export default {
   img {
     width: 1320px;
     height: 750px;
+  }
+  .swiper-slide-prev,.swiper-slide-next{
+    position: relative;
+    &::before{
+      content: '';
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      background:rgba(255,255,255,.5);
+    }
   }
 }
 </style>
