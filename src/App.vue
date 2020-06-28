@@ -8,16 +8,21 @@
   </div>
 </template>
 <script>
-import { getScrollTop, getClientHeight } from '@/util/publicMethod'
+import {getScrollTop, getClientHeight} from '@/util/publicMethod'
 export default {
   name: "app",
-  data() {
+  data(){
     return {
       isTopShow: false,
       timerScroll: null
     }
   },
   mounted() {
+    // 先给页面注册滚动事件
+    document.addEventListener('scroll', this.scrollTop, false);
+    this.$once('hook:beforeDestroy', () => {
+      document.removeEventListener('scroll', this.scrollTop, false)
+    });
   },
   methods:{
     scrollTopHandle(className) {
@@ -35,6 +40,7 @@ export default {
         cancelAnimationFrame(this.timerScroll);
       }
       this.timerScroll = requestAnimationFrame(aniFun);
+      
     },
     scrollTop() {
       let bodyScrollTop = getScrollTop();//滚动条滚动高度
