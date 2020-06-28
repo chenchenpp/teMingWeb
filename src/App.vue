@@ -92,11 +92,14 @@ body{
   // background: #292729!important;
 }
 .el-menu--popup{
-  background: #292729!important;
+  background: #FFFFFF!important;
+  
   .el-menu-item{
-    background: #292729!important;
+    background: #FFFFFF!important;
+    color: #2a282a!important;
     &:hover{
-      background: #292729;
+      background: #FFFFFF;
+      color: #2a282a!important;
     }
   }
 }

@@ -25,8 +25,9 @@ import {
     Carousel,
     CarouselItem,
     Dialog,
-    Image
+    Image,
+    Popover
 } from 'element-ui';
 
-Vue.use(Button).use(Container).use(Header).use(Main).use(Footer).use(Dropdown).use(dropdownMenu).use(DropdownItem).use(carousel).use(carouselItem).use(pagination).use(breadcrumb).use(breadcrumbItem).use(Menu).use(Submenu).use(MenuItem).use(MenuItemGroup).use(Carousel).use(CarouselItem).use(Dialog).use(Image);
+Vue.use(Button).use(Container).use(Header).use(Main).use(Footer).use(Dropdown).use(dropdownMenu).use(DropdownItem).use(carousel).use(carouselItem).use(pagination).use(breadcrumb).use(breadcrumbItem).use(Menu).use(Submenu).use(MenuItem).use(MenuItemGroup).use(Carousel).use(CarouselItem).use(Dialog).use(Image).use(Popover);
 Vue.component(Message.name, Message);
