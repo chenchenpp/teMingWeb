@@ -13,7 +13,8 @@ function resolve(dir) {
     return path.join(__dirname, dir);
 }
 module.exports = {
-    // publicPath: "./",
+    //baseUrl: './',
+    //publicPath: "./",
     lintOnSave: false,
     css: {
         loaderOptions: {

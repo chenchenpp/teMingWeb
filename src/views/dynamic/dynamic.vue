@@ -3,14 +3,17 @@
     <nav-bar />
     <div class="container">
       <div class="banner-content">
-        <img :src="require('assets/images/dynamic/banner.png')" alt="">
+        <img :src="require('assets/images/dynamic/banner.jpg')" alt="" />
+        <div class="info">
+          <p class="title animated fadeInDown">特铭最新动态</p>
+          <p class="des"> 坚持以“人”为本的理性化厨房设计理念 <br/> 始终注重产品细节，注重人性化设计，注重绿色环保</p>
+        </div>
       </div>
       <router-view></router-view>
     </div>
     <tm-footer></tm-footer>
   </div>
 </template>
-
 <script>
 export default {
   name: "dynamic",
@@ -69,11 +72,11 @@ export default {
     leave(item) {
       item.isModal = false;
     },
-    checkDetailHandle(item){
-      console.log(item)
+    checkDetailHandle(item) {
+      console.log(item);
     },
-    changePage(val){
-      console.log('页数', val)
+    changePage(val) {
+      console.log("页数", val);
     }
   }
 };
@@ -82,13 +85,37 @@ export default {
 .dynamic-main {
   width: 100%;
   height: 100%;
-  background: #2a282a;
   .banner-content {
     width: 100%;
+    height: 600px;
+    position: relative;
     img {
       width: 100%;
+      height: 600px;
+    }
+    .info{
+      position: absolute;
+      font-size:16PX;
+      color:rgba(221,221,221,1);
+      line-height:24px;
+      left: 200px;
+      top: 287px;
+      text-align: left;
+      &::after{
+        content: '';
+        display: block;
+        width:40px;
+        height:1px;
+        background:rgba(221,221,221,.8);
+        margin-top: 30px;
+      }
+      .title{
+        font-size:30PX;
+      }
+      .des{
+        margin-top: 30px;
+      }
     }
   }
 }
-
 </style>

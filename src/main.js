@@ -4,14 +4,10 @@ import router from './router/router';
 import store from './store/store';
 import './plugins/element.js';
 import './assets/iconfont/iconfont.js';
-import {
-    get,
-    post
-} from './util/request/http';
+import {get,post} from './util/request/http';
 import './components/global';
-import {
-    i18n
-} from './assets/lang/i18n'
+import {i18n} from './assets/lang/i18n';
+import 'swiper/css/swiper.css';
 require('./assets/sass/reset.scss');
 (function(doc, win) {
     var docEl = doc.documentElement;
@@ -31,7 +27,6 @@ require('./assets/sass/reset.scss');
     win.addEventListener(resizeEvt, recalc, false);
     doc.addEventListener('DOMContentLoaded', recalc, false);
 })(document, window);
-
 Vue.prototype.$get = get;
 Vue.prototype.$post = post;
 Vue.config.productionTip = false;

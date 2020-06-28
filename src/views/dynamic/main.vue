@@ -31,9 +31,7 @@
     </div>
   </div>
 </template>
-
 <script>
-import { getUserComTravelersByUserId } from "@/util/request/api.js";
 export default {
   name: "dynamicMain",
   data() {
@@ -201,7 +199,7 @@ export default {
     }
     .number {
       width: 36px;
-      height: 100%;
+      height: 36px;
       text-align: center;
       line-height: 36px;
       background: none;
