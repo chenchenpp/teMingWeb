@@ -5,18 +5,21 @@
     </div>
 
     <!-- <el-carousel arrow="never" v-else>
+      <transition-group name="fadeIn" tag="ul">
       <el-carousel-item v-for="item in 4" :key="item">
-        <transition name="fadeIn" tag="ul">
         <img src="../assets/images/home/banner.jpg" alt />
-        </transition>
       </el-carousel-item>
-      
+      </transition-group>
     </el-carousel>-->
-    <transition-group name="flip-list" tag="ul">
-      <div v-for="curImg in currImgs" v-bind:key="curImg" class="list-item">
-        <img :src="curImg" alt />
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div v-for="el in 4" class="swiper-slide" :key="el">
+          <img src="../assets/images/home/banner.jpg" alt />
+        </div>
       </div>
-    </transition-group>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination"></div>
+    </div>
     <tm-footer></tm-footer>
   </div>
 </template>
@@ -24,20 +27,13 @@
 <script>
 import { getUserComTravelersByUserId } from "@/util/request/api.js";
 import { setTimeout, setInterval } from "timers";
+import Swiper from "swiper";
 export default {
   name: "home",
   data() {
     return {
       isLoading: true,
-      turnLoadingFlag: false,
-      currImgs: [],
-      imgs: [
-        "https://img11.360buyimg.com/da/jfs/t4000/107/2234194410/85271/6c24d985/58a50cafNb60886c9.jpg",
-        "https://img20.360buyimg.com/da/jfs/t3154/175/5917485830/129679/f123634c/5897e6a2N83837dd2.jpg",
-        "https://img1.360buyimg.com/da/jfs/t3133/89/5984232745/66970/beaf615c/589ac9bcNe544a72e.jpg",
-        "https://img20.360buyimg.com/da/jfs/t3157/165/6117849901/102894/88bf53b8/589d67b6Ne8986a9e.jpg"
-      ],
-      index: 0
+      turnLoadingFlag: false
     };
   },
   created() {
@@ -50,19 +46,44 @@ export default {
     }, 2100);
   },
   mounted() {
-    this.startChange();
+    this.initSwiper();
+    this.$nextTick(() => {
+      
+    });
   },
   methods: {
-    startChange: function() {
-      var _this = this;
-      setInterval(function() {
-        if (_this.index < _this.imgs.length - 1) {
-          _this.index++;
-        } else {
-          _this.index = 0;
-        }
-        _this.currImgs.splice(0, 1, _this.imgs[_this.index]);
-      }, 2000);
+    initSwiper() {
+      new Swiper(".swiper-container", {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        direction: 'vertical',
+        spaceBetween: 30,
+        hashnav: true,
+        hashnavWatchState: true,
+        loop: true,
+        autoplay: 5000,
+        /*触碰后还能够继续轮播*/
+        autoplayDisableOnInteraction: false,
+        nextButton:'.swiper-button-next1',
+        effect : 'fade',
+        fade: {
+          crossFade: false,
+        },
+        on: {
+          slideChangeTransitionStart: function() {
+            
+            let prevSlide = this.slides.eq(this.previousIndex);
+            let nextSlide = this.slides.eq(this.activeIndex);
+            console.log(123, prevSlide);
+            prevSlide.removeClass('fadeIn');
+            nextSlide.addClass('fadeIn');
+          }
+        },
+        // onSlideChangeEnd: function(swiper) {
+        //   prevSlide = swiper.slides[swiper.previousIndex];
+        //   prevSlide.className = "swiper-slide";
+        // }
+      });
     }
   }
 };
@@ -99,32 +120,44 @@ export default {
   }
 }
 .el-carousel {
-  height: 100vh;
+  height: 1000px;
   .el-carousel__container {
-    height: 100vh;
+    height: 1000px;
   }
 }
 .el-carousel__item {
-  height: 100vh;
+  height: 1000px;
   img {
-    width: 100vw;
-    height: 100vh;
-  }
-}
-.list-item {
-  width: 100vw;
-  height: 100vh;
-  img {
-    width: 100%;
     height: 100%;
   }
 }
-.flip-list-enter-active,
-.flip-list-leave-active {
-  transition: all 1s;
+.swiper-container {
+  width: 100vw;
+  height: 100vh;
 }
-.flip-list-enter,
-.flip-list-leave-active {
-  opacity: 0;
+.fadeIn{
+  animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /*初始状态 透明度为0*/
+  }
+  50% {
+    opacity: 0.5; /*中间状态 透明度为0*/
+  }
+  100% {
+    opacity: 1; /*结尾状态 透明度为1*/
+  }
+}
+@keyframes out {
+  0% {
+    opacity: 1; /*初始状态 透明度为0*/
+  }
+  50% {
+    opacity: 0.5; /*中间状态 透明度为0*/
+  }
+  100% {
+    opacity: 0; /*结尾状态 透明度为1*/
+  }
 }
 </style>
