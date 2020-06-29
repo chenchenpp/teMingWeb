@@ -1,112 +1,37 @@
 <template>
   <div class="brand-story-container">
     <el-carousel arrow="never" class="banner">
-      <el-carousel-item v-for="item in 4" :key="item" @click="isShowVideoPlayer=true">
-        <img src="../assets/images/home/banner.jpg" alt @click="isShowVideoPlayer=true" />
+      <el-carousel-item v-for="item in bannerData" :key="item.id" @click="playVideo">
+        <img :src="$host + item.imageUrl"  alt @click="isShowVideoPlayer=true" />
       </el-carousel-item>
     </el-carousel>
     <div class="content">
       <scrollbarTrack></scrollbarTrack>
+
       <section class="first-content">
-        <p class="main-title" v-html="firstContentData.mainTitle"></p>
-        <p class="sub-title" v-html="firstContentData.subTitle"></p>
+        <p class="main-title" v-html="firstContentData[0].mainTitle"></p>
+        <p class="sub-title" v-html="firstContentData[0].subTitle"></p>
         <div class="img-intruduce">
-          <el-image v-for="url in firstContentData.imgArr" :key="url" :src="url" lazy></el-image>
+          <img v-for="item in firstContentData" :key="item.id" v-lazy="$host + item.imageUrl" />
         </div>
       </section>
 
       <section class="second-content">
-        <!-- <p class="main-title">高端家居深度定制专家</p>
-        <p class="sub-title">
-          我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
-          <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
-        </p>
-        <div class="img-intruduce">
-          <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
-        </div>-->
         <div class="swiper-container">
           <div class="swiper-wrapper">
-            <div class="swiper-slide" data-year="2011">
+            <div
+              class="swiper-slide"
+              :data-year="item.imageDescription"
+              v-for="item in secondContentData"
+              :key="item.id"
+            >
               <div class="swiper-slide-content">
                 <div class="title-container">
-                  <p class="main-title">高端家居深度定制专家</p>
-                  <p class="sub-title">
-                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
-                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
-                  </p>
+                  <p class="main-title" v-html="item.mainTitle"></p>
+                  <p class="sub-title" v-html="item.subTitle"></p>
                 </div>
-                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
-                <span class="timeline-year">2011</span>
-              </div>
-            </div>
-
-            <div class="swiper-slide" data-year="2012">
-              <div class="swiper-slide-content">
-                <div class="title-container">
-                  <p class="main-title">高端家居深度定制专家</p>
-                  <p class="sub-title">
-                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
-                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
-                  </p>
-                </div>
-                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
-                <span class="timeline-year">2012</span>
-              </div>
-            </div>
-
-            <div class="swiper-slide" data-year="2013">
-              <div class="swiper-slide-content">
-                <div class="title-container">
-                  <p class="main-title">高端家居深度定制专家</p>
-                  <p class="sub-title">
-                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
-                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
-                  </p>
-                </div>
-                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
-                <span class="timeline-year">2013</span>
-              </div>
-            </div>
-
-            <div class="swiper-slide" data-year="2014">
-              <div class="swiper-slide-content">
-                <div class="title-container">
-                  <p class="main-title">高端家居深度定制专家</p>
-                  <p class="sub-title">
-                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
-                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
-                  </p>
-                </div>
-                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
-                <span class="timeline-year">2014</span>
-              </div>
-            </div>
-
-            <div class="swiper-slide" data-year="2015">
-              <div class="swiper-slide-content">
-                <div class="title-container">
-                  <p class="main-title">高端家居深度定制专家</p>
-                  <p class="sub-title">
-                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
-                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
-                  </p>
-                </div>
-                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
-                <span class="timeline-year">2015</span>
-              </div>
-            </div>
-
-            <div class="swiper-slide" data-year="2016">
-              <div class="swiper-slide-content">
-                <div class="title-container">
-                  <p class="main-title">高端家居深度定制专家</p>
-                  <p class="sub-title">
-                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
-                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
-                  </p>
-                </div>
-                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
-                <span class="timeline-year">2016</span>
+                <img v-lazy="$host + item.imageUrl" alt />
+                <span class="timeline-year">{{item.imageDescription}}</span>
               </div>
             </div>
           </div>
@@ -239,18 +164,9 @@ export default {
     return {
       isShowVideoPlayer: false,
       eleindex: 0,
-      firstContentData: {
-        mainTitle: "高端家居深度定制专家",
-        subTitle:
-          "  我们不做大整装，也不做跨业态，我们就在家居的领域做深度。<br/>在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。",
-        imgArr: [
-          "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
-          "https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg",
-          "https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg",
-          "https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg"
-        ]
-      },
-      secondContentData: {},
+      bannerData: [],
+      firstContentData: [],
+      secondContentData: [],
       thirdContentData: {},
       forthContentData: {
         mainTitle: "特铭产品的特色",
@@ -441,7 +357,10 @@ export default {
     },
     initSwiper() {
       new Swiper(".swiper-container", {
-        direction: "vertical",
+        // direction: "vertical",
+        //  autoplay: true,
+        // loop: true,
+        effect: "flip",
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -450,10 +369,10 @@ export default {
             var year = document
               .querySelectorAll(".swiper-slide")
               [index].getAttribute("data-year");
+            console.log("yesr", year);
             return `<span class="${className}"><span>${year}</span><i class="iconfont icontriangle"></i></span>`;
           }
         },
-
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
@@ -464,10 +383,45 @@ export default {
           }
         }
       });
+    },
+    getPageData() {
+      let that = this;
+      this.$get("/image/getImageByPage.do?imageBelongPage=3&en=0")
+        .then(res => {
+          console.log(res);
+          let data = res.arrList;
+          data.forEach(val => {
+            switch (val.title) {
+              case "1":
+                this.bannerData = val.imgArr;
+                break;
+              case "2":
+                this.firstContentData = val.imgArr;
+                break;
+              case "3":
+                this.secondContentData = val.imgArr;
+                break;
+              default:
+                break;
+            }
+          });
+          that.$nextTick(() => {
+            that.initSwiper();
+          });
+          console.log(
+            this.bannerData,
+            this.firstContentData,
+            this.secondContentData
+          );
+        })
+        .catch();
+    },
+    playVideo() {
+      isShowVideoPlayer = true;
     }
   },
   mounted() {
-    this.initSwiper();
+    this.getPageData();
   }
 };
 </script>
@@ -780,7 +734,7 @@ div.box.eleactive img {
 .second-content {
   .swiper-pagination {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     height: 60px;
     align-items: center;
   }

@@ -9,9 +9,11 @@
           <p class="bottom-line"></p>
         </div>
       </div>
+      
       <main>
+         <scrollbarTrack></scrollbarTrack>
         <ul class="recruitment-position">
-          <scrollbarTrack></scrollbarTrack>
+         
           <li @click="dialogVisible = true">
             <div class="top-img">
               <img src="../assets/images/joinUs/img1.png" alt />

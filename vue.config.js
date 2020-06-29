@@ -5,7 +5,7 @@ const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
 const server = {
-    target: 'http://172.16.16.8', // .8开发环境  .11 测试环境
+    target: 'http://106.52.5.152', // .8开发环境  .11 测试环境
     secure: false
 };
 
@@ -25,7 +25,7 @@ module.exports = {
     },
     devServer: {
         proxy: {
-            '/user_api': {
+            '/image': {
                 target: server.target,
                 changeOrigin: true,
                 secure: server.secure
