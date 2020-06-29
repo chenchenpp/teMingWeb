@@ -70,14 +70,14 @@
               <img
                 v-for="(imgSrc, srcIndex) in imgItem.src"
                 :key="srcIndex"
-                :src="require(`assets/images/product/second/${imgSrc}`)"
+                v-lazy="require(`assets/images/product/second/${imgSrc}`)"
                 :class="imgItem.imgClass"
                 alt=""
               />
             </li>
             <li v-else :key="imgIndex" :class="imgItem.imgClass">
               <img
-                :src="require(`assets/images/product/second/${imgItem.src}`)"
+                v-lazy="require(`assets/images/product/second/${imgItem.src}`)"
                 :class="imgItem.imgClass"
                 alt=""
               />
@@ -92,20 +92,20 @@
         </div>
       </div>
     </div>
-    <div class="card-carousel" @mouseenter="stopFooterCarousel" @mouseleave="startFooterCarousel">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div
-            class="swiper-slide"
-            v-for="(item, index) in pageList.lastCarouselList"
-            :key="index"
-          >
-            <span class="title">{{item.title}}</span>
-            <img
-              :src="require(`assets/images/product/one/${item.imgSrc}`)"
-              alt=""
-            />
-          </div>
+    <div class="card-carousel swiper-container">
+      <div class="swiper-wrapper">
+        <div
+          class="swiper-slide"
+          v-for="(item, index) in pageList.lastCarouselList"
+          :key="index"
+          @mouseenter.stop="stopFooterCarousel"
+          @mouseleave.stop="startFooterCarousel"
+        >
+          <span class="title">{{item.title}}</span>
+          <img
+            :src="require(`assets/images/product/one/${item.imgSrc}`)"
+            alt=""
+          />
         </div>
       </div>
     </div>
@@ -477,7 +477,7 @@ export default {
   },
   created() {
     this.pageList = this.dejiaList; //临时使用 // this.pageList=this[`${this.$route.params.type}List`];//最后请替换这个
-    console.log(this.pageList);
+    console.log('1111', this.pageList);
   },
   mounted() {
     this.initSwiper();
@@ -486,11 +486,11 @@ export default {
     initSwiper() {
       this.footerCarSwiper = new Swiper(".swiper-container", {
         autoplay: {
-          delay: 3000,
+          delay: 30000,
           disableOnInteraction: false
         },
         loop: true, //循环轮播
-        simulateTouch: false, //禁止滑动轮播
+        // simulateTouch: false, //禁止滑动轮播
         effect: "coverflow", //slide的切换效果 3d效果
         slidesPerView: "2", 
         loopedSlides: 2,
@@ -502,6 +502,17 @@ export default {
           depth: 0, //slide的位置深度。值越大z轴距离越远，看起来越小。
           modifier: 4, //depth和rotate和stretch的倍率，相当于depth*modifier、rotate*modifier、stretch*modifier，值越大这三个参数的效果越明显。
           slideShadows: false
+        },
+        on: {
+          click: function(event) {
+            event.stopPropagation();
+            let currentClass = event.target.className;
+            if (currentClass.includes('swiper-slide-prev')) {
+              this.slidePrev();
+            } else if (currentClass.includes('swiper-slide-next')) {
+              this.slideNext();
+            }
+          }
         }
       });
     },

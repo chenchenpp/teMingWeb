@@ -61,20 +61,21 @@ export default {
 }
 body{
   font-size: 16px;
+  min-width: 1024PX;
+  max-width: 1920PX;
   width: 100%;
   height: 100%;
-  overflow-y:auto ;
+  overflow:auto;
   background: url('./assets/images/product/back-color.jpg') center repeat !important;
   background-size: 100%;
 }
 #app {
+  width: 100%;
   font-family: "zhanghaishan", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  min-width: 1024px;
-  max-width: 1920px;
   margin: 0 auto;
 }
 .el-carousel--horizontal{
@@ -112,7 +113,6 @@ body{
 }
 .el-menu--popup{
   background: #FFFFFF!important;
-  
   .el-menu-item{
     background: #FFFFFF!important;
     color: #2a282a!important;
