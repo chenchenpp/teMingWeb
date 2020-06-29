@@ -1,15 +1,16 @@
 <template>
   <div class="brand-entry-container">
-    <div class="content">
-      <div class="banner">
-        <div class="banner-text-area">
-          <p class="main-title">加入特铭 · 让品牌传播更有力</p>
-          <p class="sub-title">全屋定制产品库；全面的经营扶持政策；全维度营销引流和门店运营指导</p>
-          <p class="sub-title">八大开业扶持政策保障加盟商利益，让品牌传播更有利</p>
-          <p class="bottom-line"></p>
-        </div>
+    <div class="banner">
+      <div class="banner-text-area">
+        <p class="main-title">加入特铭 · 让品牌传播更有力</p>
+        <p class="sub-title">全屋定制产品库；全面的经营扶持政策；全维度营销引流和门店运营指导</p>
+        <p class="sub-title">八大开业扶持政策保障加盟商利益，让品牌传播更有利</p>
+        <p class="bottom-line"></p>
       </div>
+    </div>
+    <div class="content">
       <main>
+        <scrollbarTrack></scrollbarTrack>
         <section class="first-section">
           <p class="main-title">特铭家具 · 品牌介绍</p>
           <p class="sub-title">高端家居 深度定制；30年工厂工艺沉淀，考究的工艺和严格的质量标准；国际设计视野，自主研发匠心产品；为有生活追求的你提供专属全</p>
@@ -58,43 +59,102 @@
           <div class="img-intruduce">
             <img src="../assets/images/brandEntry/third-content-img1.png" alt class="w1054 h500" />
             <img src="../assets/images/brandEntry/third-content-img2.png" alt class="w404 h500" />
-            <img src="../assets/images/brandEntry/third-content-img3.png" alt class="w730 h500 mt60" />
-            <img src="../assets/images/brandEntry/third-content-img4.png" alt class="w730 h500 mt60" />
+            <img
+              src="../assets/images/brandEntry/third-content-img3.png"
+              alt
+              class="w730 h500 mt60"
+            />
+            <img
+              src="../assets/images/brandEntry/third-content-img4.png"
+              alt
+              class="w730 h500 mt60"
+            />
           </div>
         </section>
 
-         <section class="forth-section">
+        <section class="forth-section">
           <p class="main-title">加入特铭你可以得到什么</p>
           <p class="sub-title">全屋定制产品库；高定支持，自主研发个性化产品；全面的经营扶持政策；全维度营销引流和门店运营指导</p>
           <div class="img-intruduce">
-            <img src="../assets/images/brandEntry/forth-content-img1.png" alt class="w345 h345 mb60" />
-            <img src="../assets/images/brandEntry/forth-content-img1.png" alt class="w345 h345 mb60" />
-            <img src="../assets/images/brandEntry/forth-content-img1.png" alt class="w345 h345 mb60" />
-            <img src="../assets/images/brandEntry/forth-content-img1.png" alt class="w345 h345 mb60" />
+            <img
+              src="../assets/images/brandEntry/forth-content-img1.png"
+              alt
+              class="w345 h345 mb60"
+            />
+            <img
+              src="../assets/images/brandEntry/forth-content-img1.png"
+              alt
+              class="w345 h345 mb60"
+            />
+            <img
+              src="../assets/images/brandEntry/forth-content-img1.png"
+              alt
+              class="w345 h345 mb60"
+            />
+            <img
+              src="../assets/images/brandEntry/forth-content-img1.png"
+              alt
+              class="w345 h345 mb60"
+            />
             <img src="../assets/images/brandEntry/forth-content-img1.png" alt class="w345 h345" />
             <img src="../assets/images/brandEntry/forth-content-img1.png" alt class="w345 h345" />
             <img src="../assets/images/brandEntry/forth-content-img1.png" alt class="w345 h345" />
             <img src="../assets/images/brandEntry/forth-content-img1.png" alt class="w345 h345" />
           </div>
           <span class="download mt60 mr60">下载加盟文档</span>
-          <span class="upload mt60">上传加盟文档</span>
+          <span class="upload mt60" @click="innerVisible=true">上传加盟文档</span>
         </section>
       </main>
     </div>
+    <el-dialog width="30%" :visible.sync="innerVisible">
+      <el-upload
+        class="upload-demo"
+        drag
+        action="https://jsonplaceholder.typicode.com/posts/"
+        multiple
+        accept=".pdf, .word"
+        :on-success="uploadSuccess"
+        :on-error="uploadError"
+      >
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">
+          将文件拖到此处，或
+          <em>点击上传</em>
+        </div>
+        <div class="el-upload__tip" slot="tip" v-show="uploadSuccessFlag">上传成功！</div>
+        <div class="el-upload__tip" slot="tip" v-show="uploadErrorFlag">上传失败！</div>
+      </el-upload>
+    </el-dialog>
     <tm-footer></tm-footer>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      innerVisible: false,
+      uploadSuccessFlag: false,
+      uploadErrorFlag: false
+    };
+  },
+  methods: {
+    uploadSuccess() {
+      this.uploadSuccessFlag = true;
+    },
+    uploadError() {
+      this.uploadErrorFlag = true;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
 .h350 {
   height: 350px;
 }
-.h345{
-    height: 345px;
+.h345 {
+  height: 345px;
 }
 .h450 {
   height: 450px;
@@ -108,8 +168,8 @@ export default {};
 .w335 {
   width: 335px;
 }
-.w345{
-    width: 345px;
+.w345 {
+  width: 345px;
 }
 .w404 {
   width: 404px;
@@ -164,6 +224,7 @@ export default {};
     position: absolute;
     top: 287px;
     left: 200px;
+    text-align: left;
   }
   .main-title {
     font-size: 30px;
@@ -190,17 +251,17 @@ export default {};
     font-size: initial;
     color: #dddddd;
 
-    &::after {
-      content: "";
-      width: 5px;
-      height: 100px;
-      position: fixed;
-      top: 650px;
-      left: 98px;
-      // z-index: 1;
-      background: rgba(255, 255, 255, 1);
-      transition: all 0.5s;
-    }
+    // &::after {
+    //   content: "";
+    //   width: 5px;
+    //   height: 100px;
+    //   position: fixed;
+    //   top: 650px;
+    //   left: 98px;
+    //   // z-index: 1;
+    //   background: rgba(255, 255, 255, 1);
+    //   transition: all 0.5s;
+    // }
   }
   .img-intruduce {
     display: flex;
@@ -216,17 +277,19 @@ export default {};
   .first-section {
     margin-top: 80px;
   }
-  .third-section .img-intruduce, .forth-section .img-intruduce{
-      flex-wrap: wrap;
+  .third-section .img-intruduce,
+  .forth-section .img-intruduce {
+    flex-wrap: wrap;
   }
-  .download, .upload{
+  .download,
+  .upload {
     display: inline-block;
-    width:150PX;
-    height:34PX;
-    line-height: 34PX;
+    width: 150px;
+    height: 34px;
+    line-height: 34px;
     text-align: center;
-    border:1px solid rgba(221,221,221,.2);
-    color:rgba(221,221,221,.5);
+    border: 1px solid rgba(221, 221, 221, 0.2);
+    color: rgba(221, 221, 221, 0.5);
     cursor: pointer;
   }
 }

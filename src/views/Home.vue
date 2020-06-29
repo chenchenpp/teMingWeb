@@ -103,7 +103,6 @@ export default {
 .swiper-container {
   width: 100vw;
   height: 100vh;
-
 }
 
 .swiper-slide img {
@@ -119,16 +118,18 @@ export default {
 }
 </style>
 <style lang="scss">
+.home-container {
   .swiper-pagination-bullet {
     width: 50px;
     height: 4px;
-    margin: 0!important;
-    margin-left: 28px!important;
+    margin: 0 !important;
+    margin-left: 28px !important;
     background: rgba(255, 255, 255, 1);
     opacity: 0.5;
     border-radius: 0;
   }
-  .swiper-pagination-bullet-active{
+  .swiper-pagination-bullet-active {
     opacity: 1;
   }
+}
 </style>

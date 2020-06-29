@@ -8,13 +8,10 @@
     <div class="content">
       <scrollbarTrack></scrollbarTrack>
       <section class="first-content">
-        <p class="main-title">高端家居深度定制专家</p>
-        <p class="sub-title">
-          我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
-          <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
-        </p>
+        <p class="main-title" v-html="firstContentData.mainTitle"></p>
+        <p class="sub-title" v-html="firstContentData.subTitle"></p>
         <div class="img-intruduce">
-          <el-image v-for="url in urls" :key="url" :src="url" lazy></el-image>
+          <el-image v-for="url in firstContentData.imgArr" :key="url" :src="url" lazy></el-image>
         </div>
       </section>
 
@@ -27,84 +24,144 @@
         <div class="img-intruduce">
           <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
         </div>-->
-
-        <div class="container">
-          <div class="timeline">
-            <div class="swiper-container">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide" data-year="2011">
-                  <div class="swiper-slide-content">
-                    <span class="timeline-year">2011</span>
-                    <h4 class="timeline-title">Our nice super title</h4>
-                    <p
-                      class="timeline-text"
-                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  </div>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide" data-year="2011">
+              <div class="swiper-slide-content">
+                <div class="title-container">
+                  <p class="main-title">高端家居深度定制专家</p>
+                  <p class="sub-title">
+                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
+                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
+                  </p>
                 </div>
-                <div class="swiper-slide" data-year="2012">
-                  <div class="swiper-slide-content">
-                    <span class="timeline-year">2012</span>
-                    <h4 class="timeline-title">Our nice super title</h4>
-                    <p
-                      class="timeline-text"
-                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  </div>
-                </div>
-                <div class="swiper-slide" data-year="2013">
-                  <div class="swiper-slide-content">
-                    <span class="timeline-year">2013</span>
-                    <h4 class="timeline-title">Our nice super title</h4>
-                    <p
-                      class="timeline-text"
-                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  </div>
-                </div>
-                <div class="swiper-slide" data-year="2014">
-                  <div class="swiper-slide-content">
-                    <span class="timeline-year">2014</span>
-                    <h4 class="timeline-title">Our nice super title</h4>
-                    <p
-                      class="timeline-text"
-                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  </div>
-                </div>
-                <div class="swiper-slide" data-year="2015">
-                  <div class="swiper-slide-content">
-                    <span class="timeline-year">2015</span>
-                    <h4 class="timeline-title">Our nice super title</h4>
-                    <p
-                      class="timeline-text"
-                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  </div>
-                </div>
-                <div class="swiper-slide" data-year="2016">
-                  <div class="swiper-slide-content">
-                    <span class="timeline-year">2016</span>
-                    <h4 class="timeline-title">Our nice super title</h4>
-                    <p
-                      class="timeline-text"
-                    >Lorem ipsum dolor site amet, consectetur adipscing elit, sed do eisumod tempor incididut ut labore et dolore magna aliqua. Ut enim ad mimim venjam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                  </div>
-                </div>
+                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
+                <span class="timeline-year">2011</span>
               </div>
-              <div class="swiper-button-prev"></div>
-              <div class="swiper-button-next"></div>
-              <div class="swiper-pagination"></div>
+            </div>
+
+            <div class="swiper-slide" data-year="2012">
+              <div class="swiper-slide-content">
+                <div class="title-container">
+                  <p class="main-title">高端家居深度定制专家</p>
+                  <p class="sub-title">
+                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
+                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
+                  </p>
+                </div>
+                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
+                <span class="timeline-year">2012</span>
+              </div>
+            </div>
+
+            <div class="swiper-slide" data-year="2013">
+              <div class="swiper-slide-content">
+                <div class="title-container">
+                  <p class="main-title">高端家居深度定制专家</p>
+                  <p class="sub-title">
+                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
+                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
+                  </p>
+                </div>
+                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
+                <span class="timeline-year">2013</span>
+              </div>
+            </div>
+
+            <div class="swiper-slide" data-year="2014">
+              <div class="swiper-slide-content">
+                <div class="title-container">
+                  <p class="main-title">高端家居深度定制专家</p>
+                  <p class="sub-title">
+                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
+                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
+                  </p>
+                </div>
+                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
+                <span class="timeline-year">2014</span>
+              </div>
+            </div>
+
+            <div class="swiper-slide" data-year="2015">
+              <div class="swiper-slide-content">
+                <div class="title-container">
+                  <p class="main-title">高端家居深度定制专家</p>
+                  <p class="sub-title">
+                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
+                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
+                  </p>
+                </div>
+                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
+                <span class="timeline-year">2015</span>
+              </div>
+            </div>
+
+            <div class="swiper-slide" data-year="2016">
+              <div class="swiper-slide-content">
+                <div class="title-container">
+                  <p class="main-title">高端家居深度定制专家</p>
+                  <p class="sub-title">
+                    我们不做大整装，也不做跨业态，我们就在家居的领域做深度。
+                    <br />在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。
+                  </p>
+                </div>
+                <img src="../assets/images/brandStory/second-content-img1.jpg" alt />
+                <span class="timeline-year">2016</span>
+              </div>
             </div>
           </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-pagination"></div>
         </div>
       </section>
 
       <section class="third-content">
-        <p class="main-title">�߶˼Ҿ���ȶ���ר��</p>
-        <p class="sub-title">���ǲ�������װ��Ҳ������ҵ̬�����Ǿ��ڼҾӵ���������ȡ�</p>
+        <p class="main-title">特铭品牌的核心价值</p>
+        <p class="sub-title">特铭是一个用匠心做产品和服务，为客户量身定做高格调居家空间和生活方式尊重每一个客户的高端家居深度定制品牌</p>
         <div class="img-intruduce">
           <div class="left-img">
-            <img src="../assets/images/brandStory/third-content-img1.png" alt />
-            <img src="../assets/images/brandStory/third-content-img2.png" alt />
+            <div class="img-box mb60">
+              <div class="img-title-box">
+                <p class="img-main-title">格调</p>
+                <p class="img-sub-title">
+                  居住理应不同，格调无处不在
+                  <br />特铭家居，同步国际
+                  <br />定制属于高端人士的生活质感和家居雅趣
+                  <br />让格调精英看见理想生活的全貌
+                  <br />
+                </p>
+              </div>
+              <img src="../assets/images/brandStory/third-content-img1.png" alt />
+            </div>
+            <div class="img-box">
+              <div class="img-title-box">
+                <p class="img-main-title">格调</p>
+                <p class="img-sub-title">
+                  居住理应不同，格调无处不在
+                  <br />特铭家居，同步国际
+                  <br />定制属于高端人士的生活质感和家居雅趣
+                  <br />让格调精英看见理想生活的全貌
+                  <br />
+                </p>
+              </div>
+              <img src="../assets/images/brandStory/third-content-img2.png" alt />
+            </div>
           </div>
           <div class="right-img">
-            <img src="../assets/images/brandStory/third-content-img3.png" alt />
+            <div class="img-box">
+              <div class="img-title-box">
+                <p class="img-main-title">匠心</p>
+                <p class="img-sub-title">
+                  居住理应不同，格调无处不在
+                  <br />特铭家居，同步国际
+                  <br />定制属于高端人士的生活质感和家居雅趣
+                  <br />让格调精英看见理想生活的全貌
+                  <br />
+                </p>
+              </div>
+              <img src="../assets/images/brandStory/third-content-img3.png" alt />
+            </div>
           </div>
         </div>
       </section>
@@ -137,8 +194,11 @@
       </section>
 
       <div class="fifth-content">
-        <p class="main-title">��ȶ��� �� ���ķ���</p>
-        <p class="sub-title">Χ�ƿͻ������������еļҡ����ռ�Ŀ�꣬�ṩ�ᴩ�ͻ���ʼ���յ����ά��</p>
+        <p class="main-title">深度定制 · 五心服务</p>
+        <p class="sub-title">
+          围绕客户“打造理想中的家”的终极目标，提供贯穿客户从始至终的深度维护
+          <br />一站式满足客户需求，让每位客户都深感尊重，超出预期
+        </p>
         <div class="img-intruduce or-container">
           <div
             class="box"
@@ -151,6 +211,10 @@
             <img :src="ele.bg" alt />
             <div class="tips" v-show="!ele.active">{{ele.heart}}</div>
             <div class="title-area"></div>
+            <div class="img-title-box" v-show="ele.active">
+              <p class="img-main-title">家居设计服务</p>
+              <p class="img-sub-title">根据客户房屋结构、装修风格、个人偏好等，提供深度的家居设计服务</p>
+            </div>
           </div>
         </div>
       </div>
@@ -175,7 +239,17 @@ export default {
     return {
       isShowVideoPlayer: false,
       eleindex: 0,
-      firstContentData: {},
+      firstContentData: {
+        mainTitle: "高端家居深度定制专家",
+        subTitle:
+          "  我们不做大整装，也不做跨业态，我们就在家居的领域做深度。<br/>在全屋、高端和品质的战略根基上，把定制做深做透做到极致，成为家具行业与众不同的唯一。",
+        imgArr: [
+          "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
+          "https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg",
+          "https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg",
+          "https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg"
+        ]
+      },
       secondContentData: {},
       thirdContentData: {},
       forthContentData: {
@@ -284,12 +358,6 @@ export default {
         // poster:
         //   "https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg"
       },
-      urls: [
-        "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg",
-        "https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg",
-        "https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg",
-        "https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg"
-      ],
       superurl: [
         {
           url: "",
@@ -372,26 +440,24 @@ export default {
       this.isShowVideoPlayer = false;
     },
     initSwiper() {
-      new Swiper(".timeline .swiper-container", {
+      new Swiper(".swiper-container", {
         direction: "vertical",
-        // loop: false,
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
-          //自定义分页类型
-          // type: "custom",
           //自定义分页
           renderBullet: function(index, className) {
-            // alert(1);
             var year = document
               .querySelectorAll(".swiper-slide")
               [index].getAttribute("data-year");
-            return '<span class="' + className + '">' + year + "</span>";
+            return `<span class="${className}"><span>${year}</span><i class="iconfont icontriangle"></i></span>`;
           }
         },
 
-        nextButton: ".swiper-button-next",
-        prevButton: ".swiper-button-prev",
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev"
+        },
         breakpoints: {
           768: {
             direction: "horizontal"
@@ -418,16 +484,10 @@ export default {
   overflow: hidden;
   font-size: initial;
   color: #dddddd;
-  // &::after {
-  //   content: "";
-  //   width: 5px;
-  //   height: 100px;
-  //   position: fixed;
-  //   top: 458px;
-  //   left: 97.5px;
-  //   // z-index: 1;
-  //   background: rgba(255, 255, 255, 1);
-  // }
+  margin-bottom: 60px;
+}
+.mb60 {
+  margin-bottom: 60px;
 }
 .tl {
   text-align: left;
@@ -443,9 +503,25 @@ export default {
   margin-bottom: 40px;
 }
 .sub-title {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 8px;
   line-height: 28px;
+}
+.img-box {
+  position: relative;
+}
+.img-title-box {
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+}
+.img-main-title {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+.img-sub-title {
+  font-size: 14px;
+  line-height: 24px;
 }
 //
 .first-content,
@@ -473,13 +549,33 @@ export default {
   }
 }
 .first-content {
+  .img-intruduce {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 60px;
+    .el-image {
+      width: 347px;
+      height: 450px;
+      transition: transform 0.5s;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+    img {
+      width: 347px;
+      height: 450px;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
 }
 .second-content {
   text-align: right;
   margin-top: 80px;
   padding-left: 100px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   .img-intruduce {
     margin-top: 60px;
     img {
@@ -506,15 +602,15 @@ export default {
   padding-bottom: 80px;
   .first-sub-title {
     width: 854px;
-    // font-size: 14px;
-    // line-height: 28px;
     margin: 0 auto;
   }
   .img-intruduce {
     margin-top: 60px;
     display: flex;
+    justify-content: space-around;
     .left-img {
       width: 911px;
+      height: 550px;
     }
 
     .el-carousel__item {
@@ -529,12 +625,11 @@ export default {
     height: 550px;
   }
   .right-text {
-    margin-left: 65px;
     li {
       display: flex;
       text-align: left;
       align-items: center;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
       .icon {
         width: 48px;
         height: 48px;
@@ -587,17 +682,6 @@ export default {
   }
 }
 
-/**
-i 1
-
-1     2      3          4        5
-
-0  选中150  970+150   970 + 300   970 + 450
-
-0  150     选中 300     970 + 300   970 + 450
-0  150       300         选中450    970 + 450
-
-*/
 .l150 {
   left: 150px;
 }
@@ -661,255 +745,6 @@ div.box.eleactive img {
     height: 100%;
   }
 }
-
-
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #fff;
-  flex-direction: column;
-}
-
-.title {
-  font-size: 38px;
-  color: #616161;
-  font-style: italic;
-  font-weight: 800;
-}
-
-.timeline {
-  width: 100%;
-  background-color: #fff;
-  box-shadow: 0 5px 25px 5px rgba(0, 0, 0, 0.2);
-}
-.timeline .swiper-container {
-  height: 600px;
-  width: 100%;
-  position: relative;
-}
-.timeline .swiper-wrapper {
-  transition: 2s cubic-bezier(0.68, -0.4, 0.27, 1.34) 0.2s;
-}
-.timeline .swiper-slide {
-  width: 1520px;
-  height: 600px;
-  position: relative;
-  color: #fff;
-  overflow: hidden;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background: url(../assets/images/brandStory/second-content-img1.jpg);
-  background-size: 1520px 600px;
-}
-.timeline .swiper-slide::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  right: -115%;
-  bottom: -10%;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: -230px 0 150px 60vw rgba(0, 0, 0, 0.7);
-  border-radius: 100%;
-}
-.timeline .swiper-slide-content {
-  position: absolute;
-  text-align: center;
-  width: 80%;
-  max-width: 310px;
-  right: 50%;
-  top: 13%;
-  -webkit-transform: translate(50%, 0);
-  transform: translate(50%, 0);
-  font-size: 12px;
-  z-index: 2;
-}
-.timeline .swiper-slide .timeline-year {
-  display: block;
-  font-style: italic;
-  font-size: 42px;
-  margin-bottom: 50px;
-  -webkit-transform: translate3d(20px, 0, 0);
-  transform: translate3d(20px, 0, 0);
-  color: #d4a024;
-  font-weight: 300;
-  opacity: 0;
-  transition: 0.2s ease 0.4s;
-}
-.timeline .swiper-slide .timeline-title {
-  font-weight: 800;
-  font-size: 34px;
-  margin: 0 0 30px;
-  opacity: 0;
-  -webkit-transform: translate3d(20px, 0, 0);
-  transform: translate3d(20px, 0, 0);
-  transition: 0.2s ease 0.5s;
-}
-.timeline .swiper-slide .timeline-text {
-  line-height: 1.5;
-  opacity: 0;
-  -webkit-transform: translate3d(20px, 0, 0);
-  transform: translate3d(20px, 0, 0);
-  transition: 0.2s ease 0.6s;
-}
-.timeline .swiper-slide-active .timeline-year {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  transition: 0.4s ease 1.6s;
-}
-.timeline .swiper-slide-active .timeline-title {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  transition: 0.4s ease 1.7s;
-}
-.timeline .swiper-slide-active .timeline-text {
-  opacity: 1;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-  transition: 0.4s ease 1.8s;
-}
-.timeline .swiper-pagination {
-  right: 15% !important;
-  width: 100%;
-  font-weight: 300;
-  font-size: 18px;
-  z-index: 1;
-  align-content: center;
-  justify-content: space-between;
-}
-.timeline .swiper-pagination::before {
-  content: "";
-  position: absolute;
-  left: -30px;
-  top: 0;
-  height: 100%;
-  width: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
-}
-.timeline .swiper-pagination-bullet {
-  width: auto;
-  height: auto;
-  text-align: center;
-  opacity: 1;
-  background: transparent;
-  color: #d4a024;
-  margin: 15px 0 !important;
-  position: relative;
-}
-.timeline .swiper-pagination-bullet::before {
-  content: "";
-  position: absolute;
-  top: 8px;
-  left: -32.5px;
-  width: 6px;
-  height: 6px;
-  border-radius: 100%;
-  background-color: #d4a024;
-  -webkit-transform: scale(0);
-  transform: scale(0);
-  transition: 0.2s;
-}
-.timeline .swiper-pagination-bullet-active {
-  color: #d4a024;
-}
-.timeline .swiper-pagination-bullet-active::before {
-  -webkit-transform: scale(1);
-  transform: scale(1);
-}
-.timeline .swiper-button-next,
-.timeline .swiper-button-prev {
-  background-size: 20px 20px;
-  top: 15%;
-  width: 20px;
-  height: 20px;
-  margin-top: 0;
-  z-index: 2;
-  transition: 0.2s;
-}
-.timeline .swiper-button-prev {
-  left: 8%;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23d4a024'%2F%3E%3C%2Fsvg%3E");
-}
-.timeline .swiper-button-prev:hover {
-  -webkit-transform: translateX(-3px);
-  transform: translateX(-3px);
-}
-.timeline .swiper-button-next {
-  right: 8%;
-  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23d4a024'%2F%3E%3C%2Fsvg%3E");
-}
-.timeline .swiper-button-next:hover {
-  -webkit-transform: translateX(3px);
-  transform: translateX(3px);
-}
-// @media screen and (min-width: 768px) {
-//   .timeline .swiper-slide::after {
-//     right: -30%;
-//     bottom: -8%;
-//     width: 240px;
-//     height: 50%;
-//     box-shadow: -230px 0 150px 50vw rgba(0, 0, 0, 0.7);
-//   }
-//   .timeline .swiper-slide-content {
-//     right: 30%;
-//     top: 50%;
-//     -webkit-transform: translateY(-50%);
-//     transform: translateY(-50%);
-//     width: 310px;
-//     font-size: 11px;
-//     text-align: right;
-//   }
-//   .timeline .swiper-slide .timeline-year {
-//     margin-bottom: 0;
-//     font-size: 32px;
-//   }
-//   .timeline .swiper-slide .timeline-title {
-//     font-size: 46px;
-//     margin: 0;
-//   }
-//   .timeline .swiper-pagination {
-//     display: flex;
-//   }
-//   .timeline .swiper-button-prev {
-//     top: 15%;
-//     left: auto;
-//     right: 15%;
-//     -webkit-transform: rotate(90deg) translate(0, 10px);
-//     transform: rotate(90deg) translate(0, 10px);
-//   }
-//   .timeline .swiper-button-prev:hover {
-//     -webkit-transform: rotate(90deg) translate(-3px, 10px);
-//     transform: rotate(90deg) translate(-3px, 10px);
-//   }
-//   .timeline .swiper-button-next {
-//     top: auto;
-//     bottom: 15%;
-//     right: 15%;
-//     -webkit-transform: rotate(90deg) translate(0, 10px);
-//     transform: rotate(90deg) translate(0, 10px);
-//   }
-//   .timeline .swiper-button-next:hover {
-//     -webkit-transform: rotate(90deg) translate(3px, 10px);
-//     transform: rotate(90deg) translate(3px, 10px);
-//   }
-// }
-// @media screen and (min-width: 1024px) {
-//   .timeline .swiper-slide::after {
-//     right: -20%;
-//     bottom: -12%;
-//     width: 240px;
-//     height: 50%;
-//     box-shadow: -230px 0 150px 39vw rgba(0, 0, 0, 0.7);
-//   }
-//   .timeline .swiper-slide-content {
-//     right: 25%;
-//   }
-// }
 </style>
 <style lang="scss">
 .forth-content {
@@ -917,38 +752,7 @@ div.box.eleactive img {
     height: 550px;
   }
 }
-.second-content {
-  .el-carousel {
-    margin-top: 50px;
-  }
-  .el-carousel__item {
-    text-align: left;
-    display: flex;
-    align-items: center;
-    .year {
-      display: inline-block;
-      text-align: center;
-      width: 242px;
-      border-left: 1px solid rgba(255, 255, 255, 0.5);
-      cursor: pointer;
-      position: relative;
-      color: rgba(255, 255, 255, 0.5);
-      &:first-child {
-        border-left: none;
-      }
-      i {
-        position: absolute;
-        font-size: 24px;
-        left: 50%;
-        transform: translateX(-50%);
-        top: 20px;
-      }
-      &.active {
-        color: #dddddd;
-      }
-    }
-  }
-}
+
 .el-dialog__body,
 .el-dialog__header {
   padding: 0;
@@ -973,7 +777,85 @@ div.box.eleactive img {
   height: 4px;
   margin-left: 28px !important;
 }
-// div.swiper-slide {
-//   width: 242px !important;
-// }
+.second-content {
+  .swiper-pagination {
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    align-items: center;
+  }
+  .swiper-slide-content {
+    img {
+      width: 1520px;
+      height: 600px;
+    }
+  }
+  .swiper-pagination-bullet {
+    width: 242px;
+    background: none;
+    height: 60px;
+    font-size: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    position: relative;
+    i {
+      font-size: 28px;
+      opacity: 0;
+    }
+    &::after {
+      content: "";
+      width: 1px;
+      height: 20px;
+      position: absolute;
+      background: rgba(255, 255, 255, 0.5);
+      right: 0;
+      top: 15px;
+    }
+  }
+  .swiper-pagination-bullet:last-child {
+    &::after {
+      display: none;
+    }
+  }
+  .swiper-pagination-bullet-active {
+    i {
+      opacity: 1;
+    }
+  }
+  .title-container {
+    margin-bottom: 58px;
+  }
+  .timeline-year {
+    opacity: 0;
+    height: 110px;
+    display: block;
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    top: 97%;
+    height: auto;
+    z-index: 11;
+    width: 25px;
+    height: 20px;
+    background-size: contain;
+    opacity: 0.5;
+    &::after {
+      display: none;
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+  .swiper-button-prev {
+    left: 0;
+    background-image: url("../assets/images/brandStory/back-left.png");
+  }
+  .swiper-button-next {
+    right: 0;
+    background-image: url("../assets/images/brandStory/back-right.png");
+  }
+}
 </style>

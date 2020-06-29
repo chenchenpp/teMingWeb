@@ -3,7 +3,7 @@
     <div class="content">
       <ul class="hall-container" v-move>
         <template v-for="(data, key) in hallData">
-          <li :key="data.mainTitle + data.subTItle" >
+          <li :key="data.mainTitle + data.subTItle">
             <img :src="data.img" alt />
             <div class="intruduce-text">
               <p class="main-title">{{data.mainTitle}}</p>
@@ -74,14 +74,14 @@ export default {
 
 <style lang="scss" scoped>
 .content {
-  width: 100%;
-  height: 1000px;
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   position: relative;
   .banner-img {
     width: 100%;
     height: 100%;
-    background: #000000;
+
     position: absolute;
     opacity: 0;
     transition: transform 0.5s, opacity 0.5s;
@@ -102,7 +102,15 @@ export default {
   font-weight: 300;
   color: #dddddd;
   overflow: hidden;
-  z-index: 10;
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+  }
   li {
     width: 650px;
     height: 430px;
@@ -110,12 +118,10 @@ export default {
     margin-right: 56px;
     text-align: left;
     box-shadow: 0px 20px 20px 0px rgba(0, 0, 0, 0.3);
+    z-index: 30;
+    opacity: 1;
     &:first-child {
       margin-left: 200px;
-      // .intruduce-text {
-      //   opacity: 1;
-      //   transform: scaleY(1) translateY(0);
-      // }
     }
     &:hover {
       .intruduce-text {

@@ -11,6 +11,7 @@
       </div>
       <main>
         <ul class="recruitment-position">
+          <scrollbarTrack></scrollbarTrack>
           <li @click="dialogVisible = true">
             <div class="top-img">
               <img src="../assets/images/joinUs/img1.png" alt />
@@ -91,6 +92,25 @@
       </main>
     </div>
     <el-dialog :visible.sync="dialogVisible" :before-close="handleClose" class="details-dialog">
+      <el-dialog width="30%" :visible.sync="innerVisible" append-to-body>
+        <el-upload
+          class="upload-demo"
+          drag
+          action="https://jsonplaceholder.typicode.com/posts/"
+          multiple
+          accept=".pdf, .word"
+          :on-success="uploadSuccess"
+          :on-error="uploadError"
+        >
+          <i class="el-icon-upload"></i>
+          <div class="el-upload__text">
+            将文件拖到此处，或
+            <em>点击上传</em>
+          </div>
+          <div class="el-upload__tip" slot="tip" v-show="uploadSuccessFlag">上传成功！</div>
+          <div class="el-upload__tip" slot="tip" v-show="uploadErrorFlag">上传失败！</div>
+        </el-upload>
+      </el-dialog>
       <div class="dialog-header">
         <p>职位：市场经理</p>
         <p>薪资：12K-15K</p>
@@ -102,27 +122,29 @@
           <p>2、根据市场及需求形成可行性课程资料；</p>
           <p>3、根据推广工作的需求以及市场的客观要求，设计并不断推出各种学习方案；</p>
           <p>4、承办所需的各项培训会议与市场推广活动；</p>
-          <p> 5、收集分析公司增值服务产品及竞争伙伴的相关信息；</p>
+          <p>5、收集分析公司增值服务产品及竞争伙伴的相关信息；</p>
           <p>6、加强与公司内部的协调，优化与公司外部的合作。</p>
         </div>
         <div class="middle-line"></div>
         <div class="right">
           <h1>岗位要求：</h1>
           <p>1、有较好的沟通能力、表达能力、逻辑思维能力，有激情，有耐心；</p>
-          <p> 2、文字文案能力强；</p>
+          <p>2、文字文案能力强；</p>
           <p>3、能熟练使用Word、PowerPoint的高级功能；</p>
           <p>4、对市场调查工作有一定的了解；</p>
-          <p>5、有教育行业背景或经验者优先。</p>            
+          <p>5、有教育行业背景或经验者优先。</p>
         </div>
       </div>
       <span slot="footer" class="dialog-footer">
         <div class="close" @click="dialogVisible = false">关闭</div>
         <div>
-          <div class="download">下载Word</div>
-           <div class="upload">上传简历</div>
+          <div class="download" style="display:inline-block">下载Word</div>
+          <div class="upload" style="display:inline-block" @click="innerVisible = true">上传简历</div>
         </div>
       </span>
     </el-dialog>
+    <!-- <up-load :dialogVisible="dialogVisible" /> -->
+
     <tm-footer></tm-footer>
   </div>
 </template>
@@ -131,11 +153,23 @@
 export default {
   data() {
     return {
-      dialogVisible: false
+      dialogVisible: false,
+      innerVisible: false,
+      uploadSuccessFlag: false,
+      uploadErrorFlag: false
     };
   },
   methods: {
-    handleClose() {}
+    handleClose() {},
+    closeUploadDialog() {
+      this.isShowDownloadDialog = false;
+    },
+    uploadSuccess() {
+      this.uploadSuccessFlag = true;
+    },
+    uploadError() {
+      this.uploadErrorFlag = true;
+    }
   }
 };
 </script>
@@ -156,7 +190,7 @@ export default {
     left: 200px;
   }
   .main-title {
-    font-size: 30px;
+    font-size: 28px;
     margin-bottom: 30px;
   }
   .sub-title {
@@ -182,44 +216,50 @@ export default {
     font-size: initial;
     color: #dddddd;
 
-    &::after {
-      content: "";
-      width: 5px;
-      height: 100px;
-      position: fixed;
-      top: 650px;
-      left: 98px;
-      // z-index: 1;
-      background: rgba(255, 255, 255, 1);
-      transition: all 0.5s;
-    }
+    // &::after {
+    //   content: "";
+    //   width: 5px;
+    //   height: 100px;
+    //   position: fixed;
+    //   top: 650px;
+    //   left: 98px;
+    //   // z-index: 1;
+    //   background: rgba(255, 255, 255, 1);
+    //   transition: all 0.5s;
+    // }
   }
   .top-img {
     width: 730px;
     height: 380px;
     position: relative;
+    overflow: hidden;
     img {
       width: 730px;
       height: 380px;
     }
     .query-detail {
-      display: none;
+      width: 100%;
+      height: 100%;
+      // display: none;
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-
+      top: 0;
+      left: 0;
+      text-align: center;
+      line-height: 380px;
+      transition: all 1s;
+      background: rgba(0, 0, 0, 0.3);
+      transform: translateY(100%);
       z-index: 99;
       i {
         margin-right: 11px;
       }
     }
     &:hover {
-      opacity: 0.5;
+      // opacity: 0.5;
       // transition: all 1s ease-in;
       .query-detail {
         display: block;
-        transition: all 1s;
+        transform: translateY(0);
       }
     }
   }
@@ -235,27 +275,26 @@ export default {
     }
     .sub-title {
       font-size: 14px;
-      line-height: 21px;
+      line-height: 26px;
     }
-   
   }
-   .download,
-    .upload, .close {
-      width: 94px;
-      height: 30px;
-      line-height: 30px;
-      text-align: center;
-      border: 1px solid rgba(221, 221, 221, 0.2);
-      font-size: 14px;
-      cursor: pointer;
-      display: inline-block;
-      &:hover {
-        background: #6b6b6b;
-      }
+  .download,
+  .upload,
+  .close {
+    width: 94px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid rgba(221, 221, 221, 0.2);
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+      background: #6b6b6b;
     }
-    .download {
-      margin-bottom: 14px;
-    }
+  }
+  .download {
+    margin-bottom: 14px;
+  }
   .recruitment-position {
     display: flex;
     flex-wrap: wrap;
@@ -285,51 +324,54 @@ export default {
   .dialog-header {
     display: flex;
     justify-content: space-between;
-    background: rgba(90, 90, 90, .5);
-    height:73px;
+    background: rgba(90, 90, 90, 0.5);
+    height: 73px;
     align-items: center;
     padding: 0 60px;
     font-size: 18px;
-    color: #DDDDDD;
+    color: #dddddd;
   }
-  .el-dialog__body{
+  .el-dialog__body {
     padding: 0;
   }
-  .el-dialog__header{
+  .el-dialog__header {
     display: none;
   }
-  .dialog-body{
+  .dialog-body {
     display: flex;
     justify-content: space-between;
     text-align: left;
     padding: 40px 60px;
-    color: #DDDDDD;
+    color: #dddddd;
     font-weight: 300;
-    border-bottom: 1px solid rgba(221,221,221,.1);
-    .middle-line{
+    border-bottom: 1px solid rgba(221, 221, 221, 0.1);
+    .middle-line {
       height: 205px;
-      width: 1PX;
-      background:rgba(221,221,221,.2);
+      width: 1px;
+      background: rgba(221, 221, 221, 0.2);
     }
-    h1{
-      font-size: 18PX;
+    h1 {
+      font-size: 18px;
       margin-bottom: 20px;
       font-weight: 300;
     }
-    p{
+    p {
       margin-bottom: 10px;
     }
   }
-  .el-dialog__footer{
+  .el-dialog__footer {
     padding: 0;
     padding-top: 30px;
   }
-  .dialog-footer{
+  .dialog-footer {
     display: flex;
     justify-content: space-between;
-    .download{
+    .download {
       margin-right: 30px;
     }
   }
+}
+.upload-demo {
+  text-align: center;
 }
 </style>
