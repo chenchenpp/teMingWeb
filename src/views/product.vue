@@ -70,14 +70,14 @@
               <img
                 v-for="(imgSrc, srcIndex) in imgItem.src"
                 :key="srcIndex"
-                :src="require(`assets/images/product/second/${imgSrc}`)"
+                v-lazy="require(`assets/images/product/second/${imgSrc}`)"
                 :class="imgItem.imgClass"
                 alt=""
               />
             </li>
             <li v-else :key="imgIndex" :class="imgItem.imgClass">
               <img
-                :src="require(`assets/images/product/second/${imgItem.src}`)"
+                v-lazy="require(`assets/images/product/second/${imgItem.src}`)"
                 :class="imgItem.imgClass"
                 alt=""
               />

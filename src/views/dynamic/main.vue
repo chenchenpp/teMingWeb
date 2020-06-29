@@ -95,16 +95,16 @@ export default {
     leave(item) {
       item.isModal = false;
     },
-    checkDetailHandle(item){
+    checkDetailHandle(item) {
       this.$router.push({
         name: 'dynamicDetail',
         params: {
           id: item.id
         }
-      })
+      });
     },
-    changePage(val){
-      console.log('页数', val)
+    changePage(val) {
+      console.log('页数', val);
     }
   }
 };
