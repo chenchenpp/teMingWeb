@@ -1,6 +1,6 @@
 <template>
   <div class="article-content">
-    <scrollbarTrack></scrollbarTrack>
+    <scrollbar-track></scrollbar-track>
     <ul class="article-items">
       <li v-for="(item, index) in articleList" :key="index">
         <div class="image-box" @mouseover="enter(item)" @mouseleave="leave(item)">

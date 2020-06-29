@@ -245,23 +245,10 @@ export default {
   main {
     margin-left: 100px;
     margin-right: 200px;
-    border-left: 1px solid rgba(255, 255, 255, 0.2);
     position: relative;
     overflow: hidden;
     font-size: initial;
     color: #dddddd;
-
-    // &::after {
-    //   content: "";
-    //   width: 5px;
-    //   height: 100px;
-    //   position: fixed;
-    //   top: 650px;
-    //   left: 98px;
-    //   // z-index: 1;
-    //   background: rgba(255, 255, 255, 1);
-    //   transition: all 0.5s;
-    // }
   }
   .img-intruduce {
     display: flex;
