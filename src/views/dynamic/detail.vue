@@ -1,7 +1,7 @@
 <template>
   <div class="detail-main">
     <div class="content">
-      <scrollbar-track :trackTop="600"></scrollbar-track>
+      <scrollbar-track></scrollbar-track>
       <el-breadcrumb class="breadcrumb" separator-class="el-icon-arrow-right">
         <el-breadcrumb-item :to="{ path: '/dynamic/main' }">特铭动态</el-breadcrumb-item>
         <el-breadcrumb-item>疫情后时代，上海特铭五厂联动，全面投入运营</el-breadcrumb-item>
@@ -31,13 +31,13 @@ export default {
     };
   },
   methods: {
-    goArticleHandle(id){
+    goArticleHandle(id) {
       this.$router.push({
         name: 'dynamicDetail',
         params: {
           id
         }
-      })
+      });
     }
   }
 };

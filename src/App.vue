@@ -66,7 +66,7 @@ body{
   width: 100%;
   height: 100%;
   overflow:auto;
-  background: url('./assets/images/product/back-color.jpg') center repeat !important;
+  background: url('./assets/images/back-color.jpg') center repeat !important;
   background-size: 100%;
 }
 #app {

@@ -119,7 +119,7 @@ export default {
   .article-items {
     width: 1520px;
     // margin-left: 90px;
-    font-size: 16PX;
+    font-size: 16px;
     color: rgba(221, 221, 221, .8);
     display: flex;
     flex-wrap: wrap;

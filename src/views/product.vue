@@ -56,6 +56,7 @@
           v-for="(item, index) in pageList.detailList"
           :key="index"
           :class="[index % 2 == 0 ? 'detail-left' : 'detail-right']"
+          :ref="`IMGmoduel${index}`"
         >
           <li class="moduel-mes">
             <p class="title">{{ item.title }}</p>
@@ -114,6 +115,7 @@
 </template>
 <script>
 import Swiper from "swiper";
+import { getClientHeight } from '@/util/publicMethod';
 export default {
   name: "product",
   data() {
@@ -350,8 +352,25 @@ export default {
   },
   mounted() {
     this.initSwiper();
+    document.addEventListener('scroll', this.productScrollHandle, false);
+    this.$once('hook:beforeDestroy', () => {
+      document.removeEventListener('scroll', this.productScrollHandle, false);
+    });
   },
   methods: {
+    productScrollHandle() {
+      let windowHeight=getClientHeight();
+      for (let i = 0; i < this.pageList.detailList.length; i++) {
+        this.$refs[`IMGmoduel${i}`][0].childNodes.forEach(ele => {
+          let eleTop = ele.getBoundingClientRect().top;
+          if (eleTop > 0 && (eleTop > windowHeight / 2 - 200 || eleTop < windowHeight / 2 + 200)) {
+            ele.style.opacity = `${(windowHeight - eleTop) / windowHeight}`;
+            // ele.style.transform = `scale(${1+(windowHeight - eleTop) / windowHeight})`;
+          }
+        });
+        console.log(i, this.$refs)
+      }
+    },
     initSwiper() {
       this.footerCarSwiper = new Swiper(".swiper-container", {
         autoplay: {
@@ -359,7 +378,7 @@ export default {
           disableOnInteraction: false
         },
         loop: true, //循环轮播
-        // simulateTouch: false, //禁止滑动轮播
+        // simulateTouch: false, //禁止滑动轮播 关闭会影响点击事件的触发！！！！！
         effect: "coverflow", //slide的切换效果 3d效果
         slidesPerView: "2", 
         loopedSlides: 2,
