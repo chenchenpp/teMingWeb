@@ -1,6 +1,6 @@
 <template>
   <div class="article-content">
-    <scrollbarTrack></scrollbarTrack>
+    <scrollbar-track></scrollbar-track>
     <ul class="article-items">
       <li v-for="(item, index) in articleList" :key="index">
         <div class="image-box" @mouseover="enter(item)" @mouseleave="leave(item)">
@@ -119,7 +119,7 @@ export default {
   .article-items {
     width: 1520px;
     // margin-left: 90px;
-    font-size: 16PX;
+    font-size: 16px;
     color: rgba(221, 221, 221, .8);
     display: flex;
     flex-wrap: wrap;

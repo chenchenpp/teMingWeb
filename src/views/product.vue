@@ -1,6 +1,6 @@
 <template>
   <div class="product">
-    <div class="product-carousel">
+    <div class="product-carousel" ref="productCarouRef">
       <el-carousel :autoplay="false">
         <el-carousel-item
           v-for="(item, index) in pageList.bannerCarouselList"
@@ -50,12 +50,13 @@
       <p class="title">{{ pageList.title }}</p>
       <p class="des">{{ pageList.des }}</p>
       <div class="detail-box">
-        <scrollbarTrack></scrollbarTrack>
+        <scrollbar-track></scrollbar-track>
         <ul
           class="moduel"
           v-for="(item, index) in pageList.detailList"
           :key="index"
           :class="[index % 2 == 0 ? 'detail-left' : 'detail-right']"
+          :ref="`IMGmoduel${index}`"
         >
           <li class="moduel-mes">
             <p class="title">{{ item.title }}</p>
@@ -114,6 +115,7 @@
 </template>
 <script>
 import Swiper from "swiper";
+import { getClientHeight } from '@/util/publicMethod';
 export default {
   name: "product",
   data() {
@@ -227,19 +229,19 @@ export default {
               "新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。",
             imgArr: [
               {
-                imgClass: "height600",
+                imgClass: "H600 W1020",
                 src: "first1.jpg"
               },
               {
-                imgClass: "height800",
+                imgClass: "H800 W1520",
                 src: "first2.jpg"
               },
               {
-                imgClass: "height960",
+                imgClass: "H960 W730",
                 src: "first3.jpg"
               },
               {
-                imgClass: "height450",
+                imgClass: "H450 W730",
                 src: ["first4.jpg", "first5.png"]
               }
             ]
@@ -250,19 +252,19 @@ export default {
               "新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。",
             imgArr: [
               {
-                imgClass: "height600",
+                imgClass: "H600 W1020",
                 src: "second1.jpg"
               },
               {
-                imgClass: "height800",
+                imgClass: "H800 W1520",
                 src: "second2.jpg"
               },
               {
-                imgClass: "height600",
+                imgClass: "H600 W730",
                 src: "second3.jpg"
               },
               {
-                imgClass: "height600",
+                imgClass: "H600 W730",
                 src: "second4.jpg"
               }
             ]
@@ -273,23 +275,23 @@ export default {
               "新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。",
             imgArr: [
               {
-                imgClass: "height600",
+                imgClass: "H600 W1020",
                 src: "third1.jpg"
               },
               {
-                imgClass: "height600",
+                imgClass: "H600 W440",
                 src: "third2.jpg"
               },
               {
-                imgClass: "height600",
+                imgClass: "H600 W1020",
                 src: "third3.jpg"
               },
               {
-                imgClass: "height800",
+                imgClass: "H800 W1520",
                 src: "third4.jpg"
               },
               {
-                imgClass: "height300",
+                imgClass: "H300 W1520",
                 src: "third5.jpg"
               }
             ]
@@ -300,153 +302,23 @@ export default {
               "新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。",
             imgArr: [
               {
-                imgClass: "height600",
+                imgClass: "H600 W494",
                 src: "four1.jpg"
               },
               {
-                imgClass: "height600",
+                imgClass: "H600 W494",
                 src: "four2.jpg"
               },
               {
-                imgClass: "height700",
+                imgClass: "H700 W1520",
                 src: "four3.jpg"
               },
               {
-                imgClass: "height600",
+                imgClass: "H600 W1047",
                 src: "four4.jpg"
               },
               {
-                imgClass: "height600",
-                src: "four5.jpg"
-              }
-            ]
-          }
-        ],
-        lastCarouselList: [
-          {
-            imgSrc: "banner.png",
-            title: "莫兰迪系列"
-          },
-          {
-            imgSrc: "banner.png",
-            title: "莫兰迪系列"
-          },
-          {
-            imgSrc: "banner.png",
-            title: "莫兰迪系列"
-          },
-          {
-            imgSrc: "banner.png",
-            title: "莫兰迪系列"
-          }
-        ]
-      },
-      moLanDiList: {
-        title: "莫兰迪系列",
-        des: "智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。",
-        bannerCarouselList: [
-          "banner.png",
-          "banner.png",
-          "banner.png",
-          "banner.png"
-        ],
-        detailList: [
-          {
-            title: "现代、科技、以人为本",
-            info:
-              "新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。",
-            imgArr: [
-              {
-                imgClass: "height600",
-                src: "first1.jpg"
-              },
-              {
-                imgClass: "height800",
-                src: "first2.jpg"
-              },
-              {
-                imgClass: "height960",
-                src: "first3.jpg"
-              },
-              {
-                imgClass: "height450",
-                src: ["first4.jpg", "first5.png"]
-              }
-            ]
-          },
-          {
-            title: "现代、科技、以人为本",
-            info:
-              "新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。",
-            imgArr: [
-              {
-                imgClass: "height600",
-                src: "second1.jpg"
-              },
-              {
-                imgClass: "height800",
-                src: "second2.jpg"
-              },
-              {
-                imgClass: "height600",
-                src: "second3.jpg"
-              },
-              {
-                imgClass: "height600",
-                src: "second4.jpg"
-              }
-            ]
-          },
-          {
-            title: "现代、科技、以人为本",
-            info:
-              "新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。",
-            imgArr: [
-              {
-                imgClass: "height600",
-                src: "third1.jpg"
-              },
-              {
-                imgClass: "height600",
-                src: "third2.jpg"
-              },
-              {
-                imgClass: "height600",
-                src: "third3.jpg"
-              },
-              {
-                imgClass: "height800",
-                src: "third4.jpg"
-              },
-              {
-                imgClass: "height300",
-                src: "third5.jpg"
-              }
-            ]
-          },
-          {
-            title: "现代、科技、以人为本",
-            info:
-              "新型开门方式，节省空间；使用方便，安静安全；安装空间小，门板转动距离短；满足多样化的设计需求，适合书房、衣帽间、厨房、橱柜和其他不同的家居空间。",
-            imgArr: [
-              {
-                imgClass: "height600",
-                src: "four1.jpg"
-              },
-              {
-                imgClass: "height600",
-                src: "four2.jpg"
-              },
-              {
-                imgClass: "height700",
-                src: "four3.jpg"
-              },
-              {
-                imgClass: "height600",
-                src: "four4.jpg"
-              },
-              {
-                imgClass: "height600",
+                imgClass: "H600 W414",
                 src: "four5.jpg"
               }
             ]
@@ -477,12 +349,28 @@ export default {
   },
   created() {
     this.pageList = this.dejiaList; //临时使用 // this.pageList=this[`${this.$route.params.type}List`];//最后请替换这个
-    console.log('1111', this.pageList);
   },
   mounted() {
     this.initSwiper();
+    document.addEventListener('scroll', this.productScrollHandle, false);
+    this.$once('hook:beforeDestroy', () => {
+      document.removeEventListener('scroll', this.productScrollHandle, false);
+    });
   },
   methods: {
+    productScrollHandle() {
+      let windowHeight=getClientHeight();
+      for (let i = 0; i < this.pageList.detailList.length; i++) {
+        this.$refs[`IMGmoduel${i}`][0].childNodes.forEach(ele => {
+          let eleTop = ele.getBoundingClientRect().top;
+          if (eleTop > 0 && (eleTop > windowHeight / 2 - 200 || eleTop < windowHeight / 2 + 200)) {
+            ele.style.opacity = `${(windowHeight - eleTop) / windowHeight}`;
+            // ele.style.transform = `scale(${1+(windowHeight - eleTop) / windowHeight})`;
+          }
+        });
+        console.log(i, this.$refs)
+      }
+    },
     initSwiper() {
       this.footerCarSwiper = new Swiper(".swiper-container", {
         autoplay: {
@@ -490,7 +378,7 @@ export default {
           disableOnInteraction: false
         },
         loop: true, //循环轮播
-        // simulateTouch: false, //禁止滑动轮播
+        // simulateTouch: false, //禁止滑动轮播 关闭会影响点击事件的触发！！！！！
         effect: "coverflow", //slide的切换效果 3d效果
         slidesPerView: "2", 
         loopedSlides: 2,
@@ -541,24 +429,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.height600 {
-  height: 600px;
-}
-.height800 {
-  height: 800px;
-}
-.height960 {
-  height: 960px;
-}
-.height450 {
-  height: 450px;
-}
-.height300 {
-  height: 300px;
-}
-.height700 {
-  height: 700px;
-}
 .product {
   height: 100%;
 
