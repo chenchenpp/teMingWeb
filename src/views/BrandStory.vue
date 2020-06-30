@@ -2,15 +2,23 @@
   <div class="brand-story-container">
     <el-carousel arrow="never" class="banner">
       <el-carousel-item v-for="item in bannerData" :key="item.id" @click="playVideo">
-        <img :src="$host + item.imageUrl"  alt @click="isShowVideoPlayer=true" />
+        <img :src="$host + item.imageUrl" alt @click="isShowVideoPlayer=true" />
       </el-carousel-item>
     </el-carousel>
     <div class="content">
       <scrollbarTrack></scrollbarTrack>
 
       <section class="first-content">
-        <p class="main-title" v-html="firstContentData[0].mainTitle"></p>
-        <p class="sub-title" v-html="firstContentData[0].subTitle"></p>
+        <p
+          class="main-title"
+          v-if="firstContentData[0]"
+          v-html="firstContentData[0][`mainTitle${language}`]"
+        ></p>
+        <p
+          class="sub-title"
+          v-if="firstContentData[0]"
+          v-html="firstContentData[0][`subTitle${language}`]"
+        ></p>
         <div class="img-intruduce">
           <img v-for="item in firstContentData" :key="item.id" v-lazy="$host + item.imageUrl" />
         </div>
@@ -27,8 +35,8 @@
             >
               <div class="swiper-slide-content">
                 <div class="title-container">
-                  <p class="main-title" v-html="item.mainTitle"></p>
-                  <p class="sub-title" v-html="item.subTitle"></p>
+                  <p class="main-title" v-html="item[`mainTitle${language}`]"></p>
+                  <p class="sub-title" v-html="item[`subTitle${language}`]"></p>
                 </div>
                 <img v-lazy="$host + item.imageUrl" alt />
                 <span class="timeline-year">{{item.imageDescription}}</span>
@@ -42,76 +50,98 @@
       </section>
 
       <section class="third-content">
-        <p class="main-title">特铭品牌的核心价值</p>
-        <p class="sub-title">特铭是一个用匠心做产品和服务，为客户量身定做高格调居家空间和生活方式尊重每一个客户的高端家居深度定制品牌</p>
+        <p
+          class="main-title"
+          v-if="thirdContentData[0]"
+          v-html="thirdContentData[0][`mainTitle${language}`]"
+        ></p>
+        <p
+          class="sub-title"
+          v-if="thirdContentData[0]"
+          v-html="thirdContentData[0][`subTitle${language}`]"
+        ></p>
         <div class="img-intruduce">
           <div class="left-img">
             <div class="img-box mb60">
               <div class="img-title-box">
-                <p class="img-main-title">格调</p>
-                <p class="img-sub-title">
-                  居住理应不同，格调无处不在
-                  <br />特铭家居，同步国际
-                  <br />定制属于高端人士的生活质感和家居雅趣
-                  <br />让格调精英看见理想生活的全貌
-                  <br />
-                </p>
+                <p
+                  class="img-main-title"
+                  v-if="thirdContentData[0]"
+                  v-html="thirdContentData[0][`imageDescTitle${language}`]"
+                ></p>
+                <p
+                  class="img-sub-title"
+                  v-if="thirdContentData[0]"
+                  v-html="thirdContentData[0][`imageDescription${language}`]"
+                ></p>
               </div>
-              <img src="../assets/images/brandStory/third-content-img1.png" alt />
+              <img v-lazy="$host + thirdContentData[0].imageUrl" alt />
             </div>
             <div class="img-box">
               <div class="img-title-box">
-                <p class="img-main-title">格调</p>
-                <p class="img-sub-title">
-                  居住理应不同，格调无处不在
-                  <br />特铭家居，同步国际
-                  <br />定制属于高端人士的生活质感和家居雅趣
-                  <br />让格调精英看见理想生活的全貌
-                  <br />
-                </p>
+                <p
+                  class="img-main-title"
+                  v-if="thirdContentData[1]"
+                  v-html="thirdContentData[1][`imageDescTitle${language}`]"
+                ></p>
+                <p
+                  class="img-sub-title"
+                  v-if="thirdContentData[1]"
+                  v-html="thirdContentData[1][`imageDescription${language}`]"
+                ></p>
               </div>
-              <img src="../assets/images/brandStory/third-content-img2.png" alt />
+              <img v-lazy="$host + thirdContentData[1].imageUrl" alt />
             </div>
           </div>
           <div class="right-img">
             <div class="img-box">
               <div class="img-title-box">
-                <p class="img-main-title">匠心</p>
-                <p class="img-sub-title">
-                  居住理应不同，格调无处不在
-                  <br />特铭家居，同步国际
-                  <br />定制属于高端人士的生活质感和家居雅趣
-                  <br />让格调精英看见理想生活的全貌
-                  <br />
-                </p>
+                <p
+                  class="img-main-title"
+                  v-if="thirdContentData[2]"
+                  v-html="thirdContentData[2][`imageDescTitle${language}`]"
+                ></p>
+                <p
+                  class="img-sub-title"
+                  v-if="thirdContentData[2]"
+                  v-html="thirdContentData[2][`imageDescription${language}`]"
+                ></p>
               </div>
-              <img src="../assets/images/brandStory/third-content-img3.png" alt />
+              <img v-lazy="$host + thirdContentData[2].imageUrl" alt />
             </div>
           </div>
         </div>
       </section>
 
       <section class="forth-content">
-        <p class="main-title">{{forthContentData.mainTitle}}</p>
-        <p class="sub-title" v-html="forthContentData.subTitle"></p>
+        <p
+          class="main-title"
+          v-if="forthContentData[0]"
+          v-html="forthContentData[0][`mainTitle${language}`]"
+        ></p>
+        <p
+          class="sub-title"
+          v-if="forthContentData[0]"
+          v-html="forthContentData[0][`subTitle${language}`]"
+        ></p>
         <div class="img-intruduce">
           <div class="left-img">
-            <el-carousel arrow="never" indicator-position="none" ref="carousel">
-              <el-carousel-item v-for="item in forthContentData.data" :key="item.id">
-                <img src="../assets/images/brandStory/forth-content-img1.png" alt />
+            <el-carousel arrow="never" indicator-position="none" ref="carousel" :autoplay='false'>
+              <el-carousel-item v-for="item in forthContentData" :key="item.id">
+                <img v-lazy="$host + item.imageUrl" alt />
               </el-carousel-item>
             </el-carousel>
           </div>
           <ul class="right-text">
             <li
               @mouseenter="handleEnter(key)"
-              v-for="(item, key) in forthContentData.data"
-              :key="item.id"
+              v-for="(item, key) in forthContentData"
+              :key="item.id + item.imageUrl"
             >
-              <img src="../assets/images/brandStory/target.png" class="icon" />
+              <img :src="require(`../assets/images/brandStory/icon${key + 1}.png`)" class="icon" />
               <div class="intruduce" :class="{intruduceActive:item.active}">
-                <p class="main-title">{{item.mainTitle}}</p>
-                <p class="sub-title">{{item.subTitle}}</p>
+                <p class="main-title" v-if="item" v-html="item[`mainTitle${language}`]"></p>
+                <p class="sub-title" v-if="item" v-html="item[`subTitle${language}`]"></p>
               </div>
             </li>
           </ul>
@@ -119,26 +149,31 @@
       </section>
 
       <div class="fifth-content">
-        <p class="main-title">深度定制 · 五心服务</p>
-        <p class="sub-title">
-          围绕客户“打造理想中的家”的终极目标，提供贯穿客户从始至终的深度维护
-          <br />一站式满足客户需求，让每位客户都深感尊重，超出预期
-        </p>
+        <p
+          class="main-title"
+          v-if="fifthContentData[0]"
+          v-html="fifthContentData[0][`mainTitle${language}`]"
+        ></p>
+        <p
+          class="sub-title"
+          v-if="fifthContentData[0]"
+          v-html="fifthContentData[0][`subTitle${language}`]"
+        ></p>
         <div class="img-intruduce or-container">
           <div
             class="box"
-            :class="[ele.left, {bg: !ele.active}]"
-            v-for="(ele,i) in fifthContentData.imgInfo"
+            :class="[item.left, {bg: !item.active}]"
+            v-for="(item,i) in fifthContentData"
             :key="i"
             @mouseenter="enter(i)"
             @mouseleave="out(i)"
           >
-            <img :src="ele.bg" alt />
-            <div class="tips" v-show="!ele.active">{{ele.heart}}</div>
+            <img v-lazy="$host + item.imageUrl" alt />
+            <div class="tips" v-show="!item.active" v-html="item[`tag${language}`]"></div>
             <div class="title-area"></div>
-            <div class="img-title-box" v-show="ele.active">
-              <p class="img-main-title">家居设计服务</p>
-              <p class="img-sub-title">根据客户房屋结构、装修风格、个人偏好等，提供深度的家居设计服务</p>
+            <div class="img-title-box" v-show="item.active">
+              <p class="img-main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
+              <p class="img-sub-title" v-if="item" v-html="item[`imageDescription${language}`]"></p>
             </div>
           </div>
         </div>
@@ -167,94 +202,293 @@ export default {
       bannerData: [],
       firstContentData: [],
       secondContentData: [],
-      thirdContentData: {},
-      forthContentData: {
-        mainTitle: "特铭产品的特色",
-        subTitle:
-          "特铭并先后从德国、意大利、日本、奥地利等国家引进先进的生产设备，采用各种原装进口自德国、意大利、奥地利等国家的顶级五金配件<br/>以确保每一件产品、每一个细节都达到美感和品质的高度统一",
-        data: [
-          {
-            img: "../assets/images/brandStory/forth-content-img1.png",
-            mainTitle: "深度定制",
-            subTitle: "每一款特铭家居都是独一无二，量身定制的",
-            active: true,
-            id: 1
-          },
-          {
-            img: "../assets/images/brandStory/forth-content-img1.png",
-            mainTitle: "深度定制",
-            subTitle: "每一款特铭家居都是独一无二，量身定制的",
-            active: false,
-            id: 2
-          },
-          {
-            img: "../assets/images/brandStory/forth-content-img1.png",
-            mainTitle: "深度定制",
-            subTitle: "每一款特铭家居都是独一无二，量身定制的",
-            active: false,
-            id: 3
-          },
-          {
-            img: "../assets/images/brandStory/forth-content-img1.png",
-            mainTitle: "深度定制",
-            subTitle: "每一款特铭家居都是独一无二，量身定制的",
-            active: false,
-            id: 4
-          },
-          {
-            img: "../assets/images/brandStory/forth-content-img1.png",
-            mainTitle: "深度定制",
-            subTitle: "每一款特铭家居都是独一无二，量身定制的",
-            active: false,
-            id: 5
-          }
-        ]
-      },
-      fifthContentData: {
-        mainTitle: "",
-        subTitle: "",
-        imgInfo: [
-          {
-            text: "����/¼��ҳ��",
-            bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-            img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
-            active: true,
-            heart: "安心"
-          },
-          {
-            text: "����/¼��ҳ��",
-            bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-            img: require("../assets/images/brandStory/fifth-content-small-img2.png"),
-            left: "l920",
-            active: false,
-            heart: "匠心"
-          },
-          {
-            text: "����/¼��ҳ��",
-            bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-            img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
-            left: "l1070",
-            active: false,
-            heart: "舒心"
-          },
-          {
-            text: "����/¼��ҳ��",
-            bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-            img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
-            left: "l1220",
-            active: false,
-            heart: "放心"
-          },
-          {
-            text: "����/¼��ҳ��",
-            bg: require("../assets/images/brandStory/fifth-content-big-img1.png"),
-            img: require("../assets/images/brandStory/fifth-content-small-img1.png"),
-            left: "l1370",
-            active: false,
-            heart: "省心"
-          }
-        ]
-      },
+      thirdContentData: [
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 21,
+          imageBelongPage: "3",
+
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
+          linkUrl: "",
+          mainTitle: "2",
+          mainTitleEnglish: "模块的英文主标题",
+          name: null,
+          no: "",
+          subTitle: "sdf",
+          subTitleEnglish: "模块的英文副标题",
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 24,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/3e44ab81-0e58-4e69-8bd1-5be2a29301b4.png",
+          linkUrl: "dfsd",
+          mainTitle: "ss",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "sdf",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 25,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        }
+      ],
+      forthContentData: [
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 21,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
+          linkUrl: "",
+          mainTitle: "2",
+          mainTitleEnglish: "模块的英文主标题",
+          name: null,
+          no: "",
+          subTitle: "sdf",
+          subTitleEnglish: "模块的英文副标题",
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题",
+          active: true
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 24,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/3e44ab81-0e58-4e69-8bd1-5be2a29301b4.png",
+          linkUrl: "dfsd",
+          mainTitle: "ss",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "sdf",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题",
+          active: false
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 25,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题",
+          active: false
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 26,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题",
+          active: false
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 27,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题",
+          active: false
+        }
+      ],
+      fifthContentData: [
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 21,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
+          linkUrl: "",
+          mainTitle: "2",
+          mainTitleEnglish: "模块的英文主标题",
+          name: null,
+          no: "",
+          subTitle: "sdf",
+          subTitleEnglish: "模块的英文副标题",
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题",
+          active: true,
+          tag: "省心",
+          tagEnglish: "英文版省心"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 24,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/3e44ab81-0e58-4e69-8bd1-5be2a29301b4.png",
+          linkUrl: "dfsd",
+          mainTitle: "ss",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "sdf",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题",
+          active: false,
+          tag: "省心",
+          tagEnglish: "英文版省心"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 25,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题",
+          active: false,
+          tag: "省心",
+          tagEnglish: "英文版省心"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 26,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题",
+          active: false,
+          tag: "省心",
+          tagEnglish: "英文版省心"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 27,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题",
+          active: false,
+          tag: "省心",
+          tagEnglish: "英文版省心"
+        }
+      ],
       // videojs options
       playerOptions: {
         height: "360",
@@ -318,12 +552,21 @@ export default {
   computed: {
     player() {
       return this.$refs.videoPlayer.player;
+    },
+    language() {
+      let lang = this.$i18n.locale == "CN" ? "" : "English";
+      return lang;
+    }
+  },
+  watch: {
+    "$i18n.locale"(newValue) {
+      console.log(newValue);
     }
   },
   methods: {
     enter: function(i) {
       this.eleindex = i;
-      this.fifthContentData.imgInfo.forEach((val, key) => {
+      this.fifthContentData.forEach((val, key) => {
         val.active = false;
         if (key <= i) {
           val.left = `l${key * 150}`;
@@ -343,7 +586,7 @@ export default {
       this.imgindex = -1;
     },
     handleEnter(i) {
-      this.forthContentData.data.forEach((val, key) => {
+      this.forthContentData.forEach((val, key) => {
         this.$refs.carousel.setActiveItem(i);
         val.active = false;
         if (key === i) {
@@ -422,6 +665,7 @@ export default {
   },
   mounted() {
     this.getPageData();
+    console.log("语言是", this.language);
   }
 };
 </script>
