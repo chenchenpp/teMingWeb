@@ -81,7 +81,7 @@ export default {
   .banner-img {
     width: 100%;
     height: 100%;
-
+    object-fit: cover;
     position: absolute;
     opacity: 0;
     transition: transform 0.5s, opacity 0.5s;

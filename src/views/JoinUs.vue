@@ -1,92 +1,33 @@
 <template>
   <div class="join-us-container">
     <div class="content">
-      <div class="banner">
+      <div class="banner" :style="{'background':`url(${$host}${bannerData[0].imageUrl})`}">
         <div class="banner-text-area">
-          <p class="main-title">加入特铭 · 让品牌传播更有力</p>
-          <p class="sub-title">全屋定制产品库；全面的经营扶持政策；全维度营销引流和门店运营指导</p>
-          <p class="sub-title">八大开业扶持政策保障加盟商利益，让品牌传播更有利</p>
+          <p class="main-title" v-if="bannerData[0]" v-html="bannerData[0][`mainTitle${language}`]"></p>
+          <p class="sub-title" v-if="bannerData[0]" v-html="bannerData[0][`subTitle${language}`]"></p>
           <p class="bottom-line"></p>
         </div>
       </div>
-      
+
       <main>
         <scrollbarTrack></scrollbarTrack>
         <ul class="recruitment-position">
-         
-          <li @click="dialogVisible = true">
+          <li @click="queryDetail" v-for="item in firstContentData" :key="item.id">
             <div class="top-img">
-              <img src="../assets/images/joinUs/img1.png" alt />
+              <img v-lazy="$host + item.imageUrl" alt />
               <div class="query-detail">
                 <i class="iconfont iconmagnifying-glass"></i>
-                <span>查看详情</span>
+                <span>{{$t('joinUsInfo.queryDetail')}}</span>
               </div>
             </div>
             <div class="bottom-info">
               <div class="left">
-                <p class="main-title">市场经理 丨 10k-15K</p>
-                <p class="sub-title">进品开始前的市场调研工作；根据市场及需求形成可行性课程资料根据推广工作的需求以及市场的客观要求，设计并不断推出各种</p>
+                <p class="main-title" v-if="item" v-html="item[`mainTitle${language}`]"></p>
+                <p class="sub-title" v-if="item" v-html="item[`subTitle${language}`]"></p>
               </div>
               <div class="right">
-                <div class="download">下载文档</div>
-                <div class="upload">上传简历</div>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="top-img">
-              <img src="../assets/images/joinUs/img1.png" alt />
-              <div class="query-detail">
-                <i class="iconfont iconmagnifying-glass"></i>
-                <span>查看详情</span>
-              </div>
-            </div>
-            <div class="bottom-info">
-              <div class="left">
-                <p class="main-title">市场经理 丨 10k-15K</p>
-                <p class="sub-title">进品开始前的市场调研工作；根据市场及需求形成可行性课程资料根据推广工作的需求以及市场的客观要求，设计并不断推出各种</p>
-              </div>
-              <div class="right">
-                <div class="download">下载文档</div>
-                <div class="upload">上传简历</div>
-              </div>
-            </div>
-          </li>
-          <li @click="dialogVisible = true">
-            <div class="top-img">
-              <img src="../assets/images/joinUs/img1.png" alt />
-              <div class="query-detail">
-                <i class="iconfont iconmagnifying-glass"></i>
-                <span>查看详情</span>
-              </div>
-            </div>
-            <div class="bottom-info">
-              <div class="left">
-                <p class="main-title">市场经理 丨 10k-15K</p>
-                <p class="sub-title">进品开始前的市场调研工作；根据市场及需求形成可行性课程资料根据推广工作的需求以及市场的客观要求，设计并不断推出各种</p>
-              </div>
-              <div class="right">
-                <div class="download">下载文档</div>
-                <div class="upload">上传简历</div>
-              </div>
-            </div>
-          </li>
-          <li @click="dialogVisible = true">
-            <div class="top-img">
-              <img src="../assets/images/joinUs/img1.png" alt />
-              <div class="query-detail">
-                <i class="iconfont iconmagnifying-glass"></i>
-                <span>查看详情</span>
-              </div>
-            </div>
-            <div class="bottom-info">
-              <div class="left">
-                <p class="main-title">市场经理 丨 10k-15K</p>
-                <p class="sub-title">进品开始前的市场调研工作；根据市场及需求形成可行性课程资料根据推广工作的需求以及市场的客观要求，设计并不断推出各种</p>
-              </div>
-              <div class="right">
-                <div class="download">下载文档</div>
-                <div class="upload">上传简历</div>
+                <div class="download">{{$t('joinUsInfo.downloadDoc')}}</div>
+                <div class="upload">{{$t('joinUsInfo.uploadDoc')}}</div>
               </div>
             </div>
           </li>
@@ -109,39 +50,30 @@
             将文件拖到此处，或
             <em>点击上传</em>
           </div>
-          <div class="el-upload__tip" slot="tip" v-show="uploadSuccessFlag">上传成功！</div>
-          <div class="el-upload__tip" slot="tip" v-show="uploadErrorFlag">上传失败！</div>
+          <div class="el-upload__tip" slot="tip" v-show="uploadSuccessFlag">{{$t('joinUsInfo.uploadSuccess')}}</div>
+          <div class="el-upload__tip" slot="tip" v-show="uploadErrorFlag">{{$t('joinUsInfo.uploadError')}}</div>
         </el-upload>
       </el-dialog>
       <div class="dialog-header">
-        <p>职位：市场经理</p>
-        <p>薪资：12K-15K</p>
+        <p v-html="$t('joinUsInfo.position') + '：'+ joinUsDetail[`position${language}`]"></p>
+        <p v-html="$t('joinUsInfo.salaryRange')+'：'+ joinUsDetail[`salaryRange${language}`]"></p>
       </div>
       <div class="dialog-body">
         <div class="left">
-          <h1>岗位职责：</h1>
-          <p>1、进品开始前的市场调研工作；</p>
-          <p>2、根据市场及需求形成可行性课程资料；</p>
-          <p>3、根据推广工作的需求以及市场的客观要求，设计并不断推出各种学习方案；</p>
-          <p>4、承办所需的各项培训会议与市场推广活动；</p>
-          <p>5、收集分析公司增值服务产品及竞争伙伴的相关信息；</p>
-          <p>6、加强与公司内部的协调，优化与公司外部的合作。</p>
+          <h1>{{$t('joinUsInfo.positionDescription')}}：</h1>
+          <p v-html="joinUsDetail[`positionDescription${language}`]"></p>
         </div>
         <div class="middle-line"></div>
         <div class="right">
-          <h1>岗位要求：</h1>
-          <p>1、有较好的沟通能力、表达能力、逻辑思维能力，有激情，有耐心；</p>
-          <p>2、文字文案能力强；</p>
-          <p>3、能熟练使用Word、PowerPoint的高级功能；</p>
-          <p>4、对市场调查工作有一定的了解；</p>
-          <p>5、有教育行业背景或经验者优先。</p>
+          <h1>{{$t('joinUsInfo.positionRequirement')}}：</h1>
+          <p v-html="joinUsDetail[`positionRequirement${language}`]"></p>
         </div>
       </div>
       <span slot="footer" class="dialog-footer">
-        <div class="close" @click="dialogVisible = false">关闭</div>
+        <div class="close" @click="dialogVisible = false">{{$t('joinUsInfo.close')}}</div>
         <div>
-          <div class="download" style="display:inline-block">下载Word</div>
-          <div class="upload" style="display:inline-block" @click="innerVisible = true">上传简历</div>
+          <div class="download" style="display:inline-block">{{$t('joinUsInfo.downloadWord')}}</div>
+          <div class="upload" style="display:inline-block" @click="innerVisible = true">{{$t('joinUsInfo.uploadDoc')}}</div>
         </div>
       </span>
     </el-dialog>
@@ -152,16 +84,206 @@
 </template>
 
 <script>
+import scrollReveal from "scrollreveal";
 export default {
   data() {
     return {
       dialogVisible: false,
       innerVisible: false,
       uploadSuccessFlag: false,
-      uploadErrorFlag: false
+      uploadErrorFlag: false,
+      bannerData: [
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 21,
+          imageBelongPage: "3",
+
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/585818b2-c29c-4650-9c5f-a0e433978071.jpg",
+          linkUrl: "",
+          mainTitle: "2",
+          mainTitleEnglish: "模块的英文主标题",
+          name: null,
+          no: "",
+          subTitle: "sdf",
+          subTitleEnglish: "模块的英文副标题",
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 24,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/3e44ab81-0e58-4e69-8bd1-5be2a29301b4.png",
+          linkUrl: "dfsd",
+          mainTitle: "ss",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "sdf",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 25,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 25,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        }
+      ],
+      firstContentData: [
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 21,
+          imageBelongPage: "3",
+
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
+          linkUrl: "",
+          mainTitle: "2",
+          mainTitleEnglish: "模块的英文主标题",
+          name: null,
+          no: "",
+          subTitle: "sdf",
+          subTitleEnglish: "模块的英文副标题",
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 24,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/3e44ab81-0e58-4e69-8bd1-5be2a29301b4.png",
+          linkUrl: "dfsd",
+          mainTitle: "ss",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "sdf",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 25,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        },
+        {
+          createTime: null,
+          delFlag: null,
+          en: null,
+          id: 26,
+          imageBelongPage: "3",
+          imageSubclass: "品牌故事第一个模块",
+          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
+          linkUrl: "",
+          mainTitle: "sdf",
+          mainTitleEnglish: null,
+          name: null,
+          no: "",
+          subTitle: "1231",
+          subTitleEnglish: null,
+          imageDescTitle: "图片的主标题",
+          imageDescTitleEnglish: "图片的英文主标题",
+          imageDescription: "图片的副标题",
+          imageDescriptionEnglish: "图片的英文副标题"
+        }
+      ],
+      joinUsDetail: {
+        createTime: null,
+        delFlag: 0,
+        id: 7,
+        imageDescription: "",
+        imageUrl: "/static_img/56728c18-e239-42b3-9ac8-c58064cdccfd.png",
+        position: "sa",
+        positionDescription: "salaryRange",
+        positionDescriptionEnglish: "salaryRange",
+        positionEnglish: "salaryRange",
+        positionRequirement: "salaryRange",
+        positionRequirementEnglish: "salaryRange",
+        salaryRange: "salaryRange"
+      }
     };
   },
   methods: {
+    queryDetail(id) {
+      this.$get("/image/getImageByPage.do?imageBelongPage=7&en=0")
+        .then(res => {
+          console.log(res);
+          let data = res.arrList;
+        })
+        .catch();
+      this.dialogVisible = true;
+    },
     handleClose() {},
     closeUploadDialog() {
       this.isShowDownloadDialog = false;
@@ -171,6 +293,67 @@ export default {
     },
     uploadError() {
       this.uploadErrorFlag = true;
+    },
+    initScroll() {
+      scrollReveal().reveal("img", {
+        reset: true,
+        scale: 1.1,
+        opacity: 0.8,
+        delay: 0, // 延时时间
+        distance: "0px", // 执行距离
+        duration: 2000, // 执行时长
+        easing: "ease" // 执行速度
+      });
+    },
+    getPageData() {
+      let that = this;
+      this.$get("/image/getImageByPage.do?imageBelongPage=7&en=0")
+        .then(res => {
+          console.log(res);
+          let data = res.arrList;
+          data.forEach(val => {
+            switch (val.title) {
+              case "1":
+                this.bannerData = val.imgArr;
+                break;
+              case "2":
+                this.firstContentData = val.imgArr;
+                break;
+              case "3":
+                this.secondContentData = val.imgArr;
+                break;
+              default:
+                break;
+            }
+          });
+          that.$nextTick(() => {
+            that.initSwiper();
+            that.enter(0);
+            scrollReveal().reveal("img", {
+              reset: true,
+              scale: 1.1,
+              delay: 0, // 延时时间
+              distance: "0px", // 执行距离
+              duration: 600, // 执行时长
+              easing: "cubic-bezier(0.5, 0, 0, 1)" // 执行速度
+            });
+          });
+          console.log(
+            this.bannerData,
+            this.firstContentData,
+            this.secondContentData
+          );
+        })
+        .catch();
+    }
+  },
+  mounted() {
+    this.initScroll();
+  },
+  computed: {
+    language() {
+      let lang = this.$i18n.locale == "CN" ? "" : "English";
+      return lang;
     }
   }
 };
@@ -270,9 +453,10 @@ export default {
   .download,
   .upload,
   .close {
-    width: 94px;
+    min-width: 94px;
     height: 30px;
     line-height: 30px;
+    padding: 0 20px;
     text-align: center;
     border: 1px solid rgba(221, 221, 221, 0.2);
     font-size: 14px;

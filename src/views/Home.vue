@@ -3,14 +3,6 @@
     <div class="home-loading" :class="{ 'home-loading-active': turnLoadingFlag }" v-if="isLoading">
       <img :src="require('assets/images/home/logo.png')" alt class="logo" />
     </div>
-
-    <!-- <el-carousel arrow="never" v-else>
-      <transition-group name="fadeIn" tag="ul">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <img src="../assets/images/home/banner.jpg" alt />
-      </el-carousel-item>
-      </transition-group>
-    </el-carousel>-->
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div v-for="el in imgList" class="swiper-slide" :key="el">
@@ -61,7 +53,8 @@ export default {
         speed: 3000, // 切换速度，slider自动滑动开始到结束的时间单位ms，也是触摸滑动时释放至贴合的时间。
         effect: "fade",
         pagination: {
-          el: ".swiper-pagination"
+          el: ".swiper-pagination",
+          clickable :true,
         }
       });
     }
@@ -110,11 +103,13 @@ export default {
   height: 100vh;
   transition: 5s linear 5s; /* 必须的必 */
   transform: scale(1.1); /* 必须的必 */
+  object-fit: cover;
 }
 .swiper-slide-active img,
 .swiper-slide-duplicate-active img {
   transition: 6s linear; /* 必须的必 */
   transform: scale(1); /* 必须的必 */
+  
 }
 </style>
 <style lang="scss">

@@ -126,7 +126,7 @@
         ></p>
         <div class="img-intruduce">
           <div class="left-img">
-            <el-carousel arrow="never" indicator-position="none" ref="carousel" :autoplay='false'>
+            <el-carousel arrow="never" indicator-position="none" ref="carousel" :autoplay="false">
               <el-carousel-item v-for="item in forthContentData" :key="item.id">
                 <img v-lazy="$host + item.imageUrl" alt />
               </el-carousel-item>
@@ -168,7 +168,7 @@
             @mouseenter="enter(i)"
             @mouseleave="out(i)"
           >
-            <img v-lazy="$host + item.imageUrl" alt />
+            <img :src="$host + item.imageUrl" alt />
             <div class="tips" v-show="!item.active" v-html="item[`tag${language}`]"></div>
             <div class="title-area"></div>
             <div class="img-title-box" v-show="item.active">
@@ -194,6 +194,7 @@
 
 <script>
 import Swiper from "swiper";
+import scrollReveal from "scrollreveal";
 export default {
   data() {
     return {
@@ -508,44 +509,6 @@ export default {
         // poster:
         //   "https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg"
       },
-      superurl: [
-        {
-          url: "",
-          img: "2019-01"
-        },
-        {
-          url: "",
-          img: "2019-02"
-        },
-        {
-          url: "",
-          img: "2019-03"
-        },
-        {
-          url: "",
-          img: "2019-04"
-        },
-        {
-          url: "",
-          img: "2019-05"
-        },
-        {
-          url: "",
-          img: "2019-06"
-        },
-        {
-          url: "",
-          img: "2019-06"
-        },
-        {
-          url: "",
-          img: "2019-06"
-        },
-        {
-          url: "",
-          img: "2019-06"
-        }
-      ]
     };
   },
 
@@ -650,6 +613,15 @@ export default {
           });
           that.$nextTick(() => {
             that.initSwiper();
+            that.enter(0);
+            scrollReveal().reveal("img", {
+              reset: true,
+              scale: 1.1,
+              delay: 0, // 延时时间
+              distance: "0px", // 执行距离
+              duration: 600, // 执行时长
+              easing: "cubic-bezier(0.5, 0, 0, 1)" // 执行速度
+            });
           });
           console.log(
             this.bannerData,
@@ -665,7 +637,6 @@ export default {
   },
   mounted() {
     this.getPageData();
-    console.log("语言是", this.language);
   }
 };
 </script>
@@ -879,7 +850,9 @@ export default {
     color: #dddddd;
   }
 }
-
+.l0 {
+  left: 0;
+}
 .l150 {
   left: 150px;
 }
@@ -941,6 +914,7 @@ div.box.eleactive img {
   img {
     width: 100vw;
     height: 100%;
+    object-fit: cover;
   }
 }
 </style>
