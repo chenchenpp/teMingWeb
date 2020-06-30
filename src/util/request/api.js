@@ -1,3 +1,3 @@
 module.exports = {
-  getUserComTravelersByUserId: '/user_api/UserComTravelersContoller/getUserComTravelersByUserId'
+  getPageHttp: '/image/getImageByPage.do'
 };

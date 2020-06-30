@@ -114,8 +114,9 @@
   </div>
 </template>
 <script>
-import Swiper from "swiper";
+import Swiper from 'swiper';
 import { getClientHeight } from '@/util/publicMethod';
+import api from '@/util/request/api';
 export default {
   name: "product",
   data() {
@@ -349,6 +350,13 @@ export default {
   },
   created() {
     this.pageList = this.dejiaList; //临时使用 // this.pageList=this[`${this.$route.params.type}List`];//最后请替换这个
+    this.$get(api.getPageHttp, {
+      imageBelongPage: 2,
+      en: 0
+    }).then(res => {
+      console.log(res)
+    })
+    console.log(api)
   },
   mounted() {
     this.initSwiper();
@@ -365,10 +373,10 @@ export default {
           let eleTop = ele.getBoundingClientRect().top;
           let eleHeight = ele.clientHeight; //当前元素高度
           if (eleTop >= 0) {
-            ele.childNodes[0].style.transform = `scale(${1 + (windowHeight - eleTop) / windowHeight / 10})`;
+            ele.childNodes[0].style.transform = `scale(${1 + (windowHeight - eleTop) / windowHeight / 20})`;
             ele.style.opacity = `${(windowHeight - eleTop) / windowHeight}`;
           } else if (-eleTop <= eleHeight && eleTop < 0) {
-            ele.childNodes[0].style.transform = `scale(${1 + (eleHeight + eleTop) / eleHeight / 10})`;
+            ele.childNodes[0].style.transform = `scale(${1 + (eleHeight + eleTop) / eleHeight / 20})`;
             ele.style.opacity = `${(eleHeight + eleTop) / eleHeight}`;
           } else {
             ele.childNodes[0].style.transform = 'scale(1)';
@@ -445,6 +453,7 @@ export default {
     .banner-img {
       width: 100%;
       height: 100vh;
+      object-fit: cover;
     }
     .dot {
       // opacity: 0;

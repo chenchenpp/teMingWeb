@@ -5,7 +5,7 @@ const {
     CleanWebpackPlugin
 } = require('clean-webpack-plugin');
 const server = {
-    target: 'http://106.52.5.152', // .8开发环境  .11 测试环境
+    target: 'http://106.52.5.152',
     secure: false
 };
 
