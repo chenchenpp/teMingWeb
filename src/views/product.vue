@@ -364,14 +364,14 @@ export default {
         this.$refs[`IMGmoduel${i}`][0].childNodes.forEach(ele => {
           let eleTop = ele.getBoundingClientRect().top;
           let eleHeight = ele.clientHeight; //当前元素高度
-          if (eleTop >= 0 && eleTop <= eleHeight) {
+          if (eleTop >= 0) {
             ele.childNodes[0].style.transform = `scale(${1 + (windowHeight - eleTop) / windowHeight / 10})`;
             ele.style.opacity = `${(windowHeight - eleTop) / windowHeight}`;
           } else if (-eleTop <= eleHeight && eleTop < 0) {
             ele.childNodes[0].style.transform = `scale(${1 + (eleHeight + eleTop) / eleHeight / 10})`;
             ele.style.opacity = `${(eleHeight + eleTop) / eleHeight}`;
           } else {
-            ele.childNodes[0].style.transform = 'scale(0)';
+            ele.childNodes[0].style.transform = 'scale(1)';
             ele.style.opacity = '1';
           }
         });
