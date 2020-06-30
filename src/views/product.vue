@@ -359,16 +359,22 @@ export default {
   },
   methods: {
     productScrollHandle() {
-      let windowHeight=getClientHeight();
+      let windowHeight = getClientHeight();
       for (let i = 0; i < this.pageList.detailList.length; i++) {
         this.$refs[`IMGmoduel${i}`][0].childNodes.forEach(ele => {
           let eleTop = ele.getBoundingClientRect().top;
-          if (eleTop > 0 && (eleTop > windowHeight / 2 - 200 || eleTop < windowHeight / 2 + 200)) {
+          let eleHeight = ele.clientHeight; //当前元素高度
+          if (eleTop >= 0 && eleTop <= eleHeight) {
+            ele.childNodes[0].style.transform = `scale(${1 + (windowHeight - eleTop) / windowHeight / 10})`;
             ele.style.opacity = `${(windowHeight - eleTop) / windowHeight}`;
-            // ele.style.transform = `scale(${1+(windowHeight - eleTop) / windowHeight})`;
+          } else if (-eleTop <= eleHeight && eleTop < 0) {
+            ele.childNodes[0].style.transform = `scale(${1 + (eleHeight + eleTop) / eleHeight / 10})`;
+            ele.style.opacity = `${(eleHeight + eleTop) / eleHeight}`;
+          } else {
+            ele.childNodes[0].style.transform = 'scale(0)';
+            ele.style.opacity = '1';
           }
         });
-        console.log(i, this.$refs)
       }
     },
     initSwiper() {
@@ -567,6 +573,7 @@ export default {
       li {
         margin-left: 50px;
         margin-top: 60px;
+        overflow: hidden;
       }
       .spe-img {
         display: flex;
