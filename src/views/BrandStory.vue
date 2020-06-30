@@ -1,7 +1,7 @@
 <template>
   <div class="brand-story-container">
     <el-carousel arrow="never" class="banner">
-      <el-carousel-item v-for="item in bannerData" :key="item.id" @click="playVideo">
+      <el-carousel-item v-for="(item, index) in bannerData" :key="item.id" @click="playVideo(index)">
         <img :src="$host + item.imageUrl" alt @click="isShowVideoPlayer=true" />
       </el-carousel-item>
     </el-carousel>
@@ -508,7 +508,7 @@ export default {
         ]
         // poster:
         //   "https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg"
-      },
+      }
     };
   },
 
@@ -594,7 +594,6 @@ export default {
       let that = this;
       this.$get("/image/getImageByPage.do?imageBelongPage=3&en=0")
         .then(res => {
-          console.log(res);
           let data = res.arrList;
           data.forEach(val => {
             switch (val.title) {
@@ -606,6 +605,15 @@ export default {
                 break;
               case "3":
                 this.secondContentData = val.imgArr;
+                break;
+              case "4":
+                this.thirdContentData = val.imgArr;
+                break;
+              case "5":
+                this.forthContentData = val.imgArr;
+                break;
+              case "3":
+                this.fifthContentData = val.imgArr;
                 break;
               default:
                 break;
@@ -623,15 +631,11 @@ export default {
               easing: "cubic-bezier(0.5, 0, 0, 1)" // 执行速度
             });
           });
-          console.log(
-            this.bannerData,
-            this.firstContentData,
-            this.secondContentData
-          );
         })
         .catch();
     },
-    playVideo() {
+    playVideo(index) {
+      this.playerOptions.sources.src=this.bannerData[index].imageUrl;
       isShowVideoPlayer = true;
     }
   },
@@ -914,7 +918,7 @@ div.box.eleactive img {
   img {
     width: 100vw;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover;
   }
 }
 </style>
