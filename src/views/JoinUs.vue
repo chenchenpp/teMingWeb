@@ -12,7 +12,7 @@
       <main>
         <scrollbarTrack></scrollbarTrack>
         <ul class="recruitment-position">
-          <li @click="queryDetail" v-for="item in firstContentData" :key="item.id">
+          <li @click="queryDetail(key)" v-for="(item, key) in firstContentData" :key="item.id">
             <div class="top-img">
               <img v-lazy="$host + item.imageUrl" alt />
               <div class="query-detail">
@@ -22,8 +22,12 @@
             </div>
             <div class="bottom-info">
               <div class="left">
-                <p class="main-title" v-if="item" v-html="item[`mainTitle${language}`]"></p>
-                <p class="sub-title" v-if="item" v-html="item[`subTitle${language}`]"></p>
+                <p class="main-title" v-if="item">
+                  <span v-html="item[`position${language}`]"></span>
+                  <span style="vertical-align: text-top;">|</span>
+                  <span v-html="item['salaryRange']"></span>
+                </p>
+                <p class="sub-title" v-if="item" v-html="item[`positionDescription${language}`]"></p>
               </div>
               <div class="right">
                 <div class="download">{{$t('joinUsInfo.downloadDoc')}}</div>
@@ -50,13 +54,21 @@
             将文件拖到此处，或
             <em>点击上传</em>
           </div>
-          <div class="el-upload__tip" slot="tip" v-show="uploadSuccessFlag">{{$t('joinUsInfo.uploadSuccess')}}</div>
-          <div class="el-upload__tip" slot="tip" v-show="uploadErrorFlag">{{$t('joinUsInfo.uploadError')}}</div>
+          <div
+            class="el-upload__tip"
+            slot="tip"
+            v-show="uploadSuccessFlag"
+          >{{$t('joinUsInfo.uploadSuccess')}}</div>
+          <div
+            class="el-upload__tip"
+            slot="tip"
+            v-show="uploadErrorFlag"
+          >{{$t('joinUsInfo.uploadError')}}</div>
         </el-upload>
       </el-dialog>
       <div class="dialog-header">
         <p v-html="$t('joinUsInfo.position') + '：'+ joinUsDetail[`position${language}`]"></p>
-        <p v-html="$t('joinUsInfo.salaryRange')+'：'+ joinUsDetail[`salaryRange${language}`]"></p>
+        <p v-html="$t('joinUsInfo.salaryRange')+'：'+ joinUsDetail[`salaryRange`]"></p>
       </div>
       <div class="dialog-body">
         <div class="left">
@@ -73,7 +85,11 @@
         <div class="close" @click="dialogVisible = false">{{$t('joinUsInfo.close')}}</div>
         <div>
           <div class="download" style="display:inline-block">{{$t('joinUsInfo.downloadWord')}}</div>
-          <div class="upload" style="display:inline-block" @click="innerVisible = true">{{$t('joinUsInfo.uploadDoc')}}</div>
+          <div
+            class="upload"
+            style="display:inline-block"
+            @click="innerVisible = true"
+          >{{$t('joinUsInfo.uploadDoc')}}</div>
         </div>
       </span>
     </el-dialog>
@@ -175,113 +191,13 @@ export default {
           imageDescriptionEnglish: "图片的英文副标题"
         }
       ],
-      firstContentData: [
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 21,
-          imageBelongPage: "3",
-
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
-          linkUrl: "",
-          mainTitle: "2",
-          mainTitleEnglish: "模块的英文主标题",
-          name: null,
-          no: "",
-          subTitle: "sdf",
-          subTitleEnglish: "模块的英文副标题",
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 24,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/3e44ab81-0e58-4e69-8bd1-5be2a29301b4.png",
-          linkUrl: "dfsd",
-          mainTitle: "ss",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "sdf",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 25,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 26,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        }
-      ],
-      joinUsDetail: {
-        createTime: null,
-        delFlag: 0,
-        id: 7,
-        imageDescription: "",
-        imageUrl: "/static_img/56728c18-e239-42b3-9ac8-c58064cdccfd.png",
-        position: "sa",
-        positionDescription: "salaryRange",
-        positionDescriptionEnglish: "salaryRange",
-        positionEnglish: "salaryRange",
-        positionRequirement: "salaryRange",
-        positionRequirementEnglish: "salaryRange",
-        salaryRange: "salaryRange"
-      }
+      firstContentData: [],
+      joinUsDetail: {}
     };
   },
   methods: {
     queryDetail(id) {
-      this.$get("/image/getImageByPage.do?imageBelongPage=7&en=0")
-        .then(res => {
-          console.log(res);
-          let data = res.arrList;
-        })
-        .catch();
+      this.joinUsDetail = this.firstContentData[id];
       this.dialogVisible = true;
     },
     handleClose() {},
@@ -307,47 +223,15 @@ export default {
     },
     getPageData() {
       let that = this;
-      this.$get("/image/getImageByPage.do?imageBelongPage=7&en=0")
+      this.$get("/join/getJoinList.do")
         .then(res => {
-          console.log(res);
-          let data = res.arrList;
-          data.forEach(val => {
-            switch (val.title) {
-              case "1":
-                this.bannerData = val.imgArr;
-                break;
-              case "2":
-                this.firstContentData = val.imgArr;
-                break;
-              case "3":
-                this.secondContentData = val.imgArr;
-                break;
-              default:
-                break;
-            }
-          });
-          that.$nextTick(() => {
-            that.initSwiper();
-            that.enter(0);
-            scrollReveal().reveal("img", {
-              reset: true,
-              scale: 1.1,
-              delay: 0, // 延时时间
-              distance: "0px", // 执行距离
-              duration: 600, // 执行时长
-              easing: "cubic-bezier(0.5, 0, 0, 1)" // 执行速度
-            });
-          });
-          console.log(
-            this.bannerData,
-            this.firstContentData,
-            this.secondContentData
-          );
+          that.firstContentData = res.rows;
         })
         .catch();
     }
   },
   mounted() {
+    this.getPageData();
     this.initScroll();
   },
   computed: {

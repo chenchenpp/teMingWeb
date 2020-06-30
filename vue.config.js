@@ -28,6 +28,11 @@ module.exports = {
                 target: server.target,
                 changeOrigin: true,
                 secure: server.secure
+            },
+            '/join': {
+                target: server.target,
+                changeOrigin: true,
+                secure: server.secure
             }
         }
     },
