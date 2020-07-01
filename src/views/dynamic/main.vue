@@ -3,30 +3,41 @@
     <scrollbar-track></scrollbar-track>
     <ul class="article-items">
       <li v-for="(item, index) in articleList" :key="index">
-        <div class="image-box" @mouseover="enter(item)" @mouseleave="leave(item)">
+        <div
+          class="image-box"
+          @mouseover="enter(item)"
+          @mouseleave="leave(item)"
+        >
           <!-- <img :src="require(`${item.imgSrc}`)" alt=""> -->
-          <div class="modal"  :class="{'img-modal': item.isModal}" @click="checkDetailHandle(item)">
+          <div
+            class="modal"
+            :class="{ 'img-modal': item.isModal }"
+            @click="checkDetailHandle(item)"
+          >
             <i class="iconfont iconmagnifying-glass"></i>
-            <span style="margin-left: 10px;display: inline-block">查看详情</span>
+            <span style="margin-left: 10px; display: inline-block;"
+              >查看详情</span
+            >
           </div>
         </div>
         <div class="des-box">
-          <p>{{item.title}}</p>
-          <p>{{item.des}}</p>
+          <p>{{ item.title }}</p>
+          <p>{{ item.des }}</p>
         </div>
         <div class="date-box">
-          <span>{{item.date}}</span>
+          <span>{{ item.date }}</span>
           <span>&gt;</span>
         </div>
       </li>
     </ul>
     <div class="pagination-box">
       <el-pagination
-        prev-text= "首页"
+        prev-text="首页"
         background
         layout="prev, pager, next"
         @current-change="changePage"
-        :total="100">
+        :total="100"
+      >
       </el-pagination>
     </div>
   </div>
@@ -43,7 +54,7 @@ export default {
           title: "冲刺630，使命必达，疫情之下",
           des: "上海特铭以奔跑者的姿态全力以赴",
           date: "2020年4月15日",
-          isModal: false
+          isModal: false,
         },
         {
           id: 2,
@@ -51,7 +62,7 @@ export default {
           title: "冲刺630，使命必达，疫情之下",
           des: "上海特铭以奔跑者的姿态全力以赴",
           date: "2020年4月15日",
-          isModal: false
+          isModal: false,
         },
         {
           id: 3,
@@ -59,7 +70,7 @@ export default {
           title: "冲刺630，使命必达，疫情之下",
           des: "上海特铭以奔跑者的姿态全力以赴",
           date: "2020年4月15日",
-          isModal: false
+          isModal: false,
         },
         {
           id: 4,
@@ -67,7 +78,7 @@ export default {
           title: "冲刺630，使命必达，疫情之下",
           des: "上海特铭以奔跑者的姿态全力以赴",
           date: "2020年4月15日",
-          isModal: false
+          isModal: false,
         },
         {
           id: 5,
@@ -75,7 +86,7 @@ export default {
           title: "冲刺630，使命必达，疫情之下",
           des: "上海特铭以奔跑者的姿态全力以赴",
           date: "2020年4月15日",
-          isModal: false
+          isModal: false,
         },
         {
           id: 6,
@@ -83,9 +94,9 @@ export default {
           title: "冲刺630，使命必达，疫情之下",
           des: "上海特铭以奔跑者的姿态全力以赴",
           date: "2020年4月15日",
-          isModal: false
-        }
-      ]
+          isModal: false,
+        },
+      ],
     };
   },
   methods: {
@@ -97,16 +108,16 @@ export default {
     },
     checkDetailHandle(item) {
       this.$router.push({
-        name: 'dynamicDetail',
+        name: "dynamicDetail",
         params: {
-          id: item.id
-        }
+          id: item.id,
+        },
       });
     },
     changePage(val) {
-      console.log('页数', val);
-    }
-  }
+      console.log("页数", val);
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -114,13 +125,13 @@ export default {
   width: 1620px;
   margin-left: 100px;
   position: relative;
-  border-bottom: 1PX solid rgba(255,255,255,.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   margin-bottom: 60px;
   .article-items {
     width: 1520px;
     // margin-left: 90px;
     font-size: 16px;
-    color: rgba(221, 221, 221, .8);
+    color: rgba(221, 221, 221, 0.8);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;

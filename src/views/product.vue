@@ -118,7 +118,7 @@ import Swiper from 'swiper';
 import { getClientHeight } from '@/util/publicMethod';
 import api from '@/util/request/api';
 export default {
-  name: "product",
+  name: 'product',
   data() {
     return {
       dejiaList: {
@@ -348,15 +348,13 @@ export default {
       footerCarSwiper: null
     };
   },
+  watch: {
+    '$route': function(to, from) {
+      this.init();
+    }
+  },
   created() {
-    this.pageList = this.dejiaList; //临时使用 // this.pageList=this[`${this.$route.params.type}List`];//最后请替换这个
-    this.$get(api.getPageHttp, {
-      imageBelongPage: 2,
-      en: 0
-    }).then(res => {
-      console.log(res)
-    })
-    console.log(api)
+    this.init();
   },
   mounted() {
     this.initSwiper();
@@ -366,6 +364,15 @@ export default {
     });
   },
   methods: {
+    init(){
+      this.pageList = this.dejiaList; //临时使用 // this.pageList=this[`${this.$route.params.type}List`];//最后请替换这个
+      this.$get(api.getPageHttp, {
+        imageBelongPage: 2,
+        en: 0
+      }).then(res => {
+        console.log(res)
+      })
+    },
     productScrollHandle() {
       let windowHeight = getClientHeight();
       for (let i = 0; i < this.pageList.detailList.length; i++) {
