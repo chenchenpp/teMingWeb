@@ -8,7 +8,7 @@
           @mouseover="enter(item)"
           @mouseleave="leave(item)"
         >
-          <!-- <img :src="require(`${item.imgSrc}`)" alt=""> -->
+          <img :src="`/${item.imgUrl}`" alt="">
           <div
             class="modal"
             :class="{ 'img-modal': item.isModal }"
@@ -25,7 +25,7 @@
           <p>{{ item.des }}</p>
         </div>
         <div class="date-box">
-          <span>{{ item.date }}</span>
+          <span>{{ item.publishTime }}</span>
           <span>&gt;</span>
         </div>
       </li>
@@ -36,13 +36,14 @@
         background
         layout="prev, pager, next"
         @current-change="changePage"
-        :total="100"
+        :total="pagiTotal"
       >
       </el-pagination>
     </div>
   </div>
 </template>
 <script>
+import api from '@/util/request/api';
 export default {
   name: "dynamicMain",
   data() {
@@ -97,9 +98,29 @@ export default {
           isModal: false,
         },
       ],
+      pagiTotal: 0
     };
   },
+  created(){
+    this.getCurPageDataHandle(0)
+  },
   methods: {
+    getCurPageDataHandle(curIndex){
+       this.$get(api.getDiscList, {
+        limit: 9,
+        offset: curIndex,
+        maxrows: 9,
+        title: ''
+      }).then(res=>{
+        if(res.rows.length){
+          this.pagiTotal=res.total;
+          this.articleList=res.rows;
+          this.articleList.forEach(item=>{
+            this.$set(item, 'isModal', false)
+          })
+        }
+      })
+    },
     enter(item) {
       item.isModal = true;
     },
@@ -115,7 +136,7 @@ export default {
       });
     },
     changePage(val) {
-      console.log("页数", val);
+      this.getCurPageDataHandle(val)
     },
   },
 };
@@ -128,14 +149,11 @@ export default {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   margin-bottom: 60px;
   .article-items {
-    width: 1520px;
-    // margin-left: 90px;
     font-size: 16px;
     color: rgba(221, 221, 221, 0.8);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: 99px;
+    margin-left: 39px;
     li {
       width: 466px;
       height: 450px;
@@ -143,6 +161,7 @@ export default {
       background: #383638;
       box-sizing: border-box;
       margin-top: 60px;
+      margin-left: 60px;
     }
     .image-box {
       width: 406px;

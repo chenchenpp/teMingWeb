@@ -9,7 +9,7 @@
           <div class="caro-banner-container">
             <img
               class="banner-img"
-              :src="require(`assets/images/product/one/${item.src}`)"
+              :src="item.imageUrl"
               alt=""
             />
             <div
@@ -47,8 +47,8 @@
       </el-carousel>
     </div>
     <div class="product-container">
-      <p class="title">{{ pageList.title }}</p>
-      <p class="des">{{ pageList.des }}</p>
+      <p class="title">{{ pageList['title'+language] }}</p>
+      <p class="des">{{ pageList['des'+language] }}</p>
       <div class="detail-box">
         <scrollbar-track></scrollbar-track>
         <ul
@@ -59,27 +59,27 @@
           :ref="`IMGmoduel${index}`"
         >
           <li class="moduel-mes">
-            <p class="title">{{ item.title }}</p>
-            <p class="des">{{ item.info }}</p>
+            <p class="title">{{ item['title'+language] }}</p>
+            <p class="des">{{ item['info'+language] }}</p>
           </li>
           <template v-for="(imgItem, imgIndex) in item.imgArr">
             <li
               :key="imgIndex"
-              v-if="Array.isArray(imgItem.src)"
+              v-if="Array.isArray(imgItem.imgArr)"
               class="spe-img"
             >
               <img
-                v-for="(imgSrc, srcIndex) in imgItem.src"
+                v-for="(imgSrc, srcIndex) in imgItem.imgArr"
                 :key="srcIndex"
-                v-lazy="require(`assets/images/product/second/${imgSrc}`)"
-                :class="imgItem.imgClass"
+                v-lazy="imgSrc.imageUrl"
+                :class="imgSrc.imageDescription"
                 alt=""
               />
             </li>
-            <li v-else :key="imgIndex" :class="imgItem.imgClass">
+            <li v-else :key="imgIndex" :class="imgItem.imageDescription">
               <img
-                v-lazy="require(`assets/images/product/second/${imgItem.src}`)"
-                :class="imgItem.imgClass"
+                v-lazy="imgItem.imageUrl"
+                :class="imgItem.imageDescription"
                 alt=""
               />
             </li>
@@ -102,9 +102,9 @@
           @mouseenter.stop="stopFooterCarousel"
           @mouseleave.stop="startFooterCarousel"
         >
-          <span class="title">{{item.title}}</span>
+          <span class="title">{{item.subTitle}}</span>
           <img
-            :src="require(`assets/images/product/one/${item.imgSrc}`)"
+            :src="'http://106.52.5.152'+item.imageUrl"
             alt=""
           />
         </div>
@@ -344,7 +344,15 @@ export default {
           }
         ]
       },
-      pageList: {},
+      pageList: {
+        title: "德贾系列",
+        titleEnglish: 'Judd series',
+        des: "智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。",
+        desEnglish: "Intelligent features and top-level configuration combine art, trend and function with each other.",
+        detailList: [],
+        bannerCarouselList: [],
+        lastCarouselList: []
+      },
       footerCarSwiper: null
     };
   },
@@ -353,11 +361,15 @@ export default {
       this.init();
     }
   },
+  computed:{
+    language() {
+      return this.$i18n.locale == "CN" ? "" : "English";
+    }
+  },
   created() {
     this.init();
   },
   mounted() {
-    this.initSwiper();
     document.addEventListener('scroll', this.productScrollHandle, false);
     this.$once('hook:beforeDestroy', () => {
       document.removeEventListener('scroll', this.productScrollHandle, false);
@@ -365,12 +377,70 @@ export default {
   },
   methods: {
     init(){
-      this.pageList = this.dejiaList; //临时使用 // this.pageList=this[`${this.$route.params.type}List`];//最后请替换这个
+      let allSeries={
+        'dejia':2,
+        'molandi': 8,
+        'miss': 9,
+        'dikesen': 10,
+        'bier': 11,
+        'kelinte': 12,
+        'botiqieli': 13
+      }
       this.$get(api.getPageHttp, {
-        imageBelongPage: 2,
+        imageBelongPage: allSeries[this.$route.params.type],
         en: 0
       }).then(res => {
-        console.log(res)
+        let arrList=[...res.arrList];
+        this.pageList.detailList=arrList.splice(0, res.arrList.length-2);
+        this.pageList.detailList.forEach(item=>{
+          let speArr=[];
+          let copyArr=[];
+          item.imgArr.forEach(data => {
+            if(data.name||data.name=='0') {
+              speArr.push(data)
+            } else {
+              copyArr.push(data)
+            }
+          })
+          if(speArr.length){
+            copyArr.push({
+              imgArr: speArr
+            })
+          }
+          item.imgArr=copyArr;
+        });
+        this.pageList.bannerCarouselList=arrList.pop().imgArr;
+        this.pageList.bannerCarouselList.forEach(item=>{
+          let arr= [{
+              isShow: false,
+              left: "20%",
+              top: "20%",
+              smallImgSrc: "banner.png",
+              title: "厨房用具",
+              des: "巧妙地将开放理念运用到厨房设计中，将篮子的透气性拉到极致，让您在最快的时间内烹饪，最方便的找到厨房用具，一目了然的享受乐趣。"
+            },{
+              isShow: false,
+              left: "40%",
+              top: "30%",
+              smallImgSrc: "banner.png",
+              title: "厨房用具",
+              des: "巧妙地将开放理念运用到厨房设计中，将篮子的透气性拉到极致，让您在最快的时间内烹饪，最方便的找到厨房用具，一目了然的享受乐趣。"
+            }, {
+              isShow: false,
+              left: "60%",
+              top: "40%",
+              smallImgSrc: "banner.png",
+              title: "厨房用具",
+              des: "巧妙地将开放理念运用到厨房设计中，将篮子的透气性拉到极致，让您在最快的时间内烹饪，最方便的找到厨房用具，一目了然的享受乐趣。"
+            }
+          ]
+          this.$set(item, 'positionList', arr)
+        })
+        this.pageList.lastCarouselList=arrList.pop().imgArr
+        // 初始化轮播图
+        this.$nextTick(()=>{
+          this.initSwiper();
+        })
       })
     },
     productScrollHandle() {

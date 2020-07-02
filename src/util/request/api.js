@@ -1,3 +1,4 @@
 module.exports = {
-  getPageHttp: '/image/getImageByPage.do'
+  getPageHttp: '/image/getImageByPage.do',
+  getDiscList: '/disc/getDiscList.do'
 };
