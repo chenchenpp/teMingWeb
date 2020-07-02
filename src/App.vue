@@ -55,10 +55,7 @@ export default {
 };
 </script>
 <style lang="scss">
-@font-face {
-  font-family: "zhanghaishan";
-  src: url("./assets/font/zhanghaishan.ttf");
-}
+@import './assets/sass/font.css';
 body{
   font-size: 16px;
   min-width: 1024PX;
@@ -68,10 +65,11 @@ body{
   overflow:auto;
   background: url('./assets/images/back-color.jpg') center repeat !important;
   background-size: 100%;
+  font-family: 'zhanghaishangcaonima'
 }
 #app {
   width: 100%;
-  font-family: "zhanghaishan", "Avenir", Helvetica, Arial, sans-serif;
+  font-family: 'zhanghaishan', "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

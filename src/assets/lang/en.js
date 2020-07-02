@@ -41,7 +41,7 @@ export const joinUsInfo = {
     uploadSuccess: 'Upload Success!',
     uploadError: 'Upload Error!'
 }
-export const brandEntryInof = {
+export const brandEntryInfo = {
     downloadJoiningDocuments: 'Download Joining Documents',
     uploadJoiningDocuments: 'Upload Joining Documents'
 }

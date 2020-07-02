@@ -138,7 +138,7 @@
               v-for="(item, key) in forthContentData"
               :key="item.id + item.imageUrl"
             >
-              <img :src="require(`../assets/images/brandStory/icon${key + 1}.png`)" class="icon" />
+              <img :src="require(`assets/images/brandStory/icon${key + 1}.png`)" class="icon" />
               <div class="intruduce" :class="{intruduceActive:item.active}">
                 <p class="main-title" v-if="item" v-html="item[`mainTitle${language}`]"></p>
                 <p class="sub-title" v-if="item" v-html="item[`subTitle${language}`]"></p>
@@ -923,6 +923,7 @@ div.box.eleactive img {
 }
 </style>
 <style lang="scss">
+@import '../assets/sass/font.css';
 .forth-content {
   .el-carousel__container {
     height: 550px;
@@ -956,7 +957,7 @@ div.box.eleactive img {
 .second-content {
   .swiper-pagination {
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     height: 60px;
     align-items: center;
   }
@@ -977,6 +978,7 @@ div.box.eleactive img {
     align-items: center;
     justify-content: flex-end;
     position: relative;
+     font-family: 'zhanghaishangcaonima';
     i {
       font-size: 28px;
       opacity: 0;

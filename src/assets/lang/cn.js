@@ -42,7 +42,7 @@ export const joinUsInfo = {
     uploadSuccess: '上传成功！',
     uploadError: '上传失败！'
 }
-export const brandEntryInof = {
+export const brandEntryInfo = {
     downloadJoiningDocuments: '下载加盟文档',
     uploadJoiningDocuments: '上传加盟文档'
 }
