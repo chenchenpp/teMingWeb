@@ -11,14 +11,13 @@ function resolve(dir) {
     return path.join(__dirname, dir);
 }
 module.exports = {
-    publicPath: "/",
-    lintOnSave: false,
-    css: {
-        loaderOptions: {
-            sass: {
-                data: '@import "@/assets/sass/variable.scss";',
-            },
-        },
+  //publicPath: "./",
+  lintOnSave: false,
+  css: {
+    loaderOptions: {
+      sass: {
+        data: '@import "@/assets/sass/variable.scss";',
+      },
     }
   },
   devServer: {

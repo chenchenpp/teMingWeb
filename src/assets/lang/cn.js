@@ -46,3 +46,10 @@ export const brandEntryInfo = {
     downloadJoiningDocuments: '下载加盟文档',
     uploadJoiningDocuments: '上传加盟文档'
 }
+export const product={
+    close: '关闭'
+}
+export const tmDynamic = {
+    viewDetails: '查看详情',
+    homePage: '首页'
+}

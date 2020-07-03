@@ -16,13 +16,13 @@
           >
             <i class="iconfont iconmagnifying-glass"></i>
             <span style="margin-left: 10px; display: inline-block;"
-              >查看详情</span
+              >{{$t('tmDynamic.viewDetails')}}</span
             >
           </div>
         </div>
         <div class="des-box">
-          <p>{{ item.title }}</p>
-          <p>{{ item.des }}</p>
+          <p>{{ item['title'+language] }}</p>
+          <p>{{ item['des'+language] }}</p>
         </div>
         <div class="date-box">
           <span>{{ item.publishTime }}</span>
@@ -32,11 +32,12 @@
     </ul>
     <div class="pagination-box">
       <el-pagination
-        prev-text="首页"
+        :prev-text="$t('tmDynamic.homePage')"
         background
         layout="prev, pager, next"
         @current-change="changePage"
         :total="pagiTotal"
+        :pageSize="pageSize"
       >
       </el-pagination>
     </div>
@@ -98,19 +99,23 @@ export default {
           isModal: false,
         },
       ],
-      pagiTotal: 0
+      pagiTotal: 0,
+      pageSize: 6
     };
   },
+  computed:{
+    language() {
+      return this.$i18n.locale == "CN" ? "" : "English";
+    }
+  },
   created(){
-    this.getCurPageDataHandle(0)
+    this.getCurPageDataHandle()
   },
   methods: {
-    getCurPageDataHandle(curIndex){
-       this.$get(api.getDiscList, {
-        limit: 9,
+    getCurPageDataHandle(curIndex=0){
+      this.$get(api.getDiscList, {
+        limit: this.pageSize,
         offset: curIndex,
-        maxrows: 9,
-        title: ''
       }).then(res=>{
         if(res.rows.length){
           this.pagiTotal=res.total;
@@ -131,12 +136,12 @@ export default {
       this.$router.push({
         name: "dynamicDetail",
         params: {
-          id: item.id,
+          id: item.title,
         },
       });
     },
     changePage(val) {
-      this.getCurPageDataHandle(val)
+      this.getCurPageDataHandle(val-1)
     },
   },
 };
@@ -168,13 +173,16 @@ export default {
       height: 240px;
       border: 1px solid #dddddd;
       margin-top: 30px;
-      // position: relative;
+      position: relative;
       overflow: hidden;
       img {
         width: 100%;
         height: 100%;
       }
       .modal {
+        position: absolute;
+        top: 0;
+        z-index: 100;
         width: 100%;
         height: 100%;
         background: rgba(42, 40, 42, 0.5);

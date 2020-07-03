@@ -72,12 +72,6 @@ export default {
     leave(item) {
       item.isModal = false;
     },
-    checkDetailHandle(item) {
-      console.log(item);
-    },
-    changePage(val) {
-      console.log("页数", val);
-    }
   }
 };
 </script>

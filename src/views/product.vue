@@ -35,10 +35,10 @@
                 alt=""
               />
               <div class="right-box">
-                <p class="title">{{ goodsItem.title }}</p>
-                <p class="des">{{ goodsItem.des }}</p>
+                <p class="title">{{ goodsItem['title'+language] }}</p>
+                <p class="des">{{ goodsItem['des'+language] }}</p>
                 <div class="close" @click="closeGoodsHandle(goodsItem)">
-                  关闭 &gt;
+                  {{$t('product.close')}} &gt;
                 </div>
               </div>
             </div>
@@ -47,8 +47,8 @@
       </el-carousel>
     </div>
     <div class="product-container">
-      <p class="title">{{ pageList['title'+language] }}</p>
-      <p class="des">{{ pageList['des'+language] }}</p>
+      <p class="title">{{ pageList['pageTitle'+language] }}</p>
+      <p class="des">{{ pageList['pageTitleInfo'+language] }}</p>
       <div class="detail-box">
         <scrollbar-track></scrollbar-track>
         <ul
@@ -345,10 +345,10 @@ export default {
         ]
       },
       pageList: {
-        title: "德贾系列",
-        titleEnglish: 'Judd series',
-        des: "智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。",
-        desEnglish: "Intelligent features and top-level configuration combine art, trend and function with each other.",
+        pageTitle: "德贾系列",
+        pageTitleEnglish: 'Judd series',
+        pageTitleInfo: "智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。",
+        pageTitleInfoEnglish: "Intelligent features and top-level configuration combine art, trend and function with each other.",
         detailList: [],
         bannerCarouselList: [],
         lastCarouselList: []

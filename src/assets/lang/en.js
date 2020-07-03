@@ -45,3 +45,10 @@ export const brandEntryInfo = {
     downloadJoiningDocuments: 'Download Joining Documents',
     uploadJoiningDocuments: 'Upload Joining Documents'
 }
+export const product = {
+    close: 'close'
+}
+export const tmDynamic = {
+    viewDetails: 'View Detail',
+    homePage: 'Home'
+}
