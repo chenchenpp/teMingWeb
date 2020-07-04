@@ -8,7 +8,8 @@ export const headerTransInfo = {
         dikesen: 'dikesen series',
         bier: 'bier series',
         kelinte: 'kelinte series',
-        botiqieli: 'botiqieli series'
+        botiqieli: 'botiqieli series',
+        mengdelian: 'mengdelian series'
     },
     brandStory: 'Brand Story',
     explorHall: 'Explor Hall',
@@ -50,5 +51,9 @@ export const product = {
 }
 export const tmDynamic = {
     viewDetails: 'View Detail',
-    homePage: 'Home'
+    homePage: 'Home',
+    dynamicHome: 'Teming news',
+    HomeFurnishing: 'Teming Home',
+    nextPage: 'next Page',
+    prePage: 'pre Page'
 }

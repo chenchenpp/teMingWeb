@@ -34,6 +34,7 @@
             <el-menu-item index="/product/bier">{{$t('headerTransInfo.product.bier')}}</el-menu-item>
             <el-menu-item index="/product/kelinte">{{$t('headerTransInfo.product.kelinte')}}</el-menu-item>
             <el-menu-item index="/product/botiqieli">{{$t('headerTransInfo.product.botiqieli')}}</el-menu-item>
+            <el-menu-item index="/product/mengdelian">{{$t('headerTransInfo.product.mengdelian')}}</el-menu-item>
           </el-submenu>
           <el-menu-item index="/brandStory">{{$t('headerTransInfo.brandStory')}}</el-menu-item>
           <el-menu-item index="/explorationHall">{{$t('headerTransInfo.explorHall')}}</el-menu-item>
