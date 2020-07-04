@@ -359,14 +359,16 @@ export default {
   watch: {
     '$route': function(to, from) {
       this.init();
+    },
+    '$i18n.locale': function(val){
+      // 初始化轮播图
+      this.$nextTick(()=>{
+        this.footerCarSwiper.updateSlides();
+      })
     }
   },
   computed:{
     language() {
-      // 初始化轮播图
-      this.$nextTick(()=>{
-        this.initSwiper();
-      })
       return this.$i18n.locale == "CN" ? "" : "English";
     }
   },
