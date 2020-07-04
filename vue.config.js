@@ -11,17 +11,22 @@ function resolve(dir) {
     return path.join(__dirname, dir);
 }
 module.exports = {
-    publicPath: "/",
+    //publicPath: "./",
     lintOnSave: false,
     css: {
         loaderOptions: {
             sass: {
                 data: '@import "@/assets/sass/variable.scss";',
             },
-        },
+        }
     },
     devServer: {
         proxy: {
+            '/static_img': {
+                target: server.target,
+                changeOrigin: true,
+                secure: server.secure
+            },
             '/image': {
                 target: server.target,
                 changeOrigin: true,
@@ -32,11 +37,11 @@ module.exports = {
                 changeOrigin: true,
                 secure: server.secure
             },
-            '/static_html': {
+            '/disc': {
                 target: server.target,
                 changeOrigin: true,
                 secure: server.secure
-            }
+            },
         }
     },
     configureWebpack: (config) => {
@@ -47,31 +52,67 @@ module.exports = {
                     "@": resolve("./src"),
                     assets: resolve("./src/assets"),
                     pages: resolve("./src/pages"),
+                    // models: resolve("./src/models"),
                     components: resolve("./src/components"),
+                    // $vuex: resolve("./src/vuex"),
+                    // config: resolve("./src/config"),
+                    // pdfFile: resolve("./static/termsfile"),
+                    // mixins: resolve("./src/mixins")
                 },
             },
-        });
-        // 生产模式
-        if (process.env.NODE_ENV === "production") {
-            // 打包生产.gz包
-            return {
-                plugins: [
-                    new CompressionPlugin({
-                        algorithm: "gzip",
-                        test: new RegExp(
-                            "\\.(" + productionGzipExtensions.join("|") + ")$"
-                        ),
-                        threshold: 10240,
-                        minRatio: 0.8,
-                    }),
-                ],
-            };
-        }
-        config.plugins.push(
-            new CleanWebpackPlugin({
-                cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "dist")],
-            })
-        );
-    },
-
+            devServer: {
+                proxy: {
+                    '/image': {
+                        target: server.target,
+                        changeOrigin: true,
+                        secure: server.secure
+                    },
+                    '/join': {
+                        target: server.target,
+                        changeOrigin: true,
+                        secure: server.secure
+                    },
+                    '/static_html': {
+                        target: server.target,
+                        changeOrigin: true,
+                        secure: server.secure
+                    }
+                }
+            },
+            configureWebpack: (config) => {
+                Object.assign(config, {
+                    resolve: {
+                        extensions: ["css", ".js", ".vue", ".less"],
+                        alias: {
+                            "@": resolve("./src"),
+                            assets: resolve("./src/assets"),
+                            pages: resolve("./src/pages"),
+                            components: resolve("./src/components"),
+                        },
+                    },
+                });
+                // 生产模式
+                if (process.env.NODE_ENV === "production") {
+                    // 打包生产.gz包
+                    return {
+                        plugins: [
+                            new CompressionPlugin({
+                                algorithm: "gzip",
+                                test: new RegExp(
+                                    "\\.(" + productionGzipExtensions.join("|") + ")$"
+                                ),
+                                threshold: 10240,
+                                minRatio: 0.8,
+                            }),
+                        ],
+                    };
+                }
+                config.plugins.push(
+                    new CleanWebpackPlugin({
+                        cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "dist")],
+                    })
+                );
+            },
+        })
+    }
 };

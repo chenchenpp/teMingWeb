@@ -22,13 +22,21 @@
     </div>
   </div>
 </template>
-
 <script>
+import api from '@/util/request/api';
 export default {
   name: "dynamicetail",
   data() {
     return {
     };
+  },
+  created(){
+    //getdiscdetail
+    this.$get(api.getdiscdetail, {
+        title: this.$route.params.id,
+      }).then(res=>{
+        console.log(res)
+      })
   },
   methods: {
     goArticleHandle(id) {

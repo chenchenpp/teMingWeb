@@ -8,7 +8,7 @@
           @mouseover="enter(item)"
           @mouseleave="leave(item)"
         >
-          <!-- <img :src="require(`${item.imgSrc}`)" alt=""> -->
+          <img :src="`/${item.imgUrl}`" alt="">
           <div
             class="modal"
             :class="{ 'img-modal': item.isModal }"
@@ -16,33 +16,35 @@
           >
             <i class="iconfont iconmagnifying-glass"></i>
             <span style="margin-left: 10px; display: inline-block;"
-              >查看详情</span
+              >{{$t('tmDynamic.viewDetails')}}</span
             >
           </div>
         </div>
         <div class="des-box">
-          <p>{{ item.title }}</p>
-          <p>{{ item.des }}</p>
+          <p>{{ item['title'+language] }}</p>
+          <p>{{ item['des'+language] }}</p>
         </div>
         <div class="date-box">
-          <span>{{ item.date }}</span>
+          <span>{{ item.publishTime }}</span>
           <span>&gt;</span>
         </div>
       </li>
     </ul>
     <div class="pagination-box">
       <el-pagination
-        prev-text="首页"
+        :prev-text="$t('tmDynamic.homePage')"
         background
         layout="prev, pager, next"
         @current-change="changePage"
-        :total="100"
+        :total="pagiTotal"
+        :pageSize="pageSize"
       >
       </el-pagination>
     </div>
   </div>
 </template>
 <script>
+import api from '@/util/request/api';
 export default {
   name: "dynamicMain",
   data() {
@@ -97,9 +99,33 @@ export default {
           isModal: false,
         },
       ],
+      pagiTotal: 0,
+      pageSize: 6
     };
   },
+  computed:{
+    language() {
+      return this.$i18n.locale == "CN" ? "" : "English";
+    }
+  },
+  created(){
+    this.getCurPageDataHandle()
+  },
   methods: {
+    getCurPageDataHandle(curIndex=0){
+      this.$get(api.getDiscList, {
+        limit: this.pageSize,
+        offset: curIndex,
+      }).then(res=>{
+        if(res.rows.length){
+          this.pagiTotal=res.total;
+          this.articleList=res.rows;
+          this.articleList.forEach(item=>{
+            this.$set(item, 'isModal', false)
+          })
+        }
+      })
+    },
     enter(item) {
       item.isModal = true;
     },
@@ -110,12 +136,12 @@ export default {
       this.$router.push({
         name: "dynamicDetail",
         params: {
-          id: item.id,
+          id: item.title,
         },
       });
     },
     changePage(val) {
-      console.log("页数", val);
+      this.getCurPageDataHandle(val-1)
     },
   },
 };
@@ -128,14 +154,11 @@ export default {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   margin-bottom: 60px;
   .article-items {
-    width: 1520px;
-    // margin-left: 90px;
     font-size: 16px;
     color: rgba(221, 221, 221, 0.8);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
-    margin-left: 99px;
+    margin-left: 39px;
     li {
       width: 466px;
       height: 450px;
@@ -143,19 +166,23 @@ export default {
       background: #383638;
       box-sizing: border-box;
       margin-top: 60px;
+      margin-left: 60px;
     }
     .image-box {
       width: 406px;
       height: 240px;
       border: 1px solid #dddddd;
       margin-top: 30px;
-      // position: relative;
+      position: relative;
       overflow: hidden;
       img {
         width: 100%;
         height: 100%;
       }
       .modal {
+        position: absolute;
+        top: 0;
+        z-index: 100;
         width: 100%;
         height: 100%;
         background: rgba(42, 40, 42, 0.5);
