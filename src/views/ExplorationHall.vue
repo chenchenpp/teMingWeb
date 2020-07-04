@@ -68,6 +68,27 @@ export default {
         }
       });
     }
+  },
+  computed: {
+    language() {
+      let lang = this.$i18n.locale == "CN" ? "" : "English";
+      return lang;
+    }
+  },
+  methods: {
+    getPageData() {
+      let that = this;
+      this.$get("/image/getImageByPage.do?imageBelongPage=4&en=0")
+        .then(res => {
+          let data = res.arrList;
+          hallData = data.imgArr;
+          this.bannerImg = hallData[0].imageUrl;
+        })
+        .catch();
+    }
+  },
+  mounted(){
+    this.getPageData();
   }
 };
 </script>

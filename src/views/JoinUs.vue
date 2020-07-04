@@ -84,7 +84,11 @@
       <span slot="footer" class="dialog-footer">
         <div class="close" @click="dialogVisible = false">{{$t('joinUsInfo.close')}}</div>
         <div>
-          <div class="download" style="display:inline-block">{{$t('joinUsInfo.downloadWord')}}</div>
+          <div
+            class="download"
+            style="display:inline-block"
+            @click="download"
+          >{{$t('joinUsInfo.downloadWord')}}</div>
           <div
             class="upload"
             style="display:inline-block"
@@ -228,6 +232,10 @@ export default {
           that.firstContentData = res.rows;
         })
         .catch();
+    },
+    download() {
+      // this.$get("http://106.52.5.152/static_html/test.docx");
+      window.open('http://106.52.5.152/static_html/test.docx');
     }
   },
   mounted() {

@@ -31,6 +31,11 @@ module.exports = {
                 target: server.target,
                 changeOrigin: true,
                 secure: server.secure
+            },
+            '/static_html': {
+                target: server.target,
+                changeOrigin: true,
+                secure: server.secure
             }
         }
     },
