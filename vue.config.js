@@ -42,7 +42,8 @@ module.exports = {
                 changeOrigin: true,
                 secure: server.secure
             },
-        }
+        },
+
     },
     configureWebpack: (config) => {
         Object.assign(config, {
@@ -52,67 +53,30 @@ module.exports = {
                     "@": resolve("./src"),
                     assets: resolve("./src/assets"),
                     pages: resolve("./src/pages"),
-                    // models: resolve("./src/models"),
                     components: resolve("./src/components"),
-                    // $vuex: resolve("./src/vuex"),
-                    // config: resolve("./src/config"),
-                    // pdfFile: resolve("./static/termsfile"),
-                    // mixins: resolve("./src/mixins")
                 },
             },
-            devServer: {
-                proxy: {
-                    '/image': {
-                        target: server.target,
-                        changeOrigin: true,
-                        secure: server.secure
-                    },
-                    '/join': {
-                        target: server.target,
-                        changeOrigin: true,
-                        secure: server.secure
-                    },
-                    '/static_html': {
-                        target: server.target,
-                        changeOrigin: true,
-                        secure: server.secure
-                    }
-                }
-            },
-            configureWebpack: (config) => {
-                Object.assign(config, {
-                    resolve: {
-                        extensions: ["css", ".js", ".vue", ".less"],
-                        alias: {
-                            "@": resolve("./src"),
-                            assets: resolve("./src/assets"),
-                            pages: resolve("./src/pages"),
-                            components: resolve("./src/components"),
-                        },
-                    },
-                });
-                // 生产模式
-                if (process.env.NODE_ENV === "production") {
-                    // 打包生产.gz包
-                    return {
-                        plugins: [
-                            new CompressionPlugin({
-                                algorithm: "gzip",
-                                test: new RegExp(
-                                    "\\.(" + productionGzipExtensions.join("|") + ")$"
-                                ),
-                                threshold: 10240,
-                                minRatio: 0.8,
-                            }),
-                        ],
-                    };
-                }
-                config.plugins.push(
-                    new CleanWebpackPlugin({
-                        cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "dist")],
-                    })
-                );
-            },
-        })
-    }
+        });
+        // 生产模式
+        if (process.env.NODE_ENV === "production") {
+            // 打包生产.gz包
+            return {
+                plugins: [
+                    new CompressionPlugin({
+                        algorithm: "gzip",
+                        test: new RegExp(
+                            "\\.(" + productionGzipExtensions.join("|") + ")$"
+                        ),
+                        threshold: 10240,
+                        minRatio: 0.8,
+                    }),
+                ],
+            };
+        }
+        config.plugins.push(
+            new CleanWebpackPlugin({
+                cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, "dist")],
+            })
+        );
+    },
 };

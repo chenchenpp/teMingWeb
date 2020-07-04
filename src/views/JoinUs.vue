@@ -43,11 +43,12 @@
         <el-upload
           class="upload-demo"
           drag
-          action="https://jsonplaceholder.typicode.com/posts/"
+          action="http://106.52.5.152/sendEmail/upload.do"
           multiple
-          accept=".pdf, .word"
+          accept=".pdf, .doc"
           :on-success="uploadSuccess"
           :on-error="uploadError"
+          :open="innerDialogOpen"
         >
           <i class="el-icon-upload"></i>
           <div class="el-upload__text">
@@ -97,7 +98,6 @@
         </div>
       </span>
     </el-dialog>
-    <!-- <up-load :dialogVisible="dialogVisible" /> -->
 
     <tm-footer></tm-footer>
   </div>
@@ -210,6 +210,7 @@ export default {
     },
     uploadSuccess() {
       this.uploadSuccessFlag = true;
+      this.innerVisible = false;
     },
     uploadError() {
       this.uploadErrorFlag = true;
@@ -236,6 +237,9 @@ export default {
     download() {
       // this.$get("http://106.52.5.152/static_html/test.docx");
       window.open('http://106.52.5.152/static_html/test.docx');
+    },
+    innerDialogOpen() {
+
     }
   },
   mounted() {

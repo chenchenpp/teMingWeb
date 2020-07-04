@@ -523,7 +523,6 @@ export default {
   },
   watch: {
     "$i18n.locale"(newValue) {
-      console.log(newValue);
     }
   },
   methods: {
@@ -575,7 +574,6 @@ export default {
             var year = document
               .querySelectorAll(".swiper-slide")
               [index].getAttribute("data-year");
-            console.log("yesr", year);
             return `<span class="${className}"><span>${year}</span><i class="iconfont icontriangle"></i></span>`;
           }
         },
@@ -622,7 +620,7 @@ export default {
           that.$nextTick(() => {
             that.initSwiper();
             that.enter(0);
-            scrollReveal().reveal("img", {
+            scrollReveal().reveal(".brand-story-container img", {
               reset: true,
               scale: 1.1,
               delay: 0, // 延时时间

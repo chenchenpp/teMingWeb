@@ -38,13 +38,13 @@
           <el-menu-item index="/brandStory">{{$t('headerTransInfo.brandStory')}}</el-menu-item>
           <el-menu-item index="/explorationHall">{{$t('headerTransInfo.explorHall')}}</el-menu-item>
           <el-menu-item index="/dynamic/main">{{$t('headerTransInfo.temingDynamic')}}</el-menu-item>
-          <el-submenu index="/joinUs || /BrandEntry">
+          <el-submenu index="/BrandEntry || /joinUs">
             <template slot="title">{{$t('headerTransInfo.joinUs.title')}}</template>
             <el-menu-item index="/BrandEntry">
-              <router-link to="/BrandEntry" tag="div">{{$t('headerTransInfo.joinUs.BrandPresence')}}</router-link>
+              {{$t('headerTransInfo.joinUs.BrandPresence')}}
             </el-menu-item>
-            <el-menu-item index="/joinUs">
-              <router-link to="/joinUs" tag="div">{{$t('headerTransInfo.joinUs.recruit')}}</router-link>
+            <el-menu-item index="/JoinUs">
+              {{$t('headerTransInfo.joinUs.recruit')}}
             </el-menu-item>
           </el-submenu>
           <el-menu-item index="7">
@@ -77,7 +77,6 @@ export default {
       this.$i18n.locale = command;
     },
     handleSelect(key, keyPath) {
-      console.log(key, keyPath);
       this.activeIndex = key;
       this.$router.push(key);
     }

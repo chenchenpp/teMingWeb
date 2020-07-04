@@ -5,8 +5,8 @@
     </div>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div v-for="el in imgList" class="swiper-slide" :key="el">
-          <img :src="el" alt />
+        <div v-for="el in imgList" class="swiper-slide" :key="el.imageUrl">
+          <img :src="$host + el.imageUrl" alt />
         </div>
       </div>
       <!-- 如果需要分页器 -->
@@ -44,6 +44,7 @@ export default {
   },
   mounted() {
     this.initSwiper();
+    this.getPageData();
   },
   methods: {
     initSwiper() {
@@ -57,7 +58,16 @@ export default {
           clickable :true,
         }
       });
-    }
+    },
+      getPageData() {
+      let that = this;
+      this.$get("/image/getImageByPage.do?imageBelongPage=1&en=0")
+        .then(res => {
+          let data = res.arrList;
+          that.imgList = data[0].imgArr
+        })
+        .catch();
+    },
   }
 };
 </script>

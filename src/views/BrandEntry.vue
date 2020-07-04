@@ -148,9 +148,9 @@
       <el-upload
         class="upload-demo"
         drag
-        action="https://jsonplaceholder.typicode.com/posts/"
+        action="http://106.52.5.152/sendEmail/upload.do"
         multiple
-        accept=".pdf, .word"
+        accept=".pdf, .doc"
         :on-success="uploadSuccess"
         :on-error="uploadError"
       >
@@ -638,7 +638,6 @@ export default {
       let that = this;
       this.$get("/image/getImageByPage.do?imageBelongPage=6&en=0")
         .then(res => {
-          console.log(res);
           let data = res.arrList;
           data.forEach(val => {
             switch (val.title) {
@@ -667,11 +666,6 @@ export default {
               easing: "cubic-bezier(0.5, 0, 0, 1)" // 执行速度
             });
           });
-          console.log(
-            this.bannerData,
-            this.firstContentData,
-            this.secondContentData
-          );
         })
         .catch();
     },
@@ -761,7 +755,7 @@ export default {
   .banner {
     width: 100%;
     height: 600px;
-    background: url(../assets/images/brandEntry/banner.jpg);
+    background: url("../assets/images/brandEntry/banner.jpg");
   }
   .banner-text-area {
     position: absolute;
