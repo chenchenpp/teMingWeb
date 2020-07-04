@@ -3,10 +3,10 @@
     <nav-bar />
     <div class="container">
       <div class="banner-content">
-        <img :src="require('assets/images/dynamic/banner.jpg')" alt="" />
+        <img :src="imageUrl" alt="" />
         <div class="info">
-          <p class="title animated fadeInDown">特铭最新动态</p>
-          <p class="des"> 坚持以“人”为本的理性化厨房设计理念 <br/> 始终注重产品细节，注重人性化设计，注重绿色环保</p>
+          <p class="title animated fadeInDown">{{headerBanner['title'+language]}}</p>
+          <p class="des">{{headerBanner['info'+language]}}</p>
         </div>
       </div>
       <router-view></router-view>
@@ -15,55 +15,30 @@
   </div>
 </template>
 <script>
+import api from '@/util/request/api';
 export default {
   name: "dynamic",
   data() {
     return {
-      articleList: [
-        {
-          imgSrc: "",
-          title: "冲刺630，使命必达，疫情之下",
-          des: "上海特铭以奔跑者的姿态全力以赴",
-          date: "2020年4月15日",
-          isModal: false
-        },
-        {
-          imgSrc: "",
-          title: "冲刺630，使命必达，疫情之下",
-          des: "上海特铭以奔跑者的姿态全力以赴",
-          date: "2020年4月15日",
-          isModal: false
-        },
-        {
-          imgSrc: "",
-          title: "冲刺630，使命必达，疫情之下",
-          des: "上海特铭以奔跑者的姿态全力以赴",
-          date: "2020年4月15日",
-          isModal: false
-        },
-        {
-          imgSrc: "",
-          title: "冲刺630，使命必达，疫情之下",
-          des: "上海特铭以奔跑者的姿态全力以赴",
-          date: "2020年4月15日",
-          isModal: false
-        },
-        {
-          imgSrc: "",
-          title: "冲刺630，使命必达，疫情之下",
-          des: "上海特铭以奔跑者的姿态全力以赴",
-          date: "2020年4月15日",
-          isModal: false
-        },
-        {
-          imgSrc: "",
-          title: "冲刺630，使命必达，疫情之下",
-          des: "上海特铭以奔跑者的姿态全力以赴",
-          date: "2020年4月15日",
-          isModal: false
-        }
-      ]
+      imageUrl: null,
+      headerBanner: {}
     };
+  },
+  computed:{
+    language() {
+      return this.$i18n.locale == "CN" ? "" : "English";
+    }
+  },
+  created(){
+    this.$get(api.getPageHttp, {
+        imageBelongPage: 5,
+        en: 0
+      }).then(res => {
+        console.log(res)
+        this.headerBanner=res.arrList[0];
+        this.imageUrl=this.headerBanner.imgArr[0].imageUrl
+      })
+
   },
   methods: {
     enter(item) {

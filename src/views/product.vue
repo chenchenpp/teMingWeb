@@ -87,10 +87,10 @@
         </ul>
       </div>
       <div class="clearfix">
-        <div class="download-pdf">
+        <a :href="`http://106.52.5.152/static_html/${$route.params.type}.pdf`" target="_blank" class="download-pdf">
           <i class="iconfont icondownload"></i>
           PDF 下载
-        </div>
+        </a>
       </div>
     </div>
     <div class="card-carousel swiper-container">
@@ -102,9 +102,9 @@
           @mouseenter.stop="stopFooterCarousel"
           @mouseleave.stop="startFooterCarousel"
         >
-          <span class="title">{{item.subTitle}}</span>
+          <span class="title">{{item['imageDescription'+language]}}</span>
           <img
-            :src="'http://106.52.5.152'+item.imageUrl"
+            :src="item.imageUrl"
             alt=""
           />
         </div>
@@ -345,10 +345,10 @@ export default {
         ]
       },
       pageList: {
-        pageTitle: "德贾系列",
-        pageTitleEnglish: 'Judd series',
-        pageTitleInfo: "智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。",
-        pageTitleInfoEnglish: "Intelligent features and top-level configuration combine art, trend and function with each other.",
+        pageTitle: "",
+        pageTitleEnglish: '',
+        pageTitleInfo: "",
+        pageTitleInfoEnglish: "",
         detailList: [],
         bannerCarouselList: [],
         lastCarouselList: []
@@ -363,6 +363,10 @@ export default {
   },
   computed:{
     language() {
+      // 初始化轮播图
+      this.$nextTick(()=>{
+        this.initSwiper();
+      })
       return this.$i18n.locale == "CN" ? "" : "English";
     }
   },
@@ -384,12 +388,15 @@ export default {
         'dikesen': 10,
         'bier': 11,
         'kelinte': 12,
-        'botiqieli': 13
+        'botiqieli': 13,
+        'mengdelian': 14
       }
       this.$get(api.getPageHttp, {
         imageBelongPage: allSeries[this.$route.params.type],
         en: 0
       }).then(res => {
+        let {pageTitle, pageTitleEnglish, pageTitleInfo, pageTitleInfoEnglish} =res;
+        Object.assign(this.pageList, {pageTitle, pageTitleEnglish, pageTitleInfo, pageTitleInfoEnglish})
         let arrList=[...res.arrList];
         this.pageList.detailList=arrList.splice(0, res.arrList.length-2);
         this.pageList.detailList.forEach(item=>{
@@ -465,13 +472,13 @@ export default {
     initSwiper() {
       this.footerCarSwiper = new Swiper(".swiper-container", {
         autoplay: {
-          delay: 30000,
+          delay: 3000,
           disableOnInteraction: false
         },
         loop: true, //循环轮播
         // simulateTouch: false, //禁止滑动轮播 关闭会影响点击事件的触发！！！！！
         effect: "coverflow", //slide的切换效果 3d效果
-        slidesPerView: "2", 
+        slidesPerView: "2",
         loopedSlides: 2,
         centeredSlides: true, //设定为true时，active slide会居中，而不是默认状态下的居左。
         spaceBetween: "-50%", //在slide之间设置距离（单位px）
@@ -486,6 +493,7 @@ export default {
           click: function(event) {
             event.stopPropagation();
             let currentClass = event.target.className;
+            console.log(currentClass)
             if (currentClass.includes('swiper-slide-prev')) {
               this.slidePrev();
             } else if (currentClass.includes('swiper-slide-next')) {
@@ -711,6 +719,7 @@ export default {
     }
   }
   .download-pdf {
+    cursor: pointer;
     width: 160px;
     height: 40px;
     border: 1px solid rgba(255, 255, 255, 0.3);

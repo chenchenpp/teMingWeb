@@ -40,7 +40,7 @@ export default {
         cancelAnimationFrame(this.timerScroll);
       }
       this.timerScroll = requestAnimationFrame(aniFun);
-      
+
     },
     scrollTop() {
       let bodyScrollTop = getScrollTop();//滚动条滚动高度
@@ -54,6 +54,7 @@ export default {
   }
 };
 </script>
+
 <style lang="scss">
 @import './assets/sass/font.css';
 body{

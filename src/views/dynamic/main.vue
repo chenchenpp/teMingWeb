@@ -136,7 +136,7 @@ export default {
       this.$router.push({
         name: "dynamicDetail",
         params: {
-          id: item.title,
+          id: item.id,
         },
       });
     },

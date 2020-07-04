@@ -8,7 +8,8 @@ export const headerTransInfo = {
         dikesen: '迪克森系列',
         bier: '比尔系列',
         kelinte: '克林特系列',
-        botiqieli: '波提切利系列'
+        botiqieli: '波提切利系列',
+        mengdelian: '蒙德里安系列'
     },
     brandStory: '品牌故事',
     explorHall: '探索展厅',
@@ -51,5 +52,9 @@ export const product={
 }
 export const tmDynamic = {
     viewDetails: '查看详情',
-    homePage: '首页'
+    homePage: '首页',
+    dynamicHome: '特铭动态',
+    HomeFurnishing: '特铭家居',
+    nextPage: '下一篇',
+    prePage: '上一篇'
 }
