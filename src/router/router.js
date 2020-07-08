@@ -8,6 +8,7 @@ function importAll(routerArr) {
         routerList.push(routerArr(item).default);
     });
 };
+
 importAll(require.context('.', true, /\.router\.js/));
 export default new Router({
     mode: 'history',

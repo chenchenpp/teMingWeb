@@ -2,5 +2,5 @@ export default {
     path: '/brandStory',
     name: 'brandStory',
     component: () =>
-        import ( /* webpackChunkName: 'product' */ '../views/BrandStory.vue')
+        import ( /* webpackChunkName: 'BrandStory' */ '../views/BrandStory.vue')
 };
