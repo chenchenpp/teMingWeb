@@ -139,7 +139,7 @@
               <img v-lazy="$host + item.imageUrl" class="w345 h345 mb60" alt />
             </div>
           </div>
-          <span class="download mt60 mr60" @click="download">{{$t('brandEntryInfo.downloadJoiningDocuments')}}</span>
+          <!-- <span class="download mt60 mr60" @click="download">{{$t('brandEntryInfo.downloadJoiningDocuments')}}</span> -->
           <span class="upload mt60" @click="innerVisible=true">{{$t('brandEntryInfo.uploadJoiningDocuments')}}</span>
         </section>
       </main>

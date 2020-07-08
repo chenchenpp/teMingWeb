@@ -27,19 +27,21 @@ export default {
       isLoading: true,
       turnLoadingFlag: false,
       imgList: [
-        "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3401764231,948938699&fm=26&gp=0.jpg",
-        "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593356891264&di=843351dd98ba9b5e7d359da9d15008a7&imgtype=0&src=http%3A%2F%2Fimg.51miz.com%2FElement%2F00%2F71%2F46%2F82%2Ffffc6885_E714682_92040862.jpg%2521%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue%2Fformat%2Fjpg",
-        "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1211338343,1056512950&fm=26&gp=0.jpg"
+        // "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3401764231,948938699&fm=26&gp=0.jpg",
+        // "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1593356891264&di=843351dd98ba9b5e7d359da9d15008a7&imgtype=0&src=http%3A%2F%2Fimg.51miz.com%2FElement%2F00%2F71%2F46%2F82%2Ffffc6885_E714682_92040862.jpg%2521%2Fquality%2F90%2Funsharp%2Ftrue%2Fcompress%2Ftrue%2Fformat%2Fjpg",
+        // "https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1211338343,1056512950&fm=26&gp=0.jpg"
       ]
     };
   },
   created() {
+    document.body.style = "height:100vh;overflow:hidden";
     setInterval(() => {}, 1000);
     setTimeout(() => {
       this.turnLoadingFlag = true;
     }, 700);
     setTimeout(() => {
       this.isLoading = false;
+      document.body.style = "height:auto;overflow:auto";
     }, 2100);
   },
   mounted() {
@@ -75,12 +77,13 @@ export default {
 .home-container {
   height: 100%;
   .home-loading {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     z-index: 1000;
+    height: 100vh;
     background-color: #2a282a;
     transition: background-color 0.7s ease;
     display: flex;
