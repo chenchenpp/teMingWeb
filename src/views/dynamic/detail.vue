@@ -117,16 +117,18 @@ export default {
     padding-top: 62px;
     padding-bottom: 82px;
     .title{
-      font-size:24px;
+      font-size:24PX;
       color:rgba(221,221,221,1);
     }
     .mesInfo{
-      font-size:14px;
+      font-size:16PX;
       color:rgba(221,221,221,1);
       margin-top: 18px
     }
     .article-contet{
       margin-top: 69px;
+      font-size:16PX;
+      color: rgba(221,221,221,1);
     }
   }
 }
