@@ -327,32 +327,38 @@ export default {
       this.$get("/image/getImageByPage.do?imageBelongPage=3&en=0")
         .then(res => {
           let data = res.arrList;
-          data.forEach(val => {
-            switch (val.title) {
-              case "1":
-                that.bannerData = val.imgArr;
-                break;
-              case "2":
-                that.firstContentData = val.imgArr;
-                break;
-              case "3":
-                that.secondContentData = val.imgArr;
-                break;
-              case "4":
-                that.thirdContentData = val.imgArr;
-                break;
-              case "5":
-                that.forthContentData = val.imgArr;
-                break;
-              case "3":
-                that.fifthContentData = val.imgArr;
-                break;
-              default:
-                break;
-            }
+          that.bannerData = data[0].imgArr;
+           that.firstContentData = data[1].imgArr;
+            that.secondContentData = data[2].imgArr;
+            that.thirdContentData = data[3].imgArr;
+            that.forthContentData = data[4].imgArr;
+             that.fifthContentData = data[5].imgArr;
+          // data.forEach(val => {
+          //   switch (val.title) {
+          //     case "1":
+          //       that.bannerData = val.imgArr;
+          //       break;
+          //     case "2":
+          //       that.firstContentData = val.imgArr;
+          //       break;
+          //     case "3":
+          //       that.secondContentData = val.imgArr;
+          //       break;
+          //     case "4":
+          //       that.thirdContentData = val.imgArr;
+          //       break;
+          //     case "5":
+          //       that.forthContentData = val.imgArr;
+          //       break;
+          //     case "3":
+          //       that.fifthContentData = val.imgArr;
+          //       break;
+          //     default:
+          //       break;
+          //   }
 
            
-          });
+          // });
           that.$nextTick(() => {
             that.initSwiper();
             that.enter(0);
