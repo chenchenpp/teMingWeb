@@ -400,25 +400,8 @@ export default {
         let {pageTitle, pageTitleEnglish, pageTitleInfo, pageTitleInfoEnglish} =res;
         Object.assign(this.pageList, {pageTitle, pageTitleEnglish, pageTitleInfo, pageTitleInfoEnglish})
         let arrList=[...res.arrList];
-        this.pageList.detailList=arrList.splice(0, res.arrList.length-2);
-        this.pageList.detailList.forEach(item=>{
-          let speArr=[];
-          let copyArr=[];
-          item.imgArr.forEach(data => {
-            if(data.name||data.name=='0') {
-              speArr.push(data)
-            } else {
-              copyArr.push(data)
-            }
-          })
-          if(speArr.length){
-            copyArr.push({
-              imgArr: speArr
-            })
-          }
-          item.imgArr=copyArr;
-        });
-        this.pageList.bannerCarouselList=arrList.pop().imgArr;
+        // 头部轮播
+        this.pageList.bannerCarouselList=arrList.shift().imgArr;
         this.pageList.bannerCarouselList.forEach(item=>{
           let arr= [{
               isShow: false,
@@ -445,6 +428,27 @@ export default {
           ]
           this.$set(item, 'positionList', arr)
         })
+        // 主体部分
+        this.pageList.detailList=arrList.splice(0, res.arrList.length-2);
+        this.pageList.detailList.forEach(item=>{
+          let speArr=[];
+          let copyArr=[];
+          item.imgArr.forEach(data => {
+            if(data.name||data.name=='0') {
+              speArr.push(data)
+            } else {
+              copyArr.push(data)
+            }
+          })
+          if(speArr.length){
+            copyArr.push({
+              imgArr: speArr
+            })
+          }
+          item.imgArr=copyArr;
+        });
+
+        // 脚步轮播图
         this.pageList.lastCarouselList=arrList.pop().imgArr
         // 初始化轮播图
         this.$nextTick(()=>{
@@ -669,7 +673,10 @@ export default {
       li {
         margin-left: 50px;
         margin-top: 60px;
-        overflow: hidden;
+        &:not(.moduel-mes){
+          overflow: hidden;
+        }
+
       }
       .spe-img {
         display: flex;
@@ -682,7 +689,7 @@ export default {
         content: "";
         display: inline-block;
         width: 50px;
-        height: 1px;
+        height: 1PX;
         background: rgba(255, 255, 255, 0.5);
         position: absolute;
         top: 70px;
