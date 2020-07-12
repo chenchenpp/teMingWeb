@@ -1,7 +1,11 @@
 <template>
   <div class="brand-story-container">
     <el-carousel arrow="never" class="banner">
-      <el-carousel-item v-for="(item, index) in bannerData" :key="item.id" @click="playVideo(index)">
+      <el-carousel-item
+        v-for="(item, index) in bannerData"
+        :key="item.id"
+        @click="playVideo(index)"
+      >
         <img :src="$host + item.imageUrl" alt @click="isShowVideoPlayer=true" />
       </el-carousel-item>
     </el-carousel>
@@ -20,11 +24,26 @@
           v-html="firstContentData[0][`subTitle${language}`]"
         ></p>
         <div class="img-intruduce">
-          <img v-for="item in firstContentData" :key="item.id" v-lazy="$host + item.imageUrl" />
+          <!-- <img v-for="item in firstContentData" :key="item.id" v-lazy="$host + item.imageUrl" />
+          <div class="img-title-box">
+            <p class="img-main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
+            <p class="img-sub-title" v-if="item" v-html="item[`imageDescription${language}`]"></p>
+          </div> -->
+          <div
+            style="position:relative"
+            v-for="(item,i) in firstContentData"
+            :key="i"
+          >
+            <img :src="$host + item.imageUrl" alt />
+            <div class="img-title-box">
+              <p class="img-main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
+              <p class="img-sub-title" v-if="item" v-html="item[`imageDescription${language}`]"></p>
+            </div>
+        </div>
         </div>
       </section>
 
-      <section class="second-content">
+      <section class="second-content" v-if="secondContentData.length > 0">
         <div class="swiper-container">
           <div class="swiper-wrapper">
             <div
@@ -49,7 +68,7 @@
         </div>
       </section>
 
-      <section class="third-content">
+      <section class="third-content" v-if="thirdContentData.length > 0">
         <p
           class="main-title"
           v-if="thirdContentData[0]"
@@ -113,7 +132,7 @@
         </div>
       </section>
 
-      <section class="forth-content">
+      <section class="forth-content" v-if="forthContentData.length > 0">
         <p
           class="main-title"
           v-if="forthContentData[0]"
@@ -148,7 +167,7 @@
         </div>
       </section>
 
-      <div class="fifth-content">
+      <div class="fifth-content" v-if="fifthContentData.length > 0">
         <p
           class="main-title"
           v-if="fifthContentData[0]"
@@ -203,293 +222,9 @@ export default {
       bannerData: [],
       firstContentData: [],
       secondContentData: [],
-      thirdContentData: [
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 21,
-          imageBelongPage: "3",
-
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
-          linkUrl: "",
-          mainTitle: "2",
-          mainTitleEnglish: "模块的英文主标题",
-          name: null,
-          no: "",
-          subTitle: "sdf",
-          subTitleEnglish: "模块的英文副标题",
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 24,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/3e44ab81-0e58-4e69-8bd1-5be2a29301b4.png",
-          linkUrl: "dfsd",
-          mainTitle: "ss",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "sdf",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 25,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        }
-      ],
-      forthContentData: [
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 21,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
-          linkUrl: "",
-          mainTitle: "2",
-          mainTitleEnglish: "模块的英文主标题",
-          name: null,
-          no: "",
-          subTitle: "sdf",
-          subTitleEnglish: "模块的英文副标题",
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题",
-          active: true
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 24,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/3e44ab81-0e58-4e69-8bd1-5be2a29301b4.png",
-          linkUrl: "dfsd",
-          mainTitle: "ss",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "sdf",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题",
-          active: false
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 25,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题",
-          active: false
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 26,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题",
-          active: false
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 27,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题",
-          active: false
-        }
-      ],
-      fifthContentData: [
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 21,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
-          linkUrl: "",
-          mainTitle: "2",
-          mainTitleEnglish: "模块的英文主标题",
-          name: null,
-          no: "",
-          subTitle: "sdf",
-          subTitleEnglish: "模块的英文副标题",
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题",
-          active: true,
-          tag: "省心",
-          tagEnglish: "英文版省心"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 24,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/3e44ab81-0e58-4e69-8bd1-5be2a29301b4.png",
-          linkUrl: "dfsd",
-          mainTitle: "ss",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "sdf",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题",
-          active: false,
-          tag: "省心",
-          tagEnglish: "英文版省心"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 25,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题",
-          active: false,
-          tag: "省心",
-          tagEnglish: "英文版省心"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 26,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题",
-          active: false,
-          tag: "省心",
-          tagEnglish: "英文版省心"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 27,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题",
-          active: false,
-          tag: "省心",
-          tagEnglish: "英文版省心"
-        }
-      ],
+      thirdContentData: [],
+      forthContentData: [],
+      fifthContentData: [],
       // videojs options
       playerOptions: {
         height: "360",
@@ -522,8 +257,7 @@ export default {
     }
   },
   watch: {
-    "$i18n.locale"(newValue) {
-    }
+    "$i18n.locale"(newValue) {}
   },
   methods: {
     enter: function(i) {
@@ -596,26 +330,28 @@ export default {
           data.forEach(val => {
             switch (val.title) {
               case "1":
-                this.bannerData = val.imgArr;
+                that.bannerData = val.imgArr;
                 break;
               case "2":
-                this.firstContentData = val.imgArr;
+                that.firstContentData = val.imgArr;
                 break;
               case "3":
-                this.secondContentData = val.imgArr;
+                that.secondContentData = val.imgArr;
                 break;
               case "4":
-                this.thirdContentData = val.imgArr;
+                that.thirdContentData = val.imgArr;
                 break;
               case "5":
-                this.forthContentData = val.imgArr;
+                that.forthContentData = val.imgArr;
                 break;
               case "3":
-                this.fifthContentData = val.imgArr;
+                that.fifthContentData = val.imgArr;
                 break;
               default:
                 break;
             }
+
+           
           });
           that.$nextTick(() => {
             that.initSwiper();
@@ -633,12 +369,15 @@ export default {
         .catch();
     },
     playVideo(index) {
-      this.playerOptions.sources.src=this.bannerData[index].imageUrl;
+      this.playerOptions.sources.src = this.bannerData[index].imageUrl;
       isShowVideoPlayer = true;
     }
   },
-  mounted() {
+  created() {
     this.getPageData();
+  },
+  mounted() {
+    // this.getPageData();
   }
 };
 </script>
@@ -921,7 +660,7 @@ div.box.eleactive img {
 }
 </style>
 <style lang="scss">
-@import '../assets/sass/font.css';
+@import "../assets/sass/font.css";
 .forth-content {
   .el-carousel__container {
     height: 550px;
@@ -976,7 +715,7 @@ div.box.eleactive img {
     align-items: center;
     justify-content: flex-end;
     position: relative;
-     font-family: 'zhanghaishangcaonima';
+    font-family: "zhanghaishangcaonima";
     i {
       font-size: 28px;
       opacity: 0;
