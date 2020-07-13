@@ -171,7 +171,6 @@ export default {
     .image-box {
       width: 406px;
       height: 240px;
-      border: 1px solid #dddddd;
       margin-top: 30px;
       position: relative;
       overflow: hidden;
