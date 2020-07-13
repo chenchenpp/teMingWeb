@@ -30,8 +30,8 @@ require("./assets/sass/reset.scss");
 })(document, window);
 Vue.use(VueLazyload, {
   preLoad: 1.3,
-  error: "./assets/logo.png",
-  loading: "https://img.happyeasygo.com/img/1577095869250.gif",
+  error: '',
+  loading: require('./assets/images/loading.gif'),
   attempt: 1,
 });
 Vue.prototype.$get = get;

@@ -7,41 +7,30 @@
           :key="index"
         >
           <div class="caro-banner-container">
-            <img
-              class="banner-img"
-              :src="item.imageUrl"
-              alt=""
-            />
-            <div
-              v-for="(posItem, posIndex) in item.positionList"
+            <img class="banner-img" :src="item.imageUrl" alt="" />
+            <div v-for="(posItem, posIndex) in item.positionList"
               :key="`pos${posIndex}`"
               class="dot"
               :class="{ 'stop-dot': posItem.isShow }"
               :style="{ left: posItem.left, top: posItem.top }"
-              @click="openGoodsHandle(posItem, item.positionList)"
-            >
+              @click="openGoodsHandle(posItem, item.positionList)">
               <div class="inner"></div>
             </div>
-            <div
-              class="goods-items"
-              :class="{ 'goods-items-active': goodsItem.isShow }"
-              v-for="(goodsItem, goodsIndex) in item.positionList"
-              :key="`goods${goodsIndex}`"
-            >
-              <img
-                :src="
-                  require(`assets/images/product/one/${goodsItem.smallImgSrc}`)
-                "
-                alt=""
-              />
-              <div class="right-box">
-                <p class="title">{{ goodsItem['title'+language] }}</p>
-                <p class="des">{{ goodsItem['des'+language] }}</p>
-                <div class="close" @click="closeGoodsHandle(goodsItem)">
-                  {{$t('product.close')}} &gt;
+            <template v-for="(goodsItem, goodsIndex) in item.positionList">
+              <div v-if="!goodsItem.isVideoFlag" class="goods-items"
+                :class="{ 'goods-items-active': goodsItem.isShow }"
+                :key="`goods${goodsIndex}`"
+              >
+                <img :src="require(`assets/images/product/${goodsItem.src}`)" alt="" />
+                <div class="right-box">
+                  <p class="title" v-html="goodsItem['title'+language]"></p>
+                  <p class="des" v-html="goodsItem['des'+language]"></p>
+                  <div class="close" @click="closeGoodsHandle(goodsItem)">
+                    {{$t('product.close')}} &gt;
+                  </div>
                 </div>
               </div>
-            </div>
+            </template>
           </div>
         </el-carousel-item>
       </el-carousel>
@@ -111,6 +100,12 @@
       </div>
     </div>
     <tm-footer></tm-footer>
+    <el-dialog :visible.sync="isShowVideoPlayer" :show-close="false" :before-close="closePlayHandle">
+      <video-player class="video-player vjs-custom-skin" ref="videoPlayer"
+        :playsinline="true"
+        :options="playerOptions"
+      ></video-player>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -121,6 +116,7 @@ export default {
   name: 'product',
   data() {
     return {
+      isShowVideoPlayer: false,
       dejiaList: {
         title: "德贾系列",
         des: "智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。",
@@ -344,6 +340,64 @@ export default {
           }
         ]
       },
+      dejiaPointList: [
+        [{
+          isShow: false,
+          left: '20%',
+          top: '20%',
+          isVideoFlag: false,
+          src: 'dejia/banner1.jpg',
+          title: '嵌入式煤气灶',
+          titleEnglish: 'Built-in gas range',
+          des: 'PITT燃烧器系统是全球专利，台面传热小，噪音极低，燃烧均匀；拥有比常规灶具多8厘米的两炉头间距，大空间使得各种类型的锅具同时烹饪时不受限制；台下嵌入式设计，烹饪后，主燃烧器部件可以很容易地移除，只留下一个平整的台面来清洁。',
+          desEnglish: 'Embedded gas stove PITT burner system is a global patent, small surface heat transfer, very low noise, uniform combustion;It has 8 cm more space between the two stove heads than the conventional stove, so that the large space makes all kinds of POTS cooking at the same time unrestricted;Built in, the main burner parts can be easily removed after cooking, leaving only a flat surface to clean.'
+        }, {
+          isShow: false,
+          left: '40%',
+          top: '30%',
+          isVideoFlag: true,
+          src: 'dejia/video1.MP4'
+        }, {
+          isShow: false,
+          left: '60%',
+          top: '40%',
+          isVideoFlag: true,
+          src: 'dejia/video2.MP4'
+        }], [{
+          isShow: false,
+          left: '40%',
+          top: '30%',
+          isVideoFlag: false,
+          src: 'dejia/banner2.jpg',
+          title: '木质刀叉盒',
+          titleEnglish: 'Wooden cutlery case',
+          des: '设计简洁流畅，做工精细，实用性强</br>自由组合，满足不同的分隔需求',
+          desEnglish: 'The design of wooden knife and fork box is simple and fluent, the work is fine, the practicability is strong </br> free combination, satisfies the different separation demand'
+        }], [{
+          isShow: false,
+          left: '40%',
+          top: '30%',
+          isVideoFlag: false,
+          src: 'dejia/banner3.jpg',
+          title: '首饰盒',
+          titleEnglish: 'jewel case',
+          des: '多格区分，一目了然。高档植绒，轻柔呵护</br>至简魅力，自有格调',
+          desEnglish: 'Multi - lattice distinction, clear at a glance.Top grade flocking, gentle care </br> to simple charm, own style'
+        }]
+      ],
+      playerOptions: {
+        height: '360',
+        autoplay: false,
+        muted: true,
+        language: 'en',
+        playbackRates: [0.7, 1.0, 1.5, 2.0],
+        sources: [
+          {
+            type: 'video/mp4',
+            src: ''
+          }
+        ]
+      },
       pageList: {
         pageTitle: "",
         pageTitleEnglish: '',
@@ -382,8 +436,8 @@ export default {
     });
   },
   methods: {
-    init(){
-      let allSeries={
+    init() {
+      let allSeries = {
         'dejia':2,
         'molandi': 8,
         'miss': 9,
@@ -397,59 +451,36 @@ export default {
         imageBelongPage: allSeries[this.$route.params.type],
         en: 0
       }).then(res => {
-        let {pageTitle, pageTitleEnglish, pageTitleInfo, pageTitleInfoEnglish} =res;
-        Object.assign(this.pageList, {pageTitle, pageTitleEnglish, pageTitleInfo, pageTitleInfoEnglish})
-        let arrList=[...res.arrList];
+        let { pageTitle, pageTitleEnglish, pageTitleInfo, pageTitleInfoEnglish } =res;
+        Object.assign(this.pageList, { pageTitle, pageTitleEnglish, pageTitleInfo, pageTitleInfoEnglish });
+        let arrList = [...res.arrList];
         // 头部轮播
-        this.pageList.bannerCarouselList=arrList.shift().imgArr;
-        this.pageList.bannerCarouselList.forEach(item=>{
-          let arr= [{
-              isShow: false,
-              left: "20%",
-              top: "20%",
-              smallImgSrc: "banner.png",
-              title: "厨房用具",
-              des: "巧妙地将开放理念运用到厨房设计中，将篮子的透气性拉到极致，让您在最快的时间内烹饪，最方便的找到厨房用具，一目了然的享受乐趣。"
-            },{
-              isShow: false,
-              left: "40%",
-              top: "30%",
-              smallImgSrc: "banner.png",
-              title: "厨房用具",
-              des: "巧妙地将开放理念运用到厨房设计中，将篮子的透气性拉到极致，让您在最快的时间内烹饪，最方便的找到厨房用具，一目了然的享受乐趣。"
-            }, {
-              isShow: false,
-              left: "60%",
-              top: "40%",
-              smallImgSrc: "banner.png",
-              title: "厨房用具",
-              des: "巧妙地将开放理念运用到厨房设计中，将篮子的透气性拉到极致，让您在最快的时间内烹饪，最方便的找到厨房用具，一目了然的享受乐趣。"
-            }
-          ]
-          this.$set(item, 'positionList', arr)
-        })
+        this.pageList.bannerCarouselList = arrList.shift().imgArr;
+        this.pageList.bannerCarouselList.forEach((item, index) => {
+          this.$set(item, 'positionList', this.dejiaPointList[index]);
+        });
         // 主体部分
-        this.pageList.detailList=arrList.splice(0, res.arrList.length-2);
-        this.pageList.detailList.forEach(item=>{
+        this.pageList.detailList = arrList.splice(0, res.arrList.length - 2);
+        this.pageList.detailList.forEach(item => {
           let speArr=[];
           let copyArr=[];
           item.imgArr.forEach(data => {
-            if(data.name||data.name=='0') {
-              speArr.push(data)
+            if(data.name || data.name == '0') {
+              speArr.push(data);
             } else {
               copyArr.push(data)
             }
           })
-          if(speArr.length){
+          if (speArr.length) {
             copyArr.push({
               imgArr: speArr
-            })
+            });
           }
-          item.imgArr=copyArr;
+          item.imgArr = copyArr;
         });
 
         // 脚步轮播图
-        this.pageList.lastCarouselList=arrList.pop().imgArr
+        this.pageList.lastCarouselList = arrList.pop().imgArr;
         // 初始化轮播图
         this.$nextTick(()=>{
           this.initSwiper();
@@ -520,6 +551,10 @@ export default {
     closeGoodsHandle(data) {
       data.isShow = false;
     },
+    closePlayHandle() {
+      this.$refs.videoPlayer.player.pause();
+      this.isShowVideoPlayer = false;
+    },
     openGoodsHandle(data, dataList) {
       if (data.isShow) {
         data.isShow = false;
@@ -528,6 +563,16 @@ export default {
           item.isShow = false;
         });
         data.isShow = true;
+      }
+      if (data.isVideoFlag) {
+        console.log(`../assets/video/${data.src}`)
+        this.isShowVideoPlayer = true;
+        this.$set(this.playerOptions.sources, 0, {
+          type: 'video/mp4',
+          src: `http://vjs.zencdn.net/v/oceans.mp4`
+        });
+        // this.$refs.videoPlayer.player.src('http://vjs.zencdn.net/v/oceans.mp4');
+        
       }
     }
   }
@@ -621,6 +666,7 @@ export default {
       img {
         width: 240px;
         height: 180px;
+        object-fit: cover;
       }
       .right-box {
         height: 180px;
@@ -676,7 +722,9 @@ export default {
         &:not(.moduel-mes){
           overflow: hidden;
         }
-
+        img{
+          object-fit: cover;
+        }
       }
       .spe-img {
         display: flex;
