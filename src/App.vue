@@ -56,7 +56,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import './assets/sass/font.css';
 body{
   font-size: 16px;
   min-width: 1024PX;
@@ -66,7 +65,6 @@ body{
   overflow:auto;
   background: url('./assets/images/back-color.jpg') center repeat !important;
   background-size: 100%;
-  font-family: 'zhanghaishangcaonima'
 }
 #app {
   width: 100%;

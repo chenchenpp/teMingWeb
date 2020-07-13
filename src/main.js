@@ -10,6 +10,7 @@ import { i18n } from "./assets/lang/i18n";
 import "swiper/css/swiper.css";
 import VueLazyload from "vue-lazyload";
 require("./assets/sass/reset.scss");
+require('@/assets/font/zhanghaishan/zhanghaishan.css');
 (function (doc, win) {
   var docEl = doc.documentElement;
   var resizeEvt = "orientationchange" in window ? "orientationchange" : "resize";
