@@ -638,7 +638,6 @@ div.box.eleactive img {
 }
 </style>
 <style lang="scss">
-// @import "../assets/sass/font.scss";
 .forth-content {
   .el-carousel__container {
     height: 550px;
