@@ -3,7 +3,7 @@ const productionGzipExtensions = ["js", "css"];
 const path = require("path");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const server = {
-    target: "http://106.52.5.152",
+    target: "http://106.52.5.152:8080",
     secure: false,
 };
 

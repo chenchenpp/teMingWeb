@@ -3,7 +3,7 @@
     <div class="home-loading" :class="{ 'home-loading-active': turnLoadingFlag }" v-if="isLoading">
       <img :src="require('assets/images/home/logo.png')" alt class="logo" />
     </div>
-    <div class="swiper-container">
+    <div class="swiper-container" v-if="imgList.length">
       <div class="swiper-wrapper">
         <div v-for="el in imgList" class="swiper-slide" :key="el.imageUrl">
           <img :src="$host + el.imageUrl" alt />
@@ -45,7 +45,7 @@ export default {
     }, 2100);
   },
   mounted() {
-    this.initSwiper();
+   
     this.getPageData();
   },
   methods: {
@@ -66,7 +66,11 @@ export default {
       this.$get("/image/getImageByPage.do?imageBelongPage=1&en=0")
         .then(res => {
           let data = res.arrList;
-          that.imgList = data[0].imgArr
+          that.imgList = data[0].imgArr;
+          that.$nextTick(() => {
+           that.initSwiper();
+          })
+          
         })
         .catch();
     },
@@ -75,7 +79,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .home-container {
-  height: 100%;
+  // height: 100%;
   .home-loading {
     position: fixed;
     left: 0;
@@ -112,8 +116,8 @@ export default {
 }
 
 .swiper-slide img {
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   transition: 5s linear 5s; /* 必须的必 */
   transform: scale(1.1); /* 必须的必 */
   object-fit: cover;

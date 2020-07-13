@@ -28,18 +28,14 @@
           <div class="img-title-box">
             <p class="img-main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
             <p class="img-sub-title" v-if="item" v-html="item[`imageDescription${language}`]"></p>
-          </div> -->
-          <div
-            style="position:relative"
-            v-for="(item,i) in firstContentData"
-            :key="i"
-          >
+          </div>-->
+          <div style="position:relative" v-for="(item,i) in firstContentData" :key="i">
             <img :src="$host + item.imageUrl" alt />
             <div class="img-title-box">
               <p class="img-main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
               <p class="img-sub-title" v-if="item" v-html="item[`imageDescription${language}`]"></p>
             </div>
-        </div>
+          </div>
         </div>
       </section>
 
@@ -296,10 +292,8 @@ export default {
     },
     initSwiper() {
       new Swiper(".swiper-container", {
-        // direction: "vertical",
-        //  autoplay: true,
-        // loop: true,
-        effect: "flip",
+        speed: 1000,
+        // effect: "fade",
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
@@ -314,12 +308,12 @@ export default {
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
-        },
-        breakpoints: {
-          768: {
-            direction: "horizontal"
-          }
         }
+        // breakpoints: {
+        //   768: {
+        //     direction: "horizontal"
+        //   }
+        // }
       });
     },
     getPageData() {
@@ -328,37 +322,12 @@ export default {
         .then(res => {
           let data = res.arrList;
           that.bannerData = data[0].imgArr;
-           that.firstContentData = data[1].imgArr;
-            that.secondContentData = data[2].imgArr;
-            that.thirdContentData = data[3].imgArr;
-            that.forthContentData = data[4].imgArr;
-             that.fifthContentData = data[5].imgArr;
-          // data.forEach(val => {
-          //   switch (val.title) {
-          //     case "1":
-          //       that.bannerData = val.imgArr;
-          //       break;
-          //     case "2":
-          //       that.firstContentData = val.imgArr;
-          //       break;
-          //     case "3":
-          //       that.secondContentData = val.imgArr;
-          //       break;
-          //     case "4":
-          //       that.thirdContentData = val.imgArr;
-          //       break;
-          //     case "5":
-          //       that.forthContentData = val.imgArr;
-          //       break;
-          //     case "3":
-          //       that.fifthContentData = val.imgArr;
-          //       break;
-          //     default:
-          //       break;
-          //   }
+          that.firstContentData = data[1].imgArr;
+          that.secondContentData = data[2].imgArr;
+          that.thirdContentData = data[3].imgArr;
+          that.forthContentData = data[4].imgArr;
+          that.fifthContentData = data[5].imgArr;
 
-           
-          // });
           that.$nextTick(() => {
             that.initSwiper();
             that.enter(0);
