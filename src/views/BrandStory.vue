@@ -6,7 +6,7 @@
         :key="item.id"
         @click="playVideo(index)"
       >
-        <img :src="$host + item.imageUrl" alt @click="isShowVideoPlayer=true" />
+        <img :src="$host + item.imageUrl" alt @click="isShowVideoPlayer=true" class="need"/>
       </el-carousel-item>
     </el-carousel>
     <div class="content">
@@ -30,7 +30,7 @@
             <p class="img-sub-title" v-if="item" v-html="item[`imageDescription${language}`]"></p>
           </div>-->
           <div style="position:relative" v-for="(item,i) in firstContentData" :key="i">
-            <img :src="$host + item.imageUrl" alt />
+            <img :src="$host + item.imageUrl" alt class="need"/>
             <div class="img-title-box">
               <p class="img-main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
               <p class="img-sub-title" v-if="item" v-html="item[`imageDescription${language}`]"></p>
@@ -53,7 +53,7 @@
                   <p class="main-title" v-html="item[`mainTitle${language}`]"></p>
                   <p class="sub-title" v-html="item[`subTitle${language}`]"></p>
                 </div>
-                <img v-lazy="$host + item.imageUrl" alt />
+                <img :src="$host + item.imageUrl" alt />
                 <span class="timeline-year">{{item.imageDescription}}</span>
               </div>
             </div>
@@ -90,7 +90,7 @@
                   v-html="thirdContentData[0][`imageDescription${language}`]"
                 ></p>
               </div>
-              <img v-lazy="$host + thirdContentData[0].imageUrl" alt />
+              <img v-lazy="$host + thirdContentData[0].imageUrl" alt class="need"/>
             </div>
             <div class="img-box">
               <div class="img-title-box">
@@ -122,7 +122,7 @@
                   v-html="thirdContentData[2][`imageDescription${language}`]"
                 ></p>
               </div>
-              <img v-lazy="$host + thirdContentData[2].imageUrl" alt />
+              <img v-lazy="$host + thirdContentData[2].imageUrl" alt class="need"/>
             </div>
           </div>
         </div>
@@ -143,7 +143,7 @@
           <div class="left-img">
             <el-carousel arrow="never" indicator-position="none" ref="carousel" :autoplay="false">
               <el-carousel-item v-for="item in forthContentData" :key="item.id">
-                <img v-lazy="$host + item.imageUrl" alt />
+                <img v-lazy="$host + item.imageUrl" alt class="need"/>
               </el-carousel-item>
             </el-carousel>
           </div>
@@ -153,7 +153,7 @@
               v-for="(item, key) in forthContentData"
               :key="item.id + item.imageUrl"
             >
-              <img :src="require(`assets/images/brandStory/icon${key + 1}.png`)" class="icon" />
+              <img :src="require(`assets/images/brandStory/icon${key + 1}.png`)" class="icon need" />
               <div class="intruduce" :class="{intruduceActive:item.active}">
                 <p class="main-title" v-if="item" v-html="item[`mainTitle${language}`]"></p>
                 <p class="sub-title" v-if="item" v-html="item[`subTitle${language}`]"></p>
@@ -183,7 +183,7 @@
             @mouseenter="enter(i)"
             @mouseleave="out(i)"
           >
-            <img :src="$host + item.imageUrl" alt />
+            <img :src="$host + item.imageUrl" alt class="need"/>
             <div class="tips" v-show="!item.active" v-html="item[`tag${language}`]"></div>
             <div class="title-area"></div>
             <div class="img-title-box" v-show="item.active">
@@ -292,11 +292,12 @@ export default {
     },
     initSwiper() {
       new Swiper(".swiper-container", {
-        speed: 1000,
-        // effect: "fade",
+        // speed: 1000,
+        effect:'coverflow',
         pagination: {
           el: ".swiper-pagination",
           clickable: true,
+          
           //自定义分页
           renderBullet: function(index, className) {
             var year = document
@@ -308,12 +309,12 @@ export default {
         navigation: {
           nextEl: ".swiper-button-next",
           prevEl: ".swiper-button-prev"
+        },
+        breakpoints: {
+          768: {
+            direction: "horizontal"
+          }
         }
-        // breakpoints: {
-        //   768: {
-        //     direction: "horizontal"
-        //   }
-        // }
       });
     },
     getPageData() {
@@ -329,9 +330,9 @@ export default {
           that.fifthContentData = data[5].imgArr;
 
           that.$nextTick(() => {
-            that.initSwiper();
+           
             that.enter(0);
-            scrollReveal().reveal(".brand-story-container img", {
+            scrollReveal().reveal(".brand-story-container img.need", {
               reset: true,
               scale: 1.1,
               delay: 0, // 延时时间
@@ -339,6 +340,7 @@ export default {
               duration: 600, // 执行时长
               easing: "cubic-bezier(0.5, 0, 0, 1)" // 执行速度
             });
+             that.initSwiper();
           });
         })
         .catch();
@@ -399,6 +401,7 @@ export default {
   position: absolute;
   bottom: 40px;
   left: 40px;
+  z-index: 99;
 }
 .img-main-title {
   font-size: 24px;
@@ -635,7 +638,7 @@ div.box.eleactive img {
 }
 </style>
 <style lang="scss">
-@import "../assets/sass/font.css";
+// @import "../assets/sass/font.scss";
 .forth-content {
   .el-carousel__container {
     height: 550px;
