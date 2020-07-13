@@ -74,12 +74,12 @@
       <div class="dialog-body">
         <div class="left">
           <h1>{{$t('joinUsInfo.positionDescription')}}：</h1>
-          <p v-html="joinUsDetail[`positionDescription${language}`]"></p>
+          <p v-html="joinUsDetail[`positionDescription${language}`]" class="p-info"></p>
         </div>
         <div class="middle-line"></div>
         <div class="right">
           <h1>{{$t('joinUsInfo.positionRequirement')}}：</h1>
-          <p v-html="joinUsDetail[`positionRequirement${language}`]"></p>
+          <p v-html="joinUsDetail[`positionRequirement${language}`]" class="p-info"></p>
         </div>
       </div>
       <span slot="footer" class="dialog-footer">
@@ -260,6 +260,9 @@ export default {
   color: #dddddd;
   font-size: 24px;
   background: url("../assets/images/home/background.jpg");
+  .p-info{
+    line-height: 30px;
+  }
   .banner {
     width: 100%;
     height: 600px;
@@ -343,7 +346,7 @@ export default {
     }
     .sub-title {
       font-size: 14px;
-      line-height: 26px;
+      line-height: 30px;
     }
   }
   .download,
@@ -384,7 +387,6 @@ export default {
 .details-dialog {
   .el-dialog {
     width: 1360px;
-    height: 480px;
     background: rgba(55, 54, 55, 1);
     box-shadow: 0px 20px 21px 0px rgba(0, 0, 0, 0.3);
     padding: 30px 60px;
