@@ -483,7 +483,12 @@ export default {
         this.pageList.lastCarouselList = arrList.pop().imgArr;
         // 初始化轮播图
         this.$nextTick(()=>{
-          this.initSwiper();
+          if(this.footerCarSwiper){
+            this.footerCarSwiper.init();
+          }else {
+            this.initSwiper();
+          }
+
         })
       })
     },
@@ -493,16 +498,20 @@ export default {
         this.$refs[`IMGmoduel${i}`][0].childNodes.forEach(ele => {
           let eleTop = ele.getBoundingClientRect().top;
           let eleHeight = ele.clientHeight; //当前元素高度
-          if (eleTop >= 0) {
-            ele.childNodes[0].style.transform = `scale(${1 + (windowHeight - eleTop) / windowHeight / 20})`;
-            ele.style.opacity = `${(windowHeight - eleTop) / windowHeight}`;
-          } else if (-eleTop <= eleHeight && eleTop < 0) {
-            ele.childNodes[0].style.transform = `scale(${1 + (eleHeight + eleTop) / eleHeight / 20})`;
-            ele.style.opacity = `${(eleHeight + eleTop) / eleHeight}`;
-          } else {
-            ele.childNodes[0].style.transform = 'scale(1)';
-            ele.style.opacity = '1';
+          console.log(ele.childNodes)
+          if(ele.childNodes[0].nodeName=='IMG'){
+            if (eleTop >= 0) {
+              ele.childNodes[0].style.transform = `scale(${1 + (windowHeight - eleTop) / windowHeight / 20})`;
+              ele.style.opacity = `${(windowHeight - eleTop) / windowHeight}`;
+            } else if (-eleTop <= eleHeight && eleTop < 0) {
+              ele.childNodes[0].style.transform = `scale(${1 + (eleHeight + eleTop) / eleHeight / 20})`;
+              ele.style.opacity = `${(eleHeight + eleTop) / eleHeight}`;
+            } else {
+              ele.childNodes[0].style.transform = 'scale(1)';
+              ele.style.opacity = '1';
+            }
           }
+
         });
       }
     },
@@ -565,14 +574,13 @@ export default {
         data.isShow = true;
       }
       if (data.isVideoFlag) {
-        console.log(`../assets/video/${data.src}`)
         this.isShowVideoPlayer = true;
         this.$set(this.playerOptions.sources, 0, {
           type: 'video/mp4',
           src: `http://vjs.zencdn.net/v/oceans.mp4`
         });
         // this.$refs.videoPlayer.player.src('http://vjs.zencdn.net/v/oceans.mp4');
-        
+
       }
     }
   }
@@ -581,9 +589,16 @@ export default {
 <style lang="scss" scoped>
 .product {
   height: 100%;
-
   ::v-deep .el-carousel__container {
     height: 100vh;
+  }
+  ::v-deep .el-carousel__button {
+    width: 50px;
+    height: 4px;
+    margin: 0 !important;
+    margin-left: 28px !important;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0;
   }
   .caro-banner-container {
     .banner-img {
@@ -697,7 +712,7 @@ export default {
     .title {
       font-size: 30px;
       font-weight: normal;
-      margin-top: 82px;
+      margin-top: 60px;
     }
     .des {
       margin-top: 22px;
@@ -760,12 +775,15 @@ export default {
       }
     }
     .moduel-mes {
+      box-sizing: border-box;
       width: 440px;
       position: relative;
+      padding: 0 10px;
       .title {
         font-size: 24px;
         font-weight: normal;
         color: rgba(221, 221, 221, 1);
+        text-align: left;
       }
       .des {
         font-size: 16px;
@@ -827,7 +845,7 @@ export default {
       top: 0;
       bottom: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.5);
+      background: rgba(0, 0, 0, 0.7);
     }
   }
 }

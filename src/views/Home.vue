@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
     <div class="home-loading" :class="{ 'home-loading-active': turnLoadingFlag }" v-if="isLoading">
-      <img :src="require('assets/images/home/logo.png')" alt class="logo" />
+      <img :src="require(`assets/images/home/${turnLoadingFlag? 'logo':'wLogo'}.png`)" alt class="logo" />
     </div>
     <div class="swiper-container" v-if="imgList.length">
       <div class="swiper-wrapper">
@@ -45,7 +45,7 @@ export default {
     }, 2100);
   },
   mounted() {
-   
+
     this.getPageData();
   },
   methods: {
@@ -70,7 +70,7 @@ export default {
           that.$nextTick(() => {
            that.initSwiper();
           })
-          
+
         })
         .catch();
     },
@@ -88,25 +88,14 @@ export default {
     bottom: 0;
     z-index: 1000;
     height: 100vh;
-    background-color: #2a282a;
+    background-color: #ffffff;
     transition: background-color 0.7s ease;
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .home-loading-active {
-    background-color: #ffffff;
-  }
-  .logo {
-    animation: opacityShow 1s ease infinite;
-  }
-  @keyframes opacityShow {
-    0% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
-    }
+    background-color: #2a282a;
   }
 }
 
@@ -126,7 +115,7 @@ export default {
 .swiper-slide-duplicate-active img {
   transition: 6s linear; /* 必须的必 */
   transform: scale(1); /* 必须的必 */
-  
+
 }
 </style>
 <style lang="scss">
