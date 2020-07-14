@@ -1,7 +1,7 @@
 <template>
   <div class="product">
     <div class="product-carousel" ref="productCarouRef">
-      <el-carousel :autoplay="false">
+      <el-carousel :autoplay="false" :indicator-position="pageList.bannerCarouselList.length>1?'':'none'">
         <el-carousel-item
           v-for="(item, index) in pageList.bannerCarouselList"
           :key="index"
@@ -341,8 +341,6 @@ export default {
           }
         ]
       },
-     
-      
       playerOptions: {
         height: '360',
         autoplay: false,
@@ -415,7 +413,7 @@ export default {
         // 头部轮播
         this.pageList.bannerCarouselList = arrList.shift().imgArr;
         this.pageList.bannerCarouselList.forEach((item, index) => {
-          this.$set(item, 'positionList', productList.dejiaPointList[index]);
+          this.$set(item, 'positionList', productList[`${this.$route.params.type}PointList`][index]);
         });
         // 主体部分
         this.pageList.detailList = arrList.splice(0, res.arrList.length - 2);
@@ -456,7 +454,6 @@ export default {
         this.$refs[`IMGmoduel${i}`][0].childNodes.forEach(ele => {
           let eleTop = ele.getBoundingClientRect().top;
           let eleHeight = ele.clientHeight; //当前元素高度
-          console.log(ele.childNodes)
           if(ele.childNodes[0].nodeName=='IMG'){
             if (eleTop >= 0) {
               ele.childNodes[0].style.transform = `scale(${1 + (windowHeight - eleTop) / windowHeight / 20})`;
