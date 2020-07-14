@@ -1,7 +1,7 @@
 <template>
   <div class="home-container">
     <div class="home-loading" :class="{ 'home-loading-active': turnLoadingFlag }" v-if="isLoading">
-      <img :src="require(`assets/images/home/${turnLoadingFlag? 'logo':'wLogo'}.png`)" alt class="logo" />
+      <img :src="require(`assets/images/home/${turnLoadingFlag? 'logo.png':'wLogo.png'}`)" alt class="logo" />
     </div>
     <div class="swiper-container" v-if="imgList.length">
       <div class="swiper-wrapper">
@@ -45,7 +45,6 @@ export default {
     }, 2100);
   },
   mounted() {
-
     this.getPageData();
   },
   methods: {
