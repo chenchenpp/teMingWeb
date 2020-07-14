@@ -112,6 +112,7 @@
 import Swiper from 'swiper';
 import { getClientHeight } from '@/util/publicMethod';
 import api from '@/util/request/api';
+import {productList} from '@/util/productData';
 export default {
   name: 'product',
   data() {
@@ -340,51 +341,8 @@ export default {
           }
         ]
       },
-      dejiaPointList: [
-        [{
-          isShow: false,
-          left: '20%',
-          top: '20%',
-          isVideoFlag: false,
-          src: 'dejia/banner1.jpg',
-          title: '嵌入式煤气灶',
-          titleEnglish: 'Built-in gas range',
-          des: 'PITT燃烧器系统是全球专利，台面传热小，噪音极低，燃烧均匀；拥有比常规灶具多8厘米的两炉头间距，大空间使得各种类型的锅具同时烹饪时不受限制；台下嵌入式设计，烹饪后，主燃烧器部件可以很容易地移除，只留下一个平整的台面来清洁。',
-          desEnglish: 'Embedded gas stove PITT burner system is a global patent, small surface heat transfer, very low noise, uniform combustion;It has 8 cm more space between the two stove heads than the conventional stove, so that the large space makes all kinds of POTS cooking at the same time unrestricted;Built in, the main burner parts can be easily removed after cooking, leaving only a flat surface to clean.'
-        }, {
-          isShow: false,
-          left: '40%',
-          top: '30%',
-          isVideoFlag: true,
-          src: 'dejia/video1.MP4'
-        }, {
-          isShow: false,
-          left: '60%',
-          top: '40%',
-          isVideoFlag: true,
-          src: 'dejia/video2.MP4'
-        }], [{
-          isShow: false,
-          left: '40%',
-          top: '30%',
-          isVideoFlag: false,
-          src: 'dejia/banner2.jpg',
-          title: '木质刀叉盒',
-          titleEnglish: 'Wooden cutlery case',
-          des: '设计简洁流畅，做工精细，实用性强</br>自由组合，满足不同的分隔需求',
-          desEnglish: 'The design of wooden knife and fork box is simple and fluent, the work is fine, the practicability is strong </br> free combination, satisfies the different separation demand'
-        }], [{
-          isShow: false,
-          left: '40%',
-          top: '30%',
-          isVideoFlag: false,
-          src: 'dejia/banner3.jpg',
-          title: '首饰盒',
-          titleEnglish: 'jewel case',
-          des: '多格区分，一目了然。高档植绒，轻柔呵护</br>至简魅力，自有格调',
-          desEnglish: 'Multi - lattice distinction, clear at a glance.Top grade flocking, gentle care </br> to simple charm, own style'
-        }]
-      ],
+     
+      
       playerOptions: {
         height: '360',
         autoplay: false,
@@ -457,7 +415,7 @@ export default {
         // 头部轮播
         this.pageList.bannerCarouselList = arrList.shift().imgArr;
         this.pageList.bannerCarouselList.forEach((item, index) => {
-          this.$set(item, 'positionList', this.dejiaPointList[index]);
+          this.$set(item, 'positionList', productList.dejiaPointList[index]);
         });
         // 主体部分
         this.pageList.detailList = arrList.splice(0, res.arrList.length - 2);
@@ -592,6 +550,13 @@ export default {
   ::v-deep .el-carousel__container {
     height: 100vh;
   }
+  ::v-deep .el-carousel__indicators--horizontal{
+    font-size: 14px;
+    transform: translate(-50%, -104%);
+    .el-carousel__indicator{
+      padding: 0;
+    }
+  }
   ::v-deep .el-carousel__button {
     width: 50px;
     height: 4px;
@@ -604,14 +569,14 @@ export default {
     .banner-img {
       width: 100%;
       height: 100vh;
-      object-fit: cover;
+      // object-fit: cover;
     }
     .dot {
       // opacity: 0;
       background: rgba(27, 31, 34, 0.25);
       border: 1px solid rgba(255, 255, 255, 0.7);
       box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.28);
-      z-index: 2;
+      z-index: 10;
       position: absolute;
       display: flex;
       align-items: center;
@@ -678,6 +643,7 @@ export default {
       align-items: center;
       padding-left: 20px;
       transition: right 1s ease-in-out;
+      z-index: 10;
       img {
         width: 240px;
         height: 180px;
@@ -698,6 +664,8 @@ export default {
       .des {
         width: 478px;
         line-height: 24px;
+        margin-top: 20px;
+        flex: 1;
       }
     }
     .goods-items-active {
