@@ -41,9 +41,9 @@
           <el-menu-item index="/dynamic/main">{{$t('headerTransInfo.temingDynamic')}}</el-menu-item>
           <el-submenu index="/BrandEntry || /joinUs">
             <template slot="title">{{$t('headerTransInfo.joinUs.title')}}</template>
-            <el-menu-item index="/BrandEntry">
+            <!-- <el-menu-item index="/BrandEntry">
               {{$t('headerTransInfo.joinUs.BrandPresence')}}
-            </el-menu-item>
+            </el-menu-item> -->
             <el-menu-item index="/JoinUs">
               {{$t('headerTransInfo.joinUs.recruit')}}
             </el-menu-item>

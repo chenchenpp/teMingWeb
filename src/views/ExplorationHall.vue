@@ -32,7 +32,7 @@
             <p
               class="intrduce-info sub-title"
               v-if="data"
-              v-html="data[`imageDescTitle${language}`]"
+              v-html="data[`imageDescription${language}`]"
             ></p>
           </div>
         </li>
@@ -48,110 +48,7 @@ export default {
   data() {
     return {
       hallData: [
-        {
-          createTime: 1593432666000,
-          delFlag: 0,
-          en: null,
-          id: 21,
-          imageBelongPage: "3",
-          imageDescTitle: "sdfjsdjfskjd f",
-          imageDescTitleEnglish: null,
-          imageDescription: "",
-          imageDescriptionEnglish: null,
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
-          linkUrl: "",
-          mainTitle: "2",
-          mainTitleEnglish: "sdf",
-          name: "",
-          no: "",
-          pageTitle: "",
-          pageTitleEnglish: "",
-          pageTitleInfo: "",
-          pageTitleInfoEnglish: "",
-          subTitle: "sdf",
-          subTitleEnglish: "sdf",
-          tag: "",
-          tagEnglish: ""
-        },
-        {
-          createTime: 1593432666000,
-          delFlag: 0,
-          en: null,
-          id: 21,
-          imageBelongPage: "3",
-          imageDescTitle: "sdfjsdjfskjd f",
-          imageDescTitleEnglish: null,
-          imageDescription: "",
-          imageDescriptionEnglish: null,
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
-          linkUrl: "",
-          mainTitle: "2",
-          mainTitleEnglish: "sdf",
-          name: "",
-          no: "",
-          pageTitle: "",
-          pageTitleEnglish: "",
-          pageTitleInfo: "",
-          pageTitleInfoEnglish: "",
-          subTitle: "sdf",
-          subTitleEnglish: "sdf",
-          tag: "",
-          tagEnglish: ""
-        },
-        {
-          createTime: 1593432666000,
-          delFlag: 0,
-          en: null,
-          id: 21,
-          imageBelongPage: "3",
-          imageDescTitle: "sdfjsdjfskjd f",
-          imageDescTitleEnglish: null,
-          imageDescription: "",
-          imageDescriptionEnglish: null,
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
-          linkUrl: "",
-          mainTitle: "2",
-          mainTitleEnglish: "sdf",
-          name: "",
-          no: "",
-          pageTitle: "",
-          pageTitleEnglish: "",
-          pageTitleInfo: "",
-          pageTitleInfoEnglish: "",
-          subTitle: "sdf",
-          subTitleEnglish: "sdf",
-          tag: "",
-          tagEnglish: ""
-        },
-        {
-          createTime: 1593432666000,
-          delFlag: 0,
-          en: null,
-          id: 21,
-          imageBelongPage: "3",
-          imageDescTitle: "sdfjsdjfskjd f",
-          imageDescTitleEnglish: null,
-          imageDescription: "",
-          imageDescriptionEnglish: null,
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/40306461-76c6-470c-b171-4f30c5c217d6.jpg",
-          linkUrl: "",
-          mainTitle: "2",
-          mainTitleEnglish: "sdf",
-          name: "",
-          no: "",
-          pageTitle: "",
-          pageTitleEnglish: "",
-          pageTitleInfo: "",
-          pageTitleInfoEnglish: "",
-          subTitle: "sdf",
-          subTitleEnglish: "sdf",
-          tag: "",
-          tagEnglish: ""
-        }
+      
       ]
     };
   },
@@ -182,7 +79,7 @@ export default {
       this.$get("/image/getImageByPage.do?imageBelongPage=4&en=0")
         .then(res => {
           let data = res.arrList;
-          hallData = data.imgArr;
+          that.hallData = data[0].imgArr;
           // this.bannerImg = hallData[0].imageUrl;
         })
         .catch();

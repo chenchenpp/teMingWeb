@@ -158,8 +158,8 @@
                 class="icon-image need"
               />
               <div class="intruduce" :class="{intruduceActive:item.active}">
-                <p class="main-title" v-if="item" v-html="item[`pageTitle${language}`]"></p>
-                <p class="sub-title" v-if="item" v-html="item[`pageTitleInfo${language}`]"></p>
+                <p class="main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
+                <p class="sub-title" v-if="item" v-html="item[`imageDescription${language}`]"></p>
               </div>
             </li>
           </ul>
@@ -329,21 +329,25 @@ export default {
           that.fifthContentData = data[5].imgArr;
           that.fifthContentData.forEach((val, key) => {
             switch (key) {
+              case 0:
+                that.$set(val, "active", true);
+                break;
               case 1:
                 // val.left = "l920";
-                that.$set(val, 'left', 'l920');
+                that.$set(val, "left", "l920");
+
                 break;
               case 2:
                 // val.left = "l1070";
-                that.$set(val, 'left', 'l1070');
+                that.$set(val, "left", "l1070");
                 break;
               case 3:
                 // val.left = "l1220";
-                that.$set(val, 'left', 'l1220');
+                that.$set(val, "left", "l1220");
                 break;
               case 4:
                 // val.left = "l1370";
-                that.$set(val, 'left', 'l1370');
+                that.$set(val, "left", "l1370");
                 break;
               default:
                 break;
@@ -355,8 +359,8 @@ export default {
               reset: true,
               scale: 1.1,
               delay: 0, // 延时时间
-              distance: "0px", // 执行距离
-              duration: 600, // 执行时长
+              distance: "10px", // 执行距离
+              duration: 400, // 执行时长
               easing: "cubic-bezier(0.5, 0, 0, 1)" // 执行速度
             });
             that.initSwiper();
