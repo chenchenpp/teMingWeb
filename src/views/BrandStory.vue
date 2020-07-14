@@ -153,7 +153,7 @@
               v-for="(item, key) in forthContentData"
               :key="item.id + item.imageUrl"
             >
-              <img :src="require(`assets/images/brandStory/icon${key + 1}.png`)" class="icon need" />
+              <img :src="require(`assets/images/brandStory/icon${key + 1}.png`)" class="icon-image need" />
               <div class="intruduce" :class="{intruduceActive:item.active}">
                 <p class="main-title" v-if="item" v-html="item[`mainTitle${language}`]"></p>
                 <p class="sub-title" v-if="item" v-html="item[`subTitle${language}`]"></p>
@@ -232,13 +232,9 @@ export default {
           {
             type: "video/mp4",
             // mp4
-            src: "http://vjs.zencdn.net/v/oceans.mp4"
-            // webm
-            // src: "https://cdn.theguardian.tv/webM/2015/07/20/150716YesMen_synd_768k_vp8.webm"
+            src: ""
           }
         ]
-        // poster:
-        //   "https://surmon-china.github.io/vue-quill-editor/static/images/surmon-1.jpg"
       }
     };
   },
@@ -346,7 +342,7 @@ export default {
         .catch();
     },
     playVideo(index) {
-      this.playerOptions.sources.src = this.bannerData[index].imageUrl;
+      this.playerOptions.sources.src = this.bannerData[index].linkUrl;
       isShowVideoPlayer = true;
     }
   },
@@ -500,7 +496,7 @@ export default {
       width: 911px;
       height: 550px;
     }
-
+   
     .el-carousel__item {
       // height: 550px;
       img {
@@ -513,15 +509,16 @@ export default {
     height: 550px;
   }
   .right-text {
+    width: 532px;
     li {
       display: flex;
       text-align: left;
       align-items: center;
       margin-bottom: 40px;
-      .icon {
-        width: 48px;
-        height: 48px;
-        margin-right: 37px;
+      .icon-image {
+        width: 48px!important;
+        height: 48px!important;
+        margin-right: 37px!important;
       }
       .main-title {
         font-size: 24px;

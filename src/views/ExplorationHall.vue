@@ -47,7 +47,6 @@ import scrollReveal from "scrollreveal";
 export default {
   data() {
     return {
-      bannerImg: require("../assets/images/explorationHall/banner.jpg"),
       hallData: [
         {
           createTime: 1593432666000,

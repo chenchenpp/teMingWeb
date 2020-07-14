@@ -1,7 +1,7 @@
 <template>
   <div class="join-us-container">
     <div class="content">
-      <div class="banner" :style="{'background':`url(${$host}${bannerData[0].imageUrl})`}">
+      <div class="banner" v-if="bannerData.length > 0" :style="{'background':`url(${$host}${bannerData[0].imageUrl})`}">
         <div class="banner-text-area">
           <p class="main-title" v-if="bannerData[0]" v-html="bannerData[0][`mainTitle${language}`]"></p>
           <p class="sub-title" v-if="bannerData[0]" v-html="bannerData[0][`subTitle${language}`]"></p>
@@ -27,7 +27,7 @@
                   <span style="vertical-align: text-top;">|</span>
                   <span v-html="item['salaryRange']"></span>
                 </p>
-                <p class="sub-title" v-if="item" v-html="item[`positionDescription${language}`]"></p>
+                <p class="sub-title" v-if="item" v-html="item[`positionDescription${language}`].substr(0,item[`positionDescription${language}`].indexOf('<br>'))"></p>
               </div>
               <div class="right">
                 <div class="download">{{$t('joinUsInfo.downloadDoc')}}</div>
@@ -113,87 +113,7 @@ export default {
       uploadSuccessFlag: false,
       uploadErrorFlag: false,
       bannerData: [
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 21,
-          imageBelongPage: "3",
-
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/585818b2-c29c-4650-9c5f-a0e433978071.jpg",
-          linkUrl: "",
-          mainTitle: "2",
-          mainTitleEnglish: "模块的英文主标题",
-          name: null,
-          no: "",
-          subTitle: "sdf",
-          subTitleEnglish: "模块的英文副标题",
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 24,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/3e44ab81-0e58-4e69-8bd1-5be2a29301b4.png",
-          linkUrl: "dfsd",
-          mainTitle: "ss",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "sdf",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 25,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        },
-        {
-          createTime: null,
-          delFlag: null,
-          en: null,
-          id: 25,
-          imageBelongPage: "3",
-          imageSubclass: "品牌故事第一个模块",
-          imageUrl: "/static_img/f66fab6f-ddfd-466d-a368-8522264d8a7b.png",
-          linkUrl: "",
-          mainTitle: "sdf",
-          mainTitleEnglish: null,
-          name: null,
-          no: "",
-          subTitle: "1231",
-          subTitleEnglish: null,
-          imageDescTitle: "图片的主标题",
-          imageDescTitleEnglish: "图片的英文主标题",
-          imageDescription: "图片的副标题",
-          imageDescriptionEnglish: "图片的英文副标题"
-        }
+      
       ],
       firstContentData: [],
       joinUsDetail: {}
@@ -235,12 +155,18 @@ export default {
         .catch();
     },
     download() {
-      // this.$get("http://106.52.5.152/static_html/test.docx");
-      window.open('http://106.52.5.152/static_html/test.docx');
+      window.open(this.$host + "/static_html/test.docx");
     },
-    innerDialogOpen() {
-
-    }
+    getBannerData() {
+      let that = this;
+      this.$get("/image/getImageByPage.do?imageBelongPage=7&en=0")
+        .then(res => {
+           let data = res.arrList;
+           that.bannerData = data[0].imgArr;
+        })
+        .catch();
+    },
+    innerDialogOpen() {}
   },
   mounted() {
     this.getPageData();
@@ -260,7 +186,7 @@ export default {
   color: #dddddd;
   font-size: 24px;
   background: url("../assets/images/home/background.jpg");
-  .p-info{
+  .p-info {
     line-height: 30px;
   }
   .banner {
@@ -280,6 +206,11 @@ export default {
   .sub-title {
     font-size: 16px;
     margin-bottom: 10px;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
   .bottom-line {
     width: 40px;
@@ -418,8 +349,11 @@ export default {
     border-bottom: 1px solid rgba(221, 221, 221, 0.1);
     .middle-line {
       height: 205px;
-      width: 1px;
+      width: 1PX;
       background: rgba(221, 221, 221, 0.2);
+    }
+    .left, .right{
+      width: 45%;
     }
     h1 {
       font-size: 18px;
