@@ -5,7 +5,7 @@
         <div class="banner-text-area">
           <p class="main-title" v-if="bannerData[0]" v-html="bannerData[0][`mainTitle${language}`]"></p>
           <p class="sub-title" v-if="bannerData[0]" v-html="bannerData[0][`subTitle${language}`]"></p>
-          <p class="bottom-line"></p>
+          <!-- <p class="bottom-line"></p> -->
         </div>
       </div>
 
@@ -170,6 +170,7 @@ export default {
   },
   mounted() {
     this.getPageData();
+    this.getBannerData();
     this.initScroll();
   },
   computed: {
