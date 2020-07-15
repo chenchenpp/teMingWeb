@@ -1,6 +1,6 @@
 <template>
   <div class="brand-story-container">
-    <el-carousel arrow="never" class="banner">
+    <el-carousel arrow="never" class="banner" indicator-position="none">
       <el-carousel-item
         v-for="(item, index) in bannerData"
         :key="item.id"
@@ -188,6 +188,7 @@
           >
             <img :src="$host + item.imageUrl" alt class="need" />
             <div class="tips" v-show="!item.active" v-html="item[`tag${language}`]"></div>
+            <div class="mask" v-show="!item.active"></div>
             <div class="title-area"></div>
             <div class="img-title-box" v-show="item.active">
               <p class="img-main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
@@ -409,11 +410,11 @@ export default {
   text-align: right;
 }
 .main-title {
-  font-size: 30px;
+  font-size: 28px;
   margin-bottom: 40px;
 }
 .sub-title {
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 8px;
   line-height: 28px;
 }
@@ -422,9 +423,14 @@ export default {
 }
 .img-title-box {
   position: absolute;
-  bottom: 40px;
-  left: 40px;
+  width:100%;
+  padding-bottom: 40px;
+  padding-left: 40px;
   z-index: 99;
+  bottom:0;
+  left:0;
+  background:linear-gradient(0deg,rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+  box-sizing: border-box;
 }
 .img-main-title {
   font-size: 24px;
@@ -593,6 +599,18 @@ export default {
     color: #dddddd;
   }
 }
+.mask{
+  // background:linear-gradient(0deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0.5) 100%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+}
+.tips{
+  z-index: 2;
+}
 .l0 {
   left: 0;
 }
@@ -693,6 +711,9 @@ div.box.eleactive img {
   margin-left: 28px !important;
 }
 .second-content {
+  .swiper-slide{
+    // height: 90vh;
+  }
   .swiper-pagination {
     display: flex;
     justify-content: flex-start;
@@ -702,7 +723,7 @@ div.box.eleactive img {
   .swiper-slide-content {
     img {
       width: 1520px;
-      height: 600px;
+      height: 550px;
     }
   }
   .swiper-pagination-bullet {
@@ -746,12 +767,12 @@ div.box.eleactive img {
   }
   .timeline-year {
     opacity: 0;
-    height: 110px;
+    height: 80px;
     display: block;
   }
   .swiper-button-prev,
   .swiper-button-next {
-    top: 97%;
+    top: 96%;
     height: auto;
     z-index: 11;
     width: 25px;

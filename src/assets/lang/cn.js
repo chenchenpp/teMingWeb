@@ -27,12 +27,12 @@ export const footerTransInfo = {
     linkThird: '友情链接3',
     linkForth: '友情链接4',
     companyName: 'Copyright @2010 - 2020上海特铭家具有限公司',
-    companyNumber: '沪ICP备06025014号'
+    companyNumber: '沪ICP备19034031号-1'
 };
 
 export const joinUsInfo = {
     downloadDoc: '下载文档',
-    uploadDoc: '上传简历',
+    uploadDoc: '上传简历文档',
     position: '职位',
     salaryRange: '薪资',
     downloadWord: '下载Word',

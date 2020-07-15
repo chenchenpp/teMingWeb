@@ -657,7 +657,7 @@ export default {
           that.$nextTick(() => {
             that.initSwiper();
             that.enter(0);
-            scrollReveal().reveal("img", {
+            scrollReveal().reveal(".brand-entry-container img", {
               reset: true,
               scale: 1.1,
               delay: 0, // 延时时间

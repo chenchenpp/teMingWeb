@@ -51,7 +51,7 @@
           <el-menu-item index="7">
             <span class="line"></span>
           </el-menu-item>
-          <el-menu-item index="8">
+          <el-menu-item index="/ShoppingMall">
             <i class="iconfont iconcart-full"></i>
             {{$t('headerTransInfo.enterMall')}}
           </el-menu-item>

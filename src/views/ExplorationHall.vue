@@ -29,11 +29,11 @@
             <p class="hall-name main-title" v-if="data" v-html="data[`mainTitle${language}`]"></p>
             <p class="contact-info sub-title" v-if="data" v-html="data[`subTitle${language}`]"></p>
             <div class="middle-line"></div>
-            <p
+            <!-- <p
               class="intrduce-info sub-title"
               v-if="data"
               v-html="data[`imageDescription${language}`]"
-            ></p>
+            ></p> -->
           </div>
         </li>
       </ul>
@@ -147,7 +147,7 @@ export default {
   .middle-line {
     width: 60px;
     height: 1px;
-    background: rgba(204, 204, 204, 1);
+    // background: rgba(204, 204, 204, 1);
     opacity: 0.8;
     margin-top: 44px;
     margin-bottom: 40px;

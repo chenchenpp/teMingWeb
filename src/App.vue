@@ -109,13 +109,13 @@ body{
   }
 }
 .el-menu--popup{
-  background: #FFFFFF!important;
+  background: #2A282A!important;
   .el-menu-item{
-    background: #FFFFFF!important;
-    color: #2a282a!important;
+    background: #2A282A!important;
+    color: #DDDDDD!important;
     &:hover{
-      background: #FFFFFF;
-      color: #2a282a!important;
+      background: #2A282A;
+      color: #DDDDDD!important;
     }
   }
 }

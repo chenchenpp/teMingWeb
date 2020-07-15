@@ -30,8 +30,8 @@
                 <p class="sub-title" v-if="item" v-html="item[`positionDescription${language}`].substr(0,item[`positionDescription${language}`].indexOf('<br>'))"></p>
               </div>
               <div class="right">
-                <div class="download">{{$t('joinUsInfo.downloadDoc')}}</div>
-                <div class="upload">{{$t('joinUsInfo.uploadDoc')}}</div>
+                <!-- <div class="download">{{$t('joinUsInfo.downloadDoc')}}</div> -->
+                <!-- <div class="upload">{{$t('joinUsInfo.uploadDoc')}}</div> -->
               </div>
             </div>
           </li>
@@ -85,11 +85,11 @@
       <span slot="footer" class="dialog-footer">
         <div class="close" @click="dialogVisible = false">{{$t('joinUsInfo.close')}}</div>
         <div>
-          <div
+          <!-- <div
             class="download"
             style="display:inline-block"
             @click="download"
-          >{{$t('joinUsInfo.downloadWord')}}</div>
+          >{{$t('joinUsInfo.downloadWord')}}</div> -->
           <div
             class="upload"
             style="display:inline-block"
@@ -136,7 +136,7 @@ export default {
       this.uploadErrorFlag = true;
     },
     initScroll() {
-      scrollReveal().reveal("img", {
+      scrollReveal().reveal(".join-us-container img", {
         reset: true,
         scale: 1.1,
         opacity: 0.8,
@@ -254,6 +254,9 @@ export default {
       z-index: 99;
       i {
         margin-right: 11px;
+      }
+      span{
+        font-size: 16px;
       }
     }
     &:hover {
