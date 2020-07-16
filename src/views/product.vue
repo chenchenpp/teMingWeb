@@ -404,6 +404,7 @@ export default {
         'botiqieli': 13,
         'mengdelian': 14
       };
+      console.log(this.$route.params.type)
       this.$get(api.getPageHttp, {
         imageBelongPage: allSeries[this.$route.params.type],
         en: 0
