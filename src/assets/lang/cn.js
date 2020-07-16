@@ -32,7 +32,7 @@ export const footerTransInfo = {
 
 export const joinUsInfo = {
     downloadDoc: '下载文档',
-    uploadDoc: '上传简历文档',
+    uploadDoc: '上传简历',
     position: '职位',
     salaryRange: '薪资',
     downloadWord: '下载Word',

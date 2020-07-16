@@ -236,7 +236,7 @@ export default {
           {
             type: "video/mp4",
             // mp4
-            src: ""
+            src: "http://106.52.5.152/static_img/brandStory.MP4"
           }
         ]
       }
@@ -370,7 +370,6 @@ export default {
         .catch();
     },
     playVideo(index) {
-      this.playerOptions.sources.src = this.bannerData[index].linkUrl;
       isShowVideoPlayer = true;
     }
   },
