@@ -423,6 +423,7 @@ export default {
 .img-title-box {
   position: absolute;
   width:100%;
+  padding-top: 120px;
   padding-bottom: 40px;
   padding-left: 40px;
   z-index: 99;
