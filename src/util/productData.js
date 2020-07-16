@@ -1,11 +1,11 @@
 export let productPointList = {
-  dejia: [
+  jiade: [
     [{
       isShow: false,
       left: '17%',
       top: '77%',
       isVideoFlag: false,
-      src: 'dejia/banner1.jpg',
+      src: 'jiade/banner1.jpg',
       title: '嵌入式煤气灶',
       titleEnglish: 'Built-in gas range',
       des: 'PITT燃烧器系统是全球专利，台面传热小，噪音极低，燃烧均匀；拥有比常规灶具多8厘米的两炉头间距，大空间使得各种类型的锅具同时烹饪时不受限制；台下嵌入式设计，烹饪后，主燃烧器部件可以很容易地移除，只留下一个平整的台面来清洁。',
@@ -15,19 +15,19 @@ export let productPointList = {
       left: '60%',
       top: '82%',
       isVideoFlag: true,
-      src: 'dejia1.MP4'
+      src: 'jiade1.MP4'
     }, {
       isShow: false,
       left: '92%',
       top: '79%',
       isVideoFlag: true,
-      src: 'dejia2.MP4'
+      src: 'jiade2.MP4'
     }], [{
       isShow: false,
       left: '77%',
       top: '50%',
       isVideoFlag: false,
-      src: 'dejia/banner2.jpg',
+      src: 'jiade/banner2.jpg',
       title: '木质刀叉盒',
       titleEnglish: 'Wooden cutlery case',
       des: '设计简洁流畅，做工精细，实用性强</br>自由组合，满足不同的分隔需求',
@@ -37,7 +37,7 @@ export let productPointList = {
       left: '50%',
       top: '80%',
       isVideoFlag: false,
-      src: 'dejia/banner3.jpg',
+      src: 'jiade/banner3.jpg',
       title: '首饰盒',
       titleEnglish: 'jewel case',
       des: '多格区分，一目了然。高档植绒，轻柔呵护</br>至简魅力，自有格调',
@@ -112,7 +112,7 @@ export let productPointList = {
       left: '57%',
       top: '56%',
       isVideoFlag: false,
-      src: 'dejia/banner1.jpg',
+      src: 'miss/banner2-2.jpg',
       title: '伊莱克斯电磁灶',
       titleEnglish: 'Electrolux electromagnetic cooker',
       des: '黑色镜面设计，进口微晶玻璃</br>锅具滑动温度调节，桥接功能灵活组合加热区域，14段功率调节精准温控，Booster功能瞬间功率提升，快速加热即可反应，智慧记忆自动续航',

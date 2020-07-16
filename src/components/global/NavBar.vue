@@ -27,7 +27,7 @@
           <el-menu-item index="/">{{$t('headerTransInfo.home')}}</el-menu-item>
           <el-submenu index="/product">
             <template slot="title">{{$t('headerTransInfo.product.title')}}</template>
-            <el-menu-item index="/product/dejia">{{$t('headerTransInfo.product.jiaDe')}}</el-menu-item>
+            <el-menu-item index="/product/jiade">{{$t('headerTransInfo.product.jiaDe')}}</el-menu-item>
             <el-menu-item index="/product/molandi">{{$t('headerTransInfo.product.molandi')}}</el-menu-item>
             <el-menu-item index="/product/miss">{{$t('headerTransInfo.product.miss')}}</el-menu-item>
             <el-menu-item index="/product/dikesen">{{$t('headerTransInfo.product.dikesen')}}</el-menu-item>

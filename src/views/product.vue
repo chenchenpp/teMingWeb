@@ -119,7 +119,7 @@ export default {
   data() {
     return {
       isShowVideoPlayer: false,
-      dejiaList: {
+      jiadeList: {
         title: "德贾系列",
         des: "智能化的特色，最顶级的配置，将艺术、潮流、功能互相结合在了一起。",
         bannerCarouselList: [
@@ -395,7 +395,7 @@ export default {
   methods: {
     init() {
       let allSeries = {
-        'dejia':2,
+        'jiade':2,
         'molandi': 8,
         'miss': 9,
         'dikesen': 10,
@@ -537,6 +537,7 @@ export default {
       }
       if (data.isVideoFlag) {
         this.isShowVideoPlayer = true;
+        console.log(data.src)
         this.$set(this.playerOptions.sources, 0, {
           type: 'video/mp4',
           src: `http://106.52.5.152/static_img/${data.src}`
