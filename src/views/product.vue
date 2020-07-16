@@ -404,7 +404,6 @@ export default {
         'botiqieli': 13,
         'mengdelian': 14
       };
-      console.log(this.$route.params.type)
       this.$get(api.getPageHttp, {
         imageBelongPage: allSeries[this.$route.params.type],
         en: 0
@@ -422,21 +421,22 @@ export default {
         this.pageList.detailList.forEach(item => {
           let speArr = [];
           let copyArr = [];
+          let no;
           item.imgArr.forEach(data => {
             if (data.name || data.name == '0') {
+              no=data.no-1;
               speArr.push(data);
             } else {
               copyArr.push(data);
             }
           });
           if (speArr.length) {
-            copyArr.push({
+            copyArr.splice(no, 0, {
               imgArr: speArr
-            });
+            })
           }
           item.imgArr = copyArr;
         });
-
         // 脚步轮播图
         this.pageList.lastCarouselList = arrList.pop().imgArr;
         // 初始化轮播图
@@ -495,6 +495,9 @@ export default {
           click: function(event) {
             event.stopPropagation();
             let currentClass = event.target.className;
+            if(currentClass=='title'){
+              currentClass=event.target.parentNode.className
+            }
             if (currentClass.includes('swiper-slide-prev')) {
               this.slidePrev();
             } else if (currentClass.includes('swiper-slide-next')) {
@@ -763,12 +766,14 @@ export default {
   height: 750px;
   overflow: hidden;
   margin-top: 60px;
+  cursor: pointer;
   .title {
     font-size: 20px;
     color: rgba(221, 221, 221, 0.7);
     position: absolute;
     top: 50%;
     transform: translate(-50%, 50%);
+    cursor: pointer;
   }
   img {
     width: 1320px;

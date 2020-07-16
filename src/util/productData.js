@@ -21,7 +21,7 @@ export let productPointList = {
       left: '92%',
       top: '79%',
       isVideoFlag: true,
-      src: 'jiade2.MP4'
+      src: 'jiade2.mp4'
     }], [{
       isShow: false,
       left: '77%',
@@ -50,7 +50,7 @@ export let productPointList = {
       left: '60%',
       top: '50%',
       isVideoFlag: true,
-      src: 'molandi1.MP4'
+      src: 'molandi1.mp4'
     }, {
       isShow: false,
       left: '90%',
@@ -135,11 +135,11 @@ export let productPointList = {
       left: '30%',
       top: '48%',
       isVideoFlag: true,
-      src: 'dikesen1.MP4'
+      src: 'dikesen1.mp4'
     }, {
       isShow: false,
-      left: '58%',
-      top: '70%',
+      left: '57.5%',
+      top: '71.5%',
       isVideoFlag: false,
       src: 'dikesen/banner2.jpg',
       title: '嵌入式轨道移动插座',
@@ -148,10 +148,10 @@ export let productPointList = {
       desEnglish: 'Insert and insert at will</br>increase or decrease at will</br> avoid cutting holes in the wall</br> use flexible and convenient</br>unique safety design'
     }, {
       isShow: false,
-      left: '30%',
-      top: '64%',
+      left: '29.2%',
+      top: '62%',
       isVideoFlag: true,
-      src: 'dikesen2.MP4'
+      src: 'dikesen2.mp4'
     }]
   ],
   bier: [
@@ -192,7 +192,7 @@ export let productPointList = {
       left: '54%',
       top: '32%',
       isVideoFlag: true,
-      src: 'bier1.MP4'
+      src: 'bier1.mp4'
     }]
   ],
   kelinte: [
@@ -215,7 +215,7 @@ export let productPointList = {
       src: 'kelinte/banner2.jpg',
       title: '开架45°拼接工艺',
       titleEnglish: '45 ° open frame splicing process',
-      des: '待补充',
+      des: '',
       desEnglish: ''
     }],
     [{
@@ -233,9 +233,10 @@ export let productPointList = {
       left: '50%',
       top: '34%',
       isVideoFlag: true,
-      src: 'kelinte1.MP4'
+      src: 'kelinte1.mp4'
     }]
   ],
+  botiqieli: [],
   mengdelian: [
     [{
       isShow: false,

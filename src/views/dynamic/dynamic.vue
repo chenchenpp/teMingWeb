@@ -34,7 +34,6 @@ export default {
         imageBelongPage: 5,
         en: 0
       }).then(res => {
-        console.log(res)
         this.headerBanner=res.arrList[0];
         this.imageUrl=this.headerBanner.imgArr[0].imageUrl
       })
