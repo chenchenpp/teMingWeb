@@ -155,7 +155,7 @@
             >
               <img
                 :src="require(`assets/images/brandStory/icon${key + 1}.png`)"
-                class="icon-image need"
+                class="icon-image"
               />
               <div class="intruduce" :class="{intruduceActive:item.active}">
                 <p class="main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
