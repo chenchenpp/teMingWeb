@@ -149,7 +149,7 @@
           </div>
           <ul class="right-text">
             <li
-              @mouseenter="handleEnter(key)"
+              
               v-for="(item, key) in forthContentData"
               :key="item.id + item.imageUrl"
             >
@@ -157,7 +157,7 @@
                 :src="require(`assets/images/brandStory/icon${key + 1}.png`)"
                 class="icon-image"
               />
-              <div class="intruduce" :class="{intruduceActive:item.active}">
+              <div class="intruduce">
                 <p class="main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
                 <p class="sub-title" v-if="item" v-html="item[`imageDescription${language}`]"></p>
               </div>
@@ -546,7 +546,7 @@ export default {
       display: flex;
       text-align: left;
       align-items: center;
-      margin-bottom: 40px;
+      margin-bottom: 25px;
       .icon-image {
         width: 48px !important;
         height: 48px !important;
