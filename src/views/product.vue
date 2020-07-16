@@ -539,10 +539,8 @@ export default {
         this.isShowVideoPlayer = true;
         this.$set(this.playerOptions.sources, 0, {
           type: 'video/mp4',
-          src: `http://vjs.zencdn.net/v/oceans.mp4`
+          src: `http://106.52.5.152/static_img/${data.src}`
         });
-        // this.$refs.videoPlayer.player.src('http://vjs.zencdn.net/v/oceans.mp4');
-
       }
     }
   }
