@@ -236,7 +236,7 @@ export default {
           {
             type: "video/mp4",
             // mp4
-            src: "http://106.52.5.152/static_img/brandStory.MP4"
+            src: "http://106.52.5.152/static_img/brandStory.mp4"
           }
         ]
       }
