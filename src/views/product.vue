@@ -90,6 +90,7 @@
           :key="index"
           @mouseenter.stop="stopFooterCarousel"
           @mouseleave.stop="startFooterCarousel"
+          :urlPath='item.linkUrl'
         >
           <span class="title">{{item['imageDescription'+language]}}</span>
           <img
@@ -112,7 +113,7 @@
 import Swiper from 'swiper';
 import { getClientHeight } from '@/util/publicMethod';
 import api from '@/util/request/api';
-import {productList} from '@/util/productData';
+import { productPointList } from '@/util/productData';
 export default {
   name: 'product',
   data() {
@@ -370,9 +371,9 @@ export default {
     '$route': function(to, from) {
       this.init();
     },
-    '$i18n.locale': function(val){
+    '$i18n.locale': function(val) {
       // 初始化轮播图
-      this.$nextTick(()=>{
+      this.$nextTick(() => {
         this.footerCarSwiper.updateSlides();
       })
     }
@@ -402,7 +403,7 @@ export default {
         'kelinte': 12,
         'botiqieli': 13,
         'mengdelian': 14
-      }
+      };
       this.$get(api.getPageHttp, {
         imageBelongPage: allSeries[this.$route.params.type],
         en: 0
@@ -413,20 +414,20 @@ export default {
         // 头部轮播
         this.pageList.bannerCarouselList = arrList.shift().imgArr;
         this.pageList.bannerCarouselList.forEach((item, index) => {
-          this.$set(item, 'positionList', productList[`${this.$route.params.type}PointList`][index]);
+          this.$set(item, 'positionList', productPointList[this.$route.params.type][index]);
         });
         // 主体部分
         this.pageList.detailList = arrList.splice(0, res.arrList.length - 2);
         this.pageList.detailList.forEach(item => {
-          let speArr=[];
-          let copyArr=[];
+          let speArr = [];
+          let copyArr = [];
           item.imgArr.forEach(data => {
-            if(data.name || data.name == '0') {
+            if (data.name || data.name == '0') {
               speArr.push(data);
             } else {
-              copyArr.push(data)
+              copyArr.push(data);
             }
-          })
+          });
           if (speArr.length) {
             copyArr.push({
               imgArr: speArr
@@ -438,15 +439,14 @@ export default {
         // 脚步轮播图
         this.pageList.lastCarouselList = arrList.pop().imgArr;
         // 初始化轮播图
-        this.$nextTick(()=>{
-          if(this.footerCarSwiper){
+        this.$nextTick(() => {
+          if (this.footerCarSwiper) {
             this.footerCarSwiper.init();
-          }else {
+          } else {
             this.initSwiper();
           }
-
-        })
-      })
+        });
+      });
     },
     productScrollHandle() {
       let windowHeight = getClientHeight();
@@ -454,7 +454,7 @@ export default {
         this.$refs[`IMGmoduel${i}`][0].childNodes.forEach(ele => {
           let eleTop = ele.getBoundingClientRect().top;
           let eleHeight = ele.clientHeight; //当前元素高度
-          if(ele.childNodes[0].nodeName=='IMG'){
+          if (ele.childNodes[0].nodeName == 'IMG') {
             if (eleTop >= 0) {
               ele.childNodes[0].style.transform = `scale(${1 + (windowHeight - eleTop) / windowHeight / 20})`;
               ele.style.opacity = `${(windowHeight - eleTop) / windowHeight}`;
@@ -466,19 +466,19 @@ export default {
               ele.style.opacity = '1';
             }
           }
-
         });
       }
     },
     initSwiper() {
-      this.footerCarSwiper = new Swiper(".swiper-container", {
+      var that = this;
+      this.footerCarSwiper = new Swiper('.swiper-container', {
         autoplay: {
           delay: 3000,
           disableOnInteraction: false
         },
         loop: true, //循环轮播
         // simulateTouch: false, //禁止滑动轮播 关闭会影响点击事件的触发！！！！！
-        effect: "coverflow", //slide的切换效果 3d效果
+        effect: 'coverflow', //slide的切换效果 3d效果
         slidesPerView: "2",
         loopedSlides: 2,
         centeredSlides: true, //设定为true时，active slide会居中，而不是默认状态下的居左。
@@ -494,11 +494,18 @@ export default {
           click: function(event) {
             event.stopPropagation();
             let currentClass = event.target.className;
-            console.log(currentClass)
             if (currentClass.includes('swiper-slide-prev')) {
               this.slidePrev();
             } else if (currentClass.includes('swiper-slide-next')) {
               this.slideNext();
+            } else {
+              let seriesIndex;
+              if (this.activeIndex == 1) {
+                seriesIndex = that.pageList.lastCarouselList.length - 1;
+              } else {
+                seriesIndex = this.activeIndex - 2;
+              }
+              that.$router.push(that.pageList.lastCarouselList[seriesIndex].linkUrl)
             }
           }
         }
@@ -712,32 +719,8 @@ export default {
         justify-content: space-between;
       }
     }
-    .detail-left {
-      .moduel-mes::before {
-        content: "";
-        display: inline-block;
-        width: 50px;
-        height: 1PX;
-        background: rgba(255, 255, 255, 0.5);
-        position: absolute;
-        top: 70px;
-        right: -50px;
-        z-index: 10;
-      }
-    }
     .detail-right {
       flex-direction: row-reverse;
-      .moduel-mes::before {
-        content: "";
-        display: inline-block;
-        width: 50px;
-        height: 1px;
-        background: rgba(255, 255, 255, 0.5);
-        position: absolute;
-        top: 70px;
-        left: -50px;
-        z-index: 10;
-      }
     }
     .moduel-mes {
       box-sizing: border-box;

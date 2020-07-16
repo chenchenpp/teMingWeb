@@ -1,5 +1,5 @@
-export let productList = {
-  dejiaPointList: [
+export let productPointList = {
+  dejia: [
     [{
       isShow: false,
       left: '17%',
@@ -15,13 +15,13 @@ export let productList = {
       left: '60%',
       top: '82%',
       isVideoFlag: true,
-      src: 'dejia/video1.MP4'
+      src: 'dejia1.MP4'
     }, {
       isShow: false,
       left: '92%',
       top: '79%',
       isVideoFlag: true,
-      src: 'dejia/video2.MP4'
+      src: 'dejia2.MP4'
     }], [{
       isShow: false,
       left: '77%',
@@ -44,22 +44,22 @@ export let productList = {
       desEnglish: 'Multi - lattice distinction, clear at a glance.Top grade flocking, gentle care </br> to simple charm, own style'
     }]
   ],
-  molandiPointList: [
+  molandi: [
     [{
       isShow: false,
       left: '60%',
       top: '50%',
       isVideoFlag: true,
-      src: 'dejia/video1.MP4'
+      src: 'molandi1.MP4'
     }, {
       isShow: false,
       left: '90%',
       top: '40%',
       isVideoFlag: true,
-      src: 'dejia/video1.MP4'
+      src: 'molandi2.MP4'
     }]
   ],
-  missPointList: [
+  miss: [
     [{
       isShow: false,
       left: '27%',
@@ -96,7 +96,7 @@ export let productList = {
       left: '86%',
       top: '35%',
       isVideoFlag: true,
-      src: 'dejia/video1.MP4'
+      src: 'miss1.MP4'
     }, {
       isShow: false,
       left: '37%',
@@ -119,7 +119,7 @@ export let productList = {
       desEnglish: 'Black mirror design, imported glass ceramics </br> the pot has sliding temperature adjustment, bridge function, flexible combination of heating area, 14 stage power adjustment, precise temperature control, booster function, instantaneous power improvement, quick heating reaction, intelligent memory automatic endurance'
     }]
   ],
-  dikesenPointList: [
+  dikesen: [
     [{
       isShow: false,
       left: '75%',
@@ -135,7 +135,7 @@ export let productList = {
       left: '30%',
       top: '48%',
       isVideoFlag: true,
-      src: 'dejia/video1.MP4'
+      src: 'dikesen1.MP4'
     }, {
       isShow: false,
       left: '58%',
@@ -151,10 +151,10 @@ export let productList = {
       left: '30%',
       top: '64%',
       isVideoFlag: true,
-      src: 'dejia/video1.MP4'
+      src: 'dikesen2.MP4'
     }]
   ],
-  bierPointList: [
+  bier: [
     [{
       isShow: false,
       left: '10%',
@@ -192,10 +192,10 @@ export let productList = {
       left: '54%',
       top: '32%',
       isVideoFlag: true,
-      src: 'dejia/video1.MP4'
+      src: 'bier1.MP4'
     }]
   ],
-  kelintePointList: [
+  kelinte: [
     [{
       isShow: false,
       left: '77%',
@@ -233,10 +233,10 @@ export let productList = {
       left: '50%',
       top: '34%',
       isVideoFlag: true,
-      src: 'dejia/video1.MP4'
+      src: 'kelinte1.MP4'
     }]
   ],
-  botiqieliPointList: [
+  mengdelian: [
     [{
       isShow: false,
       left: '17%',
@@ -247,7 +247,7 @@ export let productList = {
       titleEnglish: 'Hercules',
       des: '木质套柜全拉出解决方案，小身材大容量。',
       desEnglish: 'Wooden cabinet full pull-out solution, small size and large capacity.'
-    },{
+    }, {
       isShow: false,
       left: '17%',
       top: '77%',
@@ -257,7 +257,7 @@ export let productList = {
       titleEnglish: 'Wardrobe shoe rack',
       des: '摆放有序，</br>清晰明朗',
       desEnglish: 'Orderly placement,</br> clear and clear'
-    },{
+    }, {
       isShow: false,
       left: '17%',
       top: '77%',
