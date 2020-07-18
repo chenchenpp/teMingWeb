@@ -24,7 +24,7 @@
           active-text-color="#DDDDDD"
           @select="handleSelect"
         >
-          <el-menu-item index="/">{{$t('headerTransInfo.home')}}</el-menu-item>
+          <el-menu-item index="/home">{{$t('headerTransInfo.home')}}</el-menu-item>
           <el-submenu index="/product">
             <template slot="title">{{$t('headerTransInfo.product.title')}}</template>
             <el-menu-item index="/product/jiade">{{$t('headerTransInfo.product.jiaDe')}}</el-menu-item>
@@ -48,9 +48,6 @@
               {{$t('headerTransInfo.joinUs.recruit')}}
             </el-menu-item>
           </el-submenu>
-          <el-menu-item index="7">
-            <span class="line"></span>
-          </el-menu-item>
           <el-menu-item index="/ShoppingMall">
             <i class="iconfont iconcart-full"></i>
             {{$t('headerTransInfo.enterMall')}}
@@ -65,12 +62,8 @@
 export default {
   data() {
     return {
-      activeIndex: "/",
       langType: "CN"
     };
-  },
-  created() {
-    this.activeIndex = this.$route.path;
   },
   methods: {
     handleCommand(command) {
@@ -78,7 +71,6 @@ export default {
       this.$i18n.locale = command;
     },
     handleSelect(key, keyPath) {
-      this.activeIndex = key;
       this.$router.push(key);
     }
   }

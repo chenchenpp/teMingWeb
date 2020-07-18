@@ -17,8 +17,10 @@ importAll(require.context('.', true, /\.router\.js/));
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
-    routes: [{
-            path: '/',
+    routes: [ 
+        {path: '/', redirect: 'home'}, 
+        {
+            path: '/home',
             name: 'home',
             component: () =>
                 import ( /* webpackChunkName: 'home' */ '../views/Home.vue')
