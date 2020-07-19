@@ -452,7 +452,8 @@ export default {
     productScrollHandle() {
       let windowHeight = getClientHeight();
       for (let i = 0; i < this.pageList.detailList.length; i++) {
-        this.$refs[`IMGmoduel${i}`][0].childNodes.forEach(ele => {
+        for(let j=0; j<this.$refs[`IMGmoduel${i}`][0].childNodes; j++){
+          let ele= this.$refs[`IMGmoduel${i}`][0].childNodes[j];
           let eleTop = ele.getBoundingClientRect().top;
           let eleHeight = ele.clientHeight; //当前元素高度
           if (ele.childNodes[0].nodeName == 'IMG') {
@@ -467,7 +468,8 @@ export default {
               ele.style.opacity = '1';
             }
           }
-        });
+        }
+
       }
     },
     initSwiper() {
