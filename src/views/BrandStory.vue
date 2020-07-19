@@ -1,6 +1,6 @@
 <template>
   <div class="brand-story-container">
-    <el-carousel arrow="never" class="banner" indicator-position="none">
+    <!-- <el-carousel arrow="never" class="banner" indicator-position="none">
       <el-carousel-item
         v-for="(item, index) in bannerData"
         :key="item.id"
@@ -8,7 +8,16 @@
       >
         <img :src="$host + item.imageUrl" alt @click="isShowVideoPlayer=true" class="need" />
       </el-carousel-item>
-    </el-carousel>
+    </el-carousel>-->
+    <video-player
+      class="video-player vjs-custom-skin"
+      ref="videoPlayer"
+      :playsinline="true"
+      :options="playerOptions"
+      x5-video-player-fullscreen="true"
+      @play="onPlayerPlay($event)"
+      @ready="playerReadied"
+    >></video-player>
     <div class="content">
       <scrollbarTrack></scrollbarTrack>
 
@@ -148,15 +157,8 @@
             </el-carousel>
           </div>
           <ul class="right-text">
-            <li
-              
-              v-for="(item, key) in forthContentData"
-              :key="item.id + item.imageUrl"
-            >
-              <img
-                :src="require(`assets/images/brandStory/icon${key + 1}.png`)"
-                class="icon-image"
-              />
+            <li v-for="(item, key) in forthContentData" :key="item.id + item.imageUrl">
+              <img :src="require(`assets/images/brandStory/icon${key + 1}.png`)" class="icon-image" />
               <div class="intruduce">
                 <p class="main-title" v-if="item" v-html="item[`imageDescTitle${language}`]"></p>
                 <p class="sub-title" v-if="item" v-html="item[`imageDescription${language}`]"></p>
@@ -198,14 +200,14 @@
         </div>
       </div>
     </div>
-    <el-dialog :visible.sync="isShowVideoPlayer" :show-close="false" :before-close="handleClose">
+    <!-- <el-dialog :visible.sync="isShowVideoPlayer" :show-close="false" :before-close="handleClose">
       <video-player
         class="video-player vjs-custom-skin"
         ref="videoPlayer"
         :playsinline="true"
         :options="playerOptions"
       ></video-player>
-    </el-dialog>
+    </el-dialog>-->
 
     <tm-footer></tm-footer>
   </div>
@@ -227,15 +229,18 @@ export default {
       fifthContentData: [],
       // videojs options
       playerOptions: {
-        height: "360",
-        autoplay: false,
-        muted: true,
-        language: "en",
-        playbackRates: [0.7, 1.0, 1.5, 2.0],
+        // height: "100vh",
+        playbackRates: [0.7, 1.0, 1.5, 2.0], //播放速度
+        autoplay: true, //如果true,浏览器准备好时开始回放。
+        muted: true, // 默认情况下将会消除任何音频。
+        loop: true, // 导致视频一结束就重新开始。
+        preload: "auto", // 建议浏览器在<video>加载元素后是否应该开始下载视频数据。auto浏览器选择最佳行为,立即开始加载视频（如果浏览器支持）
+        language: "zh-CN",
+        // aspectRatio: "16:9", // 将播放器置于流畅模式，并在计算播放器的动态大小时使用该值。值应该代表一个比例 - 用冒号分隔的两个数字（例如"16:9"或"4:3"）
+        // fluid: true, // 当true时，Video.js player将拥有流体大小。换句话说，它将按比例缩放以适应其容器。
         sources: [
           {
             type: "video/mp4",
-            // mp4
             src: "http://106.52.5.152/static_img/brandStory.mp4"
           }
         ]
@@ -371,13 +376,23 @@ export default {
     },
     playVideo(index) {
       isShowVideoPlayer = true;
-    }
+    },
+    onPlayerPlay(e) {
+      this.$refs.videoPlayer.player.options_.muted = false;
+    },
+    playerReadied() {}
   },
   created() {
     this.getPageData();
   },
   mounted() {
     // this.getPageData();
+    this.$refs.videoPlayer.player.play();
+  },
+  beforeRouteEnter: (to, from, next) => {
+    next(vm => {
+      vm.$refs.videoPlayer.player.play();
+    });
   }
 };
 </script>
@@ -422,14 +437,14 @@ export default {
 }
 .img-title-box {
   position: absolute;
-  width:100%;
+  width: 100%;
   padding-top: 120px;
   padding-bottom: 40px;
   padding-left: 40px;
   z-index: 99;
-  bottom:0;
-  left:0;
-  background:linear-gradient(0deg,rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
   box-sizing: border-box;
 }
 .img-main-title {
@@ -599,16 +614,16 @@ export default {
     color: #dddddd;
   }
 }
-.mask{
+.mask {
   // background:linear-gradient(0deg,rgba(0,0,0,.5) 0%,rgba(0,0,0,0.5) 100%);
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
-.tips{
+.tips {
   z-index: 2;
 }
 .l0 {
@@ -680,6 +695,14 @@ div.box.eleactive img {
 }
 </style>
 <style lang="scss">
+.brand-story-container {
+  .video-player {
+    height: 100vh;
+  }
+  .video-js {
+    height: 100vh;
+  }
+}
 .forth-content {
   .el-carousel__container {
     height: 550px;
@@ -711,7 +734,7 @@ div.box.eleactive img {
   margin-left: 28px !important;
 }
 .second-content {
-  .swiper-slide{
+  .swiper-slide {
     // height: 90vh;
   }
   .swiper-pagination {
