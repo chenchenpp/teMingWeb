@@ -7,7 +7,7 @@ import "./assets/iconfont/iconfont.js";
 import { get, post } from "./util/request/http";
 import "./components/global";
 import { i18n } from "./assets/lang/i18n";
-import "swiper/css/swiper.css";
+import "swiper/dist/css/swiper.css";
 import VueLazyload from "vue-lazyload";
 import "@babel/polyfill";
 require("./assets/sass/reset.scss");

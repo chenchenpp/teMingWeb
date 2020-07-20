@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import { getUserComTravelersByUserId } from "@/util/request/api.js";
-import { setTimeout, setInterval } from "timers";
+// import { getUserComTravelersByUserId } from "@/util/request/api.js";
+// import { setTimeout, setInterval } from "timers";
 import Swiper from "swiper";
 export default {
   name: "home",
@@ -34,14 +34,14 @@ export default {
     };
   },
   created() {
-    document.body.style = "height:100vh;overflow:hidden";
+    // document.body.style = "height:100vh;overflow:hidden";
     setInterval(() => {}, 1000);
     setTimeout(() => {
       this.turnLoadingFlag = true;
     }, 700);
     setTimeout(() => {
       this.isLoading = false;
-      document.body.style = "height:auto;overflow:auto";
+      // document.body.style = "height:auto;overflow:auto";
     }, 2100);
   },
   mounted() {

@@ -475,14 +475,11 @@ export default {
     initSwiper() {
       var that = this;
       this.footerCarSwiper = new Swiper('.swiper-container', {
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false
-        },
+        autoplay:3000,
         loop: true, //循环轮播
         // simulateTouch: false, //禁止滑动轮播 关闭会影响点击事件的触发！！！！！
         effect: 'coverflow', //slide的切换效果 3d效果
-        slidesPerView: "2",
+        slidesPerView: "2", //设置slider容器能够同时显示的slides数量(carousel模式)。
         loopedSlides: 2,
         centeredSlides: true, //设定为true时，active slide会居中，而不是默认状态下的居左。
         spaceBetween: "-50%", //在slide之间设置距离（单位px）
@@ -493,37 +490,23 @@ export default {
           modifier: 4, //depth和rotate和stretch的倍率，相当于depth*modifier、rotate*modifier、stretch*modifier，值越大这三个参数的效果越明显。
           slideShadows: false
         },
-        on: {
-          click: function(event) {
-            event.stopPropagation();
-            let currentClass = event.target.className;
-            if(currentClass=='title'){
-              currentClass=event.target.parentNode.className
-            }
-            if (currentClass.includes('swiper-slide-prev')) {
-              this.slidePrev();
-            } else if (currentClass.includes('swiper-slide-next')) {
-              this.slideNext();
-            } else {
-              let seriesIndex;
-              if (this.activeIndex == 1) {
-                seriesIndex = that.pageList.lastCarouselList.length - 1;
-              } else {
-                seriesIndex = this.activeIndex - 2;
-              }
-              that.$router.push(that.pageList.lastCarouselList[seriesIndex].linkUrl)
-            }
+        slideToClickedSlide:true,
+        onClick: function(event) {
+          let currentClass = event.clickedSlide.className;
+          let currentIndex=event.realIndex;
+          if (currentClass.includes('swiper-slide-active')) {
+            that.$router.push(that.pageList.lastCarouselList[currentIndex].linkUrl)
           }
         }
       });
     },
     //关闭轮播图
     stopFooterCarousel() {
-      this.footerCarSwiper.autoplay.stop();
+      this.footerCarSwiper.stopAutoplay();
     },
     //开启轮播图
     startFooterCarousel() {
-      this.footerCarSwiper.autoplay.start();
+      this.footerCarSwiper.startAutoplay();
     },
     closeGoodsHandle(data) {
       data.isShow = false;
@@ -780,9 +763,12 @@ export default {
     width: 1320px;
     height: 750px;
   }
-  .swiper-slide-active .title {
-    left: 50%;
-  }
+  .swiper-slide-active{
+    z-index: 2!important;
+    .title {
+      left: 50%;
+    }
+  } 
   .swiper-slide-prev .title {
     left: 26%;
   }
