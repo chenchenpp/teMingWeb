@@ -15,7 +15,6 @@
     <tm-footer></tm-footer>
   </div>
 </template>
-
 <script>
 // import { getUserComTravelersByUserId } from "@/util/request/api.js";
 // import { setTimeout, setInterval } from "timers";
@@ -49,7 +48,7 @@ export default {
   },
   methods: {
     initSwiper() {
-      new Swiper(".swiper-container", {
+      let homeSwiper = new Swiper(".swiper-container", {
         autoplay: true,
         loop: true,
         speed: 3000, // 切换速度，slider自动滑动开始到结束的时间单位ms，也是触摸滑动时释放至贴合的时间。
@@ -60,7 +59,7 @@ export default {
         }
       });
     },
-      getPageData() {
+    getPageData() {
       let that = this;
       this.$get("/image/getImageByPage.do?imageBelongPage=1&en=0")
         .then(res => {

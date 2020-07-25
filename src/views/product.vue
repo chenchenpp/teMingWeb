@@ -491,10 +491,10 @@ export default {
           slideShadows: false
         },
         slideToClickedSlide:true,
-        onClick: function(event) {
-          let currentClass = event.clickedSlide.className;
-          let currentIndex=event.realIndex;
-          if (currentClass.includes('swiper-slide-active')) {
+        onTouchStart: function(swiper, event) {
+          let currentClass = event.target.className;
+          let currentIndex=swiper.realIndex;
+          if (!currentClass.includes('swiper-slide-prev')&&!currentClass.includes('swiper-slide-next')) {
             that.$router.push(that.pageList.lastCarouselList[currentIndex].linkUrl)
           }
         }
@@ -768,7 +768,7 @@ export default {
     .title {
       left: 50%;
     }
-  } 
+  }
   .swiper-slide-prev .title {
     left: 26%;
   }

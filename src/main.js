@@ -1,3 +1,4 @@
+import "@babel/polyfill";
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router/router";
@@ -9,7 +10,6 @@ import "./components/global";
 import { i18n } from "./assets/lang/i18n";
 import "swiper/dist/css/swiper.css";
 import VueLazyload from "vue-lazyload";
-import "@babel/polyfill";
 require("./assets/sass/reset.scss");
 require('@/assets/font/zhanghaishan/zhanghaishan.css');
 // require('@/assets/font/zhanghaishan/zhanghaishangcaonima.css');
