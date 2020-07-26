@@ -452,11 +452,11 @@ export default {
     productScrollHandle() {
       let windowHeight = getClientHeight();
       for (let i = 0; i < this.pageList.detailList.length; i++) {
-        for(let j=0; j<this.$refs[`IMGmoduel${i}`][0].childNodes; j++){
+        for(let j=0; j<this.$refs[`IMGmoduel${i}`][0].childNodes.length; j++){
           let ele= this.$refs[`IMGmoduel${i}`][0].childNodes[j];
-          let eleTop = ele.getBoundingClientRect().top;
+          let eleTop = ele.getBoundingClientRect().top-100;
           let eleHeight = ele.clientHeight; //当前元素高度
-          if (ele.childNodes[0].nodeName == 'IMG') {
+          if (ele.childNodes[0].nodeName == 'IMG'||ele.childNodes[0].nodeName == 'P') {
             if (eleTop >= 0) {
               ele.childNodes[0].style.transform = `scale(${1 + (windowHeight - eleTop) / windowHeight / 20})`;
               ele.style.opacity = `${(windowHeight - eleTop) / windowHeight}`;
@@ -494,6 +494,7 @@ export default {
         onTouchStart: function(swiper, event) {
           let currentClass = event.target.className;
           let currentIndex=swiper.realIndex;
+          console.log(currentClass)
           if (!currentClass.includes('swiper-slide-prev')&&!currentClass.includes('swiper-slide-next')) {
             that.$router.push(that.pageList.lastCarouselList[currentIndex].linkUrl)
           }
