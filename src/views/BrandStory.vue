@@ -297,19 +297,16 @@ export default {
     },
     initSwiper() {
       new Swiper(".swiper-container", {
-        // speed: 1000,
         effect: "coverflow",
-        pagination: {
-          el: ".swiper-pagination",
-          clickable: true,
-
-          //自定义分页
-          renderBullet: function(index, className) {
-            var year = document
+        pagination: '.swiper-pagination',
+        prevButton:'.swiper-button-prev',
+        nextButton:'.swiper-button-next',
+        paginationClickable: true,
+        paginationBulletRender: function (swiper, index, className) {
+          var year = document
               .querySelectorAll(".swiper-slide")
               [index].getAttribute("data-year");
             return `<span class="${className}"><span>${year}</span><i class="iconfont icontriangle"></i></span>`;
-          }
         },
         navigation: {
           nextEl: ".swiper-button-next",

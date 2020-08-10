@@ -494,7 +494,6 @@ export default {
         onTouchStart: function(swiper, event) {
           let currentClass = event.target.className;
           let currentIndex=swiper.realIndex;
-          console.log(currentClass)
           if (!currentClass.includes('swiper-slide-prev')&&!currentClass.includes('swiper-slide-next')) {
             that.$router.push(that.pageList.lastCarouselList[currentIndex].linkUrl)
           }
