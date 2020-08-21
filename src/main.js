@@ -12,7 +12,6 @@ import "swiper/dist/css/swiper.css";
 import VueLazyload from "vue-lazyload";
 require("./assets/sass/reset.scss");
 require('@/assets/font/zhanghaishan/zhanghaishan.css');
-// require('@/assets/font/zhanghaishan/zhanghaishangcaonima.css');
 function IsPC() {
   var userAgentInfo = navigator.userAgent;
   var Agents = ['Android', 'iPhone', 'SymbianOS', 'Windows Phone', 'iPad', 'iPod'];
