@@ -27,7 +27,8 @@ export const footerTransInfo = {
     linkThird: '友情链接3',
     linkForth: '友情链接4',
     companyName: 'Copyright @2010 - 2020上海特铭家具有限公司',
-    companyNumber: '沪ICP备19034031号-1'
+    companyNumber: '沪ICP备19034031号-1',
+    pliceNumber: '沪公网安备 31011402008858号'
 };
 
 export const joinUsInfo = {

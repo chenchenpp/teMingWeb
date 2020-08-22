@@ -26,8 +26,8 @@
         </a>
       </div>
       <div class="address">
-        <p>{{$t('footerTransInfo.companyName')}}</p>
-        <p>{{$t('footerTransInfo.companyNumber')}}</p>
+        <p>{{$t('footerTransInfo.companyName')}} {{$t('footerTransInfo.companyNumber')}}</p>
+        <p>{{$t('footerTransInfo.pliceNumber')}}</p>
       </div>
     </div>
   </el-footer>
