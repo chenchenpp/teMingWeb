@@ -129,6 +129,7 @@ export default {
       margin-top: 69px;
       font-size:16PX;
       color: rgba(221,221,221,1);
+      text-align: left
     }
   }
 }
