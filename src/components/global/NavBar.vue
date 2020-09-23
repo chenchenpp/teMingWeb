@@ -10,7 +10,7 @@
           </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item command="CN">CN</el-dropdown-item>
-            <!-- <el-dropdown-item command="EN">EN</el-dropdown-item> -->
+            <el-dropdown-item command="EN">EN</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
       </div>
